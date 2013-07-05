@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C74454E1786DB1E0008BE6A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC18C1785C48600647A96 /* OpenGL.framework */; };
+		8C7445501786DC9D0008BE6A /* git-version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C74454F1786DC9D0008BE6A /* git-version.cpp */; };
 		8C99589B1785DB7000EE4CA8 /* sceOpenPSID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8C71785B3C200647A96 /* sceOpenPSID.cpp */; };
 		8C99589C1785DB7000EE4CA8 /* sceOpenPSID.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8C81785B3C200647A96 /* sceOpenPSID.h */; };
 		8C99589D1785DB7000EE4CA8 /* sceP3da.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8C91785B3C200647A96 /* sceP3da.cpp */; };
@@ -160,7 +162,7 @@
 		8CAFC1081785B4D900647A96 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8391785B3C200647A96 /* Timer.h */; };
 		8CAFC1091785B4D900647A96 /* Version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA83A1785B3C200647A96 /* Version.cpp */; };
 		8CAFC1231785B6C400647A96 /* OpenEmuBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */; };
-		8CAFC1261785B6F700647A96 /* PPSSPPGameCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC1251785B6F700647A96 /* PPSSPPGameCore.m */; };
+		8CAFC1261785B6F700647A96 /* PPSSPPGameCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */; };
 		8CAFC1321785B99500647A96 /* backtrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBB381785B3D200647A96 /* backtrace.cpp */; };
 		8CAFC1331785B99500647A96 /* backtrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBB391785B3D200647A96 /* backtrace.h */; };
 		8CAFC1341785B9A900647A96 /* mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBB331785B3D200647A96 /* mixer.cpp */; };
@@ -751,6 +753,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C74454F1786DC9D0008BE6A /* git-version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "git-version.cpp"; sourceTree = "<group>"; };
 		8CAFA7B41785AF4200647A96 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8CAFA7B71785AF4200647A96 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		8CAFA7B81785AF4200647A96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -1433,7 +1436,7 @@
 		8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PPSSPP-Prefix.pch"; path = "../PPSSPP-Prefix.pch"; sourceTree = "<group>"; };
 		8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenEmuBase.framework; path = /Users/danielnagel/Git/OpenEmu/UME/../Build/Products/Debug/OpenEmuBase.framework; sourceTree = "<absolute>"; };
 		8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSSPPGameCore.h; sourceTree = "<group>"; };
-		8CAFC1251785B6F700647A96 /* PPSSPPGameCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSSPPGameCore.m; sourceTree = "<group>"; };
+		8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PPSSPPGameCore.mm; sourceTree = "<group>"; };
 		8CAFC12E1785B93F00647A96 /* libnative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libnative.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1631785C33D00647A96 /* libGPU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGPU.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC18C1785C48600647A96 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
@@ -1448,6 +1451,7 @@
 		8CAFC1D31785C7AC00647A96 /* libkirk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libkirk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1DB1785C7B300647A96 /* libxbrz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxbrz.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1E31785C7CB00647A96 /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
 		8CB74E1A1785FED200C652A7 /* DisplayListInterpreter.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = DisplayListInterpreter.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/DisplayListInterpreter.o"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = FragmentShaderGenerator.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/FragmentShaderGenerator.o"; sourceTree = "<group>"; };
 		8CB74E1C1785FED200C652A7 /* Framebuffer.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Framebuffer.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Framebuffer.o"; sourceTree = "<group>"; };
@@ -1492,6 +1496,7 @@
 				8CB74E46178602E500C652A7 /* libCommon.a in Frameworks */,
 				8C9959121785DDBE00EE4CA8 /* libCore.a in Frameworks */,
 				8CAFC1231785B6C400647A96 /* OpenEmuBase.framework in Frameworks */,
+				8C74454E1786DB1E0008BE6A /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1661,6 +1666,7 @@
 		8CAFA7D71785B3C200647A96 /* ppsspp */ = {
 			isa = PBXGroup;
 			children = (
+				8C74454F1786DC9D0008BE6A /* git-version.cpp */,
 				8CAFA7E41785B3C200647A96 /* Common */,
 				8CAFA83F1785B3C200647A96 /* Core */,
 				8CAFA9421785B3C200647A96 /* ext */,
@@ -2821,8 +2827,9 @@
 			isa = PBXGroup;
 			children = (
 				8CAFA7D71785B3C200647A96 /* ppsspp */,
+				8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */,
 				8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */,
-				8CAFC1251785B6F700647A96 /* PPSSPPGameCore.m */,
+				8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3493,6 +3500,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CAFC1E41785C7CB00647A96 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
+				8CB3FB781786CDF100A3C50D /* ShellScript */,
 				8CAFC1DF1785C7CB00647A96 /* Sources */,
 				8CAFC1E01785C7CB00647A96 /* Frameworks */,
 				8CAFC1E11785C7CB00647A96 /* Headers */,
@@ -3568,6 +3576,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8CB3FB781786CDF100A3C50D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define BUILD_VERSION with git revision and build configuration\ngitBundle=`which git`\ngitDescribe=`cd ppsspp; ${gitBundle} describe --always`\n\necho \"const char *PPSSPP_GIT_VERSION = \\\"${gitDescribe}\\\";\" > ppsspp/git-version.cpp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8CAFA7CE1785B06F00647A96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -3610,7 +3634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CAFC1261785B6F700647A96 /* PPSSPPGameCore.m in Sources */,
+				8CAFC1261785B6F700647A96 /* PPSSPPGameCore.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3926,6 +3950,7 @@
 				8CB74E111785F7CE00C652A7 /* sceNp.cpp in Sources */,
 				8CB74E131785F7E400C652A7 /* scePauth.cpp in Sources */,
 				8CB74E151785F7FA00C652A7 /* scePspNpDrm_user.cpp in Sources */,
+				8C7445501786DC9D0008BE6A /* git-version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

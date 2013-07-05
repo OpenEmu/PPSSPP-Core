@@ -26,10 +26,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <OpenEmuBase/OEGameCore.h>
+#import "OEPSPSystemResponderClient.h"
 
 @class OERingBuffer;
 
 OE_EXPORTED_CLASS
 @interface PPSSPPGameCore : OEGameCore
-
 @end
