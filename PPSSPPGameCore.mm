@@ -25,38 +25,54 @@
  */
 
 #import "PPSSPPGameCore.h"
+#import <OpenEmuBase/OERingBuffer.h>
+//#import <OpenGL/gl.h>
 
 #include "Core/CoreParameter.h"
 #include "Core/System.h"
+#include "Core/Host.h"
+#include "Core/Core.h"
+#include "Core/CoreTiming.h"
+#include "Core/MIPS/MIPS.h"
+#include "Core/Config.h"
 
-#include <OpenGL/OpenGL.h>
+//#include "gfx_es2/gl_state.h"
+
+//#include "GPU/GPUState.h"
+
+#include "base/NativeApp.h"
+
 #include <string>
 
+#define SAMPLERATE 44000
+#define SIZESOUNDBUFFER 44000 / 60 * 4
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
-
+    uint16_t *soundBuffer;
+    CoreParameter coreParam;
 }
 @end
 
 @implementation PPSSPPGameCore
 
-
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path
 {
+    g_Config.Load();
+
     std::string *fileToStart = new std::string([path UTF8String]);
-    CoreParameter coreParam;
 	coreParam.cpuCore = CPU_JIT;
 	coreParam.gpuCore = GPU_GLES;
-	coreParam.enableSound = YES;
+	coreParam.enableSound = true;
 	coreParam.fileToStart = *fileToStart;
 	coreParam.mountIso = "";
 	coreParam.startPaused = false;
 	coreParam.enableDebugging = false;
 	coreParam.printfEmuLog = false;
 	coreParam.headLess = false;
+    coreParam.disableG3Dlog = false;
 
     coreParam.renderWidth = 480;
 	coreParam.renderHeight = 272;
@@ -65,22 +81,30 @@
 	coreParam.pixelWidth = 480;
 	coreParam.pixelHeight = 272;
 
-    std::string error_string;
-	if(!PSP_Init(coreParam, &error_string))
-    {
-		NSLog(@"ERROR: %s", error_string.c_str());
-	}
-    
-    return NO;
+    return YES;
 }
 
 - (void)setupEmulation
 {
+    soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
+    memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
 
+    NativeInit(0, nil, nil, nil, nil);
+}
+
+- (void)startEmulation
+{
+    if(!isRunning)
+    {
+        [super startEmulation];
+    }
 }
 
 - (void)stopEmulation
 {
+    NativeShutdownGraphics();
+    NativeShutdown();
+
     [super stopEmulation];
 }
 
@@ -93,9 +117,47 @@
 {
 
 }
-
 - (void)executeFrame
 {
+    if(!PSP_IsInited())
+    {
+        //CheckGLExtensions();
+
+        std::string error_string;
+        if(!PSP_Init(coreParam, &error_string))
+        {
+            NSLog(@"ERROR: %s", error_string.c_str());
+        }
+
+        globalUIState = UISTATE_INGAME;
+        host->BootDone();
+        host->UpdateDisassembly();
+
+        NativeInitGraphics();
+    }
+
+    NativeRender();
+
+
+    int blockTicks = usToCycles(1000000 / 10);
+
+    while(coreState == CORE_RUNNING)
+    {
+		u64 nowTicks = CoreTiming::GetTicks();
+		mipsr4k.RunLoopUntil(nowTicks + blockTicks);
+	}
+	// Hopefully coreState is now CORE_NEXTFRAME
+	if(coreState == CORE_NEXTFRAME)
+    {
+		// set back to running for the next frame
+		coreState = CORE_RUNNING;
+    }
+
+    //glstate.viewport.set(0, 0, 480, 272);
+	//glstate.viewport.restore();
+    
+    int samplesWritten = NativeMix((short *)soundBuffer, SAMPLERATE / 60);
+    [[self ringBufferAtIndex:0] write:soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
 }
 
 # pragma mark - Video
@@ -124,7 +186,7 @@
 
 - (double)audioSampleRate
 {
-    return 48000;
+    return SAMPLERATE;
 }
 
 # pragma mark - Save States

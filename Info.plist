@@ -16,13 +16,27 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>0.8.1</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>OEGameCoreController</string>
+	<key>OEGameCoreClass</key>
+	<string>PPSSPPGameCore</string>
+	<key>OEGameCorePlayerCount</key>
+	<string>1</string>
+	<key>OEProjectURL</key>
+	<string>http://www.ppsspp.org/</string>
+	<key>OESystemIdentifiers</key>
+	<array>
+		<string>openemu.system.psp</string>
+	</array>
+	<key>SUEnableAutomaticChecks</key>
+	<string>1</string>
+	<key>SUFeedURL</key>
+	<string>http://openemu.org/updater/ppsspp_appcast.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
 </dict>
 </plist>
