@@ -26,23 +26,13 @@
 
 #import "PPSSPPGameCore.h"
 #import <OpenEmuBase/OERingBuffer.h>
-//#import <OpenGL/gl.h>
 
-#include "Core/CoreParameter.h"
-#include "Core/System.h"
-#include "Core/Host.h"
-#include "Core/Core.h"
-#include "Core/CoreTiming.h"
-#include "Core/MIPS/MIPS.h"
 #include "Core/Config.h"
-
-//#include "gfx_es2/gl_state.h"
-
-//#include "GPU/GPUState.h"
+#include "Core/CoreParameter.h"
+#include "Core/Host.h"
+#include "Core/System.h"
 
 #include "base/NativeApp.h"
-
-#include <string>
 
 #define SAMPLERATE 44000
 #define SIZESOUNDBUFFER 44000 / 60 * 4
@@ -51,6 +41,8 @@
 {
     uint16_t *soundBuffer;
     CoreParameter coreParam;
+    bool isInitialized;
+    bool shouldReset;
 }
 @end
 
@@ -89,19 +81,12 @@
     soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
     memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
 
-    NativeInit(0, nil, nil, nil, nil);
-}
-
-- (void)startEmulation
-{
-    if(!isRunning)
-    {
-        [super startEmulation];
-    }
 }
 
 - (void)stopEmulation
 {
+    PSP_Shutdown();
+
     NativeShutdownGraphics();
     NativeShutdown();
 
@@ -110,54 +95,39 @@
 
 - (void)resetEmulation
 {
-    
+    shouldReset = YES;
 }
 
-- (void)pauseEmulation:(id)sender
-{
-
-}
 - (void)executeFrame
 {
-    if(!PSP_IsInited())
+    if(!isInitialized)
     {
-        //CheckGLExtensions();
-
-        std::string error_string;
-        if(!PSP_Init(coreParam, &error_string))
-        {
-            NSLog(@"ERROR: %s", error_string.c_str());
-        }
-
-        globalUIState = UISTATE_INGAME;
-        host->BootDone();
-        host->UpdateDisassembly();
-
+        NativeInit(0, nil, nil, nil, nil);
         NativeInitGraphics();
     }
 
-    NativeRender();
+    if(shouldReset)
+        PSP_Shutdown();
 
-
-    int blockTicks = usToCycles(1000000 / 10);
-
-    while(coreState == CORE_RUNNING)
+    if(!isInitialized || shouldReset)
     {
-		u64 nowTicks = CoreTiming::GetTicks();
-		mipsr4k.RunLoopUntil(nowTicks + blockTicks);
-	}
-	// Hopefully coreState is now CORE_NEXTFRAME
-	if(coreState == CORE_NEXTFRAME)
-    {
-		// set back to running for the next frame
-		coreState = CORE_RUNNING;
+        isInitialized = YES;
+        shouldReset = NO;
+
+        std::string error_string;
+        if(!PSP_Init(coreParam, &error_string))
+            NSLog(@"ERROR: %s", error_string.c_str());
+
+        host->BootDone();
+		host->UpdateDisassembly();
     }
 
-    //glstate.viewport.set(0, 0, 480, 272);
-	//glstate.viewport.restore();
+    NativeRender();
     
     int samplesWritten = NativeMix((short *)soundBuffer, SAMPLERATE / 60);
     [[self ringBufferAtIndex:0] write:soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
+
+    glFlushRenderAPPLE();
 }
 
 # pragma mark - Video

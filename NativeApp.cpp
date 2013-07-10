@@ -24,47 +24,29 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "gfx_es2/glsl_program.h"
-#include "gfx_es2/gl_state.h"
-#include "math/lin/matrix4x4.h"
-#include "base/NativeApp.h"
 #include "base/logging.h"
-#include "UI/OnScreenDisplay.h"
-#include "input/input_state.h"
-#include "Core/Host.h"
+#include "base/NativeApp.h"
+
 #include "Common/LogManager.h"
+
+#include "Core/CoreTiming.h"
+#include "Core/Host.h"
+#include "Core/MIPS/MIPS.h"
+#include "Core/System.h"
+
+#include "gfx/gl_lost_manager.h"
+
+#include "gfx_es2/fbo.h"
+#include "gfx_es2/gl_state.h"
+
 #include "GPU/GPUState.h"
+
+#include "input/input_state.h"
+
+#include "UI/OnScreenDisplay.h"
 
 InputState input_state;
 OnScreenMessages osm;
-
-static PMixer *g_mixer = 0;
-
-static GLSLProgram *glslModulate;
-
-static const char modulate_fs[] =
-"#ifdef GL_ES\n"
-"precision lowp float;\n"
-"#endif\n"
-"uniform sampler2D sampler0;\n"
-"varying vec2 v_texcoord0;\n"
-"varying vec4 v_color;\n"
-"void main() {\n"
-"  gl_FragColor = texture2D(sampler0, v_texcoord0) * v_color;\n"
-"}\n";
-
-static const char modulate_vs[] =
-"attribute vec4 a_position;\n"
-"attribute vec4 a_color;\n"
-"attribute vec2 a_texcoord0;\n"
-"uniform mat4 u_worldviewproj;\n"
-"varying vec2 v_texcoord0;\n"
-"varying vec4 v_color;\n"
-"void main() {\n"
-"  v_texcoord0 = a_texcoord0;\n"
-"  v_color = a_color;\n"
-"  gl_Position = u_worldviewproj * a_position;\n"
-"}\n";
 
 class AndroidLogger : public LogListener
 {
@@ -126,6 +108,8 @@ public:
 	virtual void SetWindowTitle(const char *message) {}
 };
 
+static PMixer *g_mixer = 0;
+
 void NativeHost::InitSound(PMixer *mixer)
 {
     g_mixer = mixer;
@@ -139,13 +123,9 @@ void NativeHost::ShutdownSound()
 int NativeMix(short *audio, int num_samples)
 {
 	if(g_mixer)
-    {
 		num_samples = g_mixer->Mix(audio, num_samples);
-	}
     else
-    {
 		memset(audio, 0, num_samples * 2 * sizeof(short));
-	}
 
 	return num_samples;
 }
@@ -166,49 +146,38 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 		LogTypes::LOG_TYPE type = (LogTypes::LOG_TYPE)i;
         logman->SetLogLevel(type, logLevel);
     }
-
 }
 
 void NativeInitGraphics()
 {
-    CheckGLExtensions();
+    // Save framebuffer to later be bound again
+    glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
 
     gl_lost_manager_init();
-
-    glslModulate = glsl_create_source(modulate_vs, modulate_fs);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-    glstate.viewport.set(0, 0, 480, 272);
 }
 
 void NativeRender()
 {
-	glstate.depthWrite.set(GL_TRUE);
-	glstate.colorMask.set(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-
-	// Clearing the screen at the start of the frame is an optimization for tiled mobile GPUs, as it then doesn't need to keep it around between frames.
-	glClearColor(0,0,0,1);
-	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-	glstate.viewport.set(0, 0, 480, 272);
 	glstate.Restore();
-
-	Matrix4x4 ortho;
-	ortho.setOrtho(0.0f, 480, 272, 0.0f, -1.0f, 1.0f);
-	glsl_bind(glslModulate);
-	glUniformMatrix4fv(glslModulate->u_worldviewproj, 1, GL_FALSE, ortho.getReadPtr());
 
     ReapplyGfxState();
 
+    s64 blockTicks = usToCycles(1000000 / 10);
+    while(coreState == CORE_RUNNING)
+    {
+		u64 nowTicks = CoreTiming::GetTicks();
+		mipsr4k.RunLoopUntil(nowTicks + blockTicks);
+	}
+	// Hopefully coreState is now CORE_NEXTFRAME
+	if(coreState == CORE_NEXTFRAME)
+    {
+		// set back to running for the next frame
+		coreState = CORE_RUNNING;
+    }
 }
 
 void NativeUpdate(InputState &input)
 {
-
 }
 
 void NativeShutdownGraphics()
@@ -220,6 +189,8 @@ void NativeShutdown()
 {
     delete host;
     host = 0;
+
+    LogManager::Shutdown();
 }
 
 void OnScreenMessages::Show(const std::string &message, float duration_s, uint32_t color, int icon, bool checkUnique)
