@@ -53,7 +53,14 @@
 
 - (BOOL)loadFileAtPath:(NSString *)path
 {
-    g_Config.Load();
+    g_Config.Load("");
+    __chdir([[self supportDirectoryPath] UTF8String]);
+    NSString *directoryString      = [[self supportDirectoryPath] stringByAppendingString:@"/"];
+    g_Config.currentDirectory      = [directoryString UTF8String];
+    g_Config.externalDirectory     = [directoryString UTF8String];
+    g_Config.memCardDirectory      = [directoryString UTF8String];
+    g_Config.flashDirectory        = [directoryString UTF8String];
+    g_Config.internalDataDirectory = [directoryString UTF8String];
 
     std::string *fileToStart = new std::string([path UTF8String]);
 	coreParam.cpuCore = CPU_JIT;
@@ -81,7 +88,6 @@
 {
     soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
     memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
-
 }
 
 - (void)stopEmulation
