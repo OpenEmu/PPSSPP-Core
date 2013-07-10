@@ -29,6 +29,7 @@
 
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
+#include "Core/HLE/sceCtrl.h"
 #include "Core/Host.h"
 #include "Core/System.h"
 
@@ -173,19 +174,24 @@
 
 # pragma mark - Input
 
+const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0, CTRL_TRIANGLE, CTRL_CIRCLE, CTRL_CROSS, CTRL_SQUARE, CTRL_LTRIGGER, CTRL_RTRIGGER, CTRL_START, CTRL_SELECT };
+
 - (oneway void)didMovePSPJoystickDirection:(OEPSPButton)button withValue:(CGFloat)value forPlayer:(NSUInteger)player
 {
-
+    if(button == OEPSPAnalogUp || button == OEPSPAnalogDown)
+        __CtrlSetAnalogY(button == OEPSPAnalogUp ? value : -value);
+    else
+        __CtrlSetAnalogX(button == OEPSPAnalogRight ? value : -value);
 }
 
 -(oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
 {
-
+    __CtrlButtonDown(buttonMap[button]);
 }
 
 - (oneway void)didReleasePSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
 {
-
+    __CtrlButtonUp(buttonMap[button]);
 }
 
 @end
