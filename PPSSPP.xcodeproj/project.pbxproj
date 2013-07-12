@@ -565,6 +565,7 @@
 		8CB74E4F1786031300C652A7 /* libstb_vorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1CB1785C79600647A96 /* libstb_vorbis.a */; };
 		8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1DB1785C7B300647A96 /* libxbrz.a */; };
 		8CB74E511786031F00C652A7 /* libsha1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1911785C6C000647A96 /* libsha1.a */; };
+		8CBB2C1F1790535A00349818 /* ppge_atlas.zim in Resources */ = {isa = PBXBuildFile; fileRef = 8CBB2C1E1790535600349818 /* ppge_atlas.zim */; };
 		8CC4D25F178C7EC20094E987 /* NativeApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4D25E178C7EC00094E987 /* NativeApp.cpp */; };
 		8CC4D262178C80F40094E987 /* gl_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CC4D261178C80D60094E987 /* gl_common.h */; };
 		8CC4D263178C81310094E987 /* Host.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8E61785B3C200647A96 /* Host.h */; };
@@ -1465,6 +1466,7 @@
 		8CB74E271785FED200C652A7 /* TransformPipeline.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TransformPipeline.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TransformPipeline.o"; sourceTree = "<group>"; };
 		8CB74E281785FED200C652A7 /* VertexDecoder.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexDecoder.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexDecoder.o"; sourceTree = "<group>"; };
 		8CB74E291785FED200C652A7 /* VertexShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexShaderGenerator.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexShaderGenerator.o"; sourceTree = "<group>"; };
+		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; name = ppge_atlas.zim; path = assets/ppge_atlas.zim; sourceTree = "<group>"; };
 		8CBB4306178C3C1200FA270D /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
 		8CC4D25E178C7EC00094E987 /* NativeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeApp.cpp; sourceTree = "<group>"; };
 		8CC4D261178C80D60094E987 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gl_common.h; path = gfx/gl_common.h; sourceTree = "<group>"; };
@@ -1668,6 +1670,7 @@
 		8CAFA7D71785B3C200647A96 /* ppsspp */ = {
 			isa = PBXGroup;
 			children = (
+				8CBB2C1D1790534900349818 /* assets */,
 				8C74454F1786DC9D0008BE6A /* git-version.cpp */,
 				8CAFA7E41785B3C200647A96 /* Common */,
 				8CAFA83F1785B3C200647A96 /* Core */,
@@ -2866,6 +2869,14 @@
 			name = "Object Files";
 			sourceTree = "<group>";
 		};
+		8CBB2C1D1790534900349818 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				8CBB2C1E1790535600349818 /* ppge_atlas.zim */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
 		8CC4D260178C80720094E987 /* gfx */ = {
 			isa = PBXGroup;
 			children = (
@@ -3553,6 +3564,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBB2C1F1790535A00349818 /* ppge_atlas.zim in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

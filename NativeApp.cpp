@@ -34,6 +34,9 @@
 #include "Core/MIPS/MIPS.h"
 #include "Core/System.h"
 
+#include "file/vfs.h"
+#include "file/zip_read.h"
+
 #include "gfx/gl_lost_manager.h"
 
 #include "gfx_es2/fbo.h"
@@ -146,6 +149,8 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 		LogTypes::LOG_TYPE type = (LogTypes::LOG_TYPE)i;
         logman->SetLogLevel(type, logLevel);
     }
+
+    VFSRegister("", new DirectoryAssetReader(external_directory));
 }
 
 void NativeInitGraphics()
@@ -176,9 +181,7 @@ void NativeRender()
     }
 }
 
-void NativeUpdate(InputState &input)
-{
-}
+void NativeUpdate(InputState &input) {}
 
 void NativeShutdownGraphics()
 {
@@ -193,6 +196,4 @@ void NativeShutdown()
     LogManager::Shutdown();
 }
 
-void OnScreenMessages::Show(const std::string &message, float duration_s, uint32_t color, int icon, bool checkUnique)
-{
-}
+void OnScreenMessages::Show(const std::string &message, float duration_s, uint32_t color, int icon, bool checkUnique) {}

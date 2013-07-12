@@ -27,16 +27,17 @@
 #import "PPSSPPGameCore.h"
 #import <OpenEmuBase/OERingBuffer.h>
 
+#include "base/NativeApp.h"
+
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
 #include "Core/HLE/sceCtrl.h"
 #include "Core/Host.h"
+#include "Core/SaveState.h"
 #include "Core/System.h"
 
-#include "base/NativeApp.h"
-
-#define SAMPLERATE 44000
-#define SIZESOUNDBUFFER 44000 / 60 * 4
+#define SAMPLERATE 44100
+#define SIZESOUNDBUFFER 44100 / 60 * 4
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
@@ -55,6 +56,7 @@
 {
     g_Config.Load("");
     __chdir([[self supportDirectoryPath] UTF8String]);
+
     NSString *directoryString      = [[self supportDirectoryPath] stringByAppendingString:@"/"];
     g_Config.currentDirectory      = [directoryString UTF8String];
     g_Config.externalDirectory     = [directoryString UTF8String];
@@ -62,11 +64,10 @@
     g_Config.flashDirectory        = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
 
-    std::string *fileToStart = new std::string([path UTF8String]);
 	coreParam.cpuCore = CPU_JIT;
 	coreParam.gpuCore = GPU_GLES;
 	coreParam.enableSound = true;
-	coreParam.fileToStart = *fileToStart;
+	coreParam.fileToStart = [path UTF8String];
 	coreParam.mountIso = "";
 	coreParam.startPaused = false;
 	coreParam.enableDebugging = false;
@@ -109,7 +110,10 @@
 {
     if(!isInitialized)
     {
-        NativeInit(0, nil, nil, nil, nil);
+        // This is where PPSSPP will look for ppge_atlas.zim
+        NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
+        
+        NativeInit(0, nil, nil, [resourcePath UTF8String], nil);
         NativeInitGraphics();
     }
 
