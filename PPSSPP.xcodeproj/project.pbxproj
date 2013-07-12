@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		8CBB42FF178C399D00FA270D /* Build and Install PPSSPP */ = {
+		8CBB42FF178C399D00FA270D /* Build & Install PPSSPP */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 8CBB4300178C399D00FA270D /* Build configuration list for PBXAggregateTarget "Build and Install PPSSPP" */;
+			buildConfigurationList = 8CBB4300178C399D00FA270D /* Build configuration list for PBXAggregateTarget "Build & Install PPSSPP" */;
 			buildPhases = (
 				8CBB4305178C39D500FA270D /* ShellScript */,
 			);
 			dependencies = (
 				8CBB4304178C39D200FA270D /* PBXTargetDependency */,
 			);
-			name = "Build and Install PPSSPP";
+			name = "Build & Install PPSSPP";
 			productName = "Build and Install PPSSPP";
 		};
 /* End PBXAggregateTarget section */
@@ -3554,7 +3554,7 @@
 				8CAFC1D21785C7AC00647A96 /* kirk */,
 				8CAFC1DA1785C7B300647A96 /* xbrz */,
 				8CAFC10E1785B63900647A96 /* PPSSPP */,
-				8CBB42FF178C399D00FA270D /* Build and Install PPSSPP */,
+				8CBB42FF178C399D00FA270D /* Build & Install PPSSPP */,
 			);
 		};
 /* End PBXProject section */
@@ -4597,7 +4597,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CBB4300178C399D00FA270D /* Build configuration list for PBXAggregateTarget "Build and Install PPSSPP" */ = {
+		8CBB4300178C399D00FA270D /* Build configuration list for PBXAggregateTarget "Build & Install PPSSPP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CBB4301178C399D00FA270D /* Debug */,
