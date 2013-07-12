@@ -1479,8 +1479,8 @@
 		8CD63AFE178DCF4D0039164C /* expression_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = expression_parser.cpp; sourceTree = "<group>"; };
 		8CD63B01178DD0250039164C /* jpgd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpgd.h; sourceTree = "<group>"; };
 		8CD63B02178DD0250039164C /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jpgd.cpp; sourceTree = "<group>"; };
-		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HDRemaster.cpp; path = ../../../../ppsspp/Core/HDRemaster.cpp; sourceTree = "<group>"; };
-		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDRemaster.h; path = ../../../../ppsspp/Core/HDRemaster.h; sourceTree = "<group>"; };
+		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HDRemaster.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
+		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDRemaster.h; path = HDRemaster.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
