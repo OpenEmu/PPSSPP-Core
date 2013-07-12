@@ -1433,12 +1433,12 @@
 		8CAFC10F1785B63900647A96 /* PPSSPP.oecoreplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPSSPP.oecoreplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1191785B63900647A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PPSSPP-Prefix.pch"; path = "../PPSSPP-Prefix.pch"; sourceTree = "<group>"; };
-		8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenEmuBase.framework; path = /Users/danielnagel/Git/OpenEmu/UME/../Build/Products/Debug/OpenEmuBase.framework; sourceTree = "<absolute>"; };
+		8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEmuBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSSPPGameCore.h; sourceTree = "<group>"; };
 		8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PPSSPPGameCore.mm; sourceTree = "<group>"; };
 		8CAFC12E1785B93F00647A96 /* libnative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libnative.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1631785C33D00647A96 /* libGPU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGPU.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CAFC18C1785C48600647A96 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		8CAFC18C1785C48600647A96 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		8CAFC1911785C6C000647A96 /* libsha1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsha1.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC19B1785C73A00647A96 /* libcityhash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcityhash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1A31785C76700647A96 /* libsnappy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsnappy.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1451,22 +1451,22 @@
 		8CAFC1E31785C7CB00647A96 /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
 		8CB74E1A1785FED200C652A7 /* DisplayListInterpreter.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = DisplayListInterpreter.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/DisplayListInterpreter.o"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = FragmentShaderGenerator.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/FragmentShaderGenerator.o"; sourceTree = "<group>"; };
-		8CB74E1C1785FED200C652A7 /* Framebuffer.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Framebuffer.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Framebuffer.o"; sourceTree = "<group>"; };
-		8CB74E1D1785FED200C652A7 /* GeDisasm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GeDisasm.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GeDisasm.o"; sourceTree = "<group>"; };
-		8CB74E1E1785FED200C652A7 /* GPUCommon.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GPUCommon.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GPUCommon.o"; sourceTree = "<group>"; };
-		8CB74E1F1785FED200C652A7 /* GPUState.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GPUState.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GPUState.o"; sourceTree = "<group>"; };
-		8CB74E201785FED200C652A7 /* IndexGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = IndexGenerator.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/IndexGenerator.o"; sourceTree = "<group>"; };
-		8CB74E211785FED200C652A7 /* Math3D.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Math3D.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Math3D.o"; sourceTree = "<group>"; };
-		8CB74E221785FED200C652A7 /* NullGpu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = NullGpu.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/NullGpu.o"; sourceTree = "<group>"; };
-		8CB74E231785FED200C652A7 /* ShaderManager.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = ShaderManager.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/ShaderManager.o"; sourceTree = "<group>"; };
-		8CB74E241785FED200C652A7 /* StateMapping.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = StateMapping.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/StateMapping.o"; sourceTree = "<group>"; };
-		8CB74E251785FED200C652A7 /* TextureCache.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TextureCache.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TextureCache.o"; sourceTree = "<group>"; };
-		8CB74E261785FED200C652A7 /* TextureScaler.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TextureScaler.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TextureScaler.o"; sourceTree = "<group>"; };
-		8CB74E271785FED200C652A7 /* TransformPipeline.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TransformPipeline.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TransformPipeline.o"; sourceTree = "<group>"; };
-		8CB74E281785FED200C652A7 /* VertexDecoder.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexDecoder.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexDecoder.o"; sourceTree = "<group>"; };
-		8CB74E291785FED200C652A7 /* VertexShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexShaderGenerator.o; path = "../Build/Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexShaderGenerator.o"; sourceTree = "<group>"; };
-		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; name = ppge_atlas.zim; path = assets/ppge_atlas.zim; sourceTree = "<group>"; };
+		8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = FragmentShaderGenerator.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/FragmentShaderGenerator.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E1C1785FED200C652A7 /* Framebuffer.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Framebuffer.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Framebuffer.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E1D1785FED200C652A7 /* GeDisasm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GeDisasm.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GeDisasm.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E1E1785FED200C652A7 /* GPUCommon.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GPUCommon.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GPUCommon.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E1F1785FED200C652A7 /* GPUState.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GPUState.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GPUState.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E201785FED200C652A7 /* IndexGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = IndexGenerator.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/IndexGenerator.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E211785FED200C652A7 /* Math3D.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Math3D.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Math3D.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E221785FED200C652A7 /* NullGpu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = NullGpu.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/NullGpu.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E231785FED200C652A7 /* ShaderManager.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = ShaderManager.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/ShaderManager.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E241785FED200C652A7 /* StateMapping.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = StateMapping.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/StateMapping.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E251785FED200C652A7 /* TextureCache.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TextureCache.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TextureCache.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E261785FED200C652A7 /* TextureScaler.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TextureScaler.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TextureScaler.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E271785FED200C652A7 /* TransformPipeline.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = TransformPipeline.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/TransformPipeline.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E281785FED200C652A7 /* VertexDecoder.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexDecoder.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexDecoder.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E291785FED200C652A7 /* VertexShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = VertexShaderGenerator.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/VertexShaderGenerator.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppge_atlas.zim; sourceTree = "<group>"; };
 		8CBB4306178C3C1200FA270D /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
 		8CC4D25E178C7EC00094E987 /* NativeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeApp.cpp; sourceTree = "<group>"; };
 		8CC4D261178C80D60094E987 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gl_common.h; path = gfx/gl_common.h; sourceTree = "<group>"; };
@@ -1479,8 +1479,8 @@
 		8CD63AFE178DCF4D0039164C /* expression_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = expression_parser.cpp; sourceTree = "<group>"; };
 		8CD63B01178DD0250039164C /* jpgd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpgd.h; sourceTree = "<group>"; };
 		8CD63B02178DD0250039164C /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jpgd.cpp; sourceTree = "<group>"; };
-		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HDRemaster.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
-		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDRemaster.h; path = HDRemaster.h; sourceTree = "<group>"; };
+		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
+		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2874,7 +2874,7 @@
 			children = (
 				8CBB2C1E1790535600349818 /* ppge_atlas.zim */,
 			);
-			name = assets;
+			path = assets;
 			sourceTree = "<group>";
 		};
 		8CC4D260178C80720094E987 /* gfx */ = {
