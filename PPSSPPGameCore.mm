@@ -31,6 +31,7 @@
 
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
+#include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
 #include "Core/Host.h"
 #include "Core/SaveState.h"
@@ -172,14 +173,24 @@
 
 # pragma mark - Save States
 
-- (BOOL)loadStateFromFileAtPath:(NSString *)fileName
+static void _OESaveStateCallback(bool status, void *cbUserData)
 {
-    return NO;
+    void (^block)(BOOL) = (__bridge_transfer void(^)(BOOL))cbUserData;
+    
+    block(status);
 }
 
-- (BOOL)saveStateToFileAtPath:(NSString *)fileName
+- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
 {
-    return NO;
+    SaveState::Save([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    CoreTiming::Advance();
+}
+
+
+- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
+{
+    SaveState::Load([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    CoreTiming::Advance();
 }
 
 # pragma mark - Input
