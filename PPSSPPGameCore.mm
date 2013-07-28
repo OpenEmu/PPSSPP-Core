@@ -175,19 +175,19 @@
 
 static void _OESaveStateCallback(bool status, void *cbUserData)
 {
-    void (^block)(BOOL) = (__bridge_transfer void(^)(BOOL))cbUserData;
+    void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
     
-    block(status);
+    block(status, nil);
 }
 
-- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
+- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Save([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
     CoreTiming::Advance();
 }
 
 
-- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
+- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Load([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
     CoreTiming::Advance();
