@@ -26,6 +26,7 @@
 
 #import "PPSSPPGameCore.h"
 #import <OpenEmuBase/OERingBuffer.h>
+#import <OpenGL/gl.h>
 
 #include "base/NativeApp.h"
 
