@@ -52,6 +52,24 @@
 
 @implementation PPSSPPGameCore
 
+- (id)init
+{
+    self = [super init];
+
+    if(self)
+    {
+        soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
+        memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
+    }
+
+    return self;
+}
+
+- (void)dealloc
+{
+    free(soundBuffer);
+}
+
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path
@@ -65,6 +83,9 @@
     g_Config.memCardDirectory      = [directoryString UTF8String];
     g_Config.flashDirectory        = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
+    g_Config.bSeparateCPUThread = true;
+    g_Config.bSeparateIOThread = true;
+    g_Config.iLockedCPUSpeed = 1;
 
 	coreParam.cpuCore = CPU_JIT;
 	coreParam.gpuCore = GPU_GLES;
@@ -85,12 +106,6 @@
 	coreParam.pixelHeight = 272;
 
     return YES;
-}
-
-- (void)setupEmulation
-{
-    soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
-    memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
 }
 
 - (void)stopEmulation
@@ -184,14 +199,14 @@ static void _OESaveStateCallback(bool status, void *cbUserData)
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
 {
     SaveState::Save([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    CoreTiming::Advance();
+    SaveState::Process();
 }
 
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL))block
 {
     SaveState::Load([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    CoreTiming::Advance();
+    SaveState::Process();
 }
 
 # pragma mark - Input
