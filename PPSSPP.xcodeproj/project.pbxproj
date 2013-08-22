@@ -251,8 +251,6 @@
 		8CAFC15C1785BA3F00647A96 /* vfs.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBBD91785B3D300647A96 /* vfs.h */; };
 		8CAFC15D1785BA3F00647A96 /* zip_read.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBBDA1785B3D300647A96 /* zip_read.cpp */; };
 		8CAFC15E1785BA3F00647A96 /* zip_read.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBBDB1785B3D300647A96 /* zip_read.h */; };
-		8CAFC1671785C39400647A96 /* DisplayListInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBAC01785B3D200647A96 /* DisplayListInterpreter.cpp */; };
-		8CAFC1681785C39400647A96 /* DisplayListInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBAC11785B3D200647A96 /* DisplayListInterpreter.h */; };
 		8CAFC1691785C39400647A96 /* FragmentShaderGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBAC21785B3D200647A96 /* FragmentShaderGenerator.cpp */; };
 		8CAFC16A1785C39400647A96 /* FragmentShaderGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBAC31785B3D200647A96 /* FragmentShaderGenerator.h */; };
 		8CAFC16B1785C39400647A96 /* Framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBAC41785B3D200647A96 /* Framebuffer.cpp */; };
@@ -547,6 +545,11 @@
 		8CAFC31D1785DAD500647A96 /* sceMpeg.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8C21785B3C200647A96 /* sceMpeg.h */; };
 		8CAFC31E1785DAD500647A96 /* sceNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8C31785B3C200647A96 /* sceNet.cpp */; };
 		8CAFC31F1785DAD500647A96 /* sceNet.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8C41785B3C200647A96 /* sceNet.h */; };
+		8CB2173417C6490A00CE82F3 /* GLES_GPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CB2173217C6490A00CE82F3 /* GLES_GPU.h */; };
+		8CB2173517C6490A00CE82F3 /* GLES_GPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CB2173317C6490A00CE82F3 /* GLES_GPU.cpp */; };
+		8CB2173717C6566B00CE82F3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB2173617C6566B00CE82F3 /* CoreVideo.framework */; };
+		8CB2173917C6567B00CE82F3 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB2173817C6567B00CE82F3 /* AGL.framework */; };
+		8CB2173B17C6569400CE82F3 /* VideoDecodeAcceleration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */; };
 		8CB74E021785F6F200C652A7 /* BlockDevices.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA86C1785B3C200647A96 /* BlockDevices.cpp */; };
 		8CB74E041785F71000C652A7 /* BlockDevices.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA86D1785B3C200647A96 /* BlockDevices.h */; };
 		8CB74E051785F71D00C652A7 /* DirectoryFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA86E1785B3C200647A96 /* DirectoryFileSystem.cpp */; };
@@ -567,7 +570,7 @@
 		8CB74E141785F7E400C652A7 /* scePauth.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8D01785B3C200647A96 /* scePauth.h */; };
 		8CB74E151785F7FA00C652A7 /* scePspNpDrm_user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8D51785B3C200647A96 /* scePspNpDrm_user.cpp */; };
 		8CB74E161785F7FA00C652A7 /* scePspNpDrm_user.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFA8D61785B3C200647A96 /* scePspNpDrm_user.h */; };
-		8CB74E2A1785FEF000C652A7 /* DisplayListInterpreter.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB74E1A1785FED200C652A7 /* DisplayListInterpreter.o */; };
+		8CB74E2A1785FEF000C652A7 /* GLES_GPU.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB74E1A1785FED200C652A7 /* GLES_GPU.o */; };
 		8CB74E2B1785FEF200C652A7 /* FragmentShaderGenerator.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */; };
 		8CB74E2C1785FEF700C652A7 /* Framebuffer.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB74E1C1785FED200C652A7 /* Framebuffer.o */; };
 		8CB74E2D1785FF0A00C652A7 /* GeDisasm.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB74E1D1785FED200C652A7 /* GeDisasm.o */; };
@@ -611,7 +614,6 @@
 		8CD63B08178DD0710039164C /* HDRemaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CD63B06178DD0700039164C /* HDRemaster.h */; };
 		8CFA3BCE17C505610053224B /* jpge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBB6D1785B3D200647A96 /* jpge.cpp */; };
 		8CFA3BCF17C505610053224B /* jpge.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CAFBB6E1785B3D200647A96 /* jpge.h */; };
-		8CFA3BD317C506F60053224B /* VideoDecodeAcceleration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFA3BD217C506F60053224B /* VideoDecodeAcceleration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1239,8 +1241,6 @@
 		8CAFBABC1785B3D200647A96 /* ge_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ge_constants.h; sourceTree = "<group>"; };
 		8CAFBABD1785B3D200647A96 /* GeDisasm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GeDisasm.cpp; sourceTree = "<group>"; };
 		8CAFBABE1785B3D200647A96 /* GeDisasm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeDisasm.h; sourceTree = "<group>"; };
-		8CAFBAC01785B3D200647A96 /* DisplayListInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayListInterpreter.cpp; sourceTree = "<group>"; };
-		8CAFBAC11785B3D200647A96 /* DisplayListInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayListInterpreter.h; sourceTree = "<group>"; };
 		8CAFBAC21785B3D200647A96 /* FragmentShaderGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FragmentShaderGenerator.cpp; sourceTree = "<group>"; };
 		8CAFBAC31785B3D200647A96 /* FragmentShaderGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FragmentShaderGenerator.h; sourceTree = "<group>"; };
 		8CAFBAC41785B3D200647A96 /* Framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Framebuffer.cpp; sourceTree = "<group>"; };
@@ -1531,8 +1531,13 @@
 		8CAFC1D31785C7AC00647A96 /* libkirk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libkirk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1DB1785C7B300647A96 /* libxbrz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxbrz.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1E31785C7CB00647A96 /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB2173217C6490A00CE82F3 /* GLES_GPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLES_GPU.h; sourceTree = "<group>"; };
+		8CB2173317C6490A00CE82F3 /* GLES_GPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLES_GPU.cpp; sourceTree = "<group>"; };
+		8CB2173617C6566B00CE82F3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		8CB2173817C6567B00CE82F3 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = System/Library/Frameworks/AGL.framework; sourceTree = SDKROOT; };
+		8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = SDKROOT; };
 		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
-		8CB74E1A1785FED200C652A7 /* DisplayListInterpreter.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = DisplayListInterpreter.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/DisplayListInterpreter.o"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB74E1A1785FED200C652A7 /* GLES_GPU.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GLES_GPU.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GLES_GPU.o"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = FragmentShaderGenerator.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/FragmentShaderGenerator.o"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB74E1C1785FED200C652A7 /* Framebuffer.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Framebuffer.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/Framebuffer.o"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB74E1D1785FED200C652A7 /* GeDisasm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = GeDisasm.o; path = "../../Intermediates/PPSSPP.build/$(CONFIGURATION)/GPU.build/Objects-normal/x86_64/GeDisasm.o"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1563,7 +1568,6 @@
 		8CD63B02178DD0250039164C /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jpgd.cpp; sourceTree = "<group>"; };
 		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
 		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
-		8CFA3BD217C506F60053224B /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1585,20 +1589,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CFA3BD317C506F60053224B /* VideoDecodeAcceleration.framework in Frameworks */,
-				8CA1540E17C4138E0003002D /* libxxhash.a in Frameworks */,
-				8CB74E511786031F00C652A7 /* libsha1.a in Frameworks */,
-				8CB74E4E1786031300C652A7 /* libkirk.a in Frameworks */,
-				8CB74E4F1786031300C652A7 /* libstb_vorbis.a in Frameworks */,
-				8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */,
-				8CB74E471786030300C652A7 /* libcityhash.a in Frameworks */,
+				8C9959121785DDBE00EE4CA8 /* libCore.a in Frameworks */,
+				8CB74E46178602E500C652A7 /* libCommon.a in Frameworks */,
 				8CB74E491786030300C652A7 /* libnative.a in Frameworks */,
 				8CB74E4A1786030300C652A7 /* librg_etc1.a in Frameworks */,
-				8CB74E4B1786030300C652A7 /* libsnappy.a in Frameworks */,
+				8CB74E511786031F00C652A7 /* libsha1.a in Frameworks */,
 				8CB74E4C1786030300C652A7 /* libstb_image.a in Frameworks */,
+				8CB74E4F1786031300C652A7 /* libstb_vorbis.a in Frameworks */,
 				8CB74E4D1786030300C652A7 /* libzlib.a in Frameworks */,
-				8CB74E46178602E500C652A7 /* libCommon.a in Frameworks */,
-				8C9959121785DDBE00EE4CA8 /* libCore.a in Frameworks */,
+				8CB74E4B1786030300C652A7 /* libsnappy.a in Frameworks */,
+				8CB74E4E1786031300C652A7 /* libkirk.a in Frameworks */,
+				8CB74E471786030300C652A7 /* libcityhash.a in Frameworks */,
+				8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */,
+				8CA1540E17C4138E0003002D /* libxxhash.a in Frameworks */,
+				8CB2173717C6566B00CE82F3 /* CoreVideo.framework in Frameworks */,
+				8CB2173B17C6569400CE82F3 /* VideoDecodeAcceleration.framework in Frameworks */,
+				8CB2173917C6567B00CE82F3 /* AGL.framework in Frameworks */,
 				8C74454E1786DB1E0008BE6A /* OpenGL.framework in Frameworks */,
 				8CAFC1231785B6C400647A96 /* OpenEmuBase.framework in Frameworks */,
 			);
@@ -1685,9 +1691,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CB74E2A1785FEF000C652A7 /* DisplayListInterpreter.o in Frameworks */,
 				8CB74E2B1785FEF200C652A7 /* FragmentShaderGenerator.o in Frameworks */,
 				8CB74E2C1785FEF700C652A7 /* Framebuffer.o in Frameworks */,
+				8CB74E2A1785FEF000C652A7 /* GLES_GPU.o in Frameworks */,
 				8CB74E2D1785FF0A00C652A7 /* GeDisasm.o in Frameworks */,
 				8CB74E2E1785FF0D00C652A7 /* GPUCommon.o in Frameworks */,
 				8CB74E2F1785FF1000C652A7 /* GPUState.o in Frameworks */,
@@ -1752,7 +1758,9 @@
 		8CAFA78E1785AA9900647A96 = {
 			isa = PBXGroup;
 			children = (
-				8CFA3BD217C506F60053224B /* VideoDecodeAcceleration.framework */,
+				8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */,
+				8CB2173817C6567B00CE82F3 /* AGL.framework */,
+				8CB2173617C6566B00CE82F3 /* CoreVideo.framework */,
 				8CAFC10A1785B60F00647A96 /* Classes */,
 				8CAFC1181785B63900647A96 /* Supporting Files */,
 				8CAFA79C1785AE2A00647A96 /* Frameworks and Libraries */,
@@ -2404,12 +2412,12 @@
 		8CAFBABF1785B3D200647A96 /* GLES */ = {
 			isa = PBXGroup;
 			children = (
-				8CAFBAC01785B3D200647A96 /* DisplayListInterpreter.cpp */,
-				8CAFBAC11785B3D200647A96 /* DisplayListInterpreter.h */,
 				8CAFBAC21785B3D200647A96 /* FragmentShaderGenerator.cpp */,
 				8CAFBAC31785B3D200647A96 /* FragmentShaderGenerator.h */,
 				8CAFBAC41785B3D200647A96 /* Framebuffer.cpp */,
 				8CAFBAC51785B3D200647A96 /* Framebuffer.h */,
+				8CB2173317C6490A00CE82F3 /* GLES_GPU.cpp */,
+				8CB2173217C6490A00CE82F3 /* GLES_GPU.h */,
 				8CAFBAC61785B3D200647A96 /* IndexGenerator.cpp */,
 				8CAFBAC71785B3D200647A96 /* IndexGenerator.h */,
 				8CAFBAC81785B3D200647A96 /* ShaderManager.cpp */,
@@ -2993,9 +3001,9 @@
 		8CB74E191785FE6900C652A7 /* Object Files */ = {
 			isa = PBXGroup;
 			children = (
-				8CB74E1A1785FED200C652A7 /* DisplayListInterpreter.o */,
 				8CB74E1B1785FED200C652A7 /* FragmentShaderGenerator.o */,
 				8CB74E1C1785FED200C652A7 /* Framebuffer.o */,
+				8CB74E1A1785FED200C652A7 /* GLES_GPU.o */,
 				8CB74E1D1785FED200C652A7 /* GeDisasm.o */,
 				8CB74E1E1785FED200C652A7 /* GPUCommon.o */,
 				8CB74E1F1785FED200C652A7 /* GPUState.o */,
@@ -3180,7 +3188,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CAFC1681785C39400647A96 /* DisplayListInterpreter.h in Headers */,
 				8CAFC16A1785C39400647A96 /* FragmentShaderGenerator.h in Headers */,
 				8CAFC16C1785C39400647A96 /* Framebuffer.h in Headers */,
 				8CAFC16E1785C39400647A96 /* IndexGenerator.h in Headers */,
@@ -3204,6 +3211,7 @@
 				8CA153FD17C4125E0003002D /* Rasterizer.h in Headers */,
 				8CA153FF17C4125E0003002D /* SoftGpu.h in Headers */,
 				8CA1540117C4125E0003002D /* TransformUnit.h in Headers */,
+				8CB2173417C6490A00CE82F3 /* GLES_GPU.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3920,7 +3928,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CAFC1671785C39400647A96 /* DisplayListInterpreter.cpp in Sources */,
 				8CAFC1691785C39400647A96 /* FragmentShaderGenerator.cpp in Sources */,
 				8CAFC16B1785C39400647A96 /* Framebuffer.cpp in Sources */,
 				8CAFC16D1785C39400647A96 /* IndexGenerator.cpp in Sources */,
@@ -3941,6 +3948,7 @@
 				8CA153FC17C4125D0003002D /* Rasterizer.cpp in Sources */,
 				8CA153FE17C4125E0003002D /* SoftGpu.cpp in Sources */,
 				8CA1540017C4125E0003002D /* TransformUnit.cpp in Sources */,
+				8CB2173517C6490A00CE82F3 /* GLES_GPU.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4322,6 +4330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -4346,9 +4355,9 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-U__STRICT_ANSI__",
-					"-std=c++11",
 				);
 				SDKROOT = macosx;
+				USE_HEADERMAP = NO;
 				VALID_ARCHS = x86_64;
 				WARNING_CFLAGS = (
 					"-Wno-multichar",
@@ -4363,6 +4372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -4386,9 +4396,9 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-U__STRICT_ANSI__",
-					"-std=c++11",
 				);
 				SDKROOT = macosx;
+				USE_HEADERMAP = NO;
 				VALID_ARCHS = x86_64;
 				WARNING_CFLAGS = (
 					"-Wno-multichar",
@@ -4442,9 +4452,11 @@
 					"-lavutil",
 					"-lswresample",
 					"-lswscale",
+					"-lbz2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USE_HEADERMAP = YES;
 				WRAPPER_EXTENSION = oecoreplugin;
 			};
 			name = Debug;
@@ -4476,9 +4488,11 @@
 					"-lavutil",
 					"-lswresample",
 					"-lswscale",
+					"-lbz2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USE_HEADERMAP = YES;
 				WRAPPER_EXTENSION = oecoreplugin;
 			};
 			name = Release;
@@ -4503,6 +4517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = "";
 			};
 			name = Debug;
 		};
@@ -4510,6 +4525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = "";
 			};
 			name = Release;
 		};

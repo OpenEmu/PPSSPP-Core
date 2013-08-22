@@ -34,19 +34,21 @@
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
+#include "Core/HLE/sceDisplay.h"
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
 
 #define SAMPLERATE 44100
-#define SIZESOUNDBUFFER 44100 / 60 * 4
+#define SIZESOUNDBUFFER 44100 / 30 * 4
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
-    uint16_t *soundBuffer;
-    CoreParameter coreParam;
-    bool isInitialized;
-    bool shouldReset;
+    uint16_t *_soundBuffer;
+    CoreParameter _coreParam;
+    bool _isInitialized;
+    bool _shouldReset;
+    float _frameInterval;
 }
 @end
 
@@ -58,8 +60,8 @@
 
     if(self)
     {
-        soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
-        memset(soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
+        _soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
+        memset(_soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
     }
 
     return self;
@@ -67,7 +69,7 @@
 
 - (void)dealloc
 {
-    free(soundBuffer);
+    free(_soundBuffer);
 }
 
 # pragma mark - Execution
@@ -83,27 +85,25 @@
     g_Config.memCardDirectory      = [directoryString UTF8String];
     g_Config.flashDirectory        = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
-    g_Config.bSeparateCPUThread = true;
-    g_Config.bSeparateIOThread = true;
-    g_Config.iLockedCPUSpeed = 1;
+    g_Config.iShowFPSCounter       = 1;
 
-	coreParam.cpuCore = CPU_JIT;
-	coreParam.gpuCore = GPU_GLES;
-	coreParam.enableSound = true;
-	coreParam.fileToStart = [path UTF8String];
-	coreParam.mountIso = "";
-	coreParam.startPaused = false;
-	coreParam.enableDebugging = false;
-	coreParam.printfEmuLog = false;
-	coreParam.headLess = false;
-    coreParam.disableG3Dlog = false;
+	_coreParam.cpuCore = CPU_JIT;
+	_coreParam.gpuCore = GPU_GLES;
+	_coreParam.enableSound = true;
+	_coreParam.fileToStart = [path UTF8String];
+	_coreParam.mountIso = "";
+	_coreParam.startPaused = false;
+	_coreParam.enableDebugging = false;
+	_coreParam.printfEmuLog = false;
+	_coreParam.headLess = false;
+    _coreParam.disableG3Dlog = false;
 
-    coreParam.renderWidth = 480;
-	coreParam.renderHeight = 272;
-	coreParam.outputWidth = 480;
-	coreParam.outputHeight = 272;
-	coreParam.pixelWidth = 480;
-	coreParam.pixelHeight = 272;
+    _coreParam.renderWidth = 480;
+	_coreParam.renderHeight = 272;
+	_coreParam.outputWidth = 480;
+	_coreParam.outputHeight = 272;
+	_coreParam.pixelWidth = 480;
+	_coreParam.pixelHeight = 272;
 
     return YES;
 }
@@ -120,12 +120,12 @@
 
 - (void)resetEmulation
 {
-    shouldReset = YES;
+    _shouldReset = YES;
 }
 
 - (void)executeFrame
 {
-    if(!isInitialized)
+    if(!_isInitialized)
     {
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
@@ -134,16 +134,16 @@
         NativeInitGraphics();
     }
 
-    if(shouldReset)
+    if(_shouldReset)
         PSP_Shutdown();
 
-    if(!isInitialized || shouldReset)
+    if(!_isInitialized || _shouldReset)
     {
-        isInitialized = YES;
-        shouldReset = NO;
+        _isInitialized = YES;
+        _shouldReset = NO;
 
         std::string error_string;
-        if(!PSP_Init(coreParam, &error_string))
+        if(!PSP_Init(_coreParam, &error_string))
             NSLog(@"ERROR: %s", error_string.c_str());
 
         host->BootDone();
@@ -151,9 +151,12 @@
     }
 
     NativeRender();
-    
-    int samplesWritten = NativeMix((short *)soundBuffer, SAMPLERATE / 60);
-    [[self ringBufferAtIndex:0] write:soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
+
+    float vps, fps;
+    __DisplayGetFPS(&vps, &_frameInterval, &fps);
+
+    int samplesWritten = NativeMix((short *)_soundBuffer, SAMPLERATE / _frameInterval);
+    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
 
     glFlushRenderAPPLE();
 }
@@ -173,6 +176,11 @@
 - (OEIntSize)aspectSize
 {
     return OEIntSizeMake(16, 9);
+}
+
+- (NSTimeInterval)frameInterval
+{
+    return _frameInterval ?: 60;
 }
 
 # pragma mark - Audio

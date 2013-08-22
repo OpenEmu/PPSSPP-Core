@@ -16,6 +16,7 @@ enum FBOColorDepth {
 	FBO_5551,
 };
 
+
 // Creates a simple FBO with a RGBA32 color buffer stored in a texture, and
 // optionally an accompanying Z/stencil buffer.
 // No mipmap support.

@@ -171,7 +171,7 @@ void NativeRender()
     {
 		PSP_RunLoopFor((int)blockTicks);
 	}
-    
+
 	// Hopefully coreState is now CORE_NEXTFRAME
 	if(coreState == CORE_NEXTFRAME)
     {
