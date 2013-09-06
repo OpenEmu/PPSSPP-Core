@@ -31,7 +31,6 @@
 
 #include "Core/CoreTiming.h"
 #include "Core/Host.h"
-#include "Core/MIPS/MIPS.h"
 #include "Core/System.h"
 
 #include "file/vfs.h"
@@ -170,9 +169,9 @@ void NativeRender()
     s64 blockTicks = usToCycles(1000000 / 10);
     while(coreState == CORE_RUNNING)
     {
-		u64 nowTicks = CoreTiming::GetTicks();
-		mipsr4k.RunLoopUntil(nowTicks + blockTicks);
+		PSP_RunLoopFor((int)blockTicks);
 	}
+
 	// Hopefully coreState is now CORE_NEXTFRAME
 	if(coreState == CORE_NEXTFRAME)
     {
