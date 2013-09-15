@@ -114,7 +114,6 @@
     [[self renderDelegate] willRenderOnAlternateThread];
     [[self renderDelegate] startRenderingOnAlternateThread];
     PSP_Shutdown();
-    [[self renderDelegate] didRenderFrameOnAlternateThread];
 
     NativeShutdownGraphics();
     NativeShutdown();
