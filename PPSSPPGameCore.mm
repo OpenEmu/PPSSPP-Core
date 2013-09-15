@@ -110,7 +110,11 @@
 
 - (void)stopEmulation
 {
+    // We need a OpenGL context here, because PPSSPP cleans up framebuffers at this point
+    [[self renderDelegate] willRenderOnAlternateThread];
+    [[self renderDelegate] startRenderingOnAlternateThread];
     PSP_Shutdown();
+    [[self renderDelegate] didRenderFrameOnAlternateThread];
 
     NativeShutdownGraphics();
     NativeShutdown();
