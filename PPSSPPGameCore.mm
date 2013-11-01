@@ -150,6 +150,9 @@
 
         host->BootDone();
 		host->UpdateDisassembly();
+        
+        // Process save states here for auto-loading
+        SaveState::Process();
     }
 
     NativeRender();
@@ -216,7 +219,6 @@ static void _OESaveStateCallback(bool status, void *cbUserData)
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Load([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    SaveState::Process();
 }
 
 # pragma mark - Input
