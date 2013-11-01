@@ -196,3 +196,15 @@ void NativeShutdown()
 }
 
 void OnScreenMessages::Show(const std::string &message, float duration_s, uint32_t color, int icon, bool checkUnique) {}
+
+std::string System_GetProperty(SystemProperty prop) {
+	switch (prop) {
+        case SYSPROP_NAME:
+            return "OpenEmu:";
+        case SYSPROP_LANGREGION:
+            return "en_US";
+        default:
+            return "";
+	}
+}
+

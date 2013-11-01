@@ -6,7 +6,7 @@
 #include "gfx/gl_common.h"
 #include "gfx_es2/gl_state.h"
 
-#if defined(USING_GLES2)
+#if defined(USING_GLES2) && !defined(BLACKBERRY)
 #define GL_READ_FRAMEBUFFER GL_FRAMEBUFFER
 #define GL_DRAW_FRAMEBUFFER GL_FRAMEBUFFER
 #define GL_RGBA8 GL_RGBA
@@ -259,7 +259,9 @@ void fbo_bind_for_read(FBO *fbo) {
 }
 
 void fbo_bind_color_as_texture(FBO *fbo, int color) {
-	glBindTexture(GL_TEXTURE_2D, fbo->color_texture);
+	if (fbo) {
+		glBindTexture(GL_TEXTURE_2D, fbo->color_texture);
+	}
 }
 
 void fbo_destroy(FBO *fbo) {
@@ -288,4 +290,8 @@ void fbo_destroy(FBO *fbo) {
 void fbo_get_dimensions(FBO *fbo, int *w, int *h) {
 	*w = fbo->width;
 	*h = fbo->height;
+}
+
+int fbo_get_color_texture(FBO *fbo) {
+	return fbo->color_texture;
 }

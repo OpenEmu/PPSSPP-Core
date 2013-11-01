@@ -77,13 +77,12 @@
 - (BOOL)loadFileAtPath:(NSString *)path
 {
     g_Config.Load("");
-    __chdir([[self supportDirectoryPath] UTF8String]);
 
     NSString *directoryString      = [[self supportDirectoryPath] stringByAppendingString:@"/"];
     g_Config.currentDirectory      = [directoryString UTF8String];
     g_Config.externalDirectory     = [directoryString UTF8String];
     g_Config.memCardDirectory      = [directoryString UTF8String];
-    g_Config.flashDirectory        = [directoryString UTF8String];
+    g_Config.flash0Directory        = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
     g_Config.iShowFPSCounter       = 1;
 
