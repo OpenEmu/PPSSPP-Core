@@ -1238,7 +1238,6 @@
 		8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = SDKROOT; };
 		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
 		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppge_atlas.zim; sourceTree = "<group>"; };
-		8CBB4306178C3C1200FA270D /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
 		8CC4D25E178C7EC00094E987 /* NativeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeApp.cpp; sourceTree = "<group>"; };
 		8CC4D261178C80D60094E987 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gl_common.h; path = gfx/gl_common.h; sourceTree = "<group>"; };
 		8CD63AF3178DB9610039164C /* fbo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fbo.cpp; sourceTree = "<group>"; };
@@ -2560,7 +2559,6 @@
 		8CAFC1181785B63900647A96 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8CBB4306178C3C1200FA270D /* dsa_pub.pem */,
 				8CAFC1191785B63900647A96 /* Info.plist */,
 				8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */,
 			);
