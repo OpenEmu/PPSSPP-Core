@@ -82,27 +82,27 @@
     g_Config.currentDirectory      = [directoryString UTF8String];
     g_Config.externalDirectory     = [directoryString UTF8String];
     g_Config.memCardDirectory      = [directoryString UTF8String];
-    g_Config.flash0Directory        = [directoryString UTF8String];
+    g_Config.flash0Directory       = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
-    g_Config.iShowFPSCounter       = 1;
+    g_Config.iShowFPSCounter       = true;
+    g_Config.bFrameSkipUnthrottle  = false;
 
-	_coreParam.cpuCore = CPU_JIT;
-	_coreParam.gpuCore = GPU_GLES;
-	_coreParam.enableSound = true;
-	_coreParam.fileToStart = [path UTF8String];
-	_coreParam.mountIso = "";
-	_coreParam.startPaused = false;
-	_coreParam.enableDebugging = false;
+	_coreParam.cpuCore      = CPU_JIT;
+	_coreParam.gpuCore      = GPU_GLES;
+	_coreParam.enableSound  = true;
+	_coreParam.fileToStart  = [path UTF8String];
+	_coreParam.mountIso     = "";
+	_coreParam.startPaused  = false;
 	_coreParam.printfEmuLog = false;
-	_coreParam.headLess = false;
-    _coreParam.disableG3Dlog = false;
+	_coreParam.headLess     = false;
+    _coreParam.unthrottle   = true;
 
-    _coreParam.renderWidth = 480;
+    _coreParam.renderWidth  = 480;
 	_coreParam.renderHeight = 272;
-	_coreParam.outputWidth = 480;
+	_coreParam.outputWidth  = 480;
 	_coreParam.outputHeight = 272;
-	_coreParam.pixelWidth = 480;
-	_coreParam.pixelHeight = 272;
+	_coreParam.pixelWidth   = 480;
+	_coreParam.pixelHeight  = 272;
 
     return YES;
 }
@@ -153,6 +153,7 @@
     }
 
     NativeRender();
+    glFlushRenderAPPLE();
 
     float vps, fps;
     __DisplayGetFPS(&vps, &_frameInterval, &fps);
@@ -160,7 +161,6 @@
     int samplesWritten = NativeMix((short *)_soundBuffer, SAMPLERATE / _frameInterval);
     [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
 
-    glFlushRenderAPPLE();
 }
 
 # pragma mark - Video

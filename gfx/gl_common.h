@@ -31,6 +31,8 @@
 #endif
 #endif
 
+#define glDrawTextureNV
+
 #if !defined(GLchar) && !defined(__APPLE__)
 typedef char GLchar;
 #endif
