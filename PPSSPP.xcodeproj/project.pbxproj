@@ -119,6 +119,7 @@
 		8C9959191785DE3A00EE4CA8 /* kirk_engine.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA94E1785B3C200647A96 /* kirk_engine.c */; };
 		8C99591B1785DE3A00EE4CA8 /* SHA1.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9521785B3C200647A96 /* SHA1.c */; };
 		8C99591D1785DE4400EE4CA8 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9621785B3C200647A96 /* xbrz.cpp */; };
+		8C99CCCD189DB0D4004E6F63 /* flash0 in Resources */ = {isa = PBXBuildFile; fileRef = 8C99CCCC189DB0D4004E6F63 /* flash0 */; };
 		8CA153F417C412410003002D /* VirtualDiscFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153C217C410220003002D /* VirtualDiscFileSystem.cpp */; };
 		8CA153F617C412480003002D /* AsyncIOManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153C517C4108D0003002D /* AsyncIOManager.cpp */; };
 		8CA153F717C4125D0003002D /* Clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153E617C411BC0003002D /* Clipper.cpp */; };
@@ -510,6 +511,7 @@
 		8C8447A5186B84CE00BE03D5 /* utf16.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utf16.h; sourceTree = "<group>"; };
 		8C8447A6186B84CE00BE03D5 /* parsers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parsers.cpp; sourceTree = "<group>"; };
 		8C8447AA186B8DD600BE03D5 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gl_common.h; sourceTree = "<group>"; };
+		8C99CCCC189DB0D4004E6F63 /* flash0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flash0; sourceTree = "<group>"; };
 		8CA153BA17C40FA60003002D /* CommonWindows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWindows.h; sourceTree = "<group>"; };
 		8CA153BC17C40FBA0003002D /* Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swap.h; sourceTree = "<group>"; };
 		8CA153BE17C40FF40003002D /* ppcEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ppcEmitter.h; sourceTree = "<group>"; };
@@ -1427,6 +1429,7 @@
 				8CAFA7E41785B3C200647A96 /* Common */,
 				8CAFA83F1785B3C200647A96 /* Core */,
 				8CAFA9421785B3C200647A96 /* ext */,
+				8C99CCCC189DB0D4004E6F63 /* flash0 */,
 				8CAFBAB81785B3D200647A96 /* git-version.cmake */,
 				8CAFBAB91785B3D200647A96 /* Globals.h */,
 				8CAFBABA1785B3D200647A96 /* GPU */,
@@ -2882,6 +2885,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C99CCCD189DB0D4004E6F63 /* flash0 in Resources */,
 				8CBB2C1F1790535A00349818 /* ppge_atlas.zim in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

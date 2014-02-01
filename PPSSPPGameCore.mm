@@ -76,9 +76,25 @@
 
 - (BOOL)loadFileAtPath:(NSString *)path
 {
+    NSString *resourcePath = [[[self owner] bundle] resourcePath];
+    NSString *supportDirectoryPath = [self supportDirectoryPath];
+
+    // Copy over font files if needed
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *fontSourceDirectory = [resourcePath stringByAppendingString:@"/flash0/font/"];
+    NSString *fontDestinationDirectory = [supportDirectoryPath stringByAppendingString:@"/font/"];
+    NSArray *fontFiles = [fileManager contentsOfDirectoryAtPath:fontSourceDirectory error:nil];
+    for(NSString *font in fontFiles)
+    {
+        NSString *fontSource = [fontSourceDirectory stringByAppendingString:font];
+        NSString *fontDestination = [fontDestinationDirectory stringByAppendingString:font];
+
+        [fileManager copyItemAtPath:fontSource toPath:fontDestination error:nil];
+    }
+
     g_Config.Load("");
 
-    NSString *directoryString      = [[self supportDirectoryPath] stringByAppendingString:@"/"];
+    NSString *directoryString      = [supportDirectoryPath stringByAppendingString:@"/"];
     g_Config.currentDirectory      = [directoryString UTF8String];
     g_Config.externalDirectory     = [directoryString UTF8String];
     g_Config.memCardDirectory      = [directoryString UTF8String];
@@ -87,22 +103,22 @@
     g_Config.iShowFPSCounter       = true;
     g_Config.bFrameSkipUnthrottle  = false;
 
-	_coreParam.cpuCore      = CPU_JIT;
-	_coreParam.gpuCore      = GPU_GLES;
-	_coreParam.enableSound  = true;
-	_coreParam.fileToStart  = [path UTF8String];
-	_coreParam.mountIso     = "";
-	_coreParam.startPaused  = false;
-	_coreParam.printfEmuLog = false;
-	_coreParam.headLess     = false;
+    _coreParam.cpuCore      = CPU_JIT;
+    _coreParam.gpuCore      = GPU_GLES;
+    _coreParam.enableSound  = true;
+    _coreParam.fileToStart  = [path UTF8String];
+    _coreParam.mountIso     = "";
+    _coreParam.startPaused  = false;
+    _coreParam.printfEmuLog = false;
+    _coreParam.headLess     = false;
     _coreParam.unthrottle   = true;
 
     _coreParam.renderWidth  = 480;
-	_coreParam.renderHeight = 272;
-	_coreParam.outputWidth  = 480;
-	_coreParam.outputHeight = 272;
-	_coreParam.pixelWidth   = 480;
-	_coreParam.pixelHeight  = 272;
+    _coreParam.renderHeight = 272;
+    _coreParam.outputWidth  = 480;
+    _coreParam.outputHeight = 272;
+    _coreParam.pixelWidth   = 480;
+    _coreParam.pixelHeight  = 272;
 
     return YES;
 }
@@ -160,7 +176,6 @@
 
     int samplesWritten = NativeMix((short *)_soundBuffer, SAMPLERATE / _frameInterval);
     [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
-
 }
 
 # pragma mark - Video
