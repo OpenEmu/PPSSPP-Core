@@ -74,7 +74,7 @@
 
 # pragma mark - Execution
 
-- (BOOL)loadFileAtPath:(NSString *)path
+- (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
 {
     NSString *resourcePath = [[[self owner] bundle] resourcePath];
     NSString *supportDirectoryPath = [self supportDirectoryPath];
