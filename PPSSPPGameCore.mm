@@ -115,8 +115,6 @@
 
     _coreParam.renderWidth  = 480;
     _coreParam.renderHeight = 272;
-    _coreParam.outputWidth  = 480;
-    _coreParam.outputHeight = 272;
     _coreParam.pixelWidth   = 480;
     _coreParam.pixelHeight  = 272;
 

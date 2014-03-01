@@ -160,6 +160,8 @@ void NativeInitGraphics()
     gl_lost_manager_init();
 }
 
+void NativeResized(){}
+
 void NativeRender()
 {
 	glstate.Restore();

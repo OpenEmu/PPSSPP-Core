@@ -22,7 +22,7 @@
 #endif
 #else // OpenGL
 // Now that glew is upgraded beyond 4.3, we can define MAY_HAVE_GLES3 on GL platforms
-#define MAY_HAVE_GLES3 1
+//#define MAY_HAVE_GLES3 1
 //#include <GL/glew.h>
 #if defined(__APPLE__)
 #include <OpenGL/gl.h>
@@ -32,6 +32,9 @@
 #endif
 
 #define glDrawTextureNV
+#define glBindFragDataLocationIndexed
+#define glBindFragDataLocation glBindFragDataLocationEXT
+#define GL_ONE_MINUS_SRC1_ALPHA GL_ONE_MINUS_SRC_ALPHA
 
 #if !defined(GLchar) && !defined(__APPLE__)
 typedef char GLchar;

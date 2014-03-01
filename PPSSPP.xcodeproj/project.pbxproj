@@ -120,6 +120,8 @@
 		8C99591B1785DE3A00EE4CA8 /* SHA1.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9521785B3C200647A96 /* SHA1.c */; };
 		8C99591D1785DE4400EE4CA8 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9621785B3C200647A96 /* xbrz.cpp */; };
 		8C99CCCD189DB0D4004E6F63 /* flash0 in Resources */ = {isa = PBXBuildFile; fileRef = 8C99CCCC189DB0D4004E6F63 /* flash0 */; };
+		8C9BDA1118C28B55007F6592 /* city.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBB5F1785B3D200647A96 /* city.cpp */; };
+		8C9BDA1418C28BA5007F6592 /* libcityhash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9BDA1018C28B31007F6592 /* libcityhash.a */; };
 		8CA153F417C412410003002D /* VirtualDiscFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153C217C410220003002D /* VirtualDiscFileSystem.cpp */; };
 		8CA153F617C412480003002D /* AsyncIOManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153C517C4108D0003002D /* AsyncIOManager.cpp */; };
 		8CA153F717C4125D0003002D /* Clipper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA153E617C411BC0003002D /* Clipper.cpp */; };
@@ -241,7 +243,6 @@
 		8CAFC2A91785CFFF00647A96 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8411785B3C200647A96 /* Config.cpp */; };
 		8CAFC2AB1785CFFF00647A96 /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8431785B3C200647A96 /* Core.cpp */; };
 		8CAFC2AE1785CFFF00647A96 /* CoreTiming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8481785B3C200647A96 /* CoreTiming.cpp */; };
-		8CAFC2B01785CFFF00647A96 /* CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA84A1785B3C200647A96 /* CPU.cpp */; };
 		8CAFC2B21785D0F500647A96 /* CwCheat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA84C1785B3C200647A96 /* CwCheat.cpp */; };
 		8CAFC2B41785D11800647A96 /* Breakpoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA84F1785B3C200647A96 /* Breakpoints.cpp */; };
 		8CAFC2B71785D11800647A96 /* SymbolMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8521785B3C200647A96 /* SymbolMap.cpp */; };
@@ -315,6 +316,10 @@
 		8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1DB1785C7B300647A96 /* libxbrz.a */; };
 		8CBB2C1F1790535A00349818 /* ppge_atlas.zim in Resources */ = {isa = PBXBuildFile; fileRef = 8CBB2C1E1790535600349818 /* ppge_atlas.zim */; };
 		8CC4D25F178C7EC20094E987 /* NativeApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4D25E178C7EC00094E987 /* NativeApp.cpp */; };
+		8CC8066B18C27BBB00AB1339 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8066A18C27BAA00AB1339 /* FileSystem.cpp */; };
+		8CC8066E18C27C1400AB1339 /* ReplaceTables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8066D18C27C1000AB1339 /* ReplaceTables.cpp */; };
+		8CC8067118C27C4000AB1339 /* sceMt19937.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8067018C27C3B00AB1339 /* sceMt19937.cpp */; };
+		8CC8067518C27CC500AB1339 /* CompReplace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8067418C27CC500AB1339 /* CompReplace.cpp */; };
 		8CD63AF5178DBDE70039164C /* fbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63AF3178DB9610039164C /* fbo.cpp */; };
 		8CD63AF8178DCE7F0039164C /* input_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63AF7178DCE7F0039164C /* input_state.cpp */; };
 		8CD63AFC178DCEC60039164C /* sceCcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63AFA178DCEC60039164C /* sceCcc.cpp */; };
@@ -380,6 +385,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8CAFC1621785C33D00647A96;
 			remoteInfo = GPU;
+		};
+		8C9BDA1218C28B62007F6592 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C9BDA0A18C28B31007F6592;
+			remoteInfo = cityhash;
 		};
 		8CB74E171785FBDF00C652A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -512,6 +524,7 @@
 		8C8447A6186B84CE00BE03D5 /* parsers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parsers.cpp; sourceTree = "<group>"; };
 		8C8447AA186B8DD600BE03D5 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gl_common.h; sourceTree = "<group>"; };
 		8C99CCCC189DB0D4004E6F63 /* flash0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flash0; sourceTree = "<group>"; };
+		8C9BDA1018C28B31007F6592 /* libcityhash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcityhash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA153BA17C40FA60003002D /* CommonWindows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWindows.h; sourceTree = "<group>"; };
 		8CA153BC17C40FBA0003002D /* Swap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swap.h; sourceTree = "<group>"; };
 		8CA153BE17C40FF40003002D /* ppcEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ppcEmitter.h; sourceTree = "<group>"; };
@@ -619,8 +632,6 @@
 		8CAFA8471785B3C200647A96 /* CoreParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreParameter.h; sourceTree = "<group>"; };
 		8CAFA8481785B3C200647A96 /* CoreTiming.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CoreTiming.cpp; sourceTree = "<group>"; };
 		8CAFA8491785B3C200647A96 /* CoreTiming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTiming.h; sourceTree = "<group>"; };
-		8CAFA84A1785B3C200647A96 /* CPU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPU.cpp; sourceTree = "<group>"; };
-		8CAFA84B1785B3C200647A96 /* CPU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPU.h; sourceTree = "<group>"; };
 		8CAFA84C1785B3C200647A96 /* CwCheat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CwCheat.cpp; sourceTree = "<group>"; };
 		8CAFA84D1785B3C200647A96 /* CwCheat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CwCheat.h; sourceTree = "<group>"; };
 		8CAFA84F1785B3C200647A96 /* Breakpoints.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Breakpoints.cpp; sourceTree = "<group>"; };
@@ -1196,6 +1207,14 @@
 		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
 		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppge_atlas.zim; sourceTree = "<group>"; };
 		8CC4D25E178C7EC00094E987 /* NativeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeApp.cpp; sourceTree = "<group>"; };
+		8CC8066A18C27BAA00AB1339 /* FileSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileSystem.cpp; sourceTree = "<group>"; };
+		8CC8066C18C27C1000AB1339 /* ReplaceTables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplaceTables.h; sourceTree = "<group>"; };
+		8CC8066D18C27C1000AB1339 /* ReplaceTables.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReplaceTables.cpp; sourceTree = "<group>"; };
+		8CC8066F18C27C3B00AB1339 /* sceMt19937.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sceMt19937.h; sourceTree = "<group>"; };
+		8CC8067018C27C3B00AB1339 /* sceMt19937.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sceMt19937.cpp; sourceTree = "<group>"; };
+		8CC8067218C27C8900AB1339 /* ArmCompReplace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ArmCompReplace.cpp; sourceTree = "<group>"; };
+		8CC8067318C27CAB00AB1339 /* PpcCompReplace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PpcCompReplace.cpp; sourceTree = "<group>"; };
+		8CC8067418C27CC500AB1339 /* CompReplace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompReplace.cpp; sourceTree = "<group>"; };
 		8CD63AF3178DB9610039164C /* fbo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fbo.cpp; sourceTree = "<group>"; };
 		8CD63AF4178DBDB80039164C /* fbo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fbo.h; sourceTree = "<group>"; };
 		8CD63AF7178DCE7F0039164C /* input_state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_state.cpp; sourceTree = "<group>"; };
@@ -1222,6 +1241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9BDA1418C28BA5007F6592 /* libcityhash.a in Frameworks */,
 				3DFCE410186F64170046C035 /* libz.dylib in Frameworks */,
 				8C8447A2186B843A00BE03D5 /* libvjson.a in Frameworks */,
 				8C844795186B83B700BE03D5 /* libpng16.a in Frameworks */,
@@ -1344,6 +1364,7 @@
 				8CA153DC17C4116F0003002D /* PpcCompBranch.cpp */,
 				8CA153DD17C4116F0003002D /* PpcCompFpu.cpp */,
 				8CA153DE17C4116F0003002D /* PpcCompLoadStore.cpp */,
+				8CC8067318C27CAB00AB1339 /* PpcCompReplace.cpp */,
 				8CA153DF17C4116F0003002D /* PpcCompVFPU.cpp */,
 				8CA153E017C4116F0003002D /* PpcJit.cpp */,
 				8CA153E117C4116F0003002D /* PpcJit.h */,
@@ -1400,6 +1421,7 @@
 				8CA1540817C413480003002D /* libxxhash.a */,
 				8C844782186B830400BE03D5 /* libpng16.a */,
 				8C84479C186B83EB00BE03D5 /* libvjson.a */,
+				8C9BDA1018C28B31007F6592 /* libcityhash.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1523,8 +1545,6 @@
 				8CAFA8471785B3C200647A96 /* CoreParameter.h */,
 				8CAFA8481785B3C200647A96 /* CoreTiming.cpp */,
 				8CAFA8491785B3C200647A96 /* CoreTiming.h */,
-				8CAFA84A1785B3C200647A96 /* CPU.cpp */,
-				8CAFA84B1785B3C200647A96 /* CPU.h */,
 				8CAFA84C1785B3C200647A96 /* CwCheat.cpp */,
 				8CAFA84D1785B3C200647A96 /* CwCheat.h */,
 				8CAFA84E1785B3C200647A96 /* Debugger */,
@@ -1620,6 +1640,7 @@
 				8CAFA86D1785B3C200647A96 /* BlockDevices.h */,
 				8CAFA86E1785B3C200647A96 /* DirectoryFileSystem.cpp */,
 				8CAFA86F1785B3C200647A96 /* DirectoryFileSystem.h */,
+				8CC8066A18C27BAA00AB1339 /* FileSystem.cpp */,
 				8CAFA8701785B3C200647A96 /* FileSystem.h */,
 				8CAFA8711785B3C200647A96 /* ISOFileSystem.cpp */,
 				8CAFA8721785B3C200647A96 /* ISOFileSystem.h */,
@@ -1651,6 +1672,8 @@
 				8CAFA87E1785B3C200647A96 /* HLE.h */,
 				8CAFA87F1785B3C200647A96 /* HLETables.cpp */,
 				8CAFA8801785B3C200647A96 /* HLETables.h */,
+				8CC8066D18C27C1000AB1339 /* ReplaceTables.cpp */,
+				8CC8066C18C27C1000AB1339 /* ReplaceTables.h */,
 				8C2D4EC81824001600E65166 /* KernelWaitHelpers.h */,
 				8C844741186B767200BE03D5 /* proAdhoc.cpp */,
 				8C844740186B767200BE03D5 /* proAdhoc.h */,
@@ -1724,6 +1747,8 @@
 				8CAFA8C01785B3C200647A96 /* sceMp4.h */,
 				8CAFA8C11785B3C200647A96 /* sceMpeg.cpp */,
 				8CAFA8C21785B3C200647A96 /* sceMpeg.h */,
+				8CC8067018C27C3B00AB1339 /* sceMt19937.cpp */,
+				8CC8066F18C27C3B00AB1339 /* sceMt19937.h */,
 				8CAFA8C31785B3C200647A96 /* sceNet.cpp */,
 				8CAFA8C41785B3C200647A96 /* sceNet.h */,
 				8C2D4ECF1824007200E65166 /* sceNetAdhoc.cpp */,
@@ -1830,6 +1855,7 @@
 				8CAFA8FE1785B3C200647A96 /* ArmCompBranch.cpp */,
 				8CAFA8FF1785B3C200647A96 /* ArmCompFPU.cpp */,
 				8CAFA9001785B3C200647A96 /* ArmCompLoadStore.cpp */,
+				8CC8067218C27C8900AB1339 /* ArmCompReplace.cpp */,
 				8CAFA9011785B3C200647A96 /* ArmCompVFPU.cpp */,
 				8C844743186B76B800BE03D5 /* ArmCompVFPUNEON.cpp */,
 				8CAFA9021785B3C200647A96 /* ArmJit.cpp */,
@@ -1863,6 +1889,7 @@
 				8CAFA9251785B3C200647A96 /* CompBranch.cpp */,
 				8CAFA9261785B3C200647A96 /* CompFPU.cpp */,
 				8CAFA9271785B3C200647A96 /* CompLoadStore.cpp */,
+				8CC8067418C27CC500AB1339 /* CompReplace.cpp */,
 				8CAFA9281785B3C200647A96 /* CompVFPU.cpp */,
 				8CAFA9291785B3C200647A96 /* Jit.cpp */,
 				8CAFA92A1785B3C200647A96 /* Jit.h */,
@@ -2644,6 +2671,21 @@
 			productReference = 8C84479C186B83EB00BE03D5 /* libvjson.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		8C9BDA0A18C28B31007F6592 /* cityhash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C9BDA0D18C28B31007F6592 /* Build configuration list for PBXNativeTarget "cityhash" */;
+			buildPhases = (
+				8C9BDA0B18C28B31007F6592 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cityhash;
+			productName = xxhash;
+			productReference = 8C9BDA1018C28B31007F6592 /* libcityhash.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		8CA1540717C413480003002D /* xxhash */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CA1540917C413480003002D /* Build configuration list for PBXNativeTarget "xxhash" */;
@@ -2685,6 +2727,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8C9BDA1318C28B62007F6592 /* PBXTargetDependency */,
 				8C8447A1186B843300BE03D5 /* PBXTargetDependency */,
 				8C844794186B83AD00BE03D5 /* PBXTargetDependency */,
 				8CB74E3B1786026300C652A7 /* PBXTargetDependency */,
@@ -2864,6 +2907,7 @@
 				8CAFA7D11785B06F00647A96 /* Common */,
 				8CAFC1E21785C7CB00647A96 /* Core */,
 				8CAFC1621785C33D00647A96 /* GPU */,
+				8C9BDA0A18C28B31007F6592 /* cityhash */,
 				8CAFC1D21785C7AC00647A96 /* kirk */,
 				8CAFC12D1785B93F00647A96 /* native */,
 				8C84477C186B830400BE03D5 /* png16 */,
@@ -2951,6 +2995,14 @@
 			files = (
 				8C84479D186B841E00BE03D5 /* block_allocator.cpp in Sources */,
 				8C84479E186B841E00BE03D5 /* json.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C9BDA0B18C28B31007F6592 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C9BDA1118C28B55007F6592 /* city.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3180,7 +3232,6 @@
 				8CAFC2A91785CFFF00647A96 /* Config.cpp in Sources */,
 				8CAFC2AB1785CFFF00647A96 /* Core.cpp in Sources */,
 				8CAFC2AE1785CFFF00647A96 /* CoreTiming.cpp in Sources */,
-				8CAFC2B01785CFFF00647A96 /* CPU.cpp in Sources */,
 				8CAFC2B21785D0F500647A96 /* CwCheat.cpp in Sources */,
 				8CAFC2B41785D11800647A96 /* Breakpoints.cpp in Sources */,
 				8CAFC2B71785D11800647A96 /* SymbolMap.cpp in Sources */,
@@ -3192,6 +3243,7 @@
 				8CAFC2C31785D12B00647A96 /* SavedataParam.cpp in Sources */,
 				8CAFC2C51785D14C00647A96 /* ElfReader.cpp in Sources */,
 				8CAFC2C81785D14C00647A96 /* ParamSFO.cpp in Sources */,
+				8CC8066E18C27C1400AB1339 /* ReplaceTables.cpp in Sources */,
 				8CAFC2CA1785D14C00647A96 /* PBPReader.cpp in Sources */,
 				8CAFC2CC1785D14C00647A96 /* PrxDecrypter.cpp in Sources */,
 				8CAFC2D81785D16400647A96 /* PGF.cpp in Sources */,
@@ -3233,6 +3285,7 @@
 				8CAFC31A1785DAD500647A96 /* sceMp4.cpp in Sources */,
 				8CAFC31C1785DAD500647A96 /* sceMpeg.cpp in Sources */,
 				8CAFC31E1785DAD500647A96 /* sceNet.cpp in Sources */,
+				8CC8066B18C27BBB00AB1339 /* FileSystem.cpp in Sources */,
 				8C84473F186B762900BE03D5 /* DisassemblyManager.cpp in Sources */,
 				8C99589B1785DB7000EE4CA8 /* sceOpenPSID.cpp in Sources */,
 				8C99589D1785DB7000EE4CA8 /* sceP3da.cpp in Sources */,
@@ -3257,6 +3310,7 @@
 				8C9958D11785DBD100EE4CA8 /* MemMap.cpp in Sources */,
 				8C9958D31785DBD100EE4CA8 /* MemMapFunctions.cpp in Sources */,
 				8C9958D41785DBD900EE4CA8 /* JitBlockCache.cpp in Sources */,
+				8CC8067518C27CC500AB1339 /* CompReplace.cpp in Sources */,
 				8C9958D61785DBD900EE4CA8 /* JitCommon.cpp in Sources */,
 				8C9958D81785DBE900EE4CA8 /* MIPS.cpp in Sources */,
 				8C2D4ECD1824005400E65166 /* sceHeap.cpp in Sources */,
@@ -3293,6 +3347,7 @@
 				8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */,
 				8CA153F417C412410003002D /* VirtualDiscFileSystem.cpp in Sources */,
 				8CA153F617C412480003002D /* AsyncIOManager.cpp in Sources */,
+				8CC8067118C27C4000AB1339 /* sceMt19937.cpp in Sources */,
 				8CA1540F17C415200003002D /* MIPSAsm.cpp in Sources */,
 				8CA1541117C415200003002D /* MIPSAsmTables.cpp in Sources */,
 				8CA1541317C415280003002D /* MIPSStackWalk.cpp in Sources */,
@@ -3341,6 +3396,11 @@
 			isa = PBXTargetDependency;
 			target = 8CAFC1621785C33D00647A96 /* GPU */;
 			targetProxy = 8C9958FF1785DC8D00EE4CA8 /* PBXContainerItemProxy */;
+		};
+		8C9BDA1318C28B62007F6592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C9BDA0A18C28B31007F6592 /* cityhash */;
+			targetProxy = 8C9BDA1218C28B62007F6592 /* PBXContainerItemProxy */;
 		};
 		8CB74E181785FBDF00C652A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3404,6 +3464,22 @@
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = vjson;
+			};
+			name = Release;
+		};
+		8C9BDA0E18C28B31007F6592 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = cityhash;
+			};
+			name = Debug;
+		};
+		8C9BDA0F18C28B31007F6592 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = cityhash;
 			};
 			name = Release;
 		};
@@ -3773,6 +3849,15 @@
 			buildConfigurations = (
 				8C84479A186B83EB00BE03D5 /* Debug */,
 				8C84479B186B83EB00BE03D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C9BDA0D18C28B31007F6592 /* Build configuration list for PBXNativeTarget "cityhash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C9BDA0E18C28B31007F6592 /* Debug */,
+				8C9BDA0F18C28B31007F6592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

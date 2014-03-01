@@ -43,6 +43,7 @@ struct FBO {
 	FBOColorDepth colorDepth;
 };
 
+static FBO *g_overriddenBackbuffer;
 
 // On PC, we always use GL_DEPTH24_STENCIL8.
 // On Android, we try to use what's available.
@@ -244,72 +245,92 @@ void fbo_unbind() {
     glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, framebuffer);
 }
 
+void fbo_override_backbuffer(FBO *fbo) {
+	g_overriddenBackbuffer = fbo;
+}
+
 void fbo_bind_as_render_target(FBO *fbo) {
 	if (gl_extensions.FBO_ARB) {
-		if (gl_extensions.GLES3) {
-			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo->handle);
-		} else {
-			// This will collide with bind_for_read - but there's nothing in ES 2.0
-			// that actually separate them anyway of course, so doesn't matter.
-			glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
-		}
-	}else{
 #ifndef USING_GLES2
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
+		if (true) {
+#else
+            if (gl_extensions.GLES3) {
 #endif
-	}
-}
-
-void fbo_bind_for_read(FBO *fbo) {
-	if (gl_extensions.FBO_ARB) {
-		if (gl_extensions.GLES3) {
-			glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo->handle);
-		} else {
-			// This will collide with bind_as_render_target - but there's nothing in ES 2.0
-			// that actually separate them anyway of course, so doesn't matter.
-			glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
-		}
-	} else {
+                glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo->handle);
+            } else {
+                // This will collide with bind_for_read - but there's nothing in ES 2.0
+                // that actually separate them anyway of course, so doesn't matter.
+                glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
+            }
+        }else{
 #ifndef USING_GLES2
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
+            glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
 #endif
-	}
-}
+        }
+    }
 
-void fbo_bind_color_as_texture(FBO *fbo, int color) {
-	if (fbo) {
-		glBindTexture(GL_TEXTURE_2D, fbo->color_texture);
-	}
-}
-
-void fbo_destroy(FBO *fbo) {
-	if (gl_extensions.FBO_ARB) {
-		glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, 0, 0);
-		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, 0);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glDeleteFramebuffers(1, &fbo->handle);
-		glDeleteRenderbuffers(1, &fbo->z_stencil_buffer);
-	} else {
+    void fbo_bind_for_read(FBO *fbo) {
+        if (gl_extensions.FBO_ARB) {
 #ifndef USING_GLES2
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
-		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, 0, 0);
-		glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER_EXT, 0);
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-		glDeleteFramebuffersEXT(1, &fbo->handle);
-		glDeleteRenderbuffersEXT(1, &fbo->z_stencil_buffer);
+            if (true) {
+#else
+                if (gl_extensions.GLES3) {
 #endif
-	}
-    
-	glDeleteTextures(1, &fbo->color_texture);
-	delete fbo;
-}
+                    glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo->handle);
+                } else {
+                    // This will collide with bind_as_render_target - but there's nothing in ES 2.0
+                    // that actually separate them anyway of course, so doesn't matter.
+                    glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
+                }
+            } else {
+#ifndef USING_GLES2
+                glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
+#endif
+            }
+        }
 
-void fbo_get_dimensions(FBO *fbo, int *w, int *h) {
-	*w = fbo->width;
-	*h = fbo->height;
-}
+        void fbo_bind_color_as_texture(FBO *fbo, int color) {
+            if (fbo) {
+                glBindTexture(GL_TEXTURE_2D, fbo->color_texture);
+            }
+        }
 
-int fbo_get_color_texture(FBO *fbo) {
-	return fbo->color_texture;
-}
+        void fbo_destroy(FBO *fbo) {
+            if (gl_extensions.FBO_ARB) {
+                glBindFramebuffer(GL_FRAMEBUFFER, fbo->handle);
+                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, 0, 0);
+                glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, 0);
+                glBindFramebuffer(GL_FRAMEBUFFER, 0);
+                glDeleteFramebuffers(1, &fbo->handle);
+                glDeleteRenderbuffers(1, &fbo->z_stencil_buffer);
+            } else {
+#ifndef USING_GLES2
+                glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
+                glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, 0, 0);
+                glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER_EXT, 0);
+                glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+                glDeleteFramebuffersEXT(1, &fbo->handle);
+                glDeleteRenderbuffersEXT(1, &fbo->z_stencil_buffer);
+#endif
+            }
+            
+            glDeleteTextures(1, &fbo->color_texture);
+            delete fbo;
+        }
+        
+        void fbo_get_dimensions(FBO *fbo, int *w, int *h) {
+            *w = fbo->width;
+            *h = fbo->height;
+        }
+        
+        int fbo_get_color_texture(FBO *fbo) {
+            return fbo->color_texture;
+        }
+        
+        int fbo_get_depth_buffer(FBO *fbo) {
+            return fbo->z_buffer;
+        }
+        
+        int fbo_get_stencil_buffer(FBO *fbo) {
+            return fbo->stencil_buffer;
+        }
