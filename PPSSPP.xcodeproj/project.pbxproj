@@ -327,6 +327,7 @@
 		8CD63B04178DD0250039164C /* jpgd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63B02178DD0250039164C /* jpgd.cpp */; };
 		8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63B05178DD0700039164C /* HDRemaster.cpp */; };
 		8CFA3BCE17C505610053224B /* jpge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBB6D1785B3D200647A96 /* jpge.cpp */; };
+		945EF3E719666EC70053246F /* SimpleMp3Dec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 945EF3E519666EC70053246F /* SimpleMp3Dec.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1226,6 +1227,8 @@
 		8CD63B02178DD0250039164C /* jpgd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jpgd.cpp; sourceTree = "<group>"; };
 		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
 		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
+		945EF3E519666EC70053246F /* SimpleMp3Dec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleMp3Dec.cpp; sourceTree = "<group>"; };
+		945EF3E619666EC70053246F /* SimpleMp3Dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleMp3Dec.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1805,6 +1808,8 @@
 				8CAFA8F31785B3C200647A96 /* SasAudio.h */,
 				8C2D4ED31824009F00E65166 /* SimpleAT3Dec.cpp */,
 				8C2D4ED41824009F00E65166 /* SimpleAT3Dec.h */,
+				945EF3E519666EC70053246F /* SimpleMp3Dec.cpp */,
+				945EF3E619666EC70053246F /* SimpleMp3Dec.h */,
 			);
 			path = HW;
 			sourceTree = "<group>";
@@ -3221,6 +3226,7 @@
 				8CB74E021785F6F200C652A7 /* BlockDevices.cpp in Sources */,
 				8CAFC29C1785CD3C00647A96 /* Asm.cpp in Sources */,
 				8CAFC29E1785CD3C00647A96 /* CompALU.cpp in Sources */,
+				945EF3E719666EC70053246F /* SimpleMp3Dec.cpp in Sources */,
 				8CAFC29F1785CD3C00647A96 /* CompBranch.cpp in Sources */,
 				8C2D4ED11824007200E65166 /* sceNetAdhoc.cpp in Sources */,
 				8CAFC2A01785CD3C00647A96 /* CompFPU.cpp in Sources */,
