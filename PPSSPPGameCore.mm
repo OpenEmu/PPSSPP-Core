@@ -171,6 +171,8 @@
 
     float vps, fps;
     __DisplayGetFPS(&vps, &_frameInterval, &fps);
+    
+    if(_frameInterval <= 0) _frameInterval = 60;
 
     int samplesWritten = NativeMix((short *)_soundBuffer, SAMPLERATE / _frameInterval);
     [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
