@@ -256,6 +256,7 @@ void fbo_bind_as_render_target(FBO *fbo) {
 #else
             if (gl_extensions.GLES3) {
 #endif
+                // GL_DRAW_FRAMEBUFFER is actually the same value as GL_FRAMEBUFFER so this is a bit redundant.
                 glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo->handle);
             } else {
                 // This will collide with bind_for_read - but there's nothing in ES 2.0
@@ -267,15 +268,19 @@ void fbo_bind_as_render_target(FBO *fbo) {
             glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);
 #endif
         }
+        // Always restore viewport after render target binding
+        glstate.viewport.restore();
     }
 
+    // For GL_EXT_FRAMEBUFFER_BLIT and similar.
     void fbo_bind_for_read(FBO *fbo) {
         if (gl_extensions.FBO_ARB) {
 #ifndef USING_GLES2
             if (true) {
 #else
-                if (gl_extensions.GLES3) {
+                if (gl_extensions.GLES3 || gl_extensions.NV_framebuffer_blit) {
 #endif
+                    // GL_READ_FRAMEBUFFER is defined to the same value as GL_READ_FRAMEBUFFER_NV.
                     glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo->handle);
                 } else {
                     // This will collide with bind_as_render_target - but there's nothing in ES 2.0
@@ -303,6 +308,8 @@ void fbo_bind_as_render_target(FBO *fbo) {
                 glBindFramebuffer(GL_FRAMEBUFFER, 0);
                 glDeleteFramebuffers(1, &fbo->handle);
                 glDeleteRenderbuffers(1, &fbo->z_stencil_buffer);
+                glDeleteRenderbuffers(1, &fbo->z_buffer);
+                glDeleteRenderbuffers(1, &fbo->stencil_buffer);
             } else {
 #ifndef USING_GLES2
                 glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo->handle);

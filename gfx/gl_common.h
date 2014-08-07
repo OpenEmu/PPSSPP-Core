@@ -35,6 +35,8 @@
 #define glBindFragDataLocationIndexed
 #define glBindFragDataLocation glBindFragDataLocationEXT
 #define GL_ONE_MINUS_SRC1_ALPHA GL_ONE_MINUS_SRC_ALPHA
+#define GL_RGB565 GL_RGB
+#define glTexStorage2D
 
 #if !defined(GLchar) && !defined(__APPLE__)
 typedef char GLchar;
