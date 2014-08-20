@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		3DFCE410186F64170046C035 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.dylib */; };
+		8C064E6519A5237700CB142D /* sceUsbGps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C064E6419A5237700CB142D /* sceUsbGps.cpp */; };
 		8C1B6E2E1993C70B00ABEB5D /* PSPScreenshotDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B6E2C1993C70B00ABEB5D /* PSPScreenshotDialog.cpp */; };
 		8C1B6E311993C73100ABEB5D /* HLEHelperThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B6E2F1993C73100ABEB5D /* HLEHelperThread.cpp */; };
 		8C1B6E341993C75500ABEB5D /* SimpleAudioDec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B6E321993C75500ABEB5D /* SimpleAudioDec.cpp */; };
@@ -459,6 +460,8 @@
 
 /* Begin PBXFileReference section */
 		3DFCE40F186F64170046C035 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8C064E6319A5237700CB142D /* sceUsbGps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceUsbGps.h; sourceTree = "<group>"; };
+		8C064E6419A5237700CB142D /* sceUsbGps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceUsbGps.cpp; sourceTree = "<group>"; };
 		8C1B6E2C1993C70B00ABEB5D /* PSPScreenshotDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PSPScreenshotDialog.cpp; sourceTree = "<group>"; };
 		8C1B6E2D1993C70B00ABEB5D /* PSPScreenshotDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPScreenshotDialog.h; sourceTree = "<group>"; };
 		8C1B6E2F1993C73100ABEB5D /* HLEHelperThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HLEHelperThread.cpp; sourceTree = "<group>"; };
@@ -1851,6 +1854,8 @@
 				8CAFA8DE1785B3C200647A96 /* sceUmd.h */,
 				8CAFA8DF1785B3C200647A96 /* sceUsb.cpp */,
 				8CAFA8E01785B3C200647A96 /* sceUsb.h */,
+				8C064E6419A5237700CB142D /* sceUsbGps.cpp */,
+				8C064E6319A5237700CB142D /* sceUsbGps.h */,
 				8CAFA8E11785B3C200647A96 /* sceUtility.cpp */,
 				8CAFA8E21785B3C200647A96 /* sceUtility.h */,
 				8CAFA8E31785B3C200647A96 /* sceVaudio.cpp */,
@@ -3429,6 +3434,7 @@
 				8CA153F617C412480003002D /* AsyncIOManager.cpp in Sources */,
 				8CC8067118C27C4000AB1339 /* sceMt19937.cpp in Sources */,
 				8CA1540F17C415200003002D /* MIPSAsm.cpp in Sources */,
+				8C064E6519A5237700CB142D /* sceUsbGps.cpp in Sources */,
 				8CA1541117C415200003002D /* MIPSAsmTables.cpp in Sources */,
 				8CA1541317C415280003002D /* MIPSStackWalk.cpp in Sources */,
 			);
