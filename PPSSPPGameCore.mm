@@ -97,7 +97,7 @@
     NSString *directoryString      = [supportDirectoryPath stringByAppendingString:@"/"];
     g_Config.currentDirectory      = [directoryString UTF8String];
     g_Config.externalDirectory     = [directoryString UTF8String];
-    g_Config.memCardDirectory      = [directoryString UTF8String];
+    g_Config.memStickDirectory     = [directoryString UTF8String];
     g_Config.flash0Directory       = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
     g_Config.iShowFPSCounter       = true;
@@ -146,7 +146,7 @@
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
         
-        NativeInit(0, nil, nil, [resourcePath UTF8String], nil);
+        NativeInit(0, nil, nil, [resourcePath UTF8String], nil, false);
         NativeInitGraphics();
     }
 

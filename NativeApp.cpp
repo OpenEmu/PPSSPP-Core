@@ -32,6 +32,7 @@
 #include "Core/CoreTiming.h"
 #include "Core/Host.h"
 #include "Core/System.h"
+#include "Core/HLE/__sceAudio.h"
 
 #include "file/vfs.h"
 #include "file/zip_read.h"
@@ -78,63 +79,44 @@ public:
 
 static AndroidLogger *logger = 0;
 
-class NativeHost : public Host
-{
+class NativeHost : public Host {
 public:
-	NativeHost()
-    {
-		// hasRendered = false;
-	}
+    NativeHost() {
+    }
 
-	virtual void UpdateUI() {}
+    void UpdateUI() override {}
 
-	virtual void UpdateMemView() {}
-	virtual void UpdateDisassembly() {}
+    void UpdateMemView() override {}
+    void UpdateDisassembly() override {}
 
-	virtual void SetDebugMode(bool mode) {}
+    void SetDebugMode(bool mode) override { }
 
-	virtual bool InitGL(std::string *error_message) { return true; }
-	virtual void ShutdownGL() {}
+    bool InitGraphics(std::string *error_message) override { return true; }
+    void ShutdownGraphics() override {}
 
-	virtual void InitSound(PMixer *mixer);
-	virtual void UpdateSound() {}
-	virtual void ShutdownSound();
+    void InitSound() override {}
+    void UpdateSound() override {}
+    void ShutdownSound() override {}
 
-	// this is sent from EMU thread! Make sure that Host handles it properly!
-	virtual void BootDone() {}
+    // this is sent from EMU thread! Make sure that Host handles it properly!
+    void BootDone() override {}
 
-	virtual bool IsDebuggingEnabled() { return false; }
-	virtual bool AttemptLoadSymbolMap() { return false; }
-	virtual void ResetSymbolMap() {}
-	virtual void AddSymbol(std::string name, u32 addr, u32 size, int type=0) {}
-	virtual void SetWindowTitle(const char *message) {}
+    bool IsDebuggingEnabled() override {return false;}
+    bool AttemptLoadSymbolMap() override {return false;}
+    void SetWindowTitle(const char *message) override {}
 };
-
-static PMixer *g_mixer = 0;
-
-void NativeHost::InitSound(PMixer *mixer)
-{
-    g_mixer = mixer;
-}
-
-void NativeHost::ShutdownSound()
-{
-    g_mixer = 0;
-}
 
 int NativeMix(short *audio, int num_samples)
 {
-	if(g_mixer)
-		num_samples = g_mixer->Mix(audio, num_samples);
-    else
-		memset(audio, 0, num_samples * 2 * sizeof(short));
+    int sample_rate = System_GetPropertyInt(SYSPROP_AUDIO_SAMPLE_RATE);
+    num_samples = __AudioMix(audio, num_samples, sample_rate > 0 ? sample_rate : 44100);
 
 	return num_samples;
 }
 
-void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *installID)
+void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *installID, bool fs)
 {
-    host = new NativeHost;
+    host = new NativeHost();
 
     logger = new AndroidLogger();
 
@@ -209,4 +191,18 @@ std::string System_GetProperty(SystemProperty prop) {
             return "";
 	}
 }
+
+int System_GetPropertyInt(SystemProperty prop) {
+    switch (prop) {
+        case SYSPROP_AUDIO_SAMPLE_RATE:
+            return 44100;
+        case SYSPROP_DISPLAY_REFRESH_RATE:
+            return 60000;
+        default:
+            return -1;
+    }
+}
+
+void NativeMessageReceived(const char *message, const char *value) {}
+
 
