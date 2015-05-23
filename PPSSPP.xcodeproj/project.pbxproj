@@ -23,6 +23,10 @@
 
 /* Begin PBXBuildFile section */
 		3DFCE410186F64170046C035 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.dylib */; };
+		87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E051301B1028FC00E870E1 /* libsfmt19937.a */; };
+		87E0513A1B102C2A00E870E1 /* SFMT.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E051381B102C2A00E870E1 /* SFMT.c */; };
+		87E0513D1B102D4000E870E1 /* sceAdler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E0513B1B102D4000E870E1 /* sceAdler.cpp */; };
+		87E051401B102D7400E870E1 /* sceSfmt19937.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E0513E1B102D7400E870E1 /* sceSfmt19937.cpp */; };
 		8C064E6519A5237700CB142D /* sceUsbGps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C064E6419A5237700CB142D /* sceUsbGps.cpp */; };
 		8C1B6E2E1993C70B00ABEB5D /* PSPScreenshotDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B6E2C1993C70B00ABEB5D /* PSPScreenshotDialog.cpp */; };
 		8C1B6E311993C73100ABEB5D /* HLEHelperThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B6E2F1993C73100ABEB5D /* HLEHelperThread.cpp */; };
@@ -374,6 +378,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		87E051321B1029D200E870E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87E0512A1B1028FC00E870E1;
+			remoteInfo = sfmt19937;
+		};
 		8C2D4F0F1824073B00E65166 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
@@ -483,6 +494,16 @@
 
 /* Begin PBXFileReference section */
 		3DFCE40F186F64170046C035 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		87E051301B1028FC00E870E1 /* libsfmt19937.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsfmt19937.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E051351B102C2A00E870E1 /* SFMT-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-common.h"; path = "sfmt19937/SFMT-common.h"; sourceTree = "<group>"; };
+		87E051361B102C2A00E870E1 /* SFMT-params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-params.h"; path = "sfmt19937/SFMT-params.h"; sourceTree = "<group>"; };
+		87E051371B102C2A00E870E1 /* SFMT-params19937.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-params19937.h"; path = "sfmt19937/SFMT-params19937.h"; sourceTree = "<group>"; };
+		87E051381B102C2A00E870E1 /* SFMT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SFMT.c; path = sfmt19937/SFMT.c; sourceTree = "<group>"; };
+		87E051391B102C2A00E870E1 /* SFMT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMT.h; path = sfmt19937/SFMT.h; sourceTree = "<group>"; };
+		87E0513B1B102D4000E870E1 /* sceAdler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceAdler.cpp; sourceTree = "<group>"; };
+		87E0513C1B102D4000E870E1 /* sceAdler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceAdler.h; sourceTree = "<group>"; };
+		87E0513E1B102D7400E870E1 /* sceSfmt19937.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceSfmt19937.cpp; sourceTree = "<group>"; };
+		87E0513F1B102D7400E870E1 /* sceSfmt19937.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceSfmt19937.h; sourceTree = "<group>"; };
 		8C064E6319A5237700CB142D /* sceUsbGps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceUsbGps.h; sourceTree = "<group>"; };
 		8C064E6419A5237700CB142D /* sceUsbGps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceUsbGps.cpp; sourceTree = "<group>"; };
 		8C1B6E2C1993C70B00ABEB5D /* PSPScreenshotDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PSPScreenshotDialog.cpp; sourceTree = "<group>"; };
@@ -1343,6 +1364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */,
 				8C9F4D521A9B2874002719B3 /* libudis86.a in Frameworks */,
 				8C9BDA1418C28BA5007F6592 /* libcityhash.a in Frameworks */,
 				3DFCE410186F64170046C035 /* libz.dylib in Frameworks */,
@@ -1368,6 +1390,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87E051341B102C0A00E870E1 /* sfmt19937 */ = {
+			isa = PBXGroup;
+			children = (
+				87E051351B102C2A00E870E1 /* SFMT-common.h */,
+				87E051361B102C2A00E870E1 /* SFMT-params.h */,
+				87E051371B102C2A00E870E1 /* SFMT-params19937.h */,
+				87E051381B102C2A00E870E1 /* SFMT.c */,
+				87E051391B102C2A00E870E1 /* SFMT.h */,
+			);
+			name = sfmt19937;
+			sourceTree = "<group>";
+		};
 		8C1B6E421993CF1900ABEB5D /* libpng17 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1583,6 +1617,7 @@
 				8C84479C186B83EB00BE03D5 /* libvjson.a */,
 				8C9BDA1018C28B31007F6592 /* libcityhash.a */,
 				8C9F4D3B1A9B27B9002719B3 /* libudis86.a */,
+				87E051301B1028FC00E870E1 /* libsfmt19937.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1854,6 +1889,8 @@
 				8C844740186B767200BE03D5 /* proAdhoc.h */,
 				8C43DD0B1A8204DA00C46968 /* proAdhocServer.cpp */,
 				8C43DD0C1A8204DA00C46968 /* proAdhocServer.h */,
+				87E0513B1B102D4000E870E1 /* sceAdler.cpp */,
+				87E0513C1B102D4000E870E1 /* sceAdler.h */,
 				8CAFA8811785B3C200647A96 /* sceAtrac.cpp */,
 				8CAFA8821785B3C200647A96 /* sceAtrac.h */,
 				8CAFA8831785B3C200647A96 /* sceAudio.cpp */,
@@ -1952,6 +1989,8 @@
 				8CAFA8D81785B3C200647A96 /* sceRtc.h */,
 				8CAFA8D91785B3C200647A96 /* sceSas.cpp */,
 				8CAFA8DA1785B3C200647A96 /* sceSas.h */,
+				87E0513E1B102D7400E870E1 /* sceSfmt19937.cpp */,
+				87E0513F1B102D7400E870E1 /* sceSfmt19937.h */,
 				8C43DD0F1A8204FC00C46968 /* sceSha256.cpp */,
 				8C43DD101A8204FC00C46968 /* sceSha256.h */,
 				8CAFA8DB1785B3C200647A96 /* sceSsl.cpp */,
@@ -2111,6 +2150,7 @@
 				8CAFA9431785B3C200647A96 /* disarm.cpp */,
 				8CAFA9441785B3C200647A96 /* disarm.h */,
 				8CAFA9451785B3C200647A96 /* libkirk */,
+				87E051341B102C0A00E870E1 /* sfmt19937 */,
 				8CAFA9541785B3C200647A96 /* snappy */,
 				8C9F4D3C1A9B285F002719B3 /* udis86 */,
 				8CAFA9601785B3C200647A96 /* xbrz */,
@@ -2832,6 +2872,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		87E0512A1B1028FC00E870E1 /* sfmt19937 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E0512D1B1028FC00E870E1 /* Build configuration list for PBXNativeTarget "sfmt19937" */;
+			buildPhases = (
+				87E0512B1B1028FC00E870E1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sfmt19937;
+			productName = stb_vorbis;
+			productReference = 87E051301B1028FC00E870E1 /* libsfmt19937.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		8C84477C186B830400BE03D5 /* png17 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C84477F186B830400BE03D5 /* Build configuration list for PBXNativeTarget "png17" */;
@@ -2933,6 +2988,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				87E051331B1029D200E870E1 /* PBXTargetDependency */,
 				8C9F4D541A9B287A002719B3 /* PBXTargetDependency */,
 				8C9BDA1318C28B62007F6592 /* PBXTargetDependency */,
 				8C8447A1186B843300BE03D5 /* PBXTargetDependency */,
@@ -3103,6 +3159,7 @@
 				8CAFC12D1785B93F00647A96 /* native */,
 				8C84477C186B830400BE03D5 /* png17 */,
 				8CAFC1BA1785C78500647A96 /* rg_etc1 */,
+				87E0512A1B1028FC00E870E1 /* sfmt19937 */,
 				8CAFC1A21785C76700647A96 /* snappy */,
 				8CAFC1CA1785C79600647A96 /* stb_vorbis */,
 				8C9F4D351A9B27B9002719B3 /* udis86 */,
@@ -3158,6 +3215,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		87E0512B1B1028FC00E870E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E0513A1B102C2A00E870E1 /* SFMT.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8C84477D186B830400BE03D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3513,6 +3578,7 @@
 				8CAFC30E1785DAA000647A96 /* sceKernelSemaphore.cpp in Sources */,
 				8CAFC3101785DAA000647A96 /* sceKernelThread.cpp in Sources */,
 				8CAFC3121785DAA000647A96 /* sceKernelTime.cpp in Sources */,
+				87E051401B102D7400E870E1 /* sceSfmt19937.cpp in Sources */,
 				8CAFC3141785DAA000647A96 /* sceKernelVTimer.cpp in Sources */,
 				8C2D4EC61823FFF100E65166 /* PSPNetconfDialog.cpp in Sources */,
 				8CAFC3161785DAD500647A96 /* sceMd5.cpp in Sources */,
@@ -3586,12 +3652,18 @@
 				8CA1540F17C415200003002D /* MIPSAsm.cpp in Sources */,
 				8C064E6519A5237700CB142D /* sceUsbGps.cpp in Sources */,
 				8CA1541317C415280003002D /* MIPSStackWalk.cpp in Sources */,
+				87E0513D1B102D4000E870E1 /* sceAdler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		87E051331B1029D200E870E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87E0512A1B1028FC00E870E1 /* sfmt19937 */;
+			targetProxy = 87E051321B1029D200E870E1 /* PBXContainerItemProxy */;
+		};
 		8C2D4F101824073B00E65166 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8CAFC1CA1785C79600647A96 /* stb_vorbis */;
@@ -3670,6 +3742,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		87E0512E1B1028FC00E870E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = sfmt19937;
+			};
+			name = Debug;
+		};
+		87E0512F1B1028FC00E870E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = sfmt19937;
+			};
+			name = Release;
+		};
 		8C844780186B830400BE03D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4080,6 +4168,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		87E0512D1B1028FC00E870E1 /* Build configuration list for PBXNativeTarget "sfmt19937" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E0512E1B1028FC00E870E1 /* Debug */,
+				87E0512F1B1028FC00E870E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8C84477F186B830400BE03D5 /* Build configuration list for PBXNativeTarget "png17" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
