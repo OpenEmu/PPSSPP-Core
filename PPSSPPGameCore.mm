@@ -177,9 +177,9 @@
 
 # pragma mark - Video
 
-- (BOOL)rendersToOpenGL
+- (OEGameCoreRendering)gameCoreRendering
 {
-    return YES;
+    return OEGameCoreRenderingOpenGL2Video;
 }
 
 - (OEIntSize)bufferSize
