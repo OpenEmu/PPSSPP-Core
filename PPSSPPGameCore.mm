@@ -113,10 +113,10 @@
     _coreParam.headLess     = false;
     _coreParam.unthrottle   = true;
 
-    _coreParam.renderWidth  = 480;
-    _coreParam.renderHeight = 272;
-    _coreParam.pixelWidth   = 480;
-    _coreParam.pixelHeight  = 272;
+    _coreParam.renderWidth  = 1440;
+    _coreParam.renderHeight = 816;
+    _coreParam.pixelWidth   = 1440;
+    _coreParam.pixelHeight  = 816;
 
     return YES;
 }
@@ -184,7 +184,7 @@
 
 - (OEIntSize)bufferSize
 {
-    return OEIntSizeMake(480, 272);
+    return OEIntSizeMake(1440, 816);
 }
 
 - (OEIntSize)aspectSize
