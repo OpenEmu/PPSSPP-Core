@@ -54,3 +54,4 @@ typedef char GLchar;
 #define glRenderbufferStorageEXT glRenderbufferStorage
 #define glDeleteRenderbuffersEXT glDeleteRenderbuffers
 
+static void (*glInvalidateFramebuffer)(GLenum target, GLsizei numAttachments, const GLenum* attachments) = 0;
