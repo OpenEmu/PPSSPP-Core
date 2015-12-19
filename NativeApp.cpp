@@ -40,7 +40,7 @@
 #include "gfx/gl_lost_manager.h"
 
 #include "gfx_es2/fbo.h"
-#include "gfx_es2/gl_state.h"
+#include "GPU/GLES/GLStateCache.h"
 
 #include "GPU/GPUState.h"
 
@@ -179,7 +179,7 @@ void NativeShutdown()
     LogManager::Shutdown();
 }
 
-void OnScreenMessages::Show(const std::string &message, float duration_s, uint32_t color, int icon, bool checkUnique) {}
+void OnScreenMessages::Show(const std::string &text, float duration_s, uint32_t color, int icon, bool checkUnique, const char *id) {}
 
 std::string System_GetProperty(SystemProperty prop) {
 	switch (prop) {
