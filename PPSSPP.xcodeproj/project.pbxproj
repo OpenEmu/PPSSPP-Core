@@ -23,6 +23,16 @@
 
 /* Begin PBXBuildFile section */
 		3DFCE410186F64170046C035 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.dylib */; };
+		3E7193251CE4DAB9007E791C /* SasReverb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193231CE4DAB9007E791C /* SasReverb.cpp */; };
+		3E71932B1CE4DADD007E791C /* GPUStateUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193261CE4DADD007E791C /* GPUStateUtils.cpp */; };
+		3E71932C1CE4DADD007E791C /* ShaderId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193281CE4DADD007E791C /* ShaderId.cpp */; };
+		3E71932E1CE4DB18007E791C /* GPUStateUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193261CE4DADD007E791C /* GPUStateUtils.cpp */; };
+		3E71932F1CE4DB18007E791C /* ShaderId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193281CE4DADD007E791C /* ShaderId.cpp */; };
+		3E7193311CE4DB3B007E791C /* SasReverb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193231CE4DAB9007E791C /* SasReverb.cpp */; };
+		3E7193341CE4DD40007E791C /* free.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193321CE4DD40007E791C /* free.cpp */; };
+		3E7193351CE4DD57007E791C /* free.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193321CE4DD40007E791C /* free.cpp */; };
+		3E7193381CE4DD79007E791C /* RamCachingFileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193361CE4DD79007E791C /* RamCachingFileLoader.cpp */; };
+		3E7193391CE4DD8C007E791C /* RamCachingFileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7193361CE4DD79007E791C /* RamCachingFileLoader.cpp */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
 		87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E051301B1028FC00E870E1 /* libsfmt19937.a */; };
@@ -478,6 +488,17 @@
 
 /* Begin PBXFileReference section */
 		3DFCE40F186F64170046C035 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3E7193231CE4DAB9007E791C /* SasReverb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SasReverb.cpp; sourceTree = "<group>"; };
+		3E7193241CE4DAB9007E791C /* SasReverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SasReverb.h; sourceTree = "<group>"; };
+		3E7193261CE4DADD007E791C /* GPUStateUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPUStateUtils.cpp; sourceTree = "<group>"; };
+		3E7193271CE4DADD007E791C /* ShaderCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderCommon.h; sourceTree = "<group>"; };
+		3E7193281CE4DADD007E791C /* ShaderId.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderId.cpp; sourceTree = "<group>"; };
+		3E7193291CE4DADD007E791C /* ShaderId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderId.h; sourceTree = "<group>"; };
+		3E71932A1CE4DADD007E791C /* VertexDecoderFake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexDecoderFake.cpp; sourceTree = "<group>"; };
+		3E7193321CE4DD40007E791C /* free.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = free.cpp; sourceTree = "<group>"; };
+		3E7193331CE4DD40007E791C /* free.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = free.h; sourceTree = "<group>"; };
+		3E7193361CE4DD79007E791C /* RamCachingFileLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RamCachingFileLoader.cpp; sourceTree = "<group>"; };
+		3E7193371CE4DD79007E791C /* RamCachingFileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RamCachingFileLoader.h; sourceTree = "<group>"; };
 		8706346A1C2516A1007FAA2F /* knownfuncs.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownfuncs.ini; sourceTree = "<group>"; };
 		8706346B1C2516A1007FAA2F /* langregion.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = langregion.ini; sourceTree = "<group>"; };
 		87E051301B1028FC00E870E1 /* libsfmt19937.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsfmt19937.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1714,6 +1735,8 @@
 		87E4F3551C249AF300110A77 /* file */ = {
 			isa = PBXGroup;
 			children = (
+				3E7193321CE4DD40007E791C /* free.cpp */,
+				3E7193331CE4DD40007E791C /* free.h */,
 				87E4F3561C249AF300110A77 /* chunk_file.cpp */,
 				87E4F3571C249AF300110A77 /* chunk_file.h */,
 				87E4F3581C249AF300110A77 /* CMakeLists.txt */,
@@ -2018,6 +2041,8 @@
 		87E4F4171C24A05F00110A77 /* FileLoaders */ = {
 			isa = PBXGroup;
 			children = (
+				3E7193361CE4DD79007E791C /* RamCachingFileLoader.cpp */,
+				3E7193371CE4DD79007E791C /* RamCachingFileLoader.h */,
 				87E4F4181C24A05F00110A77 /* CachingFileLoader.cpp */,
 				87E4F4191C24A05F00110A77 /* CachingFileLoader.h */,
 				87E4F41A1C24A05F00110A77 /* DiskCachingFileLoader.cpp */,
@@ -2035,6 +2060,11 @@
 		8C2D4ED91824011100E65166 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3E7193261CE4DADD007E791C /* GPUStateUtils.cpp */,
+				3E7193271CE4DADD007E791C /* ShaderCommon.h */,
+				3E7193281CE4DADD007E791C /* ShaderId.cpp */,
+				3E7193291CE4DADD007E791C /* ShaderId.h */,
+				3E71932A1CE4DADD007E791C /* VertexDecoderFake.cpp */,
 				87E4F4331C24A5DB00110A77 /* DepalettizeShaderCommon.cpp */,
 				87E4F4341C24A5DB00110A77 /* DepalettizeShaderCommon.h */,
 				8C9F4CCC1A9B2481002719B3 /* DrawEngineCommon.cpp */,
@@ -2580,6 +2610,8 @@
 		8CAFA8E71785B3C200647A96 /* HW */ = {
 			isa = PBXGroup;
 			children = (
+				3E7193231CE4DAB9007E791C /* SasReverb.cpp */,
+				3E7193241CE4DAB9007E791C /* SasReverb.h */,
 				8CA153C417C4108D0003002D /* AsyncIOManager.h */,
 				8CA153C517C4108D0003002D /* AsyncIOManager.cpp */,
 				8C2D4ED7182400A700E65166 /* BufferQueue.h */,
@@ -3344,7 +3376,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CAFC0D21785B3DC00647A96 /* ABI.cpp in Sources */,
+				3E7193381CE4DD79007E791C /* RamCachingFileLoader.cpp in Sources */,
 				8C2D4F0C182405DA00E65166 /* ArmEmitter.cpp in Sources */,
+				3E7193341CE4DD40007E791C /* free.cpp in Sources */,
 				8CAFC0D41785B3EA00647A96 /* CPUDetect.cpp in Sources */,
 				8C43DD001A82042400C46968 /* FakeCPUDetect.cpp in Sources */,
 				8C2D4EBF1823FF2B00E65166 /* ChunkFile.cpp in Sources */,
@@ -3352,6 +3386,7 @@
 				8CAFC0DE1785B43300647A96 /* ConsoleListener.cpp in Sources */,
 				8C9F4CCB1A9B2402002719B3 /* sha256.cpp in Sources */,
 				8CAFC0E61785B45500647A96 /* md5.cpp in Sources */,
+				3E71932C1CE4DADD007E791C /* ShaderId.cpp in Sources */,
 				8CAFC0E81785B46000647A96 /* sha1.cpp in Sources */,
 				8CAFC0F01785B49800647A96 /* FileUtil.cpp in Sources */,
 				8CAFC0F41785B4AA00647A96 /* KeyMap.cpp in Sources */,
@@ -3362,6 +3397,8 @@
 				8CAFC0FA1785B4D900647A96 /* MemArena.cpp in Sources */,
 				8CAFC0FC1785B4D900647A96 /* MemoryUtil.cpp in Sources */,
 				8CAFC0FE1785B4D900647A96 /* Misc.cpp in Sources */,
+				3E71932B1CE4DADD007E791C /* GPUStateUtils.cpp in Sources */,
+				3E7193251CE4DAB9007E791C /* SasReverb.cpp in Sources */,
 				8CAFC0FF1785B4D900647A96 /* MsgHandler.cpp in Sources */,
 				8CAFC1011785B4D900647A96 /* StringUtils.cpp in Sources */,
 				8CAFC1051785B4D900647A96 /* ThreadPools.cpp in Sources */,
@@ -3382,6 +3419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7193351CE4DD57007E791C /* free.cpp in Sources */,
 				87E4F4471C24AE3E00110A77 /* backtrace.cpp in Sources */,
 				87E4F4481C24AE6900110A77 /* buffer.cpp in Sources */,
 				87E4F4491C24AE6F00110A77 /* colorutil.cpp in Sources */,
@@ -3448,6 +3486,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E71932E1CE4DB18007E791C /* GPUStateUtils.cpp in Sources */,
+				3E71932F1CE4DB18007E791C /* ShaderId.cpp in Sources */,
 				87E4F4371C24A60A00110A77 /* GPUDebugInterface.cpp in Sources */,
 				8C9F4CD01A9B2482002719B3 /* DrawEngineCommon.cpp in Sources */,
 				8C2D4EF71824011100E65166 /* Breakpoints.cpp in Sources */,
@@ -3540,6 +3580,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7193391CE4DD8C007E791C /* RamCachingFileLoader.cpp in Sources */,
+				3E7193311CE4DB3B007E791C /* SasReverb.cpp in Sources */,
 				8CB74E021785F6F200C652A7 /* BlockDevices.cpp in Sources */,
 				8CAFC29C1785CD3C00647A96 /* Asm.cpp in Sources */,
 				8CAFC29E1785CD3C00647A96 /* CompALU.cpp in Sources */,

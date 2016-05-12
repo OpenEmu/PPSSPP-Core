@@ -147,6 +147,18 @@ int fbo_check_framebuffer_status(FBO *fbo) {
     return (int)fbStatus;
 }
 
+int fbo_standard_z_depth() {
+    // This matches the fbo_create() logic.
+    if (gl_extensions.IsGLES) {
+        if (gl_extensions.OES_packed_depth_stencil) {
+            return 24;
+        }
+        return gl_extensions.OES_depth24 ? 24 : 16;
+    } else {
+        return 24;
+    }
+}
+
 FBO *fbo_create(int width, int height, int num_color_textures, bool z_stencil, FBOColorDepth colorDepth) {
     CheckGLExtensions();
 

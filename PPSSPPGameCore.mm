@@ -103,6 +103,10 @@
     g_Config.iShowFPSCounter       = true;
     g_Config.bFrameSkipUnthrottle  = false;
 
+    g_Config.bSeparateIOThread = true;
+    g_Config.bSeparateCPUThread = true;
+    g_Config.bSeparateSASThread = true;
+    
     _coreParam.cpuCore      = CPU_JIT;
     _coreParam.gpuCore      = GPU_GLES;
     _coreParam.enableSound  = true;
@@ -112,7 +116,7 @@
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
     _coreParam.unthrottle   = true;
-
+ 
     _coreParam.renderWidth  = 480;
     _coreParam.renderHeight = 272;
     _coreParam.pixelWidth   = 480;
@@ -144,7 +148,7 @@
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
         
         NativeInit(0, nil, nil, [resourcePath UTF8String], nil, false);
-        NativeInitGraphics();
+        NativeInitGraphics(0);
     }
 
     if(_shouldReset)
@@ -163,7 +167,7 @@
 		host->UpdateDisassembly();
     }
 
-    NativeRender();
+    NativeRender(0);
     glFlushRenderAPPLE();
 
     float vps, fps;
