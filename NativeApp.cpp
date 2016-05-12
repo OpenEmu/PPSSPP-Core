@@ -41,7 +41,7 @@
 
 #include "gfx_es2/fbo.h"
 #include "GPU/GLES/GLStateCache.h"
-
+#include "GPU/GPUCommon.h"
 #include "GPU/GPUState.h"
 
 #include "input/input_state.h"
@@ -91,7 +91,7 @@ public:
 
     void SetDebugMode(bool mode) override { }
 
-    bool InitGraphics(std::string *error_message) override { return true; }
+    bool InitGraphics(std::string *error_string, GraphicsContext **ctx)override { return true; }
     void ShutdownGraphics() override {}
 
     void InitSound() override {}
@@ -134,7 +134,7 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     VFSRegister("", new DirectoryAssetReader(external_directory));
 }
 
-void NativeInitGraphics()
+void NativeInitGraphics(GraphicsContext *graphicsContext)
 {
     // Save framebuffer to later be bound again
     glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
@@ -144,11 +144,11 @@ void NativeInitGraphics()
 
 void NativeResized(){}
 
-void NativeRender()
+void NativeRender(GraphicsContext *graphicsContext)
 {
 	glstate.Restore();
 
-    ReapplyGfxState();
+    gpu->ReapplyGfxState();
 
     s64 blockTicks = usToCycles(1000000 / 10);
     while(coreState == CORE_RUNNING)
