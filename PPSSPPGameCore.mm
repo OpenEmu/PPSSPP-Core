@@ -100,11 +100,11 @@
     g_Config.memStickDirectory     = [directoryString UTF8String];
     g_Config.flash0Directory       = [directoryString UTF8String];
     g_Config.internalDataDirectory = [directoryString UTF8String];
-    g_Config.iShowFPSCounter       = true;
+    g_Config.iShowFPSCounter       = false;
     g_Config.bFrameSkipUnthrottle  = false;
 
     g_Config.bSeparateIOThread = true;
-    g_Config.bSeparateCPUThread = true;
+    g_Config.bSeparateCPUThread = false;
     g_Config.bSeparateSASThread = true;
     
     _coreParam.cpuCore      = CPU_JIT;
