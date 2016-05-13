@@ -41,7 +41,6 @@
 
 #include "gfx_es2/fbo.h"
 #include "GPU/GLES/GLStateCache.h"
-#include "GPU/GPUCommon.h"
 #include "GPU/GPUState.h"
 
 #include "input/input_state.h"
@@ -147,8 +146,6 @@ void NativeResized(){}
 void NativeRender(GraphicsContext *graphicsContext)
 {
 	glstate.Restore();
-
-    gpu->ReapplyGfxState();
 
     s64 blockTicks = usToCycles(1000000 / 10);
     while(coreState == CORE_RUNNING)
