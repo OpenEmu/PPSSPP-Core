@@ -11,7 +11,8 @@
 typedef char GLchar;
 #define GL_BGRA_EXT 0x80E1
 #else // OpenGL
-//#include <GL/glew.h>
+// OpenEmu will not use GLEW
+//#include "GL/glew.h"
 #if defined(__APPLE__)
 #include <OpenGL/gl3.h>
 #include <OpenGL/gl3ext.h>
@@ -26,6 +27,77 @@ typedef char GLchar;
 #include "../gfx_es2/gl3stub.h"
 #endif
 
+
+#ifdef USING_GLES2
+
+#ifndef GL_MIN_EXT
+#define GL_MIN_EXT 0x8007
+#endif
+
+#ifndef GL_MAX_EXT
+#define GL_MAX_EXT 0x8008
+#endif
+
+#if defined(ANDROID) || defined(BLACKBERRY)
+#include <EGL/egl.h>
+// Additional extensions not included in GLES2/gl2ext.h from the NDK
+
+typedef uint64_t EGLuint64NV;
+typedef EGLuint64NV(EGLAPIENTRYP PFNEGLGETSYSTEMTIMEFREQUENCYNVPROC) (void);
+typedef EGLuint64NV(EGLAPIENTRYP PFNEGLGETSYSTEMTIMENVPROC) (void);
+extern PFNEGLGETSYSTEMTIMEFREQUENCYNVPROC eglGetSystemTimeFrequencyNV;
+extern PFNEGLGETSYSTEMTIMENVPROC eglGetSystemTimeNV;
+
+typedef GLvoid* (GL_APIENTRYP PFNGLMAPBUFFERPROC) (GLenum target, GLenum access);
+extern PFNGLMAPBUFFERPROC glMapBuffer;
+
+typedef void (EGLAPIENTRYP PFNGLDRAWTEXTURENVPROC) (GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+extern PFNGLDRAWTEXTURENVPROC glDrawTextureNV;
+#ifndef ARM64
+typedef void (EGLAPIENTRYP PFNGLBLITFRAMEBUFFERNVPROC) (
+                                                        GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1,
+                                                        GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1,
+                                                        GLbitfield mask, GLenum filter);
+#endif
+extern PFNGLBLITFRAMEBUFFERNVPROC glBlitFramebufferNV;
+
+extern PFNGLDISCARDFRAMEBUFFEREXTPROC glDiscardFramebufferEXT;
+extern PFNGLGENVERTEXARRAYSOESPROC glGenVertexArraysOES;
+extern PFNGLBINDVERTEXARRAYOESPROC glBindVertexArrayOES;
+extern PFNGLDELETEVERTEXARRAYSOESPROC glDeleteVertexArraysOES;
+extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
+
+// Rename standard functions to the OES version.
+#define glGenVertexArrays glGenVertexArraysOES
+#define glBindVertexArray glBindVertexArrayOES
+#define glDeleteVertexArrays glDeleteVertexArraysOES
+#define glIsVertexArray glIsVertexArrayOES
+
+#endif
+
+#if !defined(BLACKBERRY)
+#ifndef GL_READ_FRAMEBUFFER
+#define GL_READ_FRAMEBUFFER GL_FRAMEBUFFER
+#define GL_DRAW_FRAMEBUFFER GL_FRAMEBUFFER
+#endif
+#ifndef GL_DEPTH_COMPONENT24
+#define GL_DEPTH_COMPONENT24 GL_DEPTH_COMPONENT24_OES
+#endif
+#endif
+
+#ifndef GL_RGBA8
+#define GL_RGBA8 GL_RGBA
+#endif
+
+#endif /* EGL_NV_system_time */
+
+#ifndef GL_DEPTH24_STENCIL8_OES
+#define GL_DEPTH24_STENCIL8_OES 0x88F0
+#endif
+
+
+// OpenEmu workaraounds for limitations in Apple's OpenGL
+
 #define GL_RENDERBUFFER_EXT GL_RENDERBUFFER
 #define GL_FRAMEBUFFER_EXT GL_FRAMEBUFFER
 #define GL_FRAMEBUFFER_COMPLETE_EXT GL_FRAMEBUFFER_COMPLETE
@@ -37,10 +109,6 @@ typedef char GLchar;
 #define GL_STENCIL_ATTACHMENT_EXT GL_STENCIL_ATTACHMENT
 #define GL_COLOR_ATTACHMENT0_EXT GL_COLOR_ATTACHMENT0
 #define GL_BGRA_EXT GL_BGRA
-#define GL_LUMINANCE GL_RED
-#define GL_LOGIC_OP GL_COLOR_LOGIC_OP
-#define GL_STACK_OVERFLOW 0x0503
-#define GL_STACK_UNDERFLOW 0x0504
 
 #define glGenerateMipmapEXT glGenerateMipmap
 #define glGenFramebuffersEXT glGenFramebuffers

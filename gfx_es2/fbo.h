@@ -1,5 +1,6 @@
 #pragma once
 
+//OpenEmu framebuffer
 extern int framebuffer;
 
 // Simple wrapper around FBO functionality.
@@ -12,10 +13,10 @@ struct FBO;
 
 
 enum FBOColorDepth {
-	FBO_8888,
-	FBO_565,
-	FBO_4444,
-	FBO_5551,
+    FBO_8888,
+    FBO_565,
+    FBO_4444,
+    FBO_5551,
 };
 
 
@@ -28,9 +29,12 @@ enum FBOColorDepth {
 // On some hardware, you might get a 24-bit depth buffer even though you only wanted a 16-bit one.
 FBO *fbo_create(int width, int height, int num_color_textures, bool z_stencil, FBOColorDepth colorDepth = FBO_8888);
 
+int fbo_standard_z_depth();
+
 // Create an opaque FBO from a native GL FBO, optionally reusing an existing FBO structure.
 // Useful for overriding the backbuffer FBO that is generated outside of this wrapper.
 FBO *fbo_create_from_native_fbo(GLuint native_fbo, FBO *fbo = NULL);
+int fbo_check_framebuffer_status(FBO *fbo);
 
 // These functions should be self explanatory.
 void fbo_bind_as_render_target(FBO *fbo);
