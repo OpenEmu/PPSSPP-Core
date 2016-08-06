@@ -40,7 +40,7 @@
 #include "Core/System.h"
 
 #define SAMPLERATE 44100
-#define SIZESOUNDBUFFER 44100 / 30 * 4
+#define SIZESOUNDBUFFER ((SAMPLERATE / 30) * 4)
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
@@ -102,6 +102,7 @@
     g_Config.internalDataDirectory = [directoryString UTF8String];
     g_Config.iShowFPSCounter       = true;
     g_Config.bFrameSkipUnthrottle  = false;
+    g_Config.bVertexDecoderJit     = true;
 
     g_Config.bSeparateIOThread = true;
     g_Config.bSeparateCPUThread = false;
@@ -146,7 +147,9 @@
     {
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
-        
+
+        extern void CheckGLExtensions();
+        CheckGLExtensions();
         NativeInit(0, nil, nil, [resourcePath UTF8String], nil, false);
         NativeInitGraphics(0);
     }
@@ -168,14 +171,13 @@
     }
 
     NativeRender(0);
-    glFlushRenderAPPLE();
 
     float vps, fps;
     __DisplayGetFPS(&vps, &_frameInterval, &fps);
     
     if(_frameInterval <= 0) _frameInterval = 60;
 
-    int samplesWritten = NativeMix((short *)_soundBuffer, SAMPLERATE / _frameInterval);
+    int samplesWritten = NativeMix((short *)_soundBuffer, ceil(SAMPLERATE / _frameInterval));
     [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
 }
 
