@@ -108,8 +108,8 @@
     g_Config.bSeparateCPUThread = false;
     g_Config.bSeparateSASThread = true;
     
-    _coreParam.cpuCore      = CPU_JIT;
-    _coreParam.gpuCore      = GPU_GLES;
+    _coreParam.cpuCore      = CPU_CORE_JIT;
+    _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
     _coreParam.fileToStart  = [path UTF8String];
     _coreParam.mountIso     = "";
@@ -217,7 +217,7 @@
 
 # pragma mark - Save States
 
-static void _OESaveStateCallback(bool status, void *cbUserData)
+static void _OESaveStateCallback(bool status, std::string message, void *cbUserData)
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
     
