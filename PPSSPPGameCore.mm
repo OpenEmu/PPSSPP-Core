@@ -38,21 +38,47 @@
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
+#include "Common/GraphicsContext.h"
+#include "Common/LogManager.h"
 
-#define SAMPLERATE 44100
-#define SIZESOUNDBUFFER ((SAMPLERATE / 30) * 4)
+#define AUDIO_FREQ 44100
+#define AUDIO_CHANNELS 2
+#define AUDIO_SAMPLES 2048
+#define AUDIO_SAMPLESIZE 16
+#define AUDIO_BUFFERS 5
+#define AUDIO_BUFFERSIZE (sizeof(short)*AUDIO_BUFFERS*AUDIO_CHANNELS*AUDIO_SAMPLES)
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
-    uint16_t *_soundBuffer;
+    char *_soundBuffer;
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
     float _frameInterval;
+
+    GraphicsContext *graphicsContext;
 }
 @end
 
 @implementation PPSSPPGameCore
+
+class GLDummyGraphicsContext : public DummyGraphicsContext {
+public:
+    GLDummyGraphicsContext() {
+
+        extern void CheckGLExtensions();
+
+        CheckGLExtensions();
+        draw_ = Draw::T3DCreateGLContext();
+    }
+    ~GLDummyGraphicsContext() { delete draw_; }
+
+    Draw::DrawContext *GetDrawContext() override {
+        return draw_;
+    }
+private:
+    Draw::DrawContext *draw_;
+};
 
 - (id)init
 {
@@ -60,8 +86,8 @@
 
     if(self)
     {
-        _soundBuffer = (uint16_t *)malloc(SIZESOUNDBUFFER * sizeof(uint16_t));
-        memset(_soundBuffer, 0, SIZESOUNDBUFFER * sizeof(uint16_t));
+        _soundBuffer = (char *)malloc(AUDIO_BUFFERSIZE);
+        memset(_soundBuffer, 0, AUDIO_BUFFERSIZE);
     }
 
     return self;
@@ -92,6 +118,8 @@
         [fileManager copyItemAtPath:fontSource toPath:fontDestination error:nil];
     }
 
+    LogManager::Init();
+
     g_Config.Load("");
 
     NSString *directoryString      = [supportDirectoryPath stringByAppendingString:@"/"];
@@ -103,12 +131,14 @@
     g_Config.iShowFPSCounter       = true;
     g_Config.bFrameSkipUnthrottle  = false;
     g_Config.bVertexDecoderJit     = true;
+    g_Config.iGPUBackend           = GPU_BACKEND_OPENGL;
+    g_Config.bSoftwareRendering    = false;
 
     g_Config.bSeparateIOThread = true;
     g_Config.bSeparateCPUThread = false;
     g_Config.bSeparateSASThread = true;
     
-    _coreParam.cpuCore      = CPU_CORE_JIT;
+    _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
     _coreParam.fileToStart  = [path UTF8String];
@@ -148,10 +178,15 @@
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
 
-        extern void CheckGLExtensions();
-        CheckGLExtensions();
+        graphicsContext = new GLDummyGraphicsContext;
+
+
         NativeInit(0, nil, nil, [resourcePath UTF8String], nil, false);
-        NativeInitGraphics(0);
+
+        _coreParam.graphicsContext = graphicsContext;
+        _coreParam.thin3d = graphicsContext ? graphicsContext->GetDrawContext() : nullptr;
+
+        NativeInitGraphics(graphicsContext);
     }
 
     if(_shouldReset)
@@ -170,15 +205,16 @@
 		host->UpdateDisassembly();
     }
 
-    NativeRender(0);
+    NativeRender(graphicsContext);
+
 
     float vps, fps;
     __DisplayGetFPS(&vps, &_frameInterval, &fps);
     
     if(_frameInterval <= 0) _frameInterval = 60;
 
-    int samplesWritten = NativeMix((short *)_soundBuffer, ceil(SAMPLERATE / _frameInterval));
-    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(uint16_t) * samplesWritten * 2];
+    int samplesWritten = NativeMix((short *)_soundBuffer, AUDIO_BUFFERS*AUDIO_SAMPLES);
+    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(short) * AUDIO_CHANNELS * samplesWritten];
 }
 
 # pragma mark - Video
@@ -212,7 +248,7 @@
 
 - (double)audioSampleRate
 {
-    return SAMPLERATE;
+    return  AUDIO_FREQ;
 }
 
 # pragma mark - Save States
