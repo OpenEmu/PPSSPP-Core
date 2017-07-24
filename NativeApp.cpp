@@ -29,6 +29,7 @@
 
 #include "Common/LogManager.h"
 
+#include "Core/Core.h"
 #include "Core/CoreTiming.h"
 #include "Core/Host.h"
 #include "Core/System.h"
@@ -39,20 +40,25 @@
 
 #include "gfx/gl_lost_manager.h"
 
-#include "gfx_es2/fbo.h"
-#include "GPU/GLES/GLStateCache.h"
+#include "Common/GraphicsContext.h"
+#include "gfx/GLStateCache.h"
 #include "GPU/GPUState.h"
 
 #include "input/input_state.h"
 
 #include "UI/OnScreenDisplay.h"
 
-InputState input_state;
+KeyInput input_state;
 OnScreenMessages osm;
+
+// Here's where we store the OpenEmu framebuffer to bind for final rendering
+extern int framebuffer;
 
 class AndroidLogger : public LogListener
 {
 public:
+    void Log(const LogMessage &msg) override{};
+
 	void Log(LogTypes::LOG_LEVELS level, const char *msg)
 	{
 		switch (level)
@@ -119,7 +125,6 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 
     logger = new AndroidLogger();
 
-	LogManager::Init();
 	LogManager *logman = LogManager::GetInstance();
 	ILOG("Logman: %p", logman);
 
@@ -137,6 +142,8 @@ void NativeInitGraphics(GraphicsContext *graphicsContext)
 {
     // Save framebuffer to later be bound again
     glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
+
+    Core_SetGraphicsContext(graphicsContext);
 
     gl_lost_manager_init();
 }
@@ -161,7 +168,7 @@ void NativeRender(GraphicsContext *graphicsContext)
     }
 }
 
-void NativeUpdate(InputState &input) {}
+void NativeUpdate() {}
 
 void NativeShutdownGraphics()
 {

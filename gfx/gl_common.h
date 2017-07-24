@@ -14,6 +14,7 @@ typedef char GLchar;
 // OpenEmu will not use GLEW
 //#include "GL/glew.h"
 #if defined(__APPLE__)
+#include <OpenGL/gl.h>
 #include <OpenGL/gl3.h>
 #include <OpenGL/gl3ext.h>
 #else
@@ -38,7 +39,7 @@ typedef char GLchar;
 #define GL_MAX_EXT 0x8008
 #endif
 
-#if defined(ANDROID) || defined(BLACKBERRY)
+#if defined(__ANDROID__)
 #include <EGL/egl.h>
 // Additional extensions not included in GLES2/gl2ext.h from the NDK
 
@@ -55,12 +56,13 @@ typedef void (EGLAPIENTRYP PFNGLDRAWTEXTURENVPROC) (GLuint texture, GLuint sampl
 extern PFNGLDRAWTEXTURENVPROC glDrawTextureNV;
 #ifndef ARM64
 typedef void (EGLAPIENTRYP PFNGLBLITFRAMEBUFFERNVPROC) (
-                                                        GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1,
-                                                        GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1,
-                                                        GLbitfield mask, GLenum filter);
+GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1,
+GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1,
+GLbitfield mask, GLenum filter);
 #endif
 extern PFNGLBLITFRAMEBUFFERNVPROC glBlitFramebufferNV;
 
+#ifdef IOS
 extern PFNGLDISCARDFRAMEBUFFEREXTPROC glDiscardFramebufferEXT;
 extern PFNGLGENVERTEXARRAYSOESPROC glGenVertexArraysOES;
 extern PFNGLBINDVERTEXARRAYOESPROC glBindVertexArrayOES;
@@ -72,17 +74,16 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 #define glBindVertexArray glBindVertexArrayOES
 #define glDeleteVertexArrays glDeleteVertexArraysOES
 #define glIsVertexArray glIsVertexArrayOES
+#endif
 
 #endif
 
-#if !defined(BLACKBERRY)
 #ifndef GL_READ_FRAMEBUFFER
 #define GL_READ_FRAMEBUFFER GL_FRAMEBUFFER
 #define GL_DRAW_FRAMEBUFFER GL_FRAMEBUFFER
 #endif
 #ifndef GL_DEPTH_COMPONENT24
 #define GL_DEPTH_COMPONENT24 GL_DEPTH_COMPONENT24_OES
-#endif
 #endif
 
 #ifndef GL_RGBA8
@@ -97,7 +98,7 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 
 
 // OpenEmu workaraounds for limitations in Apple's OpenGL
-
+#define GL_COMPUTE_SHADER 0x91B9
 #define GL_RENDERBUFFER_EXT GL_RENDERBUFFER
 #define GL_FRAMEBUFFER_EXT GL_FRAMEBUFFER
 #define GL_FRAMEBUFFER_COMPLETE_EXT GL_FRAMEBUFFER_COMPLETE
