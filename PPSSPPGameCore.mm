@@ -123,11 +123,11 @@ private:
     g_Config.Load("");
 
     NSString *directoryString      = [supportDirectoryPath stringByAppendingString:@"/"];
-    g_Config.currentDirectory      = [directoryString UTF8String];
-    g_Config.externalDirectory     = [directoryString UTF8String];
-    g_Config.memStickDirectory     = [directoryString UTF8String];
-    g_Config.flash0Directory       = [directoryString UTF8String];
-    g_Config.internalDataDirectory = [directoryString UTF8String];
+    g_Config.currentDirectory      = directoryString.fileSystemRepresentation;
+    g_Config.externalDirectory     = directoryString.fileSystemRepresentation;
+    g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
+    g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
+    g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
     g_Config.iShowFPSCounter       = true;
     g_Config.bFrameSkipUnthrottle  = false;
     g_Config.bVertexDecoderJit     = true;
@@ -141,7 +141,7 @@ private:
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
-    _coreParam.fileToStart  = [path UTF8String];
+    _coreParam.fileToStart  = path.fileSystemRepresentation;
     _coreParam.mountIso     = "";
     _coreParam.startPaused  = false;
     _coreParam.printfEmuLog = false;
@@ -181,7 +181,7 @@ private:
         graphicsContext = new GLDummyGraphicsContext;
 
 
-        NativeInit(0, nil, nil, [resourcePath UTF8String], nil, false);
+        NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil, false);
 
         _coreParam.graphicsContext = graphicsContext;
         _coreParam.thin3d = graphicsContext ? graphicsContext->GetDrawContext() : nullptr;
@@ -262,14 +262,14 @@ static void _OESaveStateCallback(bool status, std::string message, void *cbUserD
 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    SaveState::Save([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized) SaveState::Process();
 }
 
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    SaveState::Load([fileName UTF8String], _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Load(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized) SaveState::Process();
 }
 
