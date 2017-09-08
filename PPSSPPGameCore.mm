@@ -29,28 +29,27 @@
 #import <OpenGL/gl.h>
 
 #include "base/NativeApp.h"
+#include "base/timeutil.h"
 
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
-#include "Core/HLE/sceDisplay.h"
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
 
-#define AUDIO_FREQ 44100
-#define AUDIO_CHANNELS 2
-#define AUDIO_SAMPLES 2048
-#define AUDIO_SAMPLESIZE 16
-#define AUDIO_BUFFERS 5
-#define AUDIO_BUFFERSIZE (sizeof(short)*AUDIO_BUFFERS*AUDIO_CHANNELS*AUDIO_SAMPLES)
+#define AUDIO_FREQ          44100
+#define AUDIO_CHANNELS      2
+#define AUDIO_SAMPLES       2048
+#define AUDIO_SAMPLESIZE    sizeof(int16_t)
+#define AUDIO_BUFFERSIZE   (AUDIO_SAMPLESIZE * AUDIO_CHANNELS * AUDIO_SAMPLES)
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient>
 {
-    char *_soundBuffer;
+    int16_t *_soundBuffer;
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
@@ -86,7 +85,7 @@ private:
 
     if(self)
     {
-        _soundBuffer = (char *)malloc(AUDIO_BUFFERSIZE);
+        _soundBuffer = (int16_t *)malloc(AUDIO_BUFFERSIZE);
         memset(_soundBuffer, 0, AUDIO_BUFFERSIZE);
     }
 
@@ -128,16 +127,8 @@ private:
     g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
     g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
-    g_Config.iShowFPSCounter       = true;
-    g_Config.bFrameSkipUnthrottle  = false;
-    g_Config.bVertexDecoderJit     = true;
     g_Config.iGPUBackend           = GPU_BACKEND_OPENGL;
-    g_Config.bSoftwareRendering    = false;
 
-    g_Config.bSeparateIOThread = true;
-    g_Config.bSeparateCPUThread = false;
-    g_Config.bSeparateSASThread = true;
-    
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
@@ -146,8 +137,7 @@ private:
     _coreParam.startPaused  = false;
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
-    _coreParam.unthrottle   = true;
- 
+
     _coreParam.renderWidth  = 480;
     _coreParam.renderHeight = 272;
     _coreParam.pixelWidth   = 480;
@@ -180,7 +170,6 @@ private:
 
         graphicsContext = new GLDummyGraphicsContext;
 
-
         NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil, false);
 
         _coreParam.graphicsContext = graphicsContext;
@@ -204,17 +193,17 @@ private:
         host->BootDone();
 		host->UpdateDisassembly();
     }
+    u64 cyclesBefore, cyclesAfter;
+    cyclesBefore = CoreTiming::GetTicks();
 
     NativeRender(graphicsContext);
 
+    cyclesAfter = CoreTiming::GetTicks();
 
-    float vps, fps;
-    __DisplayGetFPS(&vps, &_frameInterval, &fps);
-    
-    if(_frameInterval <= 0) _frameInterval = 60;
+    _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
 
-    int samplesWritten = NativeMix((short *)_soundBuffer, AUDIO_BUFFERS*AUDIO_SAMPLES);
-    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:sizeof(short) * AUDIO_CHANNELS * samplesWritten];
+    int samplesWritten = NativeMix(_soundBuffer, AUDIO_BUFFERSIZE / 4);
+    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * samplesWritten];
 }
 
 # pragma mark - Video
@@ -243,12 +232,12 @@ private:
 
 - (NSUInteger)channelCount
 {
-    return 2;
+    return AUDIO_CHANNELS;
 }
 
 - (double)audioSampleRate
 {
-    return  AUDIO_FREQ;
+    return AUDIO_FREQ;
 }
 
 # pragma mark - Save States

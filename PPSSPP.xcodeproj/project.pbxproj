@@ -338,7 +338,6 @@
 		8CAFC2E21785D19800647A96 /* sceChnnlsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8871785B3C200647A96 /* sceChnnlsv.cpp */; };
 		8CAFC2E41785D19800647A96 /* sceCtrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8891785B3C200647A96 /* sceCtrl.cpp */; };
 		8CAFC2E61785D19800647A96 /* sceDeflt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA88B1785B3C200647A96 /* sceDeflt.cpp */; };
-		8CAFC2E81785D19800647A96 /* sceDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA88D1785B3C200647A96 /* sceDisplay.cpp */; };
 		8CAFC2EA1785D19800647A96 /* sceDmac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA88F1785B3C200647A96 /* sceDmac.cpp */; };
 		8CAFC2EC1785D19800647A96 /* sceFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8911785B3C200647A96 /* sceFont.cpp */; };
 		8CAFC2EE1785D1B200647A96 /* sceGameUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8931785B3C200647A96 /* sceGameUpdate.cpp */; };
@@ -386,6 +385,7 @@
 		8CB74E4E1786031300C652A7 /* libkirk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1D31785C7AC00647A96 /* libkirk.a */; };
 		8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC1DB1785C7B300647A96 /* libxbrz.a */; };
 		8CBB2C1F1790535A00349818 /* ppge_atlas.zim in Resources */ = {isa = PBXBuildFile; fileRef = 8CBB2C1E1790535600349818 /* ppge_atlas.zim */; };
+		8CC1C46D1F634296009E6B92 /* sceDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1C46C1F634296009E6B92 /* sceDisplay.cpp */; };
 		8CC8066B18C27BBB00AB1339 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8066A18C27BAA00AB1339 /* FileSystem.cpp */; };
 		8CC8066E18C27C1400AB1339 /* ReplaceTables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8066D18C27C1000AB1339 /* ReplaceTables.cpp */; };
 		8CC8067118C27C4000AB1339 /* sceMt19937.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8067018C27C3B00AB1339 /* sceMt19937.cpp */; };
@@ -1431,6 +1431,7 @@
 		8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = SDKROOT; };
 		8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OEPSPSystemResponderClient.h; path = ../OpenEmu/PSP/OEPSPSystemResponderClient.h; sourceTree = "<group>"; };
 		8CBB2C1E1790535600349818 /* ppge_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppge_atlas.zim; sourceTree = "<group>"; };
+		8CC1C46C1F634296009E6B92 /* sceDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sceDisplay.cpp; path = Core/HLE/sceDisplay.cpp; sourceTree = "<group>"; };
 		8CC4D25E178C7EC00094E987 /* NativeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NativeApp.cpp; sourceTree = "<group>"; };
 		8CC8066A18C27BAA00AB1339 /* FileSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileSystem.cpp; sourceTree = "<group>"; };
 		8CC8066C18C27C1000AB1339 /* ReplaceTables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplaceTables.h; sourceTree = "<group>"; };
@@ -3006,6 +3007,7 @@
 		8CAFC10A1785B60F00647A96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8CC1C46A1F634224009E6B92 /* Core */,
 				8CAFA7D71785B3C200647A96 /* ppsspp */,
 				8C8447A9186B8DD500BE03D5 /* gfx */,
 				8CD63AF2178DB87A0039164C /* gfx_es2 */,
@@ -3037,6 +3039,22 @@
 				8CBB2C1E1790535600349818 /* ppge_atlas.zim */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		8CC1C46A1F634224009E6B92 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8CC1C46B1F634260009E6B92 /* HLE */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		8CC1C46B1F634260009E6B92 /* HLE */ = {
+			isa = PBXGroup;
+			children = (
+				8CC1C46C1F634296009E6B92 /* sceDisplay.cpp */,
+			);
+			name = HLE;
 			sourceTree = "<group>";
 		};
 		8CD63AF2178DB87A0039164C /* gfx_es2 */ = {
@@ -3705,7 +3723,6 @@
 				8CAFC2E41785D19800647A96 /* sceCtrl.cpp in Sources */,
 				8C844742186B767200BE03D5 /* proAdhoc.cpp in Sources */,
 				8CAFC2E61785D19800647A96 /* sceDeflt.cpp in Sources */,
-				8CAFC2E81785D19800647A96 /* sceDisplay.cpp in Sources */,
 				8CAFC2EA1785D19800647A96 /* sceDmac.cpp in Sources */,
 				8CAFC2EC1785D19800647A96 /* sceFont.cpp in Sources */,
 				3EAA4E321D9DCB1E004F5179 /* WaveFile.cpp in Sources */,
@@ -3814,6 +3831,7 @@
 				8CB74E131785F7E400C652A7 /* scePauth.cpp in Sources */,
 				8CB74E151785F7FA00C652A7 /* scePspNpDrm_user.cpp in Sources */,
 				8C7445501786DC9D0008BE6A /* git-version.cpp in Sources */,
+				8CC1C46D1F634296009E6B92 /* sceDisplay.cpp in Sources */,
 				8CD63AFC178DCEC60039164C /* sceCcc.cpp in Sources */,
 				8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */,
 				8CA153F417C412410003002D /* VirtualDiscFileSystem.cpp in Sources */,

@@ -154,6 +154,8 @@ void NativeRender(GraphicsContext *graphicsContext)
 {
 	glstate.Restore();
 
+    PSP_BeginHostFrame();
+
     s64 blockTicks = usToCycles(1000000 / 10);
     while(coreState == CORE_RUNNING)
     {
@@ -166,6 +168,8 @@ void NativeRender(GraphicsContext *graphicsContext)
 		// set back to running for the next frame
 		coreState = CORE_RUNNING;
     }
+
+    PSP_EndHostFrame();
 }
 
 void NativeUpdate() {}
