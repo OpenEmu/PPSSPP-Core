@@ -43,7 +43,7 @@
 
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
-#define AUDIO_SAMPLES       2048
+#define AUDIO_SAMPLES       8192
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
 #define AUDIO_BUFFERSIZE   (AUDIO_SAMPLESIZE * AUDIO_CHANNELS * AUDIO_SAMPLES)
 
