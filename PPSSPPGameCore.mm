@@ -201,6 +201,7 @@ private:
     cyclesAfter = CoreTiming::GetTicks();
 
     _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
+    if (_frameInterval < 1) _frameInterval = 60;
 
     int samplesWritten = NativeMix(_soundBuffer, AUDIO_BUFFERSIZE / 4);
     [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * samplesWritten];
