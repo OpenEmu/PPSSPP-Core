@@ -39,7 +39,6 @@
 		3E3044831F21648A00B06252 /* ShaderManagerGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E30445D1F21463100B06252 /* ShaderManagerGLES.cpp */; };
 		3E3044841F21648A00B06252 /* StateMappingGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E30445E1F21463100B06252 /* StateMappingGLES.cpp */; };
 		3E3044851F21648A00B06252 /* StencilBufferGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E30445F1F21463100B06252 /* StencilBufferGLES.cpp */; };
-		3E3044861F21648A00B06252 /* TextureCacheGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044601F21463100B06252 /* TextureCacheGLES.cpp */; };
 		3E3044871F21648A00B06252 /* TextureScalerGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044611F21463100B06252 /* TextureScalerGLES.cpp */; };
 		3E3044881F21648A00B06252 /* VertexShaderGeneratorGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044621F21463100B06252 /* VertexShaderGeneratorGLES.cpp */; };
 		3E3044891F21663000B06252 /* compat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F2BE1C249AF200110A77 /* compat.cpp */; };
@@ -76,6 +75,8 @@
 		3ED3F3B91F23E24C00834023 /* thin3d_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F3B71F23E23C00834023 /* thin3d_gl.cpp */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
+		876DA2031FBCBAF400CE8A5A /* TextureCacheGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876DA1FF1FBCBAF400CE8A5A /* TextureCacheGLES.cpp */; };
+		876DA2041FBCBAF400CE8A5A /* TextureCacheCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876DA2011FBCBAF400CE8A5A /* TextureCacheCommon.cpp */; };
 		87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E051301B1028FC00E870E1 /* libsfmt19937.a */; };
 		87E0513A1B102C2A00E870E1 /* SFMT.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E051381B102C2A00E870E1 /* SFMT.c */; };
 		87E0513D1B102D4000E870E1 /* sceAdler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E0513B1B102D4000E870E1 /* sceAdler.cpp */; };
@@ -257,7 +258,6 @@
 		8C9F4CD01A9B2482002719B3 /* DrawEngineCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CCC1A9B2481002719B3 /* DrawEngineCommon.cpp */; };
 		8C9F4CD11A9B2482002719B3 /* FramebufferCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CCE1A9B2482002719B3 /* FramebufferCommon.cpp */; };
 		8C9F4CD41A9B2494002719B3 /* SoftwareTransformCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD21A9B2494002719B3 /* SoftwareTransformCommon.cpp */; };
-		8C9F4CD71A9B24A5002719B3 /* TextureCacheCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD51A9B24A5002719B3 /* TextureCacheCommon.cpp */; };
 		8C9F4CD91A9B24CD002719B3 /* VertexDecoderX86.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD81A9B24CD002719B3 /* VertexDecoderX86.cpp */; };
 		8C9F4D281A9B25A5002719B3 /* SplineCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4D271A9B25A5002719B3 /* SplineCommon.cpp */; };
 		8C9F4D4C1A9B285F002719B3 /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4D3E1A9B285F002719B3 /* decode.c */; };
@@ -592,6 +592,9 @@
 		3ED3F3B71F23E23C00834023 /* thin3d_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thin3d_gl.cpp; sourceTree = "<group>"; };
 		8706346A1C2516A1007FAA2F /* knownfuncs.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownfuncs.ini; sourceTree = "<group>"; };
 		8706346B1C2516A1007FAA2F /* langregion.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = langregion.ini; sourceTree = "<group>"; };
+		876DA1FF1FBCBAF400CE8A5A /* TextureCacheGLES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureCacheGLES.cpp; sourceTree = "<group>"; };
+		876DA2011FBCBAF400CE8A5A /* TextureCacheCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureCacheCommon.cpp; sourceTree = "<group>"; };
+		876DA2021FBCBAF400CE8A5A /* TextureCacheCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureCacheCommon.h; sourceTree = "<group>"; };
 		87E051301B1028FC00E870E1 /* libsfmt19937.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsfmt19937.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E051351B102C2A00E870E1 /* SFMT-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-common.h"; path = "sfmt19937/SFMT-common.h"; sourceTree = "<group>"; };
 		87E051361B102C2A00E870E1 /* SFMT-params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-params.h"; path = "sfmt19937/SFMT-params.h"; sourceTree = "<group>"; };
@@ -1522,6 +1525,32 @@
 				3EAA4E5C1D9DD6A7004F5179 /* IRRegCache.h */,
 			);
 			name = IR;
+			sourceTree = "<group>";
+		};
+		876DA1FD1FBCBAF400CE8A5A /* GPU */ = {
+			isa = PBXGroup;
+			children = (
+				876DA1FE1FBCBAF400CE8A5A /* GLES */,
+				876DA2001FBCBAF400CE8A5A /* Common */,
+			);
+			path = GPU;
+			sourceTree = "<group>";
+		};
+		876DA1FE1FBCBAF400CE8A5A /* GLES */ = {
+			isa = PBXGroup;
+			children = (
+				876DA1FF1FBCBAF400CE8A5A /* TextureCacheGLES.cpp */,
+			);
+			path = GLES;
+			sourceTree = "<group>";
+		};
+		876DA2001FBCBAF400CE8A5A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				876DA2011FBCBAF400CE8A5A /* TextureCacheCommon.cpp */,
+				876DA2021FBCBAF400CE8A5A /* TextureCacheCommon.h */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		87E051341B102C0A00E870E1 /* sfmt19937 */ = {
@@ -3008,6 +3037,7 @@
 			isa = PBXGroup;
 			children = (
 				8CC1C46A1F634224009E6B92 /* Core */,
+				876DA1FD1FBCBAF400CE8A5A /* GPU */,
 				8CAFA7D71785B3C200647A96 /* ppsspp */,
 				8C8447A9186B8DD500BE03D5 /* gfx */,
 				8CD63AF2178DB87A0039164C /* gfx_es2 */,
@@ -3590,7 +3620,7 @@
 				3E3044831F21648A00B06252 /* ShaderManagerGLES.cpp in Sources */,
 				3E3044841F21648A00B06252 /* StateMappingGLES.cpp in Sources */,
 				3E3044851F21648A00B06252 /* StencilBufferGLES.cpp in Sources */,
-				3E3044861F21648A00B06252 /* TextureCacheGLES.cpp in Sources */,
+				876DA2031FBCBAF400CE8A5A /* TextureCacheGLES.cpp in Sources */,
 				3E3044871F21648A00B06252 /* TextureScalerGLES.cpp in Sources */,
 				3E3044881F21648A00B06252 /* VertexShaderGeneratorGLES.cpp in Sources */,
 				3E30447B1F2163F500B06252 /* ShaderCommon.cpp in Sources */,
@@ -3618,7 +3648,7 @@
 				8CAFC1871785C3BE00647A96 /* NullGpu.cpp in Sources */,
 				8C1B6E3B1993C7C100ABEB5D /* TransformCommon.cpp in Sources */,
 				8CA153F717C4125D0003002D /* Clipper.cpp in Sources */,
-				8C9F4CD71A9B24A5002719B3 /* TextureCacheCommon.cpp in Sources */,
+				876DA2041FBCBAF400CE8A5A /* TextureCacheCommon.cpp in Sources */,
 				8C2D4EF11824011100E65166 /* TextureDecoder.cpp in Sources */,
 				8C2D4EF41824011100E65166 /* VertexDecoderCommon.cpp in Sources */,
 				8CA153FA17C4125D0003002D /* Lighting.cpp in Sources */,
