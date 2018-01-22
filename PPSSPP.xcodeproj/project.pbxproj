@@ -78,10 +78,10 @@
 		3EDB61FA2012AFBD00CF55BE /* sceUsbCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB61F82012AFBC00CF55BE /* sceUsbCam.cpp */; };
 		3EDB61FD2012B13F00CF55BE /* dataconv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB61FC2012B13E00CF55BE /* dataconv.cpp */; };
 		3EDB62002012B18700CF55BE /* BlobFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */; };
-		3EDB62012012B73500CF55BE /* sceDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA88D1785B3C200647A96 /* sceDisplay.cpp */; };
 		3EDB62022012B76900CF55BE /* TextureCacheCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD51A9B24A5002719B3 /* TextureCacheCommon.cpp */; };
 		3EDB62032012B76900CF55BE /* TextureCacheGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044601F21463100B06252 /* TextureCacheGLES.cpp */; };
 		3EDB62042012B96900CF55BE /* thin3d_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3C41C249AF400110A77 /* thin3d_gl.cpp */; };
+		3EDB620B20156D2500CF55BE /* sceDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB620A20156D2500CF55BE /* sceDisplay.cpp */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
 		87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E051301B1028FC00E870E1 /* libsfmt19937.a */; };
@@ -607,6 +607,7 @@
 		3EDB61FC2012B13E00CF55BE /* dataconv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dataconv.cpp; sourceTree = "<group>"; };
 		3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobFileSystem.cpp; sourceTree = "<group>"; };
 		3EDB61FF2012B18700CF55BE /* BlobFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobFileSystem.h; sourceTree = "<group>"; };
+		3EDB620A20156D2500CF55BE /* sceDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceDisplay.cpp; sourceTree = "<group>"; };
 		8706346A1C2516A1007FAA2F /* knownfuncs.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownfuncs.ini; sourceTree = "<group>"; };
 		8706346B1C2516A1007FAA2F /* langregion.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = langregion.ini; sourceTree = "<group>"; };
 		87E051301B1028FC00E870E1 /* libsfmt19937.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsfmt19937.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1534,6 +1535,30 @@
 			name = IR;
 			sourceTree = "<group>";
 		};
+		3EDB620720156CA900CF55BE /* Compatibility */ = {
+			isa = PBXGroup;
+			children = (
+				3EDB620820156CCD00CF55BE /* Core */,
+			);
+			path = Compatibility;
+			sourceTree = "<group>";
+		};
+		3EDB620820156CCD00CF55BE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3EDB620920156CDA00CF55BE /* HLE */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3EDB620920156CDA00CF55BE /* HLE */ = {
+			isa = PBXGroup;
+			children = (
+				3EDB620A20156D2500CF55BE /* sceDisplay.cpp */,
+			);
+			path = HLE;
+			sourceTree = "<group>";
+		};
 		87E051341B102C0A00E870E1 /* sfmt19937 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2279,6 +2304,8 @@
 		8CAFA78E1785AA9900647A96 = {
 			isa = PBXGroup;
 			children = (
+				8C8447A9186B8DD500BE03D5 /* gfx */,
+				3EDB620720156CA900CF55BE /* Compatibility */,
 				8CAFC10A1785B60F00647A96 /* Classes */,
 				8CAFC1181785B63900647A96 /* Supporting Files */,
 				8CAFA79C1785AE2A00647A96 /* Frameworks and Libraries */,
@@ -3024,7 +3051,6 @@
 			isa = PBXGroup;
 			children = (
 				8CAFA7D71785B3C200647A96 /* ppsspp */,
-				8C8447A9186B8DD500BE03D5 /* gfx */,
 				8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */,
 				8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */,
 				8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */,
@@ -3667,8 +3693,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EDB62012012B73500CF55BE /* sceDisplay.cpp in Sources */,
 				3E3044791F2163C100B06252 /* AVIDump.cpp in Sources */,
+				3EDB620B20156D2500CF55BE /* sceDisplay.cpp in Sources */,
 				3E30447A1F2163C100B06252 /* KUBridge.cpp in Sources */,
 				3E7193391CE4DD8C007E791C /* RamCachingFileLoader.cpp in Sources */,
 				3E7193311CE4DB3B007E791C /* SasReverb.cpp in Sources */,
@@ -4343,6 +4369,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Compatibility\"",
 					"\"$(SRCROOT)/ppsspp\"",
 					"\"$(SRCROOT)/ppsspp/Common\"",
 					"\"$(SRCROOT)/ppsspp/ext/native\"",
@@ -4368,6 +4395,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Compatibility\"",
 					"\"$(SRCROOT)/ppsspp\"",
 					"\"$(SRCROOT)/ppsspp/Common\"",
 					"\"$(SRCROOT)/ppsspp/ext/native\"",
