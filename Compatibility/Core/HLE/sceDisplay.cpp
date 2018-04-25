@@ -406,14 +406,15 @@ static bool IsRunningSlow() {
 		// Look at only the last 15 samples (starting at the 14th sample behind current.)
 		int rangeStart = fpsHistoryPos - std::min(fpsHistoryValid, 14);
 
-		double best = 0.0f;
+		double best = 0.0;
 		for (int i = rangeStart; i <= fpsHistoryPos; ++i) {
 			// rangeStart may have been negative if near a wrap around.
 			int index = (fpsHistorySize + i) % fpsHistorySize;
 			best = std::max(fpsHistory[index], best);
 		}
 
-		return best < 59.94;
+		// Note that SYSPROP_DISPLAY_REFRESH_RATE is multiplied by 1000.
+		return best < System_GetPropertyInt(SYSPROP_DISPLAY_REFRESH_RATE) * (1.0 / 1001.0);
 	}
 
 	return false;
@@ -547,26 +548,25 @@ static void DoFrameTiming(bool &throttle, bool &skipFrame, float timestep) {
 	}
 
 // don't sleep here, OpenEmu already waits the correct amount of time
-
-//	if (curFrameTime < nextFrameTime && throttle) {
-//		// If time gap is huge just jump (somebody unthrottled)
-//		if (nextFrameTime - curFrameTime > 2*scaledTimestep) {
-//			nextFrameTime = curFrameTime;
-//		}
-//        else {
-//			// Wait until we've caught up.
-//			while (time_now_d() < nextFrameTime) {
+//
+//    if (curFrameTime < nextFrameTime && throttle) {
+//        // If time gap is huge just jump (somebody unthrottled)
+//        if (nextFrameTime - curFrameTime > 2*scaledTimestep) {
+//            nextFrameTime = curFrameTime;
+//        } else {
+//            // Wait until we've caught up.
+//            while (time_now_d() < nextFrameTime) {
 //#ifdef _WIN32
-//				sleep_ms(1); // Sleep for 1ms on this thread
+//                sleep_ms(1); // Sleep for 1ms on this thread
 //#else
-//				const double left = nextFrameTime - curFrameTime;
-//				usleep((long)(left * 1000000));
+//                const double left = nextFrameTime - curFrameTime;
+//                usleep((long)(left * 1000000));
 //#endif
-//				time_update();
-//			}
-//		}
-//		curFrameTime = time_now_d();
-//	}
+//                time_update();
+//            }
+//        }
+//        curFrameTime = time_now_d();
+//    }
 
 	lastFrameTime = nextFrameTime;
 	wasPaused = false;
@@ -828,13 +828,29 @@ static u32 sceDisplaySetMode(int displayMode, int displayWidth, int displayHeigh
 	return DisplayWaitForVblanks("display mode", 1);
 }
 
-// Some games (GTA) never call this during gameplay, so bad place to put a framerate counter.
-static u32 sceDisplaySetFramebuf(u32 topaddr, int linesize, int pixelformat, int sync) {
+void __DisplaySetFramebuf(u32 topaddr, int linesize, int pixelFormat, int sync) {
 	FrameBufferState fbstate = {0};
 	fbstate.topaddr = topaddr;
-	fbstate.fmt = (GEBufferFormat)pixelformat;
+	fbstate.fmt = (GEBufferFormat)pixelFormat;
 	fbstate.stride = linesize;
 
+	if (sync == PSP_DISPLAY_SETBUF_IMMEDIATE) {
+		// Write immediately to the current framebuffer parameters
+		framebuf = fbstate;
+		gpu->SetDisplayFramebuffer(framebuf.topaddr, framebuf.stride, framebuf.fmt);
+	} else {
+		// Delay the write until vblank
+		latchedFramebuf = fbstate;
+		framebufIsLatched = true;
+
+		// If we update the format or stride, this affects the current framebuf immediately.
+		framebuf.fmt = latchedFramebuf.fmt;
+		framebuf.stride = latchedFramebuf.stride;
+	}
+}
+
+// Some games (GTA) never call this during gameplay, so bad place to put a framerate counter.
+u32 sceDisplaySetFramebuf(u32 topaddr, int linesize, int pixelformat, int sync) {
 	if (sync != PSP_DISPLAY_SETBUF_IMMEDIATE && sync != PSP_DISPLAY_SETBUF_NEXTFRAME) {
 		return hleLogError(SCEDISPLAY, SCE_KERNEL_ERROR_INVALID_MODE, "invalid sync mode");
 	}
@@ -852,7 +868,7 @@ static u32 sceDisplaySetFramebuf(u32 topaddr, int linesize, int pixelformat, int
 	}
 
 	if (sync == PSP_DISPLAY_SETBUF_IMMEDIATE) {
-		if (fbstate.fmt != latchedFramebuf.fmt || fbstate.stride != latchedFramebuf.stride) {
+		if ((GEBufferFormat)pixelformat != latchedFramebuf.fmt || linesize != latchedFramebuf.stride) {
 			return hleReportError(SCEDISPLAY, SCE_KERNEL_ERROR_INVALID_MODE, "must change latched framebuf first");
 		}
 	}
@@ -885,19 +901,7 @@ static u32 sceDisplaySetFramebuf(u32 topaddr, int linesize, int pixelformat, int
 		lastFlipCycles = CoreTiming::GetTicks();
 	}
 
-	if (sync == PSP_DISPLAY_SETBUF_IMMEDIATE) {
-		// Write immediately to the current framebuffer parameters
-		framebuf = fbstate;
-		gpu->SetDisplayFramebuffer(framebuf.topaddr, framebuf.stride, framebuf.fmt);
-	} else {
-		// Delay the write until vblank
-		latchedFramebuf = fbstate;
-		framebufIsLatched = true;
-
-		// If we update the format or stride, this affects the current framebuf immediately.
-		framebuf.fmt = latchedFramebuf.fmt;
-		framebuf.stride = latchedFramebuf.stride;
-	}
+	__DisplaySetFramebuf(topaddr, linesize, pixelformat, sync);
 
 	if (delayCycles > 0) {
 		// Okay, the game is going at too high a frame rate.  God of War and Fat Princess both do this.
@@ -913,10 +917,10 @@ static u32 sceDisplaySetFramebuf(u32 topaddr, int linesize, int pixelformat, int
 	}
 }
 
-bool __DisplayGetFramebuf(u8 **topaddr, u32 *linesize, u32 *pixelFormat, int latchedMode) {
+bool __DisplayGetFramebuf(PSPPointer<u8> *topaddr, u32 *linesize, u32 *pixelFormat, int latchedMode) {
 	const FrameBufferState &fbState = latchedMode == PSP_DISPLAY_SETBUF_NEXTFRAME ? latchedFramebuf : framebuf;
 	if (topaddr != nullptr)
-		*topaddr = Memory::GetPointer(fbState.topaddr);
+		(*topaddr).ptr = fbState.topaddr;
 	if (linesize != nullptr)
 		*linesize = fbState.stride;
 	if (pixelFormat != nullptr)

@@ -52,7 +52,9 @@ KeyInput input_state;
 OnScreenMessages osm;
 
 // Here's where we store the OpenEmu framebuffer to bind for final rendering
-extern int framebuffer;
+int framebuffer = 0;
+//  Define the defaultFBO from ppsspp
+extern GLint g_defaultFBO;
 
 class AndroidLogger : public LogListener
 {
@@ -138,10 +140,12 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     VFSRegister("", new DirectoryAssetReader(external_directory));
 }
 
-void NativeInitGraphics(GraphicsContext *graphicsContext)
+bool NativeInitGraphics(GraphicsContext *graphicsContext)
 {
-    // Save framebuffer to later be bound again
+    // Save framebuffer and set ppsspp default graphics framebuffer object
     glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
+
+    g_defaultFBO = framebuffer;
 
     Core_SetGraphicsContext(graphicsContext);
 
@@ -211,6 +215,4 @@ int System_GetPropertyInt(SystemProperty prop) {
     }
 }
 
-void NativeMessageReceived(const char *message, const char *value) {}
-
-
+void System_SendMessage(const char *command, const char *parameter){}
