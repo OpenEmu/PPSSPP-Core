@@ -54,6 +54,7 @@
     bool _isInitialized;
     bool _shouldReset;
     float _frameInterval;
+    float _sampleError;
 
     GraphicsContext *graphicsContext;
 }
@@ -202,9 +203,21 @@ private:
 
     _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
     if (_frameInterval < 1) _frameInterval = 60;
+  
+    float samplesPerFrame = AUDIO_FREQ / _frameInterval + _sampleError;
+    int sampToGen = (int)samplesPerFrame;
+    _sampleError = samplesPerFrame - (float)(sampToGen);
+    int samplesGenerated = 0;
+    int sampleCount = 0;
+    while (samplesGenerated < sampToGen) {
+        sampleCount = sampToGen % AUDIO_SAMPLES;
+        if (sampleCount == 0)
+          sampleCount = AUDIO_SAMPLES;
+        NativeMix(_soundBuffer, sampleCount);
+        samplesGenerated += sampleCount;
+    }
 
-    int samplesWritten = NativeMix(_soundBuffer, AUDIO_BUFFERSIZE / 4);
-    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * samplesWritten];
+    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * sampleCount];
 }
 
 # pragma mark - Video
@@ -239,6 +252,11 @@ private:
 - (double)audioSampleRate
 {
     return AUDIO_FREQ;
+}
+
+- (NSUInteger)audioBufferSizeForBuffer:(NSUInteger)buffer
+{
+    return [super audioBufferSizeForBuffer:buffer] * 4;
 }
 
 # pragma mark - Save States
