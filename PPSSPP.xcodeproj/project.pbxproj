@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		011829A520AC8EFD0030B347 /* PPSSPPAudioBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 011829A420AC8EFD0030B347 /* PPSSPPAudioBuffer.mm */; };
 		3DFCE410186F64170046C035 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.dylib */; };
 		3E3044401F2144E300B06252 /* MemArenaDarwin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */; };
 		3E3044751F21531300B06252 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC18C1785C48600647A96 /* OpenGL.framework */; };
@@ -516,6 +517,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011829A320AC8EFD0030B347 /* PPSSPPAudioBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPSSPPAudioBuffer.h; sourceTree = "<group>"; };
+		011829A420AC8EFD0030B347 /* PPSSPPAudioBuffer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PPSSPPAudioBuffer.mm; sourceTree = "<group>"; };
 		3DFCE40F186F64170046C035 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3E30443E1F2144E300B06252 /* DbgNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbgNew.h; sourceTree = "<group>"; };
 		3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemArenaDarwin.cpp; sourceTree = "<group>"; };
@@ -3054,6 +3057,8 @@
 				8CB3FB7A1786D2E500A3C50D /* OEPSPSystemResponderClient.h */,
 				8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */,
 				8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */,
+				011829A320AC8EFD0030B347 /* PPSSPPAudioBuffer.h */,
+				011829A420AC8EFD0030B347 /* PPSSPPAudioBuffer.mm */,
 				8CC4D25E178C7EC00094E987 /* NativeApp.cpp */,
 			);
 			name = Classes;
@@ -3520,6 +3525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011829A520AC8EFD0030B347 /* PPSSPPAudioBuffer.mm in Sources */,
 				3E3044D31F224F0900B06252 /* NativeApp.cpp in Sources */,
 				8CAFC1261785B6F700647A96 /* PPSSPPGameCore.mm in Sources */,
 			);

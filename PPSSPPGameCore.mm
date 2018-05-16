@@ -25,6 +25,7 @@
  */
 
 #import "PPSSPPGameCore.h"
+#import "PPSSPPAudioBuffer.h"
 #import <OpenEmuBase/OERingBuffer.h>
 #import <OpenGL/gl.h>
 
@@ -55,6 +56,7 @@
     bool _shouldReset;
     float _frameInterval;
     float _sampleError;
+    PPSSPPAudioBuffer *_ringBuffer;
 
     GraphicsContext *graphicsContext;
 }
@@ -203,21 +205,6 @@ private:
 
     _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
     if (_frameInterval < 1) _frameInterval = 60;
-  
-    float samplesPerFrame = AUDIO_FREQ / _frameInterval + _sampleError;
-    int sampToGen = (int)samplesPerFrame;
-    _sampleError = samplesPerFrame - (float)(sampToGen);
-    int samplesGenerated = 0;
-    int sampleCount = 0;
-    while (samplesGenerated < sampToGen) {
-        sampleCount = sampToGen % AUDIO_SAMPLES;
-        if (sampleCount == 0)
-          sampleCount = AUDIO_SAMPLES;
-        NativeMix(_soundBuffer, sampleCount);
-        samplesGenerated += sampleCount;
-    }
-
-    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * sampleCount];
 }
 
 # pragma mark - Video
@@ -254,9 +241,11 @@ private:
     return AUDIO_FREQ;
 }
 
-- (NSUInteger)audioBufferSizeForBuffer:(NSUInteger)buffer
+- (OERingBuffer *)ringBufferAtIndex:(NSUInteger)index
 {
-    return [super audioBufferSizeForBuffer:buffer] * 4;
+    if (!_ringBuffer)
+      _ringBuffer = [[PPSSPPAudioBuffer alloc] init];
+    return _ringBuffer;
 }
 
 # pragma mark - Save States
