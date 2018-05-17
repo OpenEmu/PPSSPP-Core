@@ -43,13 +43,10 @@
 
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
-#define AUDIO_SAMPLES       8192
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
-#define AUDIO_BUFFERSIZE   (AUDIO_SAMPLESIZE * AUDIO_CHANNELS * AUDIO_SAMPLES)
 
-@interface PPSSPPGameCore () <OEPSPSystemResponderClient>
+@interface PPSSPPGameCore () <OEPSPSystemResponderClient, OEAudioBuffer>
 {
-    int16_t *_soundBuffer;
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
@@ -78,24 +75,6 @@ public:
 private:
     Draw::DrawContext *draw_;
 };
-
-- (id)init
-{
-    self = [super init];
-
-    if(self)
-    {
-        _soundBuffer = (int16_t *)malloc(AUDIO_BUFFERSIZE);
-        memset(_soundBuffer, 0, AUDIO_BUFFERSIZE);
-    }
-
-    return self;
-}
-
-- (void)dealloc
-{
-    free(_soundBuffer);
-}
 
 # pragma mark - Execution
 
@@ -202,9 +181,6 @@ private:
 
     _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
     if (_frameInterval < 1) _frameInterval = 60;
-
-    int samplesWritten = NativeMix(_soundBuffer, AUDIO_BUFFERSIZE / 4);
-    [[self ringBufferAtIndex:0] write:_soundBuffer maxLength:AUDIO_CHANNELS * AUDIO_SAMPLESIZE * samplesWritten];
 }
 
 # pragma mark - Video
@@ -239,6 +215,27 @@ private:
 - (double)audioSampleRate
 {
     return AUDIO_FREQ;
+}
+
+- (id<OEAudioBuffer>)audioBufferAtIndex:(NSUInteger)index
+{
+    return self;
+}
+
+- (NSUInteger)read:(void *)buffer maxLength:(NSUInteger)len
+{
+    NativeMix((short *)buffer, (int)(len / (AUDIO_CHANNELS * sizeof(uint16_t))));
+    return len;
+}
+
+- (NSUInteger)write:(const void *)buffer maxLength:(NSUInteger)length
+{
+    return 0;
+}
+
+- (NSUInteger)length
+{
+    return AUDIO_FREQ / 15;
 }
 
 # pragma mark - Save States
