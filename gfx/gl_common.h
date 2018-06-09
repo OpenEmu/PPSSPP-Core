@@ -96,7 +96,6 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 #define GL_DEPTH24_STENCIL8_OES 0x88F0
 #endif
 
-
 // OpenEmu workaraounds for limitations in Apple's OpenGL
 #define GL_COMPUTE_SHADER 0x91B9
 #define GL_RENDERBUFFER_EXT GL_RENDERBUFFER
@@ -126,4 +125,6 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 static void (*glInvalidateFramebuffer)(GLenum target, GLsizei numAttachments, const GLenum* attachments) = 0;
 static void (*glCopyImageSubData)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
 static void (*glCopyImageSubDataNV)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
+static void  (*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags) = 0;
+
 
