@@ -31,6 +31,9 @@
 #include "base/NativeApp.h"
 #include "base/timeutil.h"
 
+#include "gfx/OpenEmuGLContext.h"
+
+#include "Core/Core.h"
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
@@ -40,10 +43,15 @@
 #include "Core/System.h"
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
+#include "thin3d/thin3d_create.h"
+#include "thin3d/GLRenderManager.h"
+#include "thin3d/DataFormatGL.h"
 
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
+
+
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient, OEAudioBuffer>
 {
@@ -52,30 +60,22 @@
     bool _shouldReset;
     float _frameInterval;
 
-    GraphicsContext *graphicsContext;
+   OpenEmuGLContext *OEgraphicsContext;
 }
 @end
 
+PPSSPPGameCore *_current = 0;
 @implementation PPSSPPGameCore
 
-class GLDummyGraphicsContext : public DummyGraphicsContext {
-public:
-    GLDummyGraphicsContext() {
 
-        extern void CheckGLExtensions();
-
-        CheckGLExtensions();
-        draw_ = Draw::T3DCreateGLContext();
-    }
-    ~GLDummyGraphicsContext() { delete draw_; }
-
-    Draw::DrawContext *GetDrawContext() override {
-        return draw_;
-    }
-private:
-    Draw::DrawContext *draw_;
-};
-
+- (instancetype)init
+{
+    (self = [super init]);
+    
+    _current = self;
+    
+    return self;
+}
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
@@ -106,7 +106,7 @@ private:
     g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
     g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
-    g_Config.iGPUBackend           = GPU_BACKEND_OPENGL;
+    g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
 
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
@@ -122,7 +122,9 @@ private:
     _coreParam.pixelWidth   = 480;
     _coreParam.pixelHeight  = 272;
 
-    return YES;
+    coreState = CORE_POWERUP;
+    
+    return true;
 }
 
 - (void)stopEmulation
@@ -146,15 +148,17 @@ private:
     {
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
-
-        graphicsContext = new GLDummyGraphicsContext;
-
+        
+        OEgraphicsContext = OpenEmuGLContext::CreateGraphicsContext(); //new OpenEmuGLContext();
+        
         NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil, false);
 
-        _coreParam.graphicsContext = graphicsContext;
-        _coreParam.thin3d = graphicsContext ? graphicsContext->GetDrawContext() : nullptr;
-
-        NativeInitGraphics(graphicsContext);
+        OEgraphicsContext->InitFromRenderThread(nullptr);
+        
+        _coreParam.graphicsContext = OEgraphicsContext;
+        _coreParam.thin3d = OEgraphicsContext ? OEgraphicsContext->GetDrawContext() : nullptr;
+       
+        NativeInitGraphics(OEgraphicsContext);
     }
 
     if(_shouldReset)
@@ -171,18 +175,19 @@ private:
 
         host->BootDone();
 		host->UpdateDisassembly();
+    } else {
+        u64 cyclesBefore, cyclesAfter;  //before and after timing marks to calculate a frame interval
+        cyclesBefore = CoreTiming::GetTicks();
+
+        //Let PPSSPP Core run a loop and return
+        UpdateRunLoop();
+
+        cyclesAfter = CoreTiming::GetTicks();
+
+        _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
+        if (_frameInterval < 1) _frameInterval = 60;
     }
-    u64 cyclesBefore, cyclesAfter;
-    cyclesBefore = CoreTiming::GetTicks();
-
-    NativeRender(graphicsContext);
-
-    cyclesAfter = CoreTiming::GetTicks();
-
-    _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
-    if (_frameInterval < 1) _frameInterval = 60;
 }
-
 # pragma mark - Video
 
 - (OEGameCoreRendering)gameCoreRendering
