@@ -65,7 +65,6 @@
 KeyInput input_state;
 OnScreenMessages osm;
 
-
 namespace OpenEmuCoreThread {
     OpenEmuGLContext *ctx;
     
@@ -80,10 +79,12 @@ namespace OpenEmuCoreThread {
     };
     
     static std::thread emuThread;
-    std::atomic<EmuThreadState> emuThreadState(EmuThreadState::DISABLED);
+    static bool threadStarted = false;
+    static std::atomic<EmuThreadState> emuThreadState(EmuThreadState::DISABLED);
     
     static void EmuFrame() {
         ctx->SetRenderTarget();
+        
         if (ctx->GetDrawContext()) {
             ctx->GetDrawContext()->BeginFrame();
         }
@@ -106,6 +107,7 @@ namespace OpenEmuCoreThread {
         while (true) {
             switch ((EmuThreadState)emuThreadState) {
                 case EmuThreadState::START_REQUESTED:
+                    threadStarted = true;
                     emuThreadState = EmuThreadState::RUNNING;
                     /* fallthrough */
                 case EmuThreadState::RUNNING:
@@ -115,7 +117,7 @@ namespace OpenEmuCoreThread {
                     emuThreadState = EmuThreadState::PAUSED;
                     /* fallthrough */
                 case EmuThreadState::PAUSED:
-                    sleep(1);
+                    usleep(1000);
                     break;
                 default:
                 case EmuThreadState::QUIT_REQUESTED:
@@ -157,13 +159,16 @@ namespace OpenEmuCoreThread {
             return;
         }
         emuThreadState = EmuThreadState::PAUSE_REQUESTED;
-        ctx->ThreadFrame();
+        
         while (emuThreadState != EmuThreadState::PAUSED) {
-            sleep(1);
+            //We need to process frames until the thread Pauses give 10 ms between loops
+            ctx->ThreadFrame();
+            emuThreadState = EmuThreadState::PAUSE_REQUESTED;
+            usleep(10000);
         }
     }
-    
 }  // namespace OpenEmuCoreThread
+
 
 // Here's where we store the OpenEmu framebuffer to bind for final rendering
 int framebuffer = 0;
@@ -236,14 +241,12 @@ int NativeMix(short *audio, int num_samples)
 void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *installID, bool fs)
 {
     VFSRegister("", new DirectoryAssetReader("assets/"));
-   //VFSRegister("", new DirectoryAssetReader(savegame_directory));
     VFSRegister("", new DirectoryAssetReader(external_directory));
     
     if (host == nullptr) {
         host = new NativeHost();
     }
 
-    //g_Config.internalDataDirectory = savegame_directory;
     g_Config.externalDirectory = external_directory;
     
     logger = new AndroidLogger();
@@ -259,14 +262,25 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     }
 }
 
+void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState)  {
+    if(threadState == OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED && OpenEmuCoreThread::threadStarted)
+        OpenEmuCoreThread::EmuThreadPause();
+    else if(threadState == OpenEmuCoreThread::EmuThreadState::START_REQUESTED && !OpenEmuCoreThread::threadStarted)
+        OpenEmuCoreThread::EmuThreadStart();
+    else
+        OpenEmuCoreThread::emuThreadState = threadState;
+}
+
 bool NativeInitGraphics(GraphicsContext *graphicsContext)
 {
+    //Set the Core Thread graphics Context
+    OpenEmuCoreThread::ctx = static_cast<OpenEmuGLContext*>(graphicsContext);
+    
     // Save framebuffer and set ppsspp default graphics framebuffer object
     glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
-
-    static_cast<OpenEmuGLContext*>(graphicsContext)->SetRenderFBO(framebuffer);
-    
-    Core_SetGraphicsContext(graphicsContext);
+    OpenEmuCoreThread::ctx->SetRenderFBO(framebuffer);
+ 
+    Core_SetGraphicsContext(OpenEmuCoreThread::ctx);
     
     if (gpu)
         gpu->DeviceRestore();
@@ -278,19 +292,11 @@ void NativeResized(){}
 
 void NativeRender(GraphicsContext *ctx)
 {
-  static_cast<OpenEmuGLContext*>(ctx)->SetRenderTarget();
+    if(OpenEmuCoreThread::emuThreadState == OpenEmuCoreThread::EmuThreadState::PAUSED)
+        return;
     
-    OpenEmuCoreThread::ctx = static_cast<OpenEmuGLContext*>(ctx);
-    
-    if (OpenEmuCoreThread::emuThreadState != OpenEmuCoreThread::EmuThreadState::RUNNING) {
-        OpenEmuCoreThread::EmuThreadStart();
-        }
-        
-        if (!ctx->ThreadFrame()) {
-            return;
-        }
-    
-    ctx->SwapBuffers();
+    OpenEmuCoreThread::ctx->ThreadFrame();
+    OpenEmuCoreThread::ctx->SwapBuffers();
 }
 
 void NativeUpdate() {}
