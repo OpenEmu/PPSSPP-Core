@@ -80,7 +80,6 @@ void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState);
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
-    float _frameInterval;
 
    OpenEmuGLContext *OEgraphicsContext;
 }
@@ -203,16 +202,8 @@ PPSSPPGameCore *_current = 0;
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
         
     } else {
-        u64 cyclesBefore, cyclesAfter;  //before and after timing marks to calculate a frame interval
-        cyclesBefore = CoreTiming::GetTicks();
-
         //Let PPSSPP Core run a loop and return
         UpdateRunLoop();
-
-        cyclesAfter = CoreTiming::GetTicks();
-
-        _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
-        if (_frameInterval < 1) _frameInterval = 60;
     }
 }
 # pragma mark - Video
@@ -234,7 +225,7 @@ PPSSPPGameCore *_current = 0;
 
 - (NSTimeInterval)frameInterval
 {
-    return _frameInterval ?: 60;
+    return 59.94;
 }
 
 # pragma mark - Audio
