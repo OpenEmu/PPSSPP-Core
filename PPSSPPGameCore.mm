@@ -28,9 +28,12 @@
 #import <OpenEmuBase/OERingBuffer.h>
 #import <OpenGL/gl.h>
 
+#include "gfx/OpenEmuGLContext.h"
+
 #include "base/NativeApp.h"
 #include "base/timeutil.h"
 
+#include "Core/Core.h"
 #include "Core/Config.h"
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
@@ -38,44 +41,63 @@
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
+
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
+
+#include "thin3d/thin3d_create.h"
+#include "thin3d/GLRenderManager.h"
+#include "thin3d/DataFormatGL.h"
 
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
+
+
+
+namespace SaveState {
+    struct SaveStart {
+        void DoState(PointerWrap &p);
+    };
+} // namespace SaveState
+
+namespace OpenEmuCoreThread {
+    enum class EmuThreadState {
+        DISABLED,
+        START_REQUESTED,
+        RUNNING,
+        PAUSE_REQUESTED,
+        PAUSED,
+        QUIT_REQUESTED,
+        STOPPED,
+    };
+} //namespace OpenEmuThreadCore
+
+void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState);
 
 @interface PPSSPPGameCore () <OEPSPSystemResponderClient, OEAudioBuffer>
 {
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
-    float _frameInterval;
 
-    GraphicsContext *graphicsContext;
+   OpenEmuGLContext *OEgraphicsContext;
 }
 @end
 
+PPSSPPGameCore *_current = 0;
+
 @implementation PPSSPPGameCore
 
-class GLDummyGraphicsContext : public DummyGraphicsContext {
-public:
-    GLDummyGraphicsContext() {
 
-        extern void CheckGLExtensions();
-
-        CheckGLExtensions();
-        draw_ = Draw::T3DCreateGLContext();
-    }
-    ~GLDummyGraphicsContext() { delete draw_; }
-
-    Draw::DrawContext *GetDrawContext() override {
-        return draw_;
-    }
-private:
-    Draw::DrawContext *draw_;
-};
-
+- (instancetype)init
+{
+    (self = [super init]);
+    
+    _current = self;
+    
+    return self;
+}
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
@@ -106,8 +128,8 @@ private:
     g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
     g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
-    g_Config.iGPUBackend           = GPU_BACKEND_OPENGL;
-
+    g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
+    
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
@@ -122,7 +144,9 @@ private:
     _coreParam.pixelWidth   = 480;
     _coreParam.pixelHeight  = 272;
 
-    return YES;
+    coreState = CORE_POWERUP;
+    
+    return true;
 }
 
 - (void)stopEmulation
@@ -146,15 +170,17 @@ private:
     {
         // This is where PPSSPP will look for ppge_atlas.zim
         NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
-
-        graphicsContext = new GLDummyGraphicsContext;
-
+        
+        OEgraphicsContext = OpenEmuGLContext::CreateGraphicsContext();
+        
         NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil, false);
 
-        _coreParam.graphicsContext = graphicsContext;
-        _coreParam.thin3d = graphicsContext ? graphicsContext->GetDrawContext() : nullptr;
-
-        NativeInitGraphics(graphicsContext);
+        OEgraphicsContext->InitFromRenderThread(nullptr);
+        
+        _coreParam.graphicsContext = OEgraphicsContext;
+        _coreParam.thin3d = OEgraphicsContext ? OEgraphicsContext->GetDrawContext() : nullptr;
+       
+        NativeInitGraphics(OEgraphicsContext);
     }
 
     if(_shouldReset)
@@ -171,18 +197,18 @@ private:
 
         host->BootDone();
 		host->UpdateDisassembly();
+        
+        //Start the Emulator Thread
+        NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
+        
+    } else {
+        //If Fast forward rate is detected, unthrottle the rndering
+        PSP_CoreParameter().unthrottle = (self.rate == 5) ? true : false;
+
+        //Let PPSSPP Core run a loop and return
+        UpdateRunLoop();
     }
-    u64 cyclesBefore, cyclesAfter;
-    cyclesBefore = CoreTiming::GetTicks();
-
-    NativeRender(graphicsContext);
-
-    cyclesAfter = CoreTiming::GetTicks();
-
-    _frameInterval = 1000000/(float)cyclesToUs(cyclesAfter-cyclesBefore);
-    if (_frameInterval < 1) _frameInterval = 60;
 }
-
 # pragma mark - Video
 
 - (OEGameCoreRendering)gameCoreRendering
@@ -202,7 +228,7 @@ private:
 
 - (NSTimeInterval)frameInterval
 {
-    return _frameInterval ?: 60;
+    return 59.94;
 }
 
 # pragma mark - Audio
@@ -244,20 +270,28 @@ static void _OESaveStateCallback(bool status, std::string message, void *cbUserD
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
     
+    //Unpause the EmuThread by requesting it to start again
+    NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
+    
     block(status, nil);
 }
 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    if(_isInitialized) SaveState::Process();
+    if(_isInitialized)
+        SaveState::Process();
 }
-
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Load(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    if(_isInitialized) SaveState::Process();
+    if(_isInitialized){
+        //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
+        NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
+        
+        SaveState::Process();
+    }
 }
 
 # pragma mark - Input

@@ -24,8 +24,14 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <atomic>
+#include <thread>
+#include "thread/threadutil.h"
+
 #include "base/logging.h"
 #include "base/NativeApp.h"
+
+#include "math/fast/fast_math.h"
 
 #include "Common/LogManager.h"
 
@@ -38,11 +44,19 @@
 #include "file/vfs.h"
 #include "file/zip_read.h"
 
-#include "gfx/gl_lost_manager.h"
+#include "gfx/OpenEmuGLContext.h"
+#include "gfx/gl_common.h"
+#include "thin3d/DataFormat.h"
 
 #include "Common/GraphicsContext.h"
-#include "gfx/GLStateCache.h"
 #include "GPU/GPUState.h"
+
+#include "GPU/GPUState.h"
+#include "GPU/GPUInterface.h"
+#include "GPU/Common/FramebufferCommon.h"
+#include "GPU/Common/TextureScalerCommon.h"
+
+#include "DataFormatGL.h"
 
 #include "input/input_state.h"
 
@@ -51,10 +65,113 @@
 KeyInput input_state;
 OnScreenMessages osm;
 
+namespace OpenEmuCoreThread {
+    OpenEmuGLContext *ctx;
+    
+    enum class EmuThreadState {
+        DISABLED,
+        START_REQUESTED,
+        RUNNING,
+        PAUSE_REQUESTED,
+        PAUSED,
+        QUIT_REQUESTED,
+        STOPPED,
+    };
+    
+    static std::thread emuThread;
+    static bool threadStarted = false;
+    static std::atomic<EmuThreadState> emuThreadState(EmuThreadState::DISABLED);
+    
+    static void EmuFrame() {
+        ctx->SetRenderTarget();
+        
+        if (ctx->GetDrawContext()) {
+            ctx->GetDrawContext()->BeginFrame();
+        }
+        
+        gpu->BeginHostFrame();
+        
+        coreState = CORE_RUNNING;
+        PSP_RunLoopUntil(UINT64_MAX);
+        
+        gpu->EndHostFrame();
+        
+        if (ctx->GetDrawContext()) {
+            ctx->GetDrawContext()->EndFrame();
+        }
+    }
+    
+    static void EmuThreadFunc() {
+        setCurrentThreadName("Emu");
+        
+        while (true) {
+            switch ((EmuThreadState)emuThreadState) {
+                case EmuThreadState::START_REQUESTED:
+                    threadStarted = true;
+                    emuThreadState = EmuThreadState::RUNNING;
+                    /* fallthrough */
+                case EmuThreadState::RUNNING:
+                    EmuFrame();
+                    break;
+                case EmuThreadState::PAUSE_REQUESTED:
+                    emuThreadState = EmuThreadState::PAUSED;
+                    /* fallthrough */
+                case EmuThreadState::PAUSED:
+                    usleep(1000);
+                    break;
+                default:
+                case EmuThreadState::QUIT_REQUESTED:
+                    emuThreadState = EmuThreadState::STOPPED;
+                    ctx->StopThread();
+                    return;
+            }
+        }
+    }
+    
+    void EmuThreadStart() {
+        bool wasPaused = emuThreadState == EmuThreadState::PAUSED;
+        emuThreadState = EmuThreadState::START_REQUESTED;
+        
+        if (!wasPaused) {
+            ctx->ThreadStart();
+            emuThread = std::thread(&EmuThreadFunc);
+        }
+    }
+    
+    void EmuThreadStop() {
+        if (emuThreadState != EmuThreadState::RUNNING) {
+            return;
+        }
+        
+        emuThreadState = EmuThreadState::QUIT_REQUESTED;
+        
+        while (ctx->ThreadFrame()) {
+            // Need to keep eating frames to allow the EmuThread to exit correctly.
+            continue;
+        }
+        emuThread.join();
+        emuThread = std::thread();
+        ctx->ThreadEnd();
+    }
+    
+    void EmuThreadPause() {
+        if (emuThreadState != EmuThreadState::RUNNING) {
+            return;
+        }
+        emuThreadState = EmuThreadState::PAUSE_REQUESTED;
+        
+        while (emuThreadState != EmuThreadState::PAUSED) {
+            //We need to process frames until the thread Pauses give 10 ms between loops
+            ctx->ThreadFrame();
+            emuThreadState = EmuThreadState::PAUSE_REQUESTED;
+            usleep(10000);
+        }
+    }
+}  // namespace OpenEmuCoreThread
+
+
 // Here's where we store the OpenEmu framebuffer to bind for final rendering
 int framebuffer = 0;
-//  Define the defaultFBO from ppsspp
-extern GLint g_defaultFBO;
 
 class AndroidLogger : public LogListener
 {
@@ -123,8 +240,15 @@ int NativeMix(short *audio, int num_samples)
 
 void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *installID, bool fs)
 {
-    host = new NativeHost();
+    VFSRegister("", new DirectoryAssetReader("assets/"));
+    VFSRegister("", new DirectoryAssetReader(external_directory));
+    
+    if (host == nullptr) {
+        host = new NativeHost();
+    }
 
+    g_Config.externalDirectory = external_directory;
+    
     logger = new AndroidLogger();
 
 	LogManager *logman = LogManager::GetInstance();
@@ -136,51 +260,49 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 		LogTypes::LOG_TYPE type = (LogTypes::LOG_TYPE)i;
         logman->SetLogLevel(type, logLevel);
     }
+}
 
-    VFSRegister("", new DirectoryAssetReader(external_directory));
+void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState)  {
+    if(threadState == OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED && OpenEmuCoreThread::threadStarted)
+        OpenEmuCoreThread::EmuThreadPause();
+    else if(threadState == OpenEmuCoreThread::EmuThreadState::START_REQUESTED && !OpenEmuCoreThread::threadStarted)
+        OpenEmuCoreThread::EmuThreadStart();
+    else
+        OpenEmuCoreThread::emuThreadState = threadState;
 }
 
 bool NativeInitGraphics(GraphicsContext *graphicsContext)
 {
+    //Set the Core Thread graphics Context
+    OpenEmuCoreThread::ctx = static_cast<OpenEmuGLContext*>(graphicsContext);
+    
     // Save framebuffer and set ppsspp default graphics framebuffer object
     glGetIntegerv(GL_FRAMEBUFFER_BINDING_EXT, &framebuffer);
-
-    g_defaultFBO = framebuffer;
-
-    Core_SetGraphicsContext(graphicsContext);
-
-    gl_lost_manager_init();
+    OpenEmuCoreThread::ctx->SetRenderFBO(framebuffer);
+ 
+    Core_SetGraphicsContext(OpenEmuCoreThread::ctx);
+    
+    if (gpu)
+        gpu->DeviceRestore();
+    
+    return true;
 }
 
 void NativeResized(){}
 
-void NativeRender(GraphicsContext *graphicsContext)
+void NativeRender(GraphicsContext *ctx)
 {
-	glstate.Restore();
-
-    PSP_BeginHostFrame();
-
-    s64 blockTicks = usToCycles(1000000 / 10);
-    while(coreState == CORE_RUNNING)
-    {
-		PSP_RunLoopFor((int)blockTicks);
-	}
-
-	// Hopefully coreState is now CORE_NEXTFRAME
-	if(coreState == CORE_NEXTFRAME)
-    {
-		// set back to running for the next frame
-		coreState = CORE_RUNNING;
-    }
-
-    PSP_EndHostFrame();
+    if(OpenEmuCoreThread::emuThreadState == OpenEmuCoreThread::EmuThreadState::PAUSED)
+        return;
+    
+    OpenEmuCoreThread::ctx->ThreadFrame();
+    OpenEmuCoreThread::ctx->SwapBuffers();
 }
 
 void NativeUpdate() {}
 
 void NativeShutdownGraphics()
 {
-    gl_lost_manager_shutdown();
 }
 
 void NativeShutdown()
