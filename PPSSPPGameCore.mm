@@ -203,7 +203,7 @@ PPSSPPGameCore *_current = 0;
         
     } else {
         //If Fast forward rate is detected, unthrottle the rndering
-        PSP_CoreParameter().unthrottle = (self.rate == 5) ? true : false;
+        PSP_CoreParameter().unthrottle = (self.rate > 1) ? true : false;
 
         //Let PPSSPP Core run a loop and return
         UpdateRunLoop();
