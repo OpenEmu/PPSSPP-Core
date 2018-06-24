@@ -7,8 +7,6 @@
 #include "gfx_es2/gpu_features.h"
 
 //Set functions in PPSSPP GLRenderManager
-static void context_reset() { ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->ContextReset(); }
-static void context_destroy() { ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->ContextDestroy(); }
 static void context_SwapBuffer(){ ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->SwapBuffers(); }
 
 bool OpenEmuGLContext::Init(bool cache_context) {
