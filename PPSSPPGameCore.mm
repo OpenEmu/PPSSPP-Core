@@ -151,6 +151,8 @@ PPSSPPGameCore *_current = 0;
 
 - (void)stopEmulation
 {
+    NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
+
     PSP_Shutdown();
 
     NativeShutdownGraphics();
@@ -184,7 +186,10 @@ PPSSPPGameCore *_current = 0;
     }
 
     if(_shouldReset)
+    {
+        NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
         PSP_Shutdown();
+    }
 
     if(!_isInitialized || _shouldReset)
     {
@@ -280,6 +285,9 @@ static void _OESaveStateCallback(bool status, std::string message, void *cbUserD
 {
     SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized)
+        //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
+        NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
+
         SaveState::Process();
 }
 
