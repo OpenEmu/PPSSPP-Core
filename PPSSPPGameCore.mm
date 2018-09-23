@@ -275,6 +275,7 @@ static void _OESaveStateCallback(bool status, std::string message, void *cbUserD
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
 
+    [_current endPausedExecution];
     block(status, nil);
 }
 
@@ -290,6 +291,7 @@ static void _OELoadStateCallback(bool status, std::string message, void *cbUserD
 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
+    [self beginPausedExecution];
     SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
 }
 
@@ -299,7 +301,7 @@ static void _OELoadStateCallback(bool status, std::string message, void *cbUserD
     if(_isInitialized){
         //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
-        
+
         SaveState::Process();
     }
 }
