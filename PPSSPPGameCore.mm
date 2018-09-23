@@ -274,26 +274,28 @@ PPSSPPGameCore *_current = 0;
 static void _OESaveStateCallback(bool status, std::string message, void *cbUserData)
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
-    
+
+    block(status, nil);
+}
+
+static void _OELoadStateCallback(bool status, std::string message, void *cbUserData)
+{
+    void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
+
     //Unpause the EmuThread by requesting it to start again
     NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
-    
+
     block(status, nil);
 }
 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
-    if(_isInitialized)
-        //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
-        NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
-
-        SaveState::Process();
 }
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    SaveState::Load(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Load(fileName.fileSystemRepresentation, _OELoadStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized){
         //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
