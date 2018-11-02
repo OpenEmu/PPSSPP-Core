@@ -35,6 +35,7 @@
 
 #include "Core/Core.h"
 #include "Core/Config.h"
+#include "Core/ConfigValues.h"
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
@@ -129,13 +130,14 @@ PPSSPPGameCore *_current = 0;
     g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
     g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
+    g_Config.bHideStateWarnings    = false;
     
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
     _coreParam.fileToStart  = path.fileSystemRepresentation;
     _coreParam.mountIso     = "";
-    _coreParam.startPaused  = false;
+    _coreParam.startBreak  = false;
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
 
@@ -175,7 +177,7 @@ PPSSPPGameCore *_current = 0;
         
         OEgraphicsContext = OpenEmuGLContext::CreateGraphicsContext();
         
-        NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil, false);
+        NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil);
 
         OEgraphicsContext->InitFromRenderThread(nullptr);
         
@@ -271,22 +273,36 @@ PPSSPPGameCore *_current = 0;
 
 # pragma mark - Save States
 
-static void _OESaveStateCallback(bool status, std::string message, void *cbUserData)
+static void _OESaveStateCallback(SaveState::Status status, std::string message, void *cbUserData)
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
 
     [_current endPausedExecution];
-    block(status, nil);
+    
+    block((status != SaveState::Status::FAILURE), nil);
 }
 
-static void _OELoadStateCallback(bool status, std::string message, void *cbUserData)
+static void _OELoadStateCallback(SaveState::Status status, std::string message, void *cbUserData)
 {
     void (^block)(BOOL, NSError *) = (__bridge_transfer void(^)(BOOL, NSError *))cbUserData;
 
     //Unpause the EmuThread by requesting it to start again
     NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
-
-    block(status, nil);
+    NSError *error = nil;
+        
+    if(status == SaveState::Status::WARNING) {
+        error = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotLoadStateError userInfo:@{
+                                                                                                                NSLocalizedDescriptionKey : NSLocalizedString(@"The SaveState loaded has a Warning due to Savestate age or PPSSPP version mismatch", @"PPSSPP SaveState Warning description."),
+                                                                                                                NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"To clear the warning, you must:  Save using the in-game save, reset the core, reload the in-game save and resave the SaveState if it is not an autosave.", @"PPSSPP SaveState Warning.")]
+                                                                                                                }];
+    } else if(status == SaveState::Status::FAILURE) {
+        error = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotLoadStateError userInfo:@{
+                                                                                                                NSLocalizedDescriptionKey : NSLocalizedString(@"The SaveState failed to Load", @"PPSSPP SaveState Failure description."),
+                                                                                                                NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"Could not load SaveState.", @"PPSSPP SaveState Failure.")]
+                                                                                                                }];
+    }
+    
+    block((status == SaveState::Status::SUCCESS), error);
 }
 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block

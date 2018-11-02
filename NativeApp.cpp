@@ -238,7 +238,7 @@ int NativeMix(short *audio, int num_samples)
 	return num_samples;
 }
 
-void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *installID, bool fs)
+void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *cache_directory)
 {
     VFSRegister("", new DirectoryAssetReader("assets/"));
     VFSRegister("", new DirectoryAssetReader(external_directory));

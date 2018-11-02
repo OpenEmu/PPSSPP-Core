@@ -3,6 +3,7 @@
 #include "Common/Log.h"
 #include "Core/Config.h"
 #include "Core/System.h"
+#include "Core/ConfigValues.h"
 #include "GPU/GPUInterface.h"
 #include "gfx_es2/gpu_features.h"
 

@@ -101,8 +101,6 @@
 		87E4F40C1C249B2C00110A77 /* pngwtran.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3071C249AF300110A77 /* pngwtran.c */; };
 		87E4F40D1C249B2C00110A77 /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3081C249AF300110A77 /* pngwutil.c */; };
 		87E4F40E1C249B4300110A77 /* rg_etc1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3481C249AF300110A77 /* rg_etc1.cpp */; };
-		87E4F40F1C249BFA00110A77 /* block_allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F34F1C249AF300110A77 /* block_allocator.cpp */; };
-		87E4F4101C249BFC00110A77 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3521C249AF300110A77 /* json.cpp */; };
 		87E4F4131C249FAC00110A77 /* ColorConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F4111C249FAC00110A77 /* ColorConv.cpp */; };
 		87E4F4161C24A02800110A77 /* Compatibility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F4141C24A02800110A77 /* Compatibility.cpp */; };
 		87E4F4221C24A05F00110A77 /* CachingFileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F4181C24A05F00110A77 /* CachingFileLoader.cpp */; };
@@ -205,7 +203,6 @@
 		8C844742186B767200BE03D5 /* proAdhoc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C844741186B767200BE03D5 /* proAdhoc.cpp */; };
 		8C844747186B76F300BE03D5 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C844746186B76F300BE03D5 /* GameManager.cpp */; };
 		8C844795186B83B700BE03D5 /* libpng17.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C844782186B830400BE03D5 /* libpng17.a */; };
-		8C8447A2186B843A00BE03D5 /* libvjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C84479C186B83EB00BE03D5 /* libvjson.a */; };
 		8C99589B1785DB7000EE4CA8 /* sceOpenPSID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8C71785B3C200647A96 /* sceOpenPSID.cpp */; };
 		8C99589D1785DB7000EE4CA8 /* sceP3da.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8C91785B3C200647A96 /* sceP3da.cpp */; };
 		8C99589F1785DB7000EE4CA8 /* sceParseHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA8CB1785B3C200647A96 /* sceParseHttp.cpp */; };
@@ -392,6 +389,37 @@
 		8CC8067518C27CC500AB1339 /* CompReplace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8067418C27CC500AB1339 /* CompReplace.cpp */; };
 		8CD63AFC178DCEC60039164C /* sceCcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63AFA178DCEC60039164C /* sceCcc.cpp */; };
 		8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63B05178DD0700039164C /* HDRemaster.cpp */; };
+		EE08124B218CA633007FD1AB /* attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08124A218CA633007FD1AB /* attribute.cpp */; };
+		EE081278218CA90B007FD1AB /* Debugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081277218CA90B007FD1AB /* Debugger.cpp */; };
+		EE08127C218CAC21007FD1AB /* sceUsbAcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08127A218CAC20007FD1AB /* sceUsbAcc.cpp */; };
+		EE081284218CAD92007FD1AB /* gason.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081282218CAD91007FD1AB /* gason.cpp */; };
+		EE081285218CAE61007FD1AB /* libgason.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C84479C186B83EB00BE03D5 /* libgason.a */; };
+		EE08128D218CAF74007FD1AB /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08127D218CAD15007FD1AB /* json_reader.cpp */; };
+		EE08128E218CAF78007FD1AB /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F38D1C249AF300110A77 /* json_writer.cpp */; };
+		EE08128F218CAF92007FD1AB /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE08128C218CAF4B007FD1AB /* libjson.a */; };
+		EE0812AC218CB23B007FD1AB /* FramebufferVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081292218CB23A007FD1AB /* FramebufferVulkan.cpp */; };
+		EE0812AD218CB23B007FD1AB /* VertexShaderGeneratorVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081294218CB23A007FD1AB /* VertexShaderGeneratorVulkan.cpp */; };
+		EE0812AE218CB23B007FD1AB /* PipelineManagerVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081295218CB23A007FD1AB /* PipelineManagerVulkan.cpp */; };
+		EE0812AF218CB23B007FD1AB /* DrawEngineVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08129B218CB23A007FD1AB /* DrawEngineVulkan.cpp */; };
+		EE0812B0218CB23B007FD1AB /* StencilBufferVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08129C218CB23A007FD1AB /* StencilBufferVulkan.cpp */; };
+		EE0812B1218CB23B007FD1AB /* GPU_Vulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08129E218CB23A007FD1AB /* GPU_Vulkan.cpp */; };
+		EE0812B2218CB23B007FD1AB /* StateMappingVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A1218CB23A007FD1AB /* StateMappingVulkan.cpp */; };
+		EE0812B3218CB23B007FD1AB /* DepalettizeShaderVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A3218CB23A007FD1AB /* DepalettizeShaderVulkan.cpp */; };
+		EE0812B4218CB23B007FD1AB /* TextureScalerVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A4218CB23A007FD1AB /* TextureScalerVulkan.cpp */; };
+		EE0812B5218CB23B007FD1AB /* TextureCacheVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A6218CB23A007FD1AB /* TextureCacheVulkan.cpp */; };
+		EE0812B6218CB23B007FD1AB /* FragmentShaderGeneratorVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A7218CB23A007FD1AB /* FragmentShaderGeneratorVulkan.cpp */; };
+		EE0812B7218CB23B007FD1AB /* VulkanUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812A8218CB23A007FD1AB /* VulkanUtil.cpp */; };
+		EE0812B8218CB23B007FD1AB /* DebugVisVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812AA218CB23A007FD1AB /* DebugVisVulkan.cpp */; };
+		EE0812B9218CB23B007FD1AB /* ShaderManagerVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812AB218CB23A007FD1AB /* ShaderManagerVulkan.cpp */; };
+		EE0812C4218CB6D2007FD1AB /* thin3d_vulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BB218CB67F007FD1AB /* thin3d_vulkan.cpp */; };
+		EE0812C6218CB6D2007FD1AB /* VulkanQueueRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BC218CB680007FD1AB /* VulkanQueueRunner.cpp */; };
+		EE0812C7218CB6D2007FD1AB /* VulkanRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BE218CB680007FD1AB /* VulkanRenderManager.cpp */; };
+		EE0812D5218CBADA007FD1AB /* SPIRVDisasm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */; };
+		EE0812D6218CBADA007FD1AB /* VulkanLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */; };
+		EE0812D7218CBADA007FD1AB /* VulkanImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CF218CBADA007FD1AB /* VulkanImage.cpp */; };
+		EE0812D8218CBADA007FD1AB /* VulkanContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812D1218CBADA007FD1AB /* VulkanContext.cpp */; };
+		EE0812D9218CBADA007FD1AB /* VulkanDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812D2218CBADA007FD1AB /* VulkanDebug.cpp */; };
+		EE0812DA218CBADA007FD1AB /* VulkanMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812D3218CBADA007FD1AB /* VulkanMemory.cpp */; };
 		EE19A4C420B9E470005343B9 /* DataFormatGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE19A4BB20B9E46F005343B9 /* DataFormatGL.cpp */; };
 		EE19A4C520B9E470005343B9 /* GLQueueRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE19A4BC20B9E46F005343B9 /* GLQueueRunner.cpp */; };
 		EE7679CA20C82E89006470A2 /* Replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7679C920C82E88006470A2 /* Replay.cpp */; };
@@ -497,13 +525,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8C84477C186B830400BE03D5;
 			remoteInfo = png16;
-		};
-		8C8447A0186B843300BE03D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C844796186B83EB00BE03D5;
-			remoteInfo = vjson;
 		};
 		8C9958FF1785DC8D00EE4CA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -822,12 +843,6 @@
 		87E4F34B1C249AF300110A77 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		87E4F34C1C249AF300110A77 /* sha1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
 		87E4F34D1C249AF300110A77 /* sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		87E4F34F1C249AF300110A77 /* block_allocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = block_allocator.cpp; sourceTree = "<group>"; };
-		87E4F3501C249AF300110A77 /* block_allocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = block_allocator.h; sourceTree = "<group>"; };
-		87E4F3511C249AF300110A77 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		87E4F3521C249AF300110A77 /* json.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = json.cpp; sourceTree = "<group>"; };
-		87E4F3531C249AF300110A77 /* json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		87E4F3541C249AF300110A77 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		87E4F3561C249AF300110A77 /* chunk_file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chunk_file.cpp; sourceTree = "<group>"; };
 		87E4F3571C249AF300110A77 /* chunk_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chunk_file.h; sourceTree = "<group>"; };
 		87E4F3581C249AF300110A77 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -1073,7 +1088,7 @@
 		8C844748186B772A00BE03D5 /* TextureDecoderNEON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureDecoderNEON.h; sourceTree = "<group>"; };
 		8C844749186B772A00BE03D5 /* TextureDecoderNEON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureDecoderNEON.cpp; sourceTree = "<group>"; };
 		8C844782186B830400BE03D5 /* libpng17.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpng17.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C84479C186B83EB00BE03D5 /* libvjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvjson.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C84479C186B83EB00BE03D5 /* libgason.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgason.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8447AA186B8DD600BE03D5 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gl_common.h; sourceTree = "<group>"; };
 		8C9BDA1018C28B31007F6592 /* libcityhash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcityhash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9F4CC91A9B2402002719B3 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
@@ -1516,6 +1531,63 @@
 		8CD63AFA178DCEC60039164C /* sceCcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceCcc.cpp; sourceTree = "<group>"; };
 		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
 		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
+		EE081249218CA633007FD1AB /* attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attribute.h; sourceTree = "<group>"; };
+		EE08124A218CA633007FD1AB /* attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attribute.cpp; sourceTree = "<group>"; };
+		EE081276218CA90A007FD1AB /* Debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugger.h; sourceTree = "<group>"; };
+		EE081277218CA90B007FD1AB /* Debugger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debugger.cpp; sourceTree = "<group>"; };
+		EE081279218CAC20007FD1AB /* sceUsbAcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceUsbAcc.h; sourceTree = "<group>"; };
+		EE08127A218CAC20007FD1AB /* sceUsbAcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceUsbAcc.cpp; sourceTree = "<group>"; };
+		EE08127B218CAC20007FD1AB /* KernelThreadDebugInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KernelThreadDebugInterface.h; sourceTree = "<group>"; };
+		EE08127D218CAD15007FD1AB /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		EE08127E218CAD16007FD1AB /* json_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_reader.h; sourceTree = "<group>"; };
+		EE081281218CAD91007FD1AB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		EE081282218CAD91007FD1AB /* gason.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gason.cpp; sourceTree = "<group>"; };
+		EE081283218CAD91007FD1AB /* gason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gason.h; sourceTree = "<group>"; };
+		EE08128C218CAF4B007FD1AB /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjson.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE081291218CB23A007FD1AB /* FragmentShaderGeneratorVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FragmentShaderGeneratorVulkan.h; sourceTree = "<group>"; };
+		EE081292218CB23A007FD1AB /* FramebufferVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FramebufferVulkan.cpp; sourceTree = "<group>"; };
+		EE081293218CB23A007FD1AB /* GPU_Vulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPU_Vulkan.h; sourceTree = "<group>"; };
+		EE081294218CB23A007FD1AB /* VertexShaderGeneratorVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexShaderGeneratorVulkan.cpp; sourceTree = "<group>"; };
+		EE081295218CB23A007FD1AB /* PipelineManagerVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PipelineManagerVulkan.cpp; sourceTree = "<group>"; };
+		EE081296218CB23A007FD1AB /* DrawEngineVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawEngineVulkan.h; sourceTree = "<group>"; };
+		EE081297218CB23A007FD1AB /* DebugVisVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugVisVulkan.h; sourceTree = "<group>"; };
+		EE081298218CB23A007FD1AB /* DepalettizeShaderVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepalettizeShaderVulkan.h; sourceTree = "<group>"; };
+		EE081299218CB23A007FD1AB /* StateMappingVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateMappingVulkan.h; sourceTree = "<group>"; };
+		EE08129A218CB23A007FD1AB /* TextureScalerVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureScalerVulkan.h; sourceTree = "<group>"; };
+		EE08129B218CB23A007FD1AB /* DrawEngineVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawEngineVulkan.cpp; sourceTree = "<group>"; };
+		EE08129C218CB23A007FD1AB /* StencilBufferVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StencilBufferVulkan.cpp; sourceTree = "<group>"; };
+		EE08129D218CB23A007FD1AB /* VulkanUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanUtil.h; sourceTree = "<group>"; };
+		EE08129E218CB23A007FD1AB /* GPU_Vulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPU_Vulkan.cpp; sourceTree = "<group>"; };
+		EE08129F218CB23A007FD1AB /* PipelineManagerVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PipelineManagerVulkan.h; sourceTree = "<group>"; };
+		EE0812A0218CB23A007FD1AB /* FramebufferVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FramebufferVulkan.h; sourceTree = "<group>"; };
+		EE0812A1218CB23A007FD1AB /* StateMappingVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateMappingVulkan.cpp; sourceTree = "<group>"; };
+		EE0812A2218CB23A007FD1AB /* ShaderManagerVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderManagerVulkan.h; sourceTree = "<group>"; };
+		EE0812A3218CB23A007FD1AB /* DepalettizeShaderVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DepalettizeShaderVulkan.cpp; sourceTree = "<group>"; };
+		EE0812A4218CB23A007FD1AB /* TextureScalerVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureScalerVulkan.cpp; sourceTree = "<group>"; };
+		EE0812A5218CB23A007FD1AB /* VertexShaderGeneratorVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexShaderGeneratorVulkan.h; sourceTree = "<group>"; };
+		EE0812A6218CB23A007FD1AB /* TextureCacheVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureCacheVulkan.cpp; sourceTree = "<group>"; };
+		EE0812A7218CB23A007FD1AB /* FragmentShaderGeneratorVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FragmentShaderGeneratorVulkan.cpp; sourceTree = "<group>"; };
+		EE0812A8218CB23A007FD1AB /* VulkanUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanUtil.cpp; sourceTree = "<group>"; };
+		EE0812A9218CB23A007FD1AB /* TextureCacheVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureCacheVulkan.h; sourceTree = "<group>"; };
+		EE0812AA218CB23A007FD1AB /* DebugVisVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugVisVulkan.cpp; sourceTree = "<group>"; };
+		EE0812AB218CB23A007FD1AB /* ShaderManagerVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManagerVulkan.cpp; sourceTree = "<group>"; };
+		EE0812BB218CB67F007FD1AB /* thin3d_vulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thin3d_vulkan.cpp; sourceTree = "<group>"; };
+		EE0812BC218CB680007FD1AB /* VulkanQueueRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanQueueRunner.cpp; sourceTree = "<group>"; };
+		EE0812BD218CB680007FD1AB /* VulkanQueueRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanQueueRunner.h; sourceTree = "<group>"; };
+		EE0812BE218CB680007FD1AB /* VulkanRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanRenderManager.cpp; sourceTree = "<group>"; };
+		EE0812BF218CB680007FD1AB /* VulkanRenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanRenderManager.h; sourceTree = "<group>"; };
+		EE0812C9218CBADA007FD1AB /* VulkanDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanDebug.h; sourceTree = "<group>"; };
+		EE0812CA218CBADA007FD1AB /* SPIRVDisasm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIRVDisasm.h; sourceTree = "<group>"; };
+		EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SPIRVDisasm.cpp; sourceTree = "<group>"; };
+		EE0812CC218CBADA007FD1AB /* VulkanContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanContext.h; sourceTree = "<group>"; };
+		EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanLoader.cpp; sourceTree = "<group>"; };
+		EE0812CE218CBADA007FD1AB /* VulkanLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanLoader.h; sourceTree = "<group>"; };
+		EE0812CF218CBADA007FD1AB /* VulkanImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanImage.cpp; sourceTree = "<group>"; };
+		EE0812D0218CBADA007FD1AB /* VulkanMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanMemory.h; sourceTree = "<group>"; };
+		EE0812D1218CBADA007FD1AB /* VulkanContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanContext.cpp; sourceTree = "<group>"; };
+		EE0812D2218CBADA007FD1AB /* VulkanDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanDebug.cpp; sourceTree = "<group>"; };
+		EE0812D3218CBADA007FD1AB /* VulkanMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanMemory.cpp; sourceTree = "<group>"; };
+		EE0812D4218CBADA007FD1AB /* VulkanImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanImage.h; sourceTree = "<group>"; };
 		EE19A4BA20B9E46F005343B9 /* DataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFormat.h; sourceTree = "<group>"; };
 		EE19A4BB20B9E46F005343B9 /* DataFormatGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataFormatGL.cpp; sourceTree = "<group>"; };
 		EE19A4BC20B9E46F005343B9 /* GLQueueRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLQueueRunner.cpp; sourceTree = "<group>"; };
@@ -3159,6 +3231,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE08128F218CAF92007FD1AB /* libjson.a in Frameworks */,
+				EE081285218CAE61007FD1AB /* libgason.a in Frameworks */,
 				EE7680B320CB8388006470A2 /* libGPU.a in Frameworks */,
 				EE7680B220CB8382006470A2 /* libglslang.a in Frameworks */,
 				EE76806D20C9DF7C006470A2 /* libSPIRV.a in Frameworks */,
@@ -3166,7 +3240,6 @@
 				8C9F4D521A9B2874002719B3 /* libudis86.a in Frameworks */,
 				8C9BDA1418C28BA5007F6592 /* libcityhash.a in Frameworks */,
 				3DFCE410186F64170046C035 /* libz.dylib in Frameworks */,
-				8C8447A2186B843A00BE03D5 /* libvjson.a in Frameworks */,
 				8C844795186B83B700BE03D5 /* libpng17.a in Frameworks */,
 				8C9959121785DDBE00EE4CA8 /* libCore.a in Frameworks */,
 				8CB74E46178602E500C652A7 /* libCommon.a in Frameworks */,
@@ -3325,13 +3398,13 @@
 		87E4F2D71C249AF300110A77 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				EE081280218CAD91007FD1AB /* gason */,
 				87E4F2D81C249AF300110A77 /* cityhash */,
 				87E4F2E61C249AF300110A77 /* jpge */,
 				87E4F2EC1C249AF300110A77 /* libpng17 */,
 				87E4F3091C249AF300110A77 /* libzip */,
 				87E4F3461C249AF300110A77 /* rg_etc1 */,
 				87E4F34A1C249AF300110A77 /* sha1 */,
-				87E4F34E1C249AF300110A77 /* vjson */,
 			);
 			path = ext;
 			sourceTree = "<group>";
@@ -3489,19 +3562,6 @@
 			path = sha1;
 			sourceTree = "<group>";
 		};
-		87E4F34E1C249AF300110A77 /* vjson */ = {
-			isa = PBXGroup;
-			children = (
-				87E4F34F1C249AF300110A77 /* block_allocator.cpp */,
-				87E4F3501C249AF300110A77 /* block_allocator.h */,
-				87E4F3511C249AF300110A77 /* CMakeLists.txt */,
-				87E4F3521C249AF300110A77 /* json.cpp */,
-				87E4F3531C249AF300110A77 /* json.h */,
-				87E4F3541C249AF300110A77 /* main.cpp */,
-			);
-			path = vjson;
-			sourceTree = "<group>";
-		};
 		87E4F3551C249AF300110A77 /* file */ = {
 			isa = PBXGroup;
 			children = (
@@ -3595,6 +3655,8 @@
 		87E4F38B1C249AF300110A77 /* json */ = {
 			isa = PBXGroup;
 			children = (
+				EE08127D218CAD15007FD1AB /* json_reader.cpp */,
+				EE08127E218CAD16007FD1AB /* json_reader.h */,
 				87E4F38C1C249AF300110A77 /* CMakeLists.txt */,
 				87E4F38D1C249AF300110A77 /* json_writer.cpp */,
 				87E4F38E1C249AF300110A77 /* json_writer.h */,
@@ -3683,6 +3745,11 @@
 		87E4F3BE1C249AF300110A77 /* thin3d */ = {
 			isa = PBXGroup;
 			children = (
+				EE0812BB218CB67F007FD1AB /* thin3d_vulkan.cpp */,
+				EE0812BC218CB680007FD1AB /* VulkanQueueRunner.cpp */,
+				EE0812BD218CB680007FD1AB /* VulkanQueueRunner.h */,
+				EE0812BE218CB680007FD1AB /* VulkanRenderManager.cpp */,
+				EE0812BF218CB680007FD1AB /* VulkanRenderManager.h */,
 				EE76805F20C83995006470A2 /* GLRenderManager.cpp */,
 				EE76805E20C83994006470A2 /* GLRenderManager.h */,
 				EE19A4BA20B9E46F005343B9 /* DataFormat.h */,
@@ -3882,6 +3949,8 @@
 		8C2D4EE41824011100E65166 /* Debugger */ = {
 			isa = PBXGroup;
 			children = (
+				EE081277218CA90B007FD1AB /* Debugger.cpp */,
+				EE081276218CA90A007FD1AB /* Debugger.h */,
 				3EDB61F620129C5A00CF55BE /* Record.cpp */,
 				3EDB61F520129C5A00CF55BE /* Record.h */,
 				8C2D4EE51824011100E65166 /* Breakpoints.cpp */,
@@ -3993,12 +4062,13 @@
 				8CAFC1E31785C7CB00647A96 /* libCore.a */,
 				8CA1540817C413480003002D /* libxxhash.a */,
 				8C844782186B830400BE03D5 /* libpng17.a */,
-				8C84479C186B83EB00BE03D5 /* libvjson.a */,
+				8C84479C186B83EB00BE03D5 /* libgason.a */,
 				8C9BDA1018C28B31007F6592 /* libcityhash.a */,
 				8C9F4D3B1A9B27B9002719B3 /* libudis86.a */,
 				87E051301B1028FC00E870E1 /* libsfmt19937.a */,
 				EE76801820C82F71006470A2 /* libSPIRV.a */,
 				EE76808C20CB7F15006470A2 /* libglslang.a */,
+				EE08128C218CAF4B007FD1AB /* libjson.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4038,6 +4108,7 @@
 		8CAFA7E41785B3C200647A96 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EE0812C8218CBADA007FD1AB /* Vulkan */,
 				3E30443E1F2144E300B06252 /* DbgNew.h */,
 				3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */,
 				3EAA4E441D9DD50B004F5179 /* ThreadSafeList.h */,
@@ -4269,6 +4340,9 @@
 		8CAFA8791785B3C200647A96 /* HLE */ = {
 			isa = PBXGroup;
 			children = (
+				EE08127B218CAC20007FD1AB /* KernelThreadDebugInterface.h */,
+				EE08127A218CAC20007FD1AB /* sceUsbAcc.cpp */,
+				EE081279218CAC20007FD1AB /* sceUsbAcc.h */,
 				3EDB61F82012AFBC00CF55BE /* sceUsbCam.cpp */,
 				3EDB61F92012AFBD00CF55BE /* sceUsbCam.h */,
 				3E3044451F21454600B06252 /* KUBridge.h */,
@@ -4659,6 +4733,7 @@
 		8CAFBABA1785B3D200647A96 /* GPU */ = {
 			isa = PBXGroup;
 			children = (
+				EE081290218CB23A007FD1AB /* Vulkan */,
 				8C2D4ED91824011100E65166 /* Common */,
 				8C2D4EE41824011100E65166 /* Debugger */,
 				8CAFBABC1785B3D200647A96 /* ge_constants.h */,
@@ -4751,6 +4826,69 @@
 				8CBB2C1E1790535600349818 /* ppge_atlas.zim */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		EE081280218CAD91007FD1AB /* gason */ = {
+			isa = PBXGroup;
+			children = (
+				EE081281218CAD91007FD1AB /* LICENSE */,
+				EE081282218CAD91007FD1AB /* gason.cpp */,
+				EE081283218CAD91007FD1AB /* gason.h */,
+			);
+			path = gason;
+			sourceTree = "<group>";
+		};
+		EE081290218CB23A007FD1AB /* Vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				EE081291218CB23A007FD1AB /* FragmentShaderGeneratorVulkan.h */,
+				EE081292218CB23A007FD1AB /* FramebufferVulkan.cpp */,
+				EE081293218CB23A007FD1AB /* GPU_Vulkan.h */,
+				EE081294218CB23A007FD1AB /* VertexShaderGeneratorVulkan.cpp */,
+				EE081295218CB23A007FD1AB /* PipelineManagerVulkan.cpp */,
+				EE081296218CB23A007FD1AB /* DrawEngineVulkan.h */,
+				EE081297218CB23A007FD1AB /* DebugVisVulkan.h */,
+				EE081298218CB23A007FD1AB /* DepalettizeShaderVulkan.h */,
+				EE081299218CB23A007FD1AB /* StateMappingVulkan.h */,
+				EE08129A218CB23A007FD1AB /* TextureScalerVulkan.h */,
+				EE08129B218CB23A007FD1AB /* DrawEngineVulkan.cpp */,
+				EE08129C218CB23A007FD1AB /* StencilBufferVulkan.cpp */,
+				EE08129D218CB23A007FD1AB /* VulkanUtil.h */,
+				EE08129E218CB23A007FD1AB /* GPU_Vulkan.cpp */,
+				EE08129F218CB23A007FD1AB /* PipelineManagerVulkan.h */,
+				EE0812A0218CB23A007FD1AB /* FramebufferVulkan.h */,
+				EE0812A1218CB23A007FD1AB /* StateMappingVulkan.cpp */,
+				EE0812A2218CB23A007FD1AB /* ShaderManagerVulkan.h */,
+				EE0812A3218CB23A007FD1AB /* DepalettizeShaderVulkan.cpp */,
+				EE0812A4218CB23A007FD1AB /* TextureScalerVulkan.cpp */,
+				EE0812A5218CB23A007FD1AB /* VertexShaderGeneratorVulkan.h */,
+				EE0812A6218CB23A007FD1AB /* TextureCacheVulkan.cpp */,
+				EE0812A7218CB23A007FD1AB /* FragmentShaderGeneratorVulkan.cpp */,
+				EE0812A8218CB23A007FD1AB /* VulkanUtil.cpp */,
+				EE0812A9218CB23A007FD1AB /* TextureCacheVulkan.h */,
+				EE0812AA218CB23A007FD1AB /* DebugVisVulkan.cpp */,
+				EE0812AB218CB23A007FD1AB /* ShaderManagerVulkan.cpp */,
+			);
+			path = Vulkan;
+			sourceTree = "<group>";
+		};
+		EE0812C8218CBADA007FD1AB /* Vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				EE0812C9218CBADA007FD1AB /* VulkanDebug.h */,
+				EE0812CA218CBADA007FD1AB /* SPIRVDisasm.h */,
+				EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */,
+				EE0812CC218CBADA007FD1AB /* VulkanContext.h */,
+				EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */,
+				EE0812CE218CBADA007FD1AB /* VulkanLoader.h */,
+				EE0812CF218CBADA007FD1AB /* VulkanImage.cpp */,
+				EE0812D0218CBADA007FD1AB /* VulkanMemory.h */,
+				EE0812D1218CBADA007FD1AB /* VulkanContext.cpp */,
+				EE0812D2218CBADA007FD1AB /* VulkanDebug.cpp */,
+				EE0812D3218CBADA007FD1AB /* VulkanMemory.cpp */,
+				EE0812D4218CBADA007FD1AB /* VulkanImage.h */,
+			);
+			path = Vulkan;
 			sourceTree = "<group>";
 		};
 		EE7677D320C82D0D006470A2 /* SPIRV-Cross */ = {
@@ -6426,6 +6564,8 @@
 		EE767FAD20C82F18006470A2 /* MachineIndependent */ = {
 			isa = PBXGroup;
 			children = (
+				EE08124A218CA633007FD1AB /* attribute.cpp */,
+				EE081249218CA633007FD1AB /* attribute.h */,
 				EE767FAE20C82F18006470A2 /* ParseHelper.cpp */,
 				EE767FAF20C82F18006470A2 /* parseVersions.h */,
 				EE767FB020C82F18006470A2 /* gl_types.h */,
@@ -6605,9 +6745,9 @@
 			productReference = 8C844782186B830400BE03D5 /* libpng17.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		8C844796186B83EB00BE03D5 /* vjson */ = {
+		8C844796186B83EB00BE03D5 /* gason */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C844799186B83EB00BE03D5 /* Build configuration list for PBXNativeTarget "vjson" */;
+			buildConfigurationList = 8C844799186B83EB00BE03D5 /* Build configuration list for PBXNativeTarget "gason" */;
 			buildPhases = (
 				8C844797186B83EB00BE03D5 /* Sources */,
 			);
@@ -6615,9 +6755,9 @@
 			);
 			dependencies = (
 			);
-			name = vjson;
+			name = gason;
 			productName = stb_vorbis;
-			productReference = 8C84479C186B83EB00BE03D5 /* libvjson.a */;
+			productReference = 8C84479C186B83EB00BE03D5 /* libgason.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		8C9BDA0A18C28B31007F6592 /* cityhash */ = {
@@ -6698,7 +6838,6 @@
 				87E051331B1029D200E870E1 /* PBXTargetDependency */,
 				8C9F4D541A9B287A002719B3 /* PBXTargetDependency */,
 				8C9BDA1318C28B62007F6592 /* PBXTargetDependency */,
-				8C8447A1186B843300BE03D5 /* PBXTargetDependency */,
 				8C844794186B83AD00BE03D5 /* PBXTargetDependency */,
 				8CB74E3B1786026300C652A7 /* PBXTargetDependency */,
 				8CB74E411786026300C652A7 /* PBXTargetDependency */,
@@ -6823,6 +6962,21 @@
 			productReference = 8CAFC1E31785C7CB00647A96 /* libCore.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		EE081286218CAF4B007FD1AB /* json */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE081289218CAF4B007FD1AB /* Build configuration list for PBXNativeTarget "json" */;
+			buildPhases = (
+				EE081287218CAF4B007FD1AB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = json;
+			productName = stb_vorbis;
+			productReference = EE08128C218CAF4B007FD1AB /* libjson.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		EE76801220C82F71006470A2 /* SPIRV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE76801520C82F71006470A2 /* Build configuration list for PBXNativeTarget "SPIRV" */;
@@ -6884,13 +7038,14 @@
 				87E0512A1B1028FC00E870E1 /* sfmt19937 */,
 				8CAFC1A21785C76700647A96 /* snappy */,
 				8C9F4D351A9B27B9002719B3 /* udis86 */,
-				8C844796186B83EB00BE03D5 /* vjson */,
+				8C844796186B83EB00BE03D5 /* gason */,
 				8CAFC1DA1785C7B300647A96 /* xbrz */,
 				8CA1540717C413480003002D /* xxhash */,
 				8CAFC10E1785B63900647A96 /* PPSSPP */,
 				8CBB42FF178C399D00FA270D /* Build & Install PPSSPP */,
 				EE76801220C82F71006470A2 /* SPIRV */,
 				EE76808120CB7F15006470A2 /* glslang */,
+				EE081286218CAF4B007FD1AB /* json */,
 			);
 		};
 /* End PBXProject section */
@@ -6975,8 +7130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87E4F40F1C249BFA00110A77 /* block_allocator.cpp in Sources */,
-				87E4F4101C249BFC00110A77 /* json.cpp in Sources */,
+				EE081284218CAD92007FD1AB /* gason.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7015,15 +7169,20 @@
 			files = (
 				3E3044771F2153DA00B06252 /* stdafx.cpp in Sources */,
 				8CAFC0D21785B3DC00647A96 /* ABI.cpp in Sources */,
+				EE0812D6218CBADA007FD1AB /* VulkanLoader.cpp in Sources */,
 				3E3044401F2144E300B06252 /* MemArenaDarwin.cpp in Sources */,
 				8C2D4F0C182405DA00E65166 /* ArmEmitter.cpp in Sources */,
 				8CAFC0D41785B3EA00647A96 /* CPUDetect.cpp in Sources */,
+				EE0812D9218CBADA007FD1AB /* VulkanDebug.cpp in Sources */,
 				8C43DD001A82042400C46968 /* FakeCPUDetect.cpp in Sources */,
 				8C2D4EBF1823FF2B00E65166 /* ChunkFile.cpp in Sources */,
 				87E4F4131C249FAC00110A77 /* ColorConv.cpp in Sources */,
 				8CAFC0DE1785B43300647A96 /* ConsoleListener.cpp in Sources */,
+				EE0812D8218CBADA007FD1AB /* VulkanContext.cpp in Sources */,
 				8C9F4CCB1A9B2402002719B3 /* sha256.cpp in Sources */,
 				8CAFC0E61785B45500647A96 /* md5.cpp in Sources */,
+				EE0812DA218CBADA007FD1AB /* VulkanMemory.cpp in Sources */,
+				EE0812D7218CBADA007FD1AB /* VulkanImage.cpp in Sources */,
 				8CAFC0E81785B46000647A96 /* sha1.cpp in Sources */,
 				8CAFC0F01785B49800647A96 /* FileUtil.cpp in Sources */,
 				8CAFC0F41785B4AA00647A96 /* KeyMap.cpp in Sources */,
@@ -7034,6 +7193,7 @@
 				8CAFC0FC1785B4D900647A96 /* MemoryUtil.cpp in Sources */,
 				8CAFC0FE1785B4D900647A96 /* Misc.cpp in Sources */,
 				3E71932B1CE4DADD007E791C /* GPUStateUtils.cpp in Sources */,
+				EE0812D5218CBADA007FD1AB /* SPIRVDisasm.cpp in Sources */,
 				8CAFC0FF1785B4D900647A96 /* MsgHandler.cpp in Sources */,
 				8CAFC1011785B4D900647A96 /* StringUtils.cpp in Sources */,
 				8CAFC1051785B4D900647A96 /* ThreadPools.cpp in Sources */,
@@ -7067,6 +7227,7 @@
 				87E4F44C1C24AF6D00110A77 /* timeutil.cpp in Sources */,
 				87E4F44D1C24AF9B00110A77 /* compression.cpp in Sources */,
 				87E4F44E1C24AFB800110A77 /* chunk_file.cpp in Sources */,
+				EE0812C6218CB6D2007FD1AB /* VulkanQueueRunner.cpp in Sources */,
 				87E4F44F1C24AFC200110A77 /* fd_util.cpp in Sources */,
 				87E4F4501C24AFC700110A77 /* file_util.cpp in Sources */,
 				87E4F4511C24AFCC00110A77 /* ini_file.cpp in Sources */,
@@ -7084,6 +7245,7 @@
 				87E4F45C1C24B1AF00110A77 /* i18n.cpp in Sources */,
 				87E4F45D1C24B55D00110A77 /* png_load.cpp in Sources */,
 				87E4F45E1C24B55F00110A77 /* zim_load.cpp in Sources */,
+				EE0812C7218CB6D2007FD1AB /* VulkanRenderManager.cpp in Sources */,
 				87E4F45F1C24B56300110A77 /* zim_save.cpp in Sources */,
 				87E4F4601C24B58600110A77 /* gesture_detector.cpp in Sources */,
 				87E4F4611C24B58900110A77 /* input_state.cpp in Sources */,
@@ -7115,6 +7277,7 @@
 				87E4F47C1C24BB6F00110A77 /* hash.cpp in Sources */,
 				87E4F47D1C24BB8B00110A77 /* parsers.cpp in Sources */,
 				87E4F47E1C24BB8F00110A77 /* utf8.cpp in Sources */,
+				EE0812C4218CB6D2007FD1AB /* thin3d_vulkan.cpp in Sources */,
 				EE19A4C420B9E470005343B9 /* DataFormatGL.cpp in Sources */,
 				87E4F47F1C24BBD400110A77 /* jpgd.cpp in Sources */,
 				87E4F4801C24BBD700110A77 /* jpge.cpp in Sources */,
@@ -7129,25 +7292,35 @@
 				3EDB62032012B76900CF55BE /* TextureCacheGLES.cpp in Sources */,
 				3E30447F1F21648A00B06252 /* DepalettizeShaderGLES.cpp in Sources */,
 				3E3044801F21648A00B06252 /* FragmentShaderGeneratorGLES.cpp in Sources */,
+				EE0812B0218CB23B007FD1AB /* StencilBufferVulkan.cpp in Sources */,
 				3E3044811F21648A00B06252 /* FragmentTestCacheGLES.cpp in Sources */,
 				3E3044831F21648A00B06252 /* ShaderManagerGLES.cpp in Sources */,
 				3E3044841F21648A00B06252 /* StateMappingGLES.cpp in Sources */,
 				3E3044851F21648A00B06252 /* StencilBufferGLES.cpp in Sources */,
 				3EDB61EF20129C0500CF55BE /* StencilCommon.cpp in Sources */,
 				3EDB61F320129C2E00CF55BE /* SamplerX86.cpp in Sources */,
+				EE0812B9218CB23B007FD1AB /* ShaderManagerVulkan.cpp in Sources */,
+				EE0812B1218CB23B007FD1AB /* GPU_Vulkan.cpp in Sources */,
+				EE0812B2218CB23B007FD1AB /* StateMappingVulkan.cpp in Sources */,
 				3E3044871F21648A00B06252 /* TextureScalerGLES.cpp in Sources */,
 				EE7680B420CB840E006470A2 /* ShaderTranslation.cpp in Sources */,
 				3E3044881F21648A00B06252 /* VertexShaderGeneratorGLES.cpp in Sources */,
 				3E30447B1F2163F500B06252 /* ShaderCommon.cpp in Sources */,
+				EE081278218CA90B007FD1AB /* Debugger.cpp in Sources */,
 				3E30447D1F2163F500B06252 /* ShaderUniforms.cpp in Sources */,
 				3E30447E1F2163F500B06252 /* VertexDecoderFake.cpp in Sources */,
+				EE0812B7218CB23B007FD1AB /* VulkanUtil.cpp in Sources */,
+				EE0812AC218CB23B007FD1AB /* FramebufferVulkan.cpp in Sources */,
 				3E71932E1CE4DB18007E791C /* GPUStateUtils.cpp in Sources */,
 				3E71932F1CE4DB18007E791C /* ShaderId.cpp in Sources */,
+				EE0812AF218CB23B007FD1AB /* DrawEngineVulkan.cpp in Sources */,
 				87E4F4371C24A60A00110A77 /* GPUDebugInterface.cpp in Sources */,
 				8C9F4CD01A9B2482002719B3 /* DrawEngineCommon.cpp in Sources */,
 				8C2D4EF71824011100E65166 /* Breakpoints.cpp in Sources */,
 				87E4F4441C24A72900110A77 /* GPU.cpp in Sources */,
 				8C2D4EED1824011100E65166 /* PostShader.cpp in Sources */,
+				EE0812B5218CB23B007FD1AB /* TextureCacheVulkan.cpp in Sources */,
+				EE0812B4218CB23B007FD1AB /* TextureScalerVulkan.cpp in Sources */,
 				EE76808020CB7EC5006470A2 /* FramebufferManagerGLES.cpp in Sources */,
 				8C9F4D281A9B25A5002719B3 /* SplineCommon.cpp in Sources */,
 				3EDB61F720129C5A00CF55BE /* Record.cpp in Sources */,
@@ -7160,14 +7333,19 @@
 				8CAFC17F1785C3AD00647A96 /* GPUCommon.cpp in Sources */,
 				8C2D4EFA1824011100E65166 /* Stepping.cpp in Sources */,
 				3EDB61F420129C2E00CF55BE /* Sampler.cpp in Sources */,
+				EE0812B3218CB23B007FD1AB /* DepalettizeShaderVulkan.cpp in Sources */,
 				8CAFC1821785C3AD00647A96 /* GPUState.cpp in Sources */,
 				8CAFC1841785C3AD00647A96 /* Math3D.cpp in Sources */,
 				8CAFC1871785C3BE00647A96 /* NullGpu.cpp in Sources */,
 				8C1B6E3B1993C7C100ABEB5D /* TransformCommon.cpp in Sources */,
+				EE0812AD218CB23B007FD1AB /* VertexShaderGeneratorVulkan.cpp in Sources */,
+				EE0812B6218CB23B007FD1AB /* FragmentShaderGeneratorVulkan.cpp in Sources */,
 				8CA153F717C4125D0003002D /* Clipper.cpp in Sources */,
 				8C2D4EF11824011100E65166 /* TextureDecoder.cpp in Sources */,
 				8C2D4EF41824011100E65166 /* VertexDecoderCommon.cpp in Sources */,
+				EE0812AE218CB23B007FD1AB /* PipelineManagerVulkan.cpp in Sources */,
 				8CA153FA17C4125D0003002D /* Lighting.cpp in Sources */,
+				EE0812B8218CB23B007FD1AB /* DebugVisVulkan.cpp in Sources */,
 				8CA153FC17C4125D0003002D /* Rasterizer.cpp in Sources */,
 				8C9F4CD91A9B24CD002719B3 /* VertexDecoderX86.cpp in Sources */,
 				8C9F4CD41A9B2494002719B3 /* SoftwareTransformCommon.cpp in Sources */,
@@ -7219,6 +7397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7445501786DC9D0008BE6A /* git-version.cpp in Sources */,
 				3E3044791F2163C100B06252 /* AVIDump.cpp in Sources */,
 				3E30447A1F2163C100B06252 /* KUBridge.cpp in Sources */,
 				3E7193391CE4DD8C007E791C /* RamCachingFileLoader.cpp in Sources */,
@@ -7356,6 +7535,7 @@
 				87E4F42D1C24A0E300110A77 /* sceG729.cpp in Sources */,
 				8C844747186B76F300BE03D5 /* GameManager.cpp in Sources */,
 				8C9958E81785DBE900EE4CA8 /* MIPSTables.cpp in Sources */,
+				EE08127C218CAC21007FD1AB /* sceUsbAcc.cpp in Sources */,
 				3EAA4E661D9DD6A7004F5179 /* IRJit.cpp in Sources */,
 				8C9958EA1785DBE900EE4CA8 /* MIPSVFPUUtils.cpp in Sources */,
 				8C9958EC1785DBF900EE4CA8 /* PSPLoaders.cpp in Sources */,
@@ -7380,7 +7560,6 @@
 				8CB74E111785F7CE00C652A7 /* sceNp.cpp in Sources */,
 				8CB74E131785F7E400C652A7 /* scePauth.cpp in Sources */,
 				8CB74E151785F7FA00C652A7 /* scePspNpDrm_user.cpp in Sources */,
-				8C7445501786DC9D0008BE6A /* git-version.cpp in Sources */,
 				8CD63AFC178DCEC60039164C /* sceCcc.cpp in Sources */,
 				8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */,
 				8CA153F417C412410003002D /* VirtualDiscFileSystem.cpp in Sources */,
@@ -7394,6 +7573,15 @@
 				8C064E6519A5237700CB142D /* sceUsbGps.cpp in Sources */,
 				8CA1541317C415280003002D /* MIPSStackWalk.cpp in Sources */,
 				87E0513D1B102D4000E870E1 /* sceAdler.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE081287218CAF4B007FD1AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE08128E218CAF78007FD1AB /* json_writer.cpp in Sources */,
+				EE08128D218CAF74007FD1AB /* json_reader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7451,6 +7639,7 @@
 				EE7680AA20CB811F006470A2 /* hlslParseables.cpp in Sources */,
 				EE7680AB20CB811F006470A2 /* hlslTokenStream.cpp in Sources */,
 				EE7680AC20CB811F006470A2 /* hlslParseHelper.cpp in Sources */,
+				EE08124B218CA633007FD1AB /* attribute.cpp in Sources */,
 				EE7680AD20CB811F006470A2 /* hlslScanContext.cpp in Sources */,
 				EE7680AE20CB811F006470A2 /* hlslOpMap.cpp in Sources */,
 				EE7680AF20CB811F006470A2 /* hlslAttributes.cpp in Sources */,
@@ -7493,11 +7682,6 @@
 			isa = PBXTargetDependency;
 			target = 8C84477C186B830400BE03D5 /* png17 */;
 			targetProxy = 8C844793186B83AD00BE03D5 /* PBXContainerItemProxy */;
-		};
-		8C8447A1186B843300BE03D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8C844796186B83EB00BE03D5 /* vjson */;
-			targetProxy = 8C8447A0186B843300BE03D5 /* PBXContainerItemProxy */;
 		};
 		8C9959001785DC8D00EE4CA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7603,7 +7787,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = vjson;
+				PRODUCT_NAME = gason;
 			};
 			name = Debug;
 		};
@@ -7612,7 +7796,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = vjson;
+				PRODUCT_NAME = gason;
 			};
 			name = Release;
 		};
@@ -8211,6 +8395,24 @@
 			};
 			name = Release;
 		};
+		EE08128A218CAF4B007FD1AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE08128B218CAF4B007FD1AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EE76801620C82F71006470A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -8322,7 +8524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C844799186B83EB00BE03D5 /* Build configuration list for PBXNativeTarget "vjson" */ = {
+		8C844799186B83EB00BE03D5 /* Build configuration list for PBXNativeTarget "gason" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8C84479A186B83EB00BE03D5 /* Debug */,
@@ -8453,6 +8655,15 @@
 			buildConfigurations = (
 				8CBB4301178C399D00FA270D /* Debug */,
 				8CBB4302178C399D00FA270D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE081289218CAF4B007FD1AB /* Build configuration list for PBXNativeTarget "json" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE08128A218CAF4B007FD1AB /* Debug */,
+				EE08128B218CAF4B007FD1AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
