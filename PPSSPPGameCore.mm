@@ -103,27 +103,30 @@ PPSSPPGameCore *_current = 0;
 
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
 {
-    NSString *resourcePath = [[[self owner] bundle] resourcePath];
-    NSString *supportDirectoryPath = [self supportDirectoryPath];
+    NSURL *romURL = [NSURL fileURLWithPath:path];
+    NSURL *resourceURL = self.owner.bundle.resourceURL;
+    NSURL *supportDirectoryURL = [NSURL fileURLWithPath:self.supportDirectoryPath isDirectory:YES];
 
     // Copy over font files if needed
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *fontSourceDirectory = [resourcePath stringByAppendingString:@"/flash0/font/"];
-    NSString *fontDestinationDirectory = [supportDirectoryPath stringByAppendingString:@"/font/"];
-    NSArray *fontFiles = [fileManager contentsOfDirectoryAtPath:fontSourceDirectory error:nil];
-    for(NSString *font in fontFiles)
+    NSFileManager *fileManager = NSFileManager.defaultManager;
+    NSURL *fontSourceDirectory = [resourceURL URLByAppendingPathComponent:@"flash0/font" isDirectory:YES];
+    NSURL *fontDestinationDirectory = [supportDirectoryURL URLByAppendingPathComponent:@"font" isDirectory:YES];
+    NSArray *fontFiles = [fileManager contentsOfDirectoryAtURL:fontSourceDirectory includingPropertiesForKeys:@[NSURLNameKey] options:0 error:nil];
+    [fileManager createDirectoryAtURL:fontDestinationDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    for(NSURL *fontURL in fontFiles)
     {
-        NSString *fontSource = [fontSourceDirectory stringByAppendingString:font];
-        NSString *fontDestination = [fontDestinationDirectory stringByAppendingString:font];
+        NSURL *destinationFontURL = [fontDestinationDirectory URLByAppendingPathComponent:fontURL.lastPathComponent];
 
-        [fileManager copyItemAtPath:fontSource toPath:fontDestination error:nil];
+        [fileManager copyItemAtURL:fontURL toURL:destinationFontURL error:nil];
     }
 
     LogManager::Init();
 
     g_Config.Load("");
 
-    NSString *directoryString      = [supportDirectoryPath stringByAppendingString:@"/"];
+    // Force a trailing forward slash that PPSSPP requires
+    NSString *directoryString      = [supportDirectoryURL.path stringByAppendingString:@"/"];
+    //NSURL *directoryURL3            = [supportDirectoryURL URLByAppendingPathComponent:@"/" isDirectory:YES];
     g_Config.currentDirectory      = directoryString.fileSystemRepresentation;
     g_Config.externalDirectory     = directoryString.fileSystemRepresentation;
     g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
@@ -135,7 +138,7 @@ PPSSPPGameCore *_current = 0;
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
-    _coreParam.fileToStart  = path.fileSystemRepresentation;
+    _coreParam.fileToStart  = romURL.fileSystemRepresentation;
     _coreParam.mountIso     = "";
     _coreParam.startBreak  = false;
     _coreParam.printfEmuLog = false;
@@ -172,9 +175,9 @@ PPSSPPGameCore *_current = 0;
 {
     if(!_isInitialized)
     {
-        // This is where PPSSPP will look for ppge_atlas.zim
-        NSString *resourcePath = [[[[self owner] bundle] resourcePath] stringByAppendingString:@"/"];
-        
+        // This is where PPSSPP will look for ppge_atlas.zim, requires trailing forward slash
+        NSString *resourcePath = [self.owner.bundle.resourcePath stringByAppendingString:@"/"];
+
         OEgraphicsContext = OpenEmuGLContext::CreateGraphicsContext();
         
         NativeInit(0, nil, nil, resourcePath.fileSystemRepresentation, nil);
@@ -200,7 +203,7 @@ PPSSPPGameCore *_current = 0;
 
         std::string error_string;
         if(!PSP_Init(_coreParam, &error_string))
-            NSLog(@"ERROR: %s", error_string.c_str());
+            NSLog(@"[PPSSPP] ERROR: %s", error_string.c_str());
 
         host->BootDone();
 		host->UpdateDisassembly();
@@ -292,14 +295,14 @@ static void _OELoadStateCallback(SaveState::Status status, std::string message, 
         
     if(status == SaveState::Status::WARNING) {
         error = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotLoadStateError userInfo:@{
-                                                                                                                NSLocalizedDescriptionKey : NSLocalizedString(@"The SaveState loaded has a Warning due to Savestate age or PPSSPP version mismatch", @"PPSSPP SaveState Warning description."),
-                                                                                                                NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"To clear the warning, you must:  Save using the in-game save, reset the core, reload the in-game save and resave the SaveState if it is not an autosave.", @"PPSSPP SaveState Warning.")]
-                                                                                                                }];
+            NSLocalizedDescriptionKey : NSLocalizedString(@"PPSSPP Save State Warning", @"PPSSPP Save State Warning description."),
+            NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"This save state was created from a previous version of PPSSPP, or simulates over 4 hours of time played.\n\nSave states preserve bugs from old PPSSPP versions and states from long sessions can also expose bugs rarely seen on a real PSP.\n\nIt is recommended to \"clean load\" for less bugs:\n\n1. Save in-game (memory stick, not save state), then stop emulation.\n2. Go to OpenEmu > Preferences > Library, click \"Reset warnings\".\n3. Reopen your game and click \"No\" when prompted to \"Continue where you left off\".", @"PPSSPP Save State Warning.")]
+        }];
     } else if(status == SaveState::Status::FAILURE) {
         error = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotLoadStateError userInfo:@{
-                                                                                                                NSLocalizedDescriptionKey : NSLocalizedString(@"The SaveState failed to Load", @"PPSSPP SaveState Failure description."),
-                                                                                                                NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"Could not load SaveState.", @"PPSSPP SaveState Failure.")]
-                                                                                                                }];
+            NSLocalizedDescriptionKey : NSLocalizedString(@"The Save State failed to Load", @"PPSSPP Save State Failure description."),
+            NSLocalizedRecoverySuggestionErrorKey : [NSString stringWithFormat:NSLocalizedString(@"Could not load Save State.", @"PPSSPP Save State Failure.")]
+        }];
     }
     
     block((status == SaveState::Status::SUCCESS), error);
@@ -334,7 +337,7 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
         __CtrlSetAnalogX(button == OEPSPAnalogRight ? value : -value);
 }
 
--(oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
+- (oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
 {
     __CtrlButtonDown(buttonMap[button]);
 }
