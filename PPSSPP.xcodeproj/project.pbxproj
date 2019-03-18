@@ -414,7 +414,6 @@
 		EE0812C4218CB6D2007FD1AB /* thin3d_vulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BB218CB67F007FD1AB /* thin3d_vulkan.cpp */; };
 		EE0812C6218CB6D2007FD1AB /* VulkanQueueRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BC218CB680007FD1AB /* VulkanQueueRunner.cpp */; };
 		EE0812C7218CB6D2007FD1AB /* VulkanRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812BE218CB680007FD1AB /* VulkanRenderManager.cpp */; };
-		EE0812D5218CBADA007FD1AB /* SPIRVDisasm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */; };
 		EE0812D6218CBADA007FD1AB /* VulkanLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */; };
 		EE0812D7218CBADA007FD1AB /* VulkanImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812CF218CBADA007FD1AB /* VulkanImage.cpp */; };
 		EE0812D8218CBADA007FD1AB /* VulkanContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE0812D1218CBADA007FD1AB /* VulkanContext.cpp */; };
@@ -481,6 +480,8 @@
 		EE7680BD20CB8521006470A2 /* disassemble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE767F9220C82F18006470A2 /* disassemble.cpp */; };
 		EE7680BE20CB859F006470A2 /* SpvBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE767F8420C82F18006470A2 /* SpvBuilder.cpp */; };
 		EE7680BF20CB85F7006470A2 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE767F8E20C82F18006470A2 /* Logger.cpp */; };
+		EE8DD2502240043A005E1AF5 /* DepthBufferGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8DD24F2240043A005E1AF5 /* DepthBufferGLES.cpp */; };
+		EE8DD25422400490005E1AF5 /* OSVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8DD2522240048F005E1AF5 /* OSVersion.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1577,8 +1578,6 @@
 		EE0812BE218CB680007FD1AB /* VulkanRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanRenderManager.cpp; sourceTree = "<group>"; };
 		EE0812BF218CB680007FD1AB /* VulkanRenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanRenderManager.h; sourceTree = "<group>"; };
 		EE0812C9218CBADA007FD1AB /* VulkanDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanDebug.h; sourceTree = "<group>"; };
-		EE0812CA218CBADA007FD1AB /* SPIRVDisasm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIRVDisasm.h; sourceTree = "<group>"; };
-		EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SPIRVDisasm.cpp; sourceTree = "<group>"; };
 		EE0812CC218CBADA007FD1AB /* VulkanContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanContext.h; sourceTree = "<group>"; };
 		EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VulkanLoader.cpp; sourceTree = "<group>"; };
 		EE0812CE218CBADA007FD1AB /* VulkanLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VulkanLoader.h; sourceTree = "<group>"; };
@@ -3208,6 +3207,11 @@
 		EE76806520C88CAB006470A2 /* OpenEmuGLContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenEmuGLContext.cpp; sourceTree = "<group>"; };
 		EE76806620C88CAB006470A2 /* OpenEmuGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenEmuGLContext.h; sourceTree = "<group>"; };
 		EE76808C20CB7F15006470A2 /* libglslang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglslang.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8DD24E2240041A005E1AF5 /* StencilCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StencilCommon.h; sourceTree = "<group>"; };
+		EE8DD24F2240043A005E1AF5 /* DepthBufferGLES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DepthBufferGLES.cpp; sourceTree = "<group>"; };
+		EE8DD2512240048F005E1AF5 /* Hashmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hashmaps.h; sourceTree = "<group>"; };
+		EE8DD2522240048F005E1AF5 /* OSVersion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OSVersion.cpp; sourceTree = "<group>"; };
+		EE8DD25322400490005E1AF5 /* OSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSVersion.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3900,6 +3904,7 @@
 		8C2D4ED91824011100E65166 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EE8DD24E2240041A005E1AF5 /* StencilCommon.h */,
 				3EDB61EE20129C0400CF55BE /* StencilCommon.cpp */,
 				3E3044481F21461F00B06252 /* ShaderTranslation.h */,
 				3E3044491F21461F00B06252 /* ShaderUniforms.h */,
@@ -4108,6 +4113,9 @@
 		8CAFA7E41785B3C200647A96 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EE8DD2512240048F005E1AF5 /* Hashmaps.h */,
+				EE8DD2522240048F005E1AF5 /* OSVersion.cpp */,
+				EE8DD25322400490005E1AF5 /* OSVersion.h */,
 				EE0812C8218CBADA007FD1AB /* Vulkan */,
 				3E30443E1F2144E300B06252 /* DbgNew.h */,
 				3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */,
@@ -4758,6 +4766,7 @@
 		8CAFBABF1785B3D200647A96 /* GLES */ = {
 			isa = PBXGroup;
 			children = (
+				EE8DD24F2240043A005E1AF5 /* DepthBufferGLES.cpp */,
 				3E3044501F21463100B06252 /* DepalettizeShaderGLES.h */,
 				3E3044511F21463100B06252 /* FragmentShaderGeneratorGLES.h */,
 				3E3044521F21463100B06252 /* FragmentTestCacheGLES.h */,
@@ -4876,8 +4885,6 @@
 			isa = PBXGroup;
 			children = (
 				EE0812C9218CBADA007FD1AB /* VulkanDebug.h */,
-				EE0812CA218CBADA007FD1AB /* SPIRVDisasm.h */,
-				EE0812CB218CBADA007FD1AB /* SPIRVDisasm.cpp */,
 				EE0812CC218CBADA007FD1AB /* VulkanContext.h */,
 				EE0812CD218CBADA007FD1AB /* VulkanLoader.cpp */,
 				EE0812CE218CBADA007FD1AB /* VulkanLoader.h */,
@@ -7077,7 +7084,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define BUILD_VERSION with git revision and build configuration\ngitBundle=`which git`\ngitDescribe=`cd ppsspp; ${gitBundle} describe --always`\n\necho \"const char *PPSSPP_GIT_VERSION = \\\"${gitDescribe}\\\";\" > ppsspp/git-version.cpp";
+			shellScript = "# Define BUILD_VERSION with git revision and build configuration\ngitBundle=`which git`\ngitDescribe=`cd ppsspp; ${gitBundle} describe --always`\n\necho \"const char *PPSSPP_GIT_VERSION = \\\"${gitDescribe}\\\";\" > ppsspp/git-version.cpp\n";
 		};
 		8CBB4305178C39D500FA270D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7190,10 +7197,10 @@
 				8CAFC0D81785B41700647A96 /* x64Analyzer.cpp in Sources */,
 				8CAFC0DA1785B41D00647A96 /* x64Emitter.cpp in Sources */,
 				8CAFC0F61785B4D900647A96 /* LogManager.cpp in Sources */,
+				EE8DD25422400490005E1AF5 /* OSVersion.cpp in Sources */,
 				8CAFC0FC1785B4D900647A96 /* MemoryUtil.cpp in Sources */,
 				8CAFC0FE1785B4D900647A96 /* Misc.cpp in Sources */,
 				3E71932B1CE4DADD007E791C /* GPUStateUtils.cpp in Sources */,
-				EE0812D5218CBADA007FD1AB /* SPIRVDisasm.cpp in Sources */,
 				8CAFC0FF1785B4D900647A96 /* MsgHandler.cpp in Sources */,
 				8CAFC1011785B4D900647A96 /* StringUtils.cpp in Sources */,
 				8CAFC1051785B4D900647A96 /* ThreadPools.cpp in Sources */,
@@ -7288,6 +7295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8DD2502240043A005E1AF5 /* DepthBufferGLES.cpp in Sources */,
 				3EDB62022012B76900CF55BE /* TextureCacheCommon.cpp in Sources */,
 				3EDB62032012B76900CF55BE /* TextureCacheGLES.cpp in Sources */,
 				3E30447F1F21648A00B06252 /* DepalettizeShaderGLES.cpp in Sources */,
