@@ -54,6 +54,15 @@
 #define AUDIO_CHANNELS      2
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
 
+#define GRAPHIC_ORIG_W      480
+#define GRAPHIC_ORIG_H      272
+#define GRAPHIC_DOUBLE_W    960
+#define GRAPHIC_DOUBLE_H    544
+#define GRAPHIC_TRIPLE_W    1440
+#define GRAPHIC_TRIPLE_H    816
+#define GRAPHIC_FULLHD_W    1920
+#define GRAPHIC_FULLHD_H    1088
+
 
 
 namespace SaveState {
@@ -144,10 +153,10 @@ PPSSPPGameCore *_current = 0;
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
 
-    _coreParam.renderWidth  = 480;
-    _coreParam.renderHeight = 272;
-    _coreParam.pixelWidth   = 480;
-    _coreParam.pixelHeight  = 272;
+    _coreParam.renderWidth  = GRAPHIC_FULLHD_W;
+    _coreParam.renderHeight = GRAPHIC_FULLHD_H;
+    _coreParam.pixelWidth   = GRAPHIC_FULLHD_W;
+    _coreParam.pixelHeight  = GRAPHIC_FULLHD_H;
 
     coreState = CORE_POWERUP;
     
@@ -228,7 +237,7 @@ PPSSPPGameCore *_current = 0;
 
 - (OEIntSize)bufferSize
 {
-    return OEIntSizeMake(480, 272);
+    return OEIntSizeMake(GRAPHIC_FULLHD_W, GRAPHIC_FULLHD_H);
 }
 
 - (OEIntSize)aspectSize

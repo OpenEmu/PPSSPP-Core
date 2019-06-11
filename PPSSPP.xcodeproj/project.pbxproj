@@ -590,6 +590,27 @@
 			remoteGlobalIDString = 8CAFC10E1785B63900647A96;
 			remoteInfo = PPSSPP;
 		};
+		CB9A552822AE2F4200F858F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6772A261710A4BA00ED580A;
+			remoteInfo = OpenEmuBase;
+		};
+		CB9A552A22AE2F4200F858F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6772A8C1710CD7E00ED580A;
+			remoteInfo = OpenEmuSystem;
+		};
+		CB9A552C22AE2F4200F858F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0109BBA2209F25EB002419C1;
+			remoteInfo = OpenEmuBaseTests;
+		};
 		EE76801E20C83100006470A2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
@@ -1532,6 +1553,7 @@
 		8CD63AFA178DCEC60039164C /* sceCcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceCcc.cpp; sourceTree = "<group>"; };
 		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
 		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
+		CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OpenEmu-SDK.xcodeproj"; path = "../OpenEmu-SDK/OpenEmu-SDK.xcodeproj"; sourceTree = "<group>"; };
 		EE081249218CA633007FD1AB /* attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attribute.h; sourceTree = "<group>"; };
 		EE08124A218CA633007FD1AB /* attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attribute.cpp; sourceTree = "<group>"; };
 		EE081276218CA90A007FD1AB /* Debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugger.h; sourceTree = "<group>"; };
@@ -4837,6 +4859,16 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		CB9A552322AE2F4200F858F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A552922AE2F4200F858F5 /* OpenEmuBase.framework */,
+				CB9A552B22AE2F4200F858F5 /* OpenEmuSystem.framework */,
+				CB9A552D22AE2F4200F858F5 /* OpenEmuBaseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EE081280218CAD91007FD1AB /* gason */ = {
 			isa = PBXGroup;
 			children = (
@@ -6715,6 +6747,7 @@
 		EE76806C20C9DF7C006470A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -7027,11 +7060,18 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 8CAFA78E1785AA9900647A96;
 			productRefGroup = 8CAFA79B1785AE2A00647A96 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CB9A552322AE2F4200F858F5 /* Products */;
+					ProjectRef = CB9A552222AE2F4200F858F5 /* OpenEmu-SDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8CAFA7D11785B06F00647A96 /* Common */,
@@ -7056,6 +7096,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CB9A552922AE2F4200F858F5 /* OpenEmuBase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OpenEmuBase.framework;
+			remoteRef = CB9A552822AE2F4200F858F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB9A552B22AE2F4200F858F5 /* OpenEmuSystem.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OpenEmuSystem.framework;
+			remoteRef = CB9A552A22AE2F4200F858F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CB9A552D22AE2F4200F858F5 /* OpenEmuBaseTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OpenEmuBaseTests.xctest;
+			remoteRef = CB9A552C22AE2F4200F858F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8CAFC10D1785B63900647A96 /* Resources */ = {
@@ -8366,6 +8430,7 @@
 					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
 					"\"$(SRCROOT)/ppsspp/ext/glew\"",
 					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"\"$(SRCROOT)/OpenEmuBase\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -8384,6 +8449,7 @@
 					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
 					"\"$(SRCROOT)/ppsspp/ext/glew\"",
 					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"\"$(SRCROOT)/OpenEmuBase\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
