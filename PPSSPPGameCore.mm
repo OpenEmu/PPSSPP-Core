@@ -50,6 +50,13 @@
 #include "thin3d/GLRenderManager.h"
 #include "thin3d/DataFormatGL.h"
 
+
+#define Option(_NAME_, _PREFKEY_) @{ OEGameCoreDisplayModeNameKey : _NAME_, OEGameCoreDisplayModePrefKeyNameKey : _PREFKEY_, OEGameCoreDisplayModeStateKey : @NO, }
+#define OptionIndented(_NAME_, _PREFKEY_) @{ OEGameCoreDisplayModeNameKey : _NAME_, OEGameCoreDisplayModePrefKeyNameKey : _PREFKEY_, OEGameCoreDisplayModeStateKey : @NO, OEGameCoreDisplayModeIndentationLevelKey : @(1), }
+#define OptionToggleable(_NAME_, _PREFKEY_) @{ OEGameCoreDisplayModeNameKey : _NAME_, OEGameCoreDisplayModePrefKeyNameKey : _PREFKEY_, OEGameCoreDisplayModeStateKey : @NO, OEGameCoreDisplayModeAllowsToggleKey : @YES, }
+#define Label(_NAME_) @{ OEGameCoreDisplayModeLabelKey : _NAME_, }
+#define SeparatorItem() @{ OEGameCoreDisplayModeSeparatorItemKey : [NSNull null],}
+
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
 #define AUDIO_SAMPLESIZE    sizeof(int16_t)
@@ -90,9 +97,20 @@ void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState);
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
+    
+    int displayMode;
+    NSArray *_availableDisplayModes;
 
    OpenEmuGLContext *OEgraphicsContext;
 }
+
+- (NSString *)gameInternalName;
+
+- (void)loadResolution;
+- (void)loadResolutionDefault;
+- (void)changeResolution:(NSString *)resolution;
+
+
 @end
 
 PPSSPPGameCore *_current = 0;
@@ -108,6 +126,260 @@ PPSSPPGameCore *_current = 0;
     
     return self;
 }
+
+# pragma mark - Display Mode
+
+/**
+ *
+ * return the list of Display Mode
+ */
+- (NSArray <NSDictionary <NSString *, id> *> *)displayModes
+{
+    if(_availableDisplayModes == nil || _availableDisplayModes.count == 0) {
+        _availableDisplayModes = [NSArray array];
+        
+        NSArray <NSDictionary <NSString *, id> *> *availableModesWithDefault =
+        @[
+          Option(@"Original", @"resolution"),
+          Option(@"2x",       @"resolution"),
+          Option(@"HD",       @"resolution"),
+          Option(@"Full HD",  @"resolution")
+          ];
+          
+        
+//        if (![self gameHasInternalResolution])
+//            availableModesWithDefault = [availableModesWithDefault subarrayWithRange:NSMakeRange(1, availableModesWithDefault.count - 1)];
+        
+        _availableDisplayModes = availableModesWithDefault;
+    }
+    
+    return _availableDisplayModes;
+}
+
+
+/**
+ *
+ * set the display Mode for the current game
+ */
+- (void)changeDisplayWithMode:(NSString *)displayMode
+{
+
+    // NOTE: This is a more complex implementation to serve as an example for handling submenus,
+    // toggleable options and multiple groups of mutually exclusive options.
+ 
+    if (_availableDisplayModes.count == 0)
+        [self displayModes];
+    
+    // First check if 'displayMode' is toggleable and grab its preference key
+    BOOL isDisplayModeToggleable, isValidDisplayMode;
+    NSString *displayModePrefKey;
+    for (NSDictionary *modeDict in _availableDisplayModes)
+    {
+        NSString *mode = modeDict[OEGameCoreDisplayModeNameKey];
+        if ([mode isEqualToString:displayMode])
+        {
+            displayModePrefKey = modeDict[OEGameCoreDisplayModePrefKeyNameKey];
+            isDisplayModeToggleable = [modeDict[OEGameCoreDisplayModeAllowsToggleKey] boolValue];
+            isValidDisplayMode = YES;
+            break;
+        }
+        // Submenu Items
+        for (NSDictionary *subModeDict in modeDict[OEGameCoreDisplayModeGroupItemsKey])
+        {
+            NSString *subMode = subModeDict[OEGameCoreDisplayModeNameKey];
+            if ([subMode isEqualToString:displayMode])
+            {
+                displayModePrefKey = subModeDict[OEGameCoreDisplayModePrefKeyNameKey];
+                isDisplayModeToggleable = [subModeDict[OEGameCoreDisplayModeAllowsToggleKey] boolValue];
+                isValidDisplayMode = YES;
+                break;
+            }
+        }
+    }
+    
+    // Disallow a 'displayMode' not found in _availableDisplayModes
+    if (!isValidDisplayMode)
+        return;
+    
+    
+    NSMutableArray *tempOptionsArray = [NSMutableArray array];
+    NSMutableArray *tempSubOptionsArray = [NSMutableArray array];
+    NSString *mode, *pref, *label;
+    BOOL isToggleable, isSelected;
+    NSInteger indentationLevel;
+    
+    
+    // Handle option state changes
+    for (NSDictionary *optionDict in _availableDisplayModes)
+    {
+        mode             =  optionDict[OEGameCoreDisplayModeNameKey];
+        pref             =  optionDict[OEGameCoreDisplayModePrefKeyNameKey];
+        isToggleable     = [optionDict[OEGameCoreDisplayModeAllowsToggleKey] boolValue];
+        isSelected       = [optionDict[OEGameCoreDisplayModeStateKey] boolValue];
+        indentationLevel = [optionDict[OEGameCoreDisplayModeIndentationLevelKey] integerValue] ?: 0;
+        
+        if (optionDict[OEGameCoreDisplayModeSeparatorItemKey])
+        {
+            [tempOptionsArray addObject:SeparatorItem()];
+            continue;
+        }
+        else if (optionDict[OEGameCoreDisplayModeLabelKey])
+        {
+            label = optionDict[OEGameCoreDisplayModeLabelKey];
+            [tempOptionsArray addObject:Label(label)];
+            continue;
+        }
+        // Mutually exclusive option state change
+        else if ([mode isEqualToString:displayMode] && !isToggleable)
+            isSelected = YES;
+        // Reset mutually exclusive options that are the same prefs group as 'displayMode'
+        else if (!isDisplayModeToggleable && [pref isEqualToString:displayModePrefKey])
+            isSelected = NO;
+        // Toggleable option state change
+        else if ([mode isEqualToString:displayMode] && isToggleable)
+            isSelected = !isSelected;
+        // Submenu group
+        else if (optionDict[OEGameCoreDisplayModeGroupNameKey])
+        {
+            NSString *submenuTitle = optionDict[OEGameCoreDisplayModeGroupNameKey];
+            // Submenu items
+            for (NSDictionary *subOptionDict in optionDict[OEGameCoreDisplayModeGroupItemsKey])
+            {
+                mode             =  subOptionDict[OEGameCoreDisplayModeNameKey];
+                pref             =  subOptionDict[OEGameCoreDisplayModePrefKeyNameKey];
+                isToggleable     = [subOptionDict[OEGameCoreDisplayModeAllowsToggleKey] boolValue];
+                isSelected       = [subOptionDict[OEGameCoreDisplayModeStateKey] boolValue];
+                indentationLevel = [subOptionDict[OEGameCoreDisplayModeIndentationLevelKey] integerValue] ?: 0;
+                
+                if (subOptionDict[OEGameCoreDisplayModeSeparatorItemKey])
+                {
+                    [tempSubOptionsArray addObject:SeparatorItem()];
+                    continue;
+                }
+                else if (subOptionDict[OEGameCoreDisplayModeLabelKey])
+                {
+                    label = subOptionDict[OEGameCoreDisplayModeLabelKey];
+                    [tempSubOptionsArray addObject:Label(label)];
+                    continue;
+                }
+                // Mutually exclusive option state change
+                else if ([mode isEqualToString:displayMode] && !isToggleable)
+                    isSelected = YES;
+                // Reset mutually exclusive options that are the same prefs group as 'displayMode'
+                else if (!isDisplayModeToggleable && [pref isEqualToString:displayModePrefKey])
+                    isSelected = NO;
+                // Toggleable option state change
+                else if ([mode isEqualToString:displayMode] && isToggleable)
+                    isSelected = !isSelected;
+                
+                // Add the submenu option
+                [tempSubOptionsArray addObject:@{ OEGameCoreDisplayModeNameKey             : mode,
+                                                  OEGameCoreDisplayModePrefKeyNameKey      : pref,
+                                                  OEGameCoreDisplayModeStateKey            : @(isSelected),
+                                                  OEGameCoreDisplayModeIndentationLevelKey : @(indentationLevel),
+                                                  OEGameCoreDisplayModeAllowsToggleKey     : @(isToggleable) }];
+            }
+            
+            // Add the submenu group
+            [tempOptionsArray addObject:@{ OEGameCoreDisplayModeGroupNameKey  : submenuTitle,
+                                           OEGameCoreDisplayModeGroupItemsKey : [tempSubOptionsArray copy] }];
+            [tempSubOptionsArray removeAllObjects];
+            continue;
+        }
+        
+        // Add the option
+        [tempOptionsArray addObject:@{ OEGameCoreDisplayModeNameKey             : mode,
+                                       OEGameCoreDisplayModePrefKeyNameKey      : pref,
+                                       OEGameCoreDisplayModeStateKey            : @(isSelected),
+                                       OEGameCoreDisplayModeIndentationLevelKey : @(indentationLevel),
+                                       OEGameCoreDisplayModeAllowsToggleKey     : @(isToggleable) }];
+    }
+    
+    // Set the new Resolution
+    if ([displayModePrefKey isEqualToString:@"resolution"])
+        [self changeResolution:displayMode];
+    
+    _availableDisplayModes = tempOptionsArray;
+    
+}
+
+- (NSString *)gameInternalName
+{
+    NSString *title = [NSString stringWithUTF8String:_coreParam.fileToStart.c_str()];
+    return title;
+}
+
+- (void)loadResolution
+{
+    // Only temporary, so core doesn't crash on an older OpenEmu version
+    if (![self respondsToSelector:@selector(displayModeInfo)])
+    {
+        [self loadResolutionDefault];
+    }
+    // No previous Resolution saved, set a default
+    else if (self.displayModeInfo[@"resolution"] == nil)
+    {
+        [self loadResolutionDefault];
+    }
+    else
+    {
+        NSString *lastResolution = self.displayModeInfo[@"resolution"];
+       
+        [self changeDisplayWithMode:lastResolution];
+    }
+}
+
+- (void)loadResolutionDefault
+{
+    [self changeDisplayWithMode:@"Original"];
+}
+
+- (void)changeResolution:(NSString *)resolution
+{
+    NSDictionary <NSString *, NSString *> *ResolutionNames =
+    @{
+      @"Original"   : @"Original",
+      @"2x"         : @"2x",
+      @"HD"         : @"HD",
+      @"Full HD"    : @"Full HD",
+      };
+    
+    resolution = ResolutionNames[resolution];
+    
+    if ([resolution isEqualToString:@"2x"])
+    {
+        _coreParam.renderWidth  = GRAPHIC_DOUBLE_W;
+        _coreParam.renderHeight = GRAPHIC_DOUBLE_H;
+        _coreParam.pixelWidth   = GRAPHIC_DOUBLE_W;
+        _coreParam.pixelHeight  = GRAPHIC_DOUBLE_H;
+    }
+    else if ([resolution isEqualToString:@"HD"])
+    {
+        _coreParam.renderWidth  = GRAPHIC_TRIPLE_W;
+        _coreParam.renderHeight = GRAPHIC_TRIPLE_H;
+        _coreParam.pixelWidth   = GRAPHIC_TRIPLE_W;
+        _coreParam.pixelHeight  = GRAPHIC_TRIPLE_H;
+    }
+    else if ([resolution isEqualToString:@"Full HD"])
+    {
+        _coreParam.renderWidth  = GRAPHIC_FULLHD_W;
+        _coreParam.renderHeight = GRAPHIC_FULLHD_H;
+        _coreParam.pixelWidth   = GRAPHIC_FULLHD_W;
+        _coreParam.pixelHeight  = GRAPHIC_FULLHD_H;
+        
+    }
+    else
+        _coreParam.renderWidth  = GRAPHIC_ORIG_W;
+        _coreParam.renderHeight = GRAPHIC_ORIG_H;
+        _coreParam.pixelWidth   = GRAPHIC_ORIG_W;
+        _coreParam.pixelHeight  = GRAPHIC_ORIG_H;
+    
+    [self resetEmulation];
+    return;
+    
+}
+
+
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
@@ -143,6 +415,7 @@ PPSSPPGameCore *_current = 0;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
     g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
     g_Config.bHideStateWarnings    = false;
+
     
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
@@ -153,11 +426,8 @@ PPSSPPGameCore *_current = 0;
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
 
-    _coreParam.renderWidth  = GRAPHIC_FULLHD_W;
-    _coreParam.renderHeight = GRAPHIC_FULLHD_H;
-    _coreParam.pixelWidth   = GRAPHIC_FULLHD_W;
-    _coreParam.pixelHeight  = GRAPHIC_FULLHD_H;
-
+    [self loadResolution];
+    
     coreState = CORE_POWERUP;
     
     return true;
@@ -237,7 +507,7 @@ PPSSPPGameCore *_current = 0;
 
 - (OEIntSize)bufferSize
 {
-    return OEIntSizeMake(GRAPHIC_FULLHD_W, GRAPHIC_FULLHD_H);
+    return OEIntSizeMake(_coreParam.pixelWidth, _coreParam.pixelHeight);
 }
 
 - (OEIntSize)aspectSize

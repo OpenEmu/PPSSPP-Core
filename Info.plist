@@ -35,6 +35,14 @@
 	<key>SUEnableAutomaticChecks</key>
 	<string>1</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.github.com/OpenEmu/OpenEmu-Update/master/ppsspp_appcast.xml</string>
+    <string>https://raw.github.com/OpenEmu/OpenEmu-Update/master/ppsspp_appcast.xml</string>
+    <key>OEGameCoreOptions</key>
+    <dict>
+        <key>openemu.system.psp</key>
+        <dict>
+            <key>OEGameCoreSupportsDisplayModeChange</key>
+            <true/>
+        </dict>
+    </dict>
 </dict>
 </plist>
