@@ -79,6 +79,7 @@
 		3EDB62042012B96900CF55BE /* thin3d_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3C41C249AF400110A77 /* thin3d_gl.cpp */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
+		872FC30022B814F800AF67DE /* SpvPostProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */; };
 		87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E051301B1028FC00E870E1 /* libsfmt19937.a */; };
 		87E0513A1B102C2A00E870E1 /* SFMT.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E051381B102C2A00E870E1 /* SFMT.c */; };
 		87E0513D1B102D4000E870E1 /* sceAdler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E0513B1B102D4000E870E1 /* sceAdler.cpp */; };
@@ -706,6 +707,7 @@
 		3EDB620A20156D2500CF55BE /* sceDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceDisplay.cpp; sourceTree = "<group>"; };
 		8706346A1C2516A1007FAA2F /* knownfuncs.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownfuncs.ini; sourceTree = "<group>"; };
 		8706346B1C2516A1007FAA2F /* langregion.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = langregion.ini; sourceTree = "<group>"; };
+		872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpvPostProcess.cpp; sourceTree = "<group>"; };
 		87E051301B1028FC00E870E1 /* libsfmt19937.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsfmt19937.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E051351B102C2A00E870E1 /* SFMT-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-common.h"; path = "sfmt19937/SFMT-common.h"; sourceTree = "<group>"; };
 		87E051361B102C2A00E870E1 /* SFMT-params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SFMT-params.h"; path = "sfmt19937/SFMT-params.h"; sourceTree = "<group>"; };
@@ -6479,6 +6481,7 @@
 		EE767F7C20C82F18006470A2 /* SPIRV */ = {
 			isa = PBXGroup;
 			children = (
+				872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */,
 				EE767F7D20C82F18006470A2 /* SPVRemapper.h */,
 				EE767F7E20C82F18006470A2 /* SpvBuilder.h */,
 				EE767F7F20C82F18006470A2 /* CMakeLists.txt */,
@@ -7635,6 +7638,7 @@
 				EE76809A20CB805A006470A2 /* iomapper.cpp in Sources */,
 				EE76809620CB805A006470A2 /* limits.cpp in Sources */,
 				EE7680BE20CB859F006470A2 /* SpvBuilder.cpp in Sources */,
+				872FC30022B814F800AF67DE /* SpvPostProcess.cpp in Sources */,
 				EE76809720CB805A006470A2 /* parseConst.cpp in Sources */,
 				EE7680B120CB8278006470A2 /* Pp.cpp in Sources */,
 				EE7680A620CB8073006470A2 /* PpAtom.cpp in Sources */,
