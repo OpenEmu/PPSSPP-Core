@@ -185,7 +185,6 @@ PPSSPPGameCore *_current = 0;
         OEgraphicsContext->InitFromRenderThread(nullptr);
         
         _coreParam.graphicsContext = OEgraphicsContext;
-        _coreParam.thin3d = OEgraphicsContext ? OEgraphicsContext->GetDrawContext() : nullptr;
        
         NativeInitGraphics(OEgraphicsContext);
     }
