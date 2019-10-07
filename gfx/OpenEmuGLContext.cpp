@@ -79,7 +79,6 @@ void OpenEmuGLContext::CreateDrawContext() {
     draw_ = Draw::T3DCreateGLContext();
     renderManager_ = (GLRenderManager *)draw_->GetNativeObject(Draw::NativeObject::RENDER_MANAGER);
     
-    PSP_CoreParameter().thin3d = draw_;
     bool success = draw_->CreatePresets();
     assert(success);
     
