@@ -424,6 +424,11 @@
 		EE19A4C520B9E470005343B9 /* GLQueueRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE19A4BC20B9E46F005343B9 /* GLQueueRunner.cpp */; };
 		EE2B0064234BDB1E000DB0B8 /* sceUsbMic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE2B0062234BDB1E000DB0B8 /* sceUsbMic.cpp */; };
 		EE2B0068234BDC29000DB0B8 /* Playback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE2B0066234BDC29000DB0B8 /* Playback.cpp */; };
+		EE5B9F152363675E00123ECF /* spirv_cross_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F112363675D00123ECF /* spirv_cross_util.cpp */; };
+		EE5B9F162363675E00123ECF /* spirv_cross_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F122363675D00123ECF /* spirv_cross_c.cpp */; };
+		EE5B9F172363675E00123ECF /* spirv_cross_parsed_ir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F142363675E00123ECF /* spirv_cross_parsed_ir.cpp */; };
+		EE5B9F1D236367EC00123ECF /* spirv_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F19236367EB00123ECF /* spirv_parser.cpp */; };
+		EE5B9F1E236367EC00123ECF /* spirv_reflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F1B236367EC00123ECF /* spirv_reflect.cpp */; };
 		EE7679CA20C82E89006470A2 /* Replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7679C920C82E88006470A2 /* Replay.cpp */; };
 		EE76801920C82F9B006470A2 /* spirv_glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7677DA20C82D0D006470A2 /* spirv_glsl.cpp */; };
 		EE76802120C833B9006470A2 /* spirv_cross.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7677E920C82D0D006470A2 /* spirv_cross.cpp */; };
@@ -1601,6 +1606,19 @@
 		EE2B0065234BDC29000DB0B8 /* RecordFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordFormat.h; sourceTree = "<group>"; };
 		EE2B0066234BDC29000DB0B8 /* Playback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Playback.cpp; sourceTree = "<group>"; };
 		EE2B0067234BDC29000DB0B8 /* Playback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playback.h; sourceTree = "<group>"; };
+		EE5B9F0D2363675D00123ECF /* spirv_cross_containers.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_cross_containers.hpp; sourceTree = "<group>"; };
+		EE5B9F0E2363675D00123ECF /* spirv_cross_error_handling.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_cross_error_handling.hpp; sourceTree = "<group>"; };
+		EE5B9F0F2363675D00123ECF /* spirv_cross_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spirv_cross_c.h; sourceTree = "<group>"; };
+		EE5B9F102363675D00123ECF /* spirv_cross_parsed_ir.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_cross_parsed_ir.hpp; sourceTree = "<group>"; };
+		EE5B9F112363675D00123ECF /* spirv_cross_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_cross_util.cpp; sourceTree = "<group>"; };
+		EE5B9F122363675D00123ECF /* spirv_cross_c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_cross_c.cpp; sourceTree = "<group>"; };
+		EE5B9F132363675E00123ECF /* spirv_cross_util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_cross_util.hpp; sourceTree = "<group>"; };
+		EE5B9F142363675E00123ECF /* spirv_cross_parsed_ir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_cross_parsed_ir.cpp; sourceTree = "<group>"; };
+		EE5B9F18236367EB00123ECF /* spirv_reflect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_reflect.hpp; sourceTree = "<group>"; };
+		EE5B9F19236367EB00123ECF /* spirv_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_parser.cpp; sourceTree = "<group>"; };
+		EE5B9F1A236367EB00123ECF /* spirv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spirv.h; sourceTree = "<group>"; };
+		EE5B9F1B236367EC00123ECF /* spirv_reflect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_reflect.cpp; sourceTree = "<group>"; };
+		EE5B9F1C236367EC00123ECF /* spirv_parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_parser.hpp; sourceTree = "<group>"; };
 		EE7677DA20C82D0D006470A2 /* spirv_glsl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_glsl.cpp; sourceTree = "<group>"; };
 		EE7677DE20C82D0D006470A2 /* barrier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = barrier.hpp; sourceTree = "<group>"; };
 		EE7677DF20C82D0D006470A2 /* thread_group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = thread_group.hpp; sourceTree = "<group>"; };
@@ -4889,6 +4907,19 @@
 		EE7677D320C82D0D006470A2 /* SPIRV-Cross */ = {
 			isa = PBXGroup;
 			children = (
+				EE5B9F19236367EB00123ECF /* spirv_parser.cpp */,
+				EE5B9F1C236367EC00123ECF /* spirv_parser.hpp */,
+				EE5B9F1B236367EC00123ECF /* spirv_reflect.cpp */,
+				EE5B9F18236367EB00123ECF /* spirv_reflect.hpp */,
+				EE5B9F1A236367EB00123ECF /* spirv.h */,
+				EE5B9F122363675D00123ECF /* spirv_cross_c.cpp */,
+				EE5B9F0F2363675D00123ECF /* spirv_cross_c.h */,
+				EE5B9F0D2363675D00123ECF /* spirv_cross_containers.hpp */,
+				EE5B9F0E2363675D00123ECF /* spirv_cross_error_handling.hpp */,
+				EE5B9F142363675E00123ECF /* spirv_cross_parsed_ir.cpp */,
+				EE5B9F102363675D00123ECF /* spirv_cross_parsed_ir.hpp */,
+				EE5B9F112363675D00123ECF /* spirv_cross_util.cpp */,
+				EE5B9F132363675E00123ECF /* spirv_cross_util.hpp */,
 				EE7677DA20C82D0D006470A2 /* spirv_glsl.cpp */,
 				EE7677DC20C82D0D006470A2 /* include */,
 				EE7677E420C82D0D006470A2 /* spirv_hlsl.hpp */,
@@ -7590,11 +7621,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE76801920C82F9B006470A2 /* spirv_glsl.cpp in Sources */,
+				EE5B9F162363675E00123ECF /* spirv_cross_c.cpp in Sources */,
 				EE76806920C9DECF006470A2 /* spirv_msl.cpp in Sources */,
+				EE5B9F1D236367EC00123ECF /* spirv_parser.cpp in Sources */,
 				EE76806B20C9DECF006470A2 /* spirv_cpp.cpp in Sources */,
 				EE76802120C833B9006470A2 /* spirv_cross.cpp in Sources */,
+				EE5B9F172363675E00123ECF /* spirv_cross_parsed_ir.cpp in Sources */,
 				EE76806A20C9DECF006470A2 /* spirv_hlsl.cpp in Sources */,
 				EE76802220C8373C006470A2 /* spirv_cfg.cpp in Sources */,
+				EE5B9F152363675E00123ECF /* spirv_cross_util.cpp in Sources */,
+				EE5B9F1E236367EC00123ECF /* spirv_reflect.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7929,7 +7965,7 @@
 					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
@@ -8009,7 +8045,7 @@
 					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"-D_NDEBUG",
