@@ -7044,10 +7044,9 @@
 			};
 			buildConfigurationList = 8CAFA7921785AA9900647A96 /* Build configuration list for PBXProject "PPSSPP" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 8CAFA78E1785AA9900647A96;
