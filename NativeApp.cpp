@@ -142,7 +142,7 @@ namespace OpenEmuCoreThread {
         if (emuThreadState != EmuThreadState::RUNNING) {
             return;
         }
-        
+
         emuThreadState = EmuThreadState::QUIT_REQUESTED;
         
         while (ctx->ThreadFrame()) {
@@ -166,6 +166,11 @@ namespace OpenEmuCoreThread {
             emuThreadState = EmuThreadState::PAUSE_REQUESTED;
             usleep(10000);
         }
+    }
+
+    static void EmuThreadJoin() {
+        emuThread.join();
+        emuThread = std::thread();
     }
 }  // namespace OpenEmuCoreThread
 
@@ -319,8 +324,23 @@ std::string System_GetProperty(SystemProperty prop) {
 	switch (prop) {
         case SYSPROP_NAME:
             return "OpenEmu:";
-        case SYSPROP_LANGREGION:
-            return "en_US";
+         case SYSPROP_LANGREGION: {
+               // Get user-preferred locale from OS
+               setlocale(LC_ALL, "");
+               std::string locale(setlocale(LC_ALL, NULL));
+               // Set c and c++ strings back to POSIX
+               std::locale::global(std::locale("POSIX"));
+               if (!locale.empty()) {
+                   if (locale.find("_", 0) != std::string::npos) {
+                       if (locale.find(".", 0) != std::string::npos) {
+                           return locale.substr(0, locale.find(".",0));
+                       } else {
+                           return locale;
+                       }
+                   }
+               }
+               return "en_US";
+           }
         default:
             return "";
 	}
@@ -337,4 +357,35 @@ int System_GetPropertyInt(SystemProperty prop) {
     }
 }
 
-void System_SendMessage(const char *command, const char *parameter){}
+float System_GetPropertyFloat(SystemProperty prop) {
+    switch (prop) {
+    case SYSPROP_DISPLAY_REFRESH_RATE:
+            return 59.94f;
+    case SYSPROP_DISPLAY_SAFE_INSET_LEFT:
+    case SYSPROP_DISPLAY_SAFE_INSET_RIGHT:
+    case SYSPROP_DISPLAY_SAFE_INSET_TOP:
+    case SYSPROP_DISPLAY_SAFE_INSET_BOTTOM:
+        return 0.0f;
+    default:
+        return -1;
+    }
+}
+
+bool System_GetPropertyBool(SystemProperty prop) {
+    switch (prop) {
+    case SYSPROP_HAS_BACK_BUTTON:
+        return true;
+    case SYSPROP_APP_GOLD:
+#ifdef GOLD
+        return true;
+#else
+        return false;
+#endif
+    default:
+        return false;
+    }
+}
+
+void System_SendMessage(const char *command, const char *parameter) {
+    return;
+}

@@ -39,6 +39,7 @@
 #include "Core/CoreParameter.h"
 #include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
+#include "Core/HLE/sceUtility.h"
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
@@ -134,6 +135,7 @@ PPSSPPGameCore *_current = 0;
     g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
     g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
     g_Config.bHideStateWarnings    = false;
+    g_Config.iLanguage             = PSP_SYSTEMPARAM_LANGUAGE_ENGLISH;
     
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
@@ -150,6 +152,7 @@ PPSSPPGameCore *_current = 0;
     _coreParam.pixelHeight  = 272;
 
     coreState = CORE_POWERUP;
+    
     
     return true;
 }
@@ -310,12 +313,12 @@ static void _OELoadStateCallback(SaveState::Status status, std::string message, 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     [self beginPausedExecution];
-    SaveState::Save(fileName.fileSystemRepresentation, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Save(fileName.fileSystemRepresentation,0, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
 }
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    SaveState::Load(fileName.fileSystemRepresentation, _OELoadStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Load(fileName.fileSystemRepresentation, 0,_OELoadStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized){
         //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
