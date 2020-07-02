@@ -491,6 +491,7 @@
 		EEE2D66B24AE3AA1009BBE09 /* sceKernelHeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEE2D66924AE3AA0009BBE09 /* sceKernelHeap.cpp */; };
 		EEE2D66E24AE482F009BBE09 /* PresentationCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEE2D66C24AE482F009BBE09 /* PresentationCommon.cpp */; };
 		EEE2D67124AE4C9C009BBE09 /* RasterizerRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEE2D67024AE4C9C009BBE09 /* RasterizerRectangle.cpp */; };
+		EEE2D67424AE6EA5009BBE09 /* wrap_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEE2D67224AE6EA5009BBE09 /* wrap_text.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3237,6 +3238,8 @@
 		EEE2D66D24AE482F009BBE09 /* PresentationCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentationCommon.h; sourceTree = "<group>"; };
 		EEE2D66F24AE4C9C009BBE09 /* RasterizerRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RasterizerRectangle.h; sourceTree = "<group>"; };
 		EEE2D67024AE4C9C009BBE09 /* RasterizerRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RasterizerRectangle.cpp; sourceTree = "<group>"; };
+		EEE2D67224AE6EA5009BBE09 /* wrap_text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrap_text.cpp; sourceTree = "<group>"; };
+		EEE2D67324AE6EA5009BBE09 /* wrap_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wrap_text.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3861,6 +3864,8 @@
 		87E4F3F61C249AF400110A77 /* text */ = {
 			isa = PBXGroup;
 			children = (
+				EEE2D67224AE6EA5009BBE09 /* wrap_text.cpp */,
+				EEE2D67324AE6EA5009BBE09 /* wrap_text.h */,
 				87E4F3F71C249AF400110A77 /* parsers.cpp */,
 				87E4F3F81C249AF400110A77 /* parsers.h */,
 				87E4F3F91C249AF400110A77 /* shiftjis.h */,
@@ -7239,6 +7244,7 @@
 				87E4F4521C24AFD100110A77 /* path.cpp in Sources */,
 				3EDB61FD2012B13F00CF55BE /* dataconv.cpp in Sources */,
 				87E4F4531C24AFDA00110A77 /* zip_read.cpp in Sources */,
+				EEE2D67424AE6EA5009BBE09 /* wrap_text.cpp in Sources */,
 				87E4F4541C24B08500110A77 /* gl_debug_log.cpp in Sources */,
 				87E4F4561C24B10900110A77 /* texture_atlas.cpp in Sources */,
 				EE19A4C520B9E470005343B9 /* GLQueueRunner.cpp in Sources */,
