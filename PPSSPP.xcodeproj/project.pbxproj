@@ -77,6 +77,23 @@
 		3EDB62022012B76900CF55BE /* TextureCacheCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD51A9B24A5002719B3 /* TextureCacheCommon.cpp */; };
 		3EDB62032012B76900CF55BE /* TextureCacheGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044601F21463100B06252 /* TextureCacheGLES.cpp */; };
 		3EDB62042012B96900CF55BE /* thin3d_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3C41C249AF400110A77 /* thin3d_gl.cpp */; };
+		559EF9B42514A59300A249B4 /* VertexDecoderArm64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */; };
+		559EF9B52514A90E00A249B4 /* Arm64Emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DD071A82046200C46968 /* Arm64Emitter.cpp */; };
+		559EF9B62514A99800A249B4 /* TextureDecoderNEON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C844749186B772A00BE03D5 /* TextureDecoderNEON.cpp */; };
+		559EF9B82514A9F400A249B4 /* ArmCPUDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7E91785B3C200647A96 /* ArmCPUDetect.cpp */; };
+		559EF9B92514AA5300A249B4 /* ArmCompVFPUNEON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C844743186B76B800BE03D5 /* ArmCompVFPUNEON.cpp */; };
+		559EF9BC2514AB6800A249B4 /* ColorConvNEON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9BB2514AB6700A249B4 /* ColorConvNEON.cpp */; };
+		559EF9CB2514ABEB00A249B4 /* Arm64CompVFPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9BE2514ABEB00A249B4 /* Arm64CompVFPU.cpp */; };
+		559EF9CC2514ABEB00A249B4 /* Arm64RegCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C02514ABEB00A249B4 /* Arm64RegCache.cpp */; };
+		559EF9CD2514ABEB00A249B4 /* Arm64CompLoadStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C12514ABEB00A249B4 /* Arm64CompLoadStore.cpp */; };
+		559EF9CE2514ABEB00A249B4 /* Arm64CompFPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C22514ABEB00A249B4 /* Arm64CompFPU.cpp */; };
+		559EF9CF2514ABEB00A249B4 /* Arm64Jit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C32514ABEB00A249B4 /* Arm64Jit.cpp */; };
+		559EF9D02514ABEB00A249B4 /* Arm64CompBranch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C42514ABEB00A249B4 /* Arm64CompBranch.cpp */; };
+		559EF9D12514ABEB00A249B4 /* Arm64CompALU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C52514ABEB00A249B4 /* Arm64CompALU.cpp */; };
+		559EF9D22514ABEB00A249B4 /* Arm64CompReplace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C62514ABEB00A249B4 /* Arm64CompReplace.cpp */; };
+		559EF9D32514ABEB00A249B4 /* Arm64RegCacheFPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C82514ABEB00A249B4 /* Arm64RegCacheFPU.cpp */; };
+		559EF9D42514ABEB00A249B4 /* Arm64Asm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9CA2514ABEB00A249B4 /* Arm64Asm.cpp */; };
+		559EF9D52514AD1500A249B4 /* AudioFormatNEON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DD261A82065800C46968 /* AudioFormatNEON.cpp */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
 		872FC30022B814F800AF67DE /* SpvPostProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */; };
@@ -710,6 +727,22 @@
 		3EDB61FC2012B13E00CF55BE /* dataconv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dataconv.cpp; sourceTree = "<group>"; };
 		3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobFileSystem.cpp; sourceTree = "<group>"; };
 		3EDB61FF2012B18700CF55BE /* BlobFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobFileSystem.h; sourceTree = "<group>"; };
+		559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexDecoderArm64.cpp; sourceTree = "<group>"; };
+		559EF9BA2514AB6700A249B4 /* ColorConvNEON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConvNEON.h; sourceTree = "<group>"; };
+		559EF9BB2514AB6700A249B4 /* ColorConvNEON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorConvNEON.cpp; sourceTree = "<group>"; };
+		559EF9BE2514ABEB00A249B4 /* Arm64CompVFPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompVFPU.cpp; sourceTree = "<group>"; };
+		559EF9BF2514ABEB00A249B4 /* Arm64RegCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arm64RegCache.h; sourceTree = "<group>"; };
+		559EF9C02514ABEB00A249B4 /* Arm64RegCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64RegCache.cpp; sourceTree = "<group>"; };
+		559EF9C12514ABEB00A249B4 /* Arm64CompLoadStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompLoadStore.cpp; sourceTree = "<group>"; };
+		559EF9C22514ABEB00A249B4 /* Arm64CompFPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompFPU.cpp; sourceTree = "<group>"; };
+		559EF9C32514ABEB00A249B4 /* Arm64Jit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64Jit.cpp; sourceTree = "<group>"; };
+		559EF9C42514ABEB00A249B4 /* Arm64CompBranch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompBranch.cpp; sourceTree = "<group>"; };
+		559EF9C52514ABEB00A249B4 /* Arm64CompALU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompALU.cpp; sourceTree = "<group>"; };
+		559EF9C62514ABEB00A249B4 /* Arm64CompReplace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompReplace.cpp; sourceTree = "<group>"; };
+		559EF9C72514ABEB00A249B4 /* Arm64Jit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arm64Jit.h; sourceTree = "<group>"; };
+		559EF9C82514ABEB00A249B4 /* Arm64RegCacheFPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64RegCacheFPU.cpp; sourceTree = "<group>"; };
+		559EF9C92514ABEB00A249B4 /* Arm64RegCacheFPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arm64RegCacheFPU.h; sourceTree = "<group>"; };
+		559EF9CA2514ABEB00A249B4 /* Arm64Asm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64Asm.cpp; sourceTree = "<group>"; };
 		8706346A1C2516A1007FAA2F /* knownfuncs.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownfuncs.ini; sourceTree = "<group>"; };
 		8706346B1C2516A1007FAA2F /* langregion.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = langregion.ini; sourceTree = "<group>"; };
 		872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpvPostProcess.cpp; sourceTree = "<group>"; };
@@ -3331,6 +3364,26 @@
 			name = IR;
 			sourceTree = "<group>";
 		};
+		559EF9BD2514ABEB00A249B4 /* ARM64 */ = {
+			isa = PBXGroup;
+			children = (
+				559EF9BE2514ABEB00A249B4 /* Arm64CompVFPU.cpp */,
+				559EF9BF2514ABEB00A249B4 /* Arm64RegCache.h */,
+				559EF9C02514ABEB00A249B4 /* Arm64RegCache.cpp */,
+				559EF9C12514ABEB00A249B4 /* Arm64CompLoadStore.cpp */,
+				559EF9C22514ABEB00A249B4 /* Arm64CompFPU.cpp */,
+				559EF9C32514ABEB00A249B4 /* Arm64Jit.cpp */,
+				559EF9C42514ABEB00A249B4 /* Arm64CompBranch.cpp */,
+				559EF9C52514ABEB00A249B4 /* Arm64CompALU.cpp */,
+				559EF9C62514ABEB00A249B4 /* Arm64CompReplace.cpp */,
+				559EF9C72514ABEB00A249B4 /* Arm64Jit.h */,
+				559EF9C82514ABEB00A249B4 /* Arm64RegCacheFPU.cpp */,
+				559EF9C92514ABEB00A249B4 /* Arm64RegCacheFPU.h */,
+				559EF9CA2514ABEB00A249B4 /* Arm64Asm.cpp */,
+			);
+			path = ARM64;
+			sourceTree = "<group>";
+		};
 		87E051341B102C0A00E870E1 /* sfmt19937 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3951,6 +4004,7 @@
 				8C2D4EE21824011100E65166 /* VertexDecoderCommon.cpp */,
 				8C2D4EE31824011100E65166 /* VertexDecoderCommon.h */,
 				8C9F4CD81A9B24CD002719B3 /* VertexDecoderX86.cpp */,
+				559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -4147,6 +4201,8 @@
 				8C2D4EBE1823FF2B00E65166 /* ChunkFile.cpp */,
 				8CAFA7F01785B3C200647A96 /* ChunkFile.h */,
 				8C43DCFD1A8203E100C46968 /* CodeBlock.h */,
+				559EF9BB2514AB6700A249B4 /* ColorConvNEON.cpp */,
+				559EF9BA2514AB6700A249B4 /* ColorConvNEON.h */,
 				87E4F4111C249FAC00110A77 /* ColorConv.cpp */,
 				87E4F4121C249FAC00110A77 /* ColorConv.h */,
 				8CAFA7F41785B3C200647A96 /* Common.h */,
@@ -4541,6 +4597,7 @@
 			children = (
 				3EAA4E4A1D9DD68C004F5179 /* IR */,
 				8CAFA8FA1785B3C200647A96 /* ARM */,
+				559EF9BD2514ABEB00A249B4 /* ARM64 */,
 				8C43DD151A82056600C46968 /* fake */,
 				8CAFA9081785B3C200647A96 /* JitCommon */,
 				8C43DD1A1A82059400C46968 /* MIPS */,
@@ -7198,6 +7255,7 @@
 				EE0812D6218CBADA007FD1AB /* VulkanLoader.cpp in Sources */,
 				3E3044401F2144E300B06252 /* MemArenaDarwin.cpp in Sources */,
 				8C2D4F0C182405DA00E65166 /* ArmEmitter.cpp in Sources */,
+				559EF9B52514A90E00A249B4 /* Arm64Emitter.cpp in Sources */,
 				8CAFC0D41785B3EA00647A96 /* CPUDetect.cpp in Sources */,
 				EE0812D9218CBADA007FD1AB /* VulkanDebug.cpp in Sources */,
 				8C43DD001A82042400C46968 /* FakeCPUDetect.cpp in Sources */,
@@ -7205,11 +7263,13 @@
 				87E4F4131C249FAC00110A77 /* ColorConv.cpp in Sources */,
 				8CAFC0DE1785B43300647A96 /* ConsoleListener.cpp in Sources */,
 				EE0812D8218CBADA007FD1AB /* VulkanContext.cpp in Sources */,
+				559EF9B82514A9F400A249B4 /* ArmCPUDetect.cpp in Sources */,
 				8C9F4CCB1A9B2402002719B3 /* sha256.cpp in Sources */,
 				8CAFC0E61785B45500647A96 /* md5.cpp in Sources */,
 				EE0812DA218CBADA007FD1AB /* VulkanMemory.cpp in Sources */,
 				EE0812D7218CBADA007FD1AB /* VulkanImage.cpp in Sources */,
 				8CAFC0E81785B46000647A96 /* sha1.cpp in Sources */,
+				559EF9BC2514AB6800A249B4 /* ColorConvNEON.cpp in Sources */,
 				8CAFC0F01785B49800647A96 /* FileUtil.cpp in Sources */,
 				8CAFC0F41785B4AA00647A96 /* KeyMap.cpp in Sources */,
 				8CAFC0D71785B3F700647A96 /* Thunk.cpp in Sources */,
@@ -7322,6 +7382,7 @@
 				3E3044801F21648A00B06252 /* FragmentShaderGeneratorGLES.cpp in Sources */,
 				EE0812B0218CB23B007FD1AB /* StencilBufferVulkan.cpp in Sources */,
 				3E3044811F21648A00B06252 /* FragmentTestCacheGLES.cpp in Sources */,
+				559EF9B42514A59300A249B4 /* VertexDecoderArm64.cpp in Sources */,
 				3E3044831F21648A00B06252 /* ShaderManagerGLES.cpp in Sources */,
 				EEE2D66E24AE482F009BBE09 /* PresentationCommon.cpp in Sources */,
 				3E3044841F21648A00B06252 /* StateMappingGLES.cpp in Sources */,
@@ -7330,6 +7391,7 @@
 				3EDB61F320129C2E00CF55BE /* SamplerX86.cpp in Sources */,
 				EE0812B9218CB23B007FD1AB /* ShaderManagerVulkan.cpp in Sources */,
 				EE0812B1218CB23B007FD1AB /* GPU_Vulkan.cpp in Sources */,
+				559EF9B62514A99800A249B4 /* TextureDecoderNEON.cpp in Sources */,
 				EE2B0068234BDC29000DB0B8 /* Playback.cpp in Sources */,
 				EE0812B2218CB23B007FD1AB /* StateMappingVulkan.cpp in Sources */,
 				3E3044871F21648A00B06252 /* TextureScalerGLES.cpp in Sources */,
@@ -7438,13 +7500,16 @@
 				8CAFC2A51785CD3C00647A96 /* RegCache.cpp in Sources */,
 				87E4F4221C24A05F00110A77 /* CachingFileLoader.cpp in Sources */,
 				8CAFC2A71785CD3C00647A96 /* RegCacheFPU.cpp in Sources */,
+				559EF9D12514ABEB00A249B4 /* Arm64CompALU.cpp in Sources */,
 				8CAFC2A91785CFFF00647A96 /* Config.cpp in Sources */,
 				8CAFC2AB1785CFFF00647A96 /* Core.cpp in Sources */,
 				8CAFC2AE1785CFFF00647A96 /* CoreTiming.cpp in Sources */,
 				8CAFC2B21785D0F500647A96 /* CwCheat.cpp in Sources */,
 				8CAFC2B41785D11800647A96 /* Breakpoints.cpp in Sources */,
 				8CAFC2B71785D11800647A96 /* SymbolMap.cpp in Sources */,
+				559EF9D52514AD1500A249B4 /* AudioFormatNEON.cpp in Sources */,
 				8CAFC2B91785D12B00647A96 /* PSPDialog.cpp in Sources */,
+				559EF9CD2514ABEB00A249B4 /* Arm64CompLoadStore.cpp in Sources */,
 				8CAFC2BB1785D12B00647A96 /* PSPMsgDialog.cpp in Sources */,
 				8C1B6E2E1993C70B00ABEB5D /* PSPScreenshotDialog.cpp in Sources */,
 				8CAFC2BD1785D12B00647A96 /* PSPOskDialog.cpp in Sources */,
@@ -7460,6 +7525,7 @@
 				8CAFC2CA1785D14C00647A96 /* PBPReader.cpp in Sources */,
 				3EAA4E351D9DD052004F5179 /* IRToX86.cpp in Sources */,
 				8C1B6E371993C77600ABEB5D /* JitSafeMem.cpp in Sources */,
+				559EF9CC2514ABEB00A249B4 /* Arm64RegCache.cpp in Sources */,
 				8C9F4D551A9B28C7002719B3 /* AudioFormat.cpp in Sources */,
 				8CAFC2CC1785D14C00647A96 /* PrxDecrypter.cpp in Sources */,
 				8CAFC2D81785D16400647A96 /* PGF.cpp in Sources */,
@@ -7501,6 +7567,7 @@
 				EE7679CA20C82E89006470A2 /* Replay.cpp in Sources */,
 				8CAFC30E1785DAA000647A96 /* sceKernelSemaphore.cpp in Sources */,
 				8CAFC3101785DAA000647A96 /* sceKernelThread.cpp in Sources */,
+				559EF9D32514ABEB00A249B4 /* Arm64RegCacheFPU.cpp in Sources */,
 				8CAFC3121785DAA000647A96 /* sceKernelTime.cpp in Sources */,
 				87E051401B102D7400E870E1 /* sceSfmt19937.cpp in Sources */,
 				87E4F42C1C24A0E300110A77 /* sceAudioRouting.cpp in Sources */,
@@ -7508,10 +7575,13 @@
 				8CAFC3141785DAA000647A96 /* sceKernelVTimer.cpp in Sources */,
 				8C2D4EC61823FFF100E65166 /* PSPNetconfDialog.cpp in Sources */,
 				8CAFC3161785DAD500647A96 /* sceMd5.cpp in Sources */,
+				559EF9CB2514ABEB00A249B4 /* Arm64CompVFPU.cpp in Sources */,
 				8CAFC3181785DAD500647A96 /* sceMp3.cpp in Sources */,
 				8CAFC31A1785DAD500647A96 /* sceMp4.cpp in Sources */,
 				8CAFC31C1785DAD500647A96 /* sceMpeg.cpp in Sources */,
+				559EF9CF2514ABEB00A249B4 /* Arm64Jit.cpp in Sources */,
 				8CAFC31E1785DAD500647A96 /* sceNet.cpp in Sources */,
+				559EF9D42514ABEB00A249B4 /* Arm64Asm.cpp in Sources */,
 				8CC8066B18C27BBB00AB1339 /* FileSystem.cpp in Sources */,
 				8C84473F186B762900BE03D5 /* DisassemblyManager.cpp in Sources */,
 				8C99589B1785DB7000EE4CA8 /* sceOpenPSID.cpp in Sources */,
@@ -7528,6 +7598,7 @@
 				8C9958A91785DB8900EE4CA8 /* sceSas.cpp in Sources */,
 				8C9958AB1785DB8900EE4CA8 /* sceSsl.cpp in Sources */,
 				8C9958AD1785DB8900EE4CA8 /* sceUmd.cpp in Sources */,
+				559EF9D02514ABEB00A249B4 /* Arm64CompBranch.cpp in Sources */,
 				8C9958AF1785DB8900EE4CA8 /* sceUsb.cpp in Sources */,
 				8C9958B11785DB8900EE4CA8 /* sceUtility.cpp in Sources */,
 				8C9958B31785DB8900EE4CA8 /* sceVaudio.cpp in Sources */,
@@ -7538,6 +7609,7 @@
 				8C9958C51785DBAC00EE4CA8 /* MediaEngine.cpp in Sources */,
 				8C9958C71785DBAC00EE4CA8 /* MemoryStick.cpp in Sources */,
 				8C9958C91785DBAC00EE4CA8 /* MpegDemux.cpp in Sources */,
+				559EF9B92514AA5300A249B4 /* ArmCompVFPUNEON.cpp in Sources */,
 				8C9958CD1785DBAC00EE4CA8 /* SasAudio.cpp in Sources */,
 				8C9958CF1785DBBF00EE4CA8 /* Loaders.cpp in Sources */,
 				8C9958D11785DBD100EE4CA8 /* MemMap.cpp in Sources */,
@@ -7548,6 +7620,7 @@
 				8C9958D61785DBD900EE4CA8 /* JitCommon.cpp in Sources */,
 				8C9958D81785DBE900EE4CA8 /* MIPS.cpp in Sources */,
 				87E4F42F1C24A28B00110A77 /* JitState.cpp in Sources */,
+				559EF9CE2514ABEB00A249B4 /* Arm64CompFPU.cpp in Sources */,
 				8C2D4ECD1824005400E65166 /* sceHeap.cpp in Sources */,
 				8C9958DA1785DBE900EE4CA8 /* MIPSAnalyst.cpp in Sources */,
 				8C9958DC1785DBE900EE4CA8 /* MIPSCodeUtils.cpp in Sources */,
@@ -7580,6 +7653,7 @@
 				8CB74E0C1785F71D00C652A7 /* tlzrc.cpp in Sources */,
 				3EAA4E5E1D9DD6A7004F5179 /* IRCompALU.cpp in Sources */,
 				8CB74E0D1785F75F00C652A7 /* HLE.cpp in Sources */,
+				559EF9D22514ABEB00A249B4 /* Arm64CompReplace.cpp in Sources */,
 				8C43DD221A82062E00C46968 /* Screenshot.cpp in Sources */,
 				8CB74E0F1785F75F00C652A7 /* HLETables.cpp in Sources */,
 				8CB74E111785F7CE00C652A7 /* sceNp.cpp in Sources */,
@@ -7937,6 +8011,13 @@
 					_ARCH_64,
 					NO_VULKAN,
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
+					USE_FFMPEG,
+					_M_ARM64,
+					GLEW_STATIC,
+					_ARCH_64,
+					NO_VULKAN,
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -8013,6 +8094,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					USE_FFMPEG,
 					_M_X64,
+					GLEW_STATIC,
+					_ARCH_64,
+					NO_VULKAN,
+				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
+					USE_FFMPEG,
+					_M_ARM64,
 					GLEW_STATIC,
 					_ARCH_64,
 					NO_VULKAN,
@@ -8243,6 +8331,12 @@
 					GLEW_STATIC,
 					NO_VULKAN,
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
+					USE_FFMPEG,
+					_M_ARM64,
+					GLEW_STATIC,
+					NO_VULKAN,
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Compatibility\"",
@@ -8267,6 +8361,12 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					USE_FFMPEG,
 					_M_X64,
+					GLEW_STATIC,
+					NO_VULKAN,
+				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
+					USE_FFMPEG,
+					_M_ARM64,
 					GLEW_STATIC,
 					NO_VULKAN,
 				);
