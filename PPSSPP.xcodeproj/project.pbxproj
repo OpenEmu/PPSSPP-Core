@@ -94,6 +94,8 @@
 		559EF9D32514ABEB00A249B4 /* Arm64RegCacheFPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9C82514ABEB00A249B4 /* Arm64RegCacheFPU.cpp */; };
 		559EF9D42514ABEB00A249B4 /* Arm64Asm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9CA2514ABEB00A249B4 /* Arm64Asm.cpp */; };
 		559EF9D52514AD1500A249B4 /* AudioFormatNEON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DD261A82065800C46968 /* AudioFormatNEON.cpp */; };
+		55E232CB25186730009A7749 /* arm_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F2EE1C249AF300110A77 /* arm_init.c */; };
+		55E232DE2518687C009A7749 /* filter_neon_intrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F2F01C249AF300110A77 /* filter_neon_intrinsics.c */; };
 		8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346A1C2516A1007FAA2F /* knownfuncs.ini */; };
 		8706346D1C2516A1007FAA2F /* langregion.ini in Resources */ = {isa = PBXBuildFile; fileRef = 8706346B1C2516A1007FAA2F /* langregion.ini */; };
 		872FC30022B814F800AF67DE /* SpvPostProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 872FC2FF22B814F800AF67DE /* SpvPostProcess.cpp */; };
@@ -7191,11 +7193,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87E4F3FE1C249B2C00110A77 /* png.c in Sources */,
+				55E232DE2518687C009A7749 /* filter_neon_intrinsics.c in Sources */,
 				87E4F3FF1C249B2C00110A77 /* pngerror.c in Sources */,
 				87E4F4001C249B2C00110A77 /* pngget.c in Sources */,
 				87E4F4011C249B2C00110A77 /* pngmem.c in Sources */,
 				87E4F4021C249B2C00110A77 /* pngpread.c in Sources */,
 				87E4F4031C249B2C00110A77 /* pngread.c in Sources */,
+				55E232CB25186730009A7749 /* arm_init.c in Sources */,
 				87E4F4041C249B2C00110A77 /* pngrio.c in Sources */,
 				87E4F4051C249B2C00110A77 /* pngrtran.c in Sources */,
 				87E4F4061C249B2C00110A77 /* pngrutil.c in Sources */,
