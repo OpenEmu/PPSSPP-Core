@@ -8014,6 +8014,7 @@
 					GLEW_STATIC,
 					_ARCH_64,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
 					USE_FFMPEG,
@@ -8021,6 +8022,7 @@
 					GLEW_STATIC,
 					_ARCH_64,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -8040,7 +8042,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-D_DEBUG",
@@ -8101,6 +8103,7 @@
 					GLEW_STATIC,
 					_ARCH_64,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
 					USE_FFMPEG,
@@ -8108,6 +8111,7 @@
 					GLEW_STATIC,
 					_ARCH_64,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -8127,7 +8131,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14.4;
 				OTHER_CFLAGS = (
 					"-D_NDEBUG",
 					"-fno-strict-aliasing",
@@ -8334,12 +8338,14 @@
 					_M_X64,
 					GLEW_STATIC,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
 					USE_FFMPEG,
 					_M_ARM64,
 					GLEW_STATIC,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
@@ -8367,12 +8373,14 @@
 					_M_X64,
 					GLEW_STATIC,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=arm64]" = (
 					USE_FFMPEG,
 					_M_ARM64,
 					GLEW_STATIC,
 					NO_VULKAN,
+					GL_SILENCE_DEPRECATION,
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
