@@ -1,3 +1,6 @@
 [submodule "ppsspp"]
 	path = ppsspp
 	url = https://github.com/hrydgard/ppsspp.git
+[submodule "ppsspp-ffmpeg-macSI"]
+	path = ppsspp-ffmpeg-macSI
+	url = https://github.com/MaddTheSane/ppsspp-ffmpeg-macSI.git

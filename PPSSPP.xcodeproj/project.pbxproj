@@ -8005,7 +8005,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_ARCHS = arm64;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8039,9 +8038,9 @@
 					"\"$(SRCROOT)/ppsspp/ext/native\"",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"\"$(SRCROOT)/ppsspp-ffmpeg-macSI/macosx/universal/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp-ffmpeg-macSI/macosx/universal/lib\"";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
@@ -8095,7 +8094,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = NO;
-				EXCLUDED_ARCHS = arm64;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -8129,9 +8127,9 @@
 					"\"$(SRCROOT)/ppsspp/ext/native\"",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"\"$(SRCROOT)/ppsspp-ffmpeg-macSI/macosx/universal/include\"",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/lib\"";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp-ffmpeg-macSI/macosx/universal/lib\"";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
@@ -8216,14 +8214,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ppsspp\"",
+					"$(inherited)",
 					"\"$(SRCROOT)/ppsspp/Core\"",
-					"\"$(SRCROOT)/ppsspp/Common\"",
-					"\"$(SRCROOT)/ppsspp/ext/native\"",
-					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
-					"\"$(SRCROOT)/ppsspp/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
@@ -8263,14 +8255,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ppsspp\"",
+					"$(inherited)",
 					"\"$(SRCROOT)/ppsspp/Core\"",
-					"\"$(SRCROOT)/ppsspp/Common\"",
-					"\"$(SRCROOT)/ppsspp/ext/native\"",
-					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
-					"\"$(SRCROOT)/ppsspp/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
@@ -8479,13 +8465,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ppsspp\"",
-					"\"$(SRCROOT)/ppsspp/Common\"",
-					"\"$(SRCROOT)/ppsspp/ext/native\"",
-					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
-					"\"$(SRCROOT)/ppsspp/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"$(inherited)",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext/libpng17\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8498,13 +8478,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/ppsspp\"",
-					"\"$(SRCROOT)/ppsspp/Common\"",
-					"\"$(SRCROOT)/ppsspp/ext/native\"",
-					"\"$(SRCROOT)/ppsspp/ext/native/ext\"",
-					"\"$(SRCROOT)/ppsspp/ext/glew\"",
-					"\"$(SRCROOT)/ppsspp/ffmpeg/macosx/x86_64/include\"",
+					"$(inherited)",
 					"\"$(SRCROOT)/ppsspp/ext/native/ext/libpng17\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
