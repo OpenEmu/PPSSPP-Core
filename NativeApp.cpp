@@ -26,12 +26,9 @@
 
 #include <atomic>
 #include <thread>
-#include "thread/threadutil.h"
+#include "Thread/ThreadUtil.h"
 
-#include "base/logging.h"
-#include "base/NativeApp.h"
-
-#include "math/fast/fast_math.h"
+#include "Math/fast/fast_math.h"
 
 #include "Common/LogManager.h"
 
@@ -41,26 +38,42 @@
 #include "Core/System.h"
 #include "Core/HLE/__sceAudio.h"
 
-#include "file/vfs.h"
-#include "file/zip_read.h"
+#include "File/VFS/VFS.h"
+#include "File/VFS/AssetReader.h"
 
-#include "gfx/OpenEmuGLContext.h"
-#include "gfx/gl_common.h"
-#include "thin3d/DataFormat.h"
+#include "Common/GPU/OpenGL/OpenEmuGLContext.h"
+#include "Common/GPU/OpenGL/GLCommon.h"
+#include "DataFormat.h"
 
 #include "Common/GraphicsContext.h"
 #include "GPU/GPUState.h"
 
 #include "GPU/GPUState.h"
 #include "GPU/GPUInterface.h"
-#include "GPU/Common/FramebufferCommon.h"
-#include "GPU/Common/TextureScalerCommon.h"
 
 #include "DataFormatGL.h"
 
-#include "input/input_state.h"
+#include "Common/Input/InputState.h"
+#include "Common/System/System.h"
 
 #include "UI/OnScreenDisplay.h"
+
+#include <stdio.h>
+
+inline const char *removePath(const char *str) {
+	const char *slash = strrchr(str, '/');
+	return slash ? (slash + 1) : str;
+}
+
+#ifdef _DEBUG
+#define DLOG(...) {printf("D: %s:%i: ", removePath(__FILE__), __LINE__); printf("D: " __VA_ARGS__); printf("\n");}
+#else
+#define DLOG(...)
+#endif
+#define ILOG(...) {printf("I: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define WLOG(...) {printf("W: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define ELOG(...) {printf("E: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define FLOG(...) {printf("F: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n"); Crash();}
 
 KeyInput input_state;
 OnScreenMessages osm;

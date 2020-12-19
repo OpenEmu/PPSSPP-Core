@@ -109,6 +109,7 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 #define GL_STENCIL_ATTACHMENT_EXT GL_STENCIL_ATTACHMENT
 #define GL_COLOR_ATTACHMENT0_EXT GL_COLOR_ATTACHMENT0
 #define GL_BGRA_EXT GL_BGRA
+#define GL_DEBUG_SOURCE_APPLICATION 0x824A
 
 #define glGenerateMipmapEXT glGenerateMipmap
 #define glGenFramebuffersEXT glGenFramebuffers
@@ -127,3 +128,5 @@ static void (*glCopyImageSubData)(GLuint srcName, GLenum srcTarget, GLint srcLev
 static void (*glCopyImageSubDataNV)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
 static void  (*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags) = 0;
 static void (*glGetTextureSubImage)(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void *pixels) = 0;
+static void (*glPushDebugGroup)(GLenum source, GLuint id, GLsizei length, const char * message) = 0;
+static void (*glPopDebugGroup)(void) = 0;

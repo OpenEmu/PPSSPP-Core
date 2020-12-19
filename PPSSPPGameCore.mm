@@ -28,11 +28,11 @@
 #import <OpenEmuBase/OERingBuffer.h>
 #import <OpenGL/gl.h>
 
-#include "gfx/OpenEmuGLContext.h"
+#include "Common/GPU/OpenGL/OpenEmuGLContext.h"
 
-#include "base/NativeApp.h"
-#include "base/timeutil.h"
+#include "System/NativeApp.h"
 
+#define ExceptionInfo PPSSPPExceptionInfo
 #include "Core/Core.h"
 #include "Core/Config.h"
 #include "Core/ConfigValues.h"
@@ -43,13 +43,14 @@
 #include "Core/Host.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
+#undef ExceptionInfo
 
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
 
-#include "thin3d/thin3d_create.h"
-#include "thin3d/GLRenderManager.h"
-#include "thin3d/DataFormatGL.h"
+#include "thin3d_create.h"
+#include "GLRenderManager.h"
+#include "DataFormatGL.h"
 
 #define AUDIO_FREQ          44100
 #define AUDIO_CHANNELS      2
@@ -121,7 +122,7 @@ PPSSPPGameCore *_current = 0;
         [fileManager copyItemAtURL:fontURL toURL:destinationFontURL error:nil];
     }
 
-    LogManager::Init();
+    LogManager::Init(NULL);
 
     g_Config.Load("");
 
