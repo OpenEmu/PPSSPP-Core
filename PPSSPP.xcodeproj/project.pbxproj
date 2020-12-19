@@ -1191,7 +1191,7 @@
 		8C844749186B772A00BE03D5 /* TextureDecoderNEON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureDecoderNEON.cpp; sourceTree = "<group>"; };
 		8C844782186B830400BE03D5 /* libpng17.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpng17.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C84479C186B83EB00BE03D5 /* libgason.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgason.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C8447AA186B8DD600BE03D5 /* gl_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gl_common.h; sourceTree = "<group>"; };
+		8C8447AA186B8DD600BE03D5 /* GLCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCommon.h; sourceTree = "<group>"; };
 		8C9BDA1018C28B31007F6592 /* libcityhash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcityhash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9F4CC91A9B2402002719B3 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
 		8C9F4CCA1A9B2402002719B3 /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
@@ -3744,6 +3744,32 @@
 			path = Serialize;
 			sourceTree = "<group>";
 		};
+		552C9DBD258DA420000C6942 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				552C9DBE258DA42B000C6942 /* GPU */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		552C9DBE258DA42B000C6942 /* GPU */ = {
+			isa = PBXGroup;
+			children = (
+				552C9DBF258DA44E000C6942 /* OpenGL */,
+			);
+			path = GPU;
+			sourceTree = "<group>";
+		};
+		552C9DBF258DA44E000C6942 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				8C8447AA186B8DD600BE03D5 /* GLCommon.h */,
+				EE76806520C88CAB006470A2 /* OpenEmuGLContext.cpp */,
+				EE76806620C88CAB006470A2 /* OpenEmuGLContext.h */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
 		559EF9BD2514ABEB00A249B4 /* ARM64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4087,16 +4113,6 @@
 			path = MIPS;
 			sourceTree = "<group>";
 		};
-		8C8447A9186B8DD500BE03D5 /* gfx */ = {
-			isa = PBXGroup;
-			children = (
-				8C8447AA186B8DD600BE03D5 /* gl_common.h */,
-				EE76806520C88CAB006470A2 /* OpenEmuGLContext.cpp */,
-				EE76806620C88CAB006470A2 /* OpenEmuGLContext.h */,
-			);
-			path = gfx;
-			sourceTree = SOURCE_ROOT;
-		};
 		8C9F4D3C1A9B285F002719B3 /* udis86 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4146,7 +4162,7 @@
 		8CAFA78E1785AA9900647A96 = {
 			isa = PBXGroup;
 			children = (
-				8C8447A9186B8DD500BE03D5 /* gfx */,
+				552C9DBD258DA420000C6942 /* Common */,
 				8CAFC10A1785B60F00647A96 /* Classes */,
 				8CAFC1181785B63900647A96 /* Supporting Files */,
 				8CAFA79C1785AE2A00647A96 /* Frameworks and Libraries */,

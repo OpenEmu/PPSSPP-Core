@@ -7,7 +7,7 @@
 #include "Core/System.h"
 #include "GPU/GPUState.h"
 
-#include "gfx/gl_common.h"
+#include "Common/GPU/OpenGL/GLCommon.h"
 
 class OpenEmuGLContext : public GraphicsContext {
 public:

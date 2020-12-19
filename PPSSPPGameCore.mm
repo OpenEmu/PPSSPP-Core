@@ -24,12 +24,11 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "GL/glew.h"
 #import "PPSSPPGameCore.h"
 #import <OpenEmuBase/OERingBuffer.h>
 #import <OpenGL/gl.h>
 
-#include "gfx/OpenEmuGLContext.h"
+#include "Common/GPU/OpenGL/OpenEmuGLContext.h"
 
 #include "System/NativeApp.h"
 //#include "base/timeutil.h"
@@ -124,7 +123,7 @@ PPSSPPGameCore *_current = 0;
         [fileManager copyItemAtURL:fontURL toURL:destinationFontURL error:nil];
     }
 
-//    LogManager::Init();
+    LogManager::Init(NULL);
 
     g_Config.Load("");
 

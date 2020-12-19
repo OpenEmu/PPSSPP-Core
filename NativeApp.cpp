@@ -45,8 +45,8 @@
 #include "File/VFS/AssetReader.h"
 //#include "file/zip_read.h"
 
-#include "gfx/OpenEmuGLContext.h"
-#include "gfx/gl_common.h"
+#include "Common/GPU/OpenGL/OpenEmuGLContext.h"
+#include "Common/GPU/OpenGL/GLCommon.h"
 #include "DataFormat.h"
 
 #include "Common/GraphicsContext.h"
