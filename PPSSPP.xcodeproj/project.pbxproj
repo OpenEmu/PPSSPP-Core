@@ -22,7 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		3DFCE410186F64170046C035 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.dylib */; };
+		3DFCE410186F64170046C035 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFCE40F186F64170046C035 /* libz.tbd */; };
 		3E3044401F2144E300B06252 /* MemArenaDarwin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */; };
 		3E3044751F21531300B06252 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFC18C1785C48600647A96 /* OpenGL.framework */; };
 		3E3044791F2163C100B06252 /* AVIDump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044431F2144FC00B06252 /* AVIDump.cpp */; };
@@ -662,7 +662,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DFCE40F186F64170046C035 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3DFCE40F186F64170046C035 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3E30443E1F2144E300B06252 /* DbgNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbgNew.h; sourceTree = "<group>"; };
 		3E30443F1F2144E300B06252 /* MemArenaDarwin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemArenaDarwin.cpp; sourceTree = "<group>"; };
 		3E3044411F2144FC00B06252 /* AVIDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVIDump.h; sourceTree = "<group>"; };
@@ -3343,7 +3343,7 @@
 				87E051311B1029BD00E870E1 /* libsfmt19937.a in Frameworks */,
 				8C9F4D521A9B2874002719B3 /* libudis86.a in Frameworks */,
 				8C9BDA1418C28BA5007F6592 /* libcityhash.a in Frameworks */,
-				3DFCE410186F64170046C035 /* libz.dylib in Frameworks */,
+				3DFCE410186F64170046C035 /* libz.tbd in Frameworks */,
 				8C844795186B83B700BE03D5 /* libpng17.a in Frameworks */,
 				8C9959121785DDBE00EE4CA8 /* libCore.a in Frameworks */,
 				8CB74E46178602E500C652A7 /* libCommon.a in Frameworks */,
@@ -4138,9 +4138,8 @@
 				552C9DBD258DA420000C6942 /* Common */,
 				8CAFC10A1785B60F00647A96 /* Classes */,
 				8CAFC1181785B63900647A96 /* Supporting Files */,
-				8CAFA79C1785AE2A00647A96 /* Frameworks and Libraries */,
+				8CAFA79C1785AE2A00647A96 /* Frameworks */,
 				8CAFA79B1785AE2A00647A96 /* Products */,
-				EE76806C20C9DF7C006470A2 /* Frameworks */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -4170,10 +4169,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8CAFA79C1785AE2A00647A96 /* Frameworks and Libraries */ = {
+		8CAFA79C1785AE2A00647A96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DFCE40F186F64170046C035 /* libz.dylib */,
+				3DFCE40F186F64170046C035 /* libz.tbd */,
 				8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */,
 				8CB2173A17C6569400CE82F3 /* VideoDecodeAcceleration.framework */,
 				8CB2173817C6567B00CE82F3 /* AGL.framework */,
@@ -4184,7 +4183,7 @@
 				8CAFA7B41785AF4200647A96 /* Cocoa.framework */,
 				8CAFC18C1785C48600647A96 /* OpenGL.framework */,
 			);
-			name = "Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8CAFA7D71785B3C200647A96 /* ppsspp */ = {
@@ -6845,13 +6844,6 @@
 				EE76801120C82F18006470A2 /* HexFloat.cpp */,
 			);
 			path = gtests;
-			sourceTree = "<group>";
-		};
-		EE76806C20C9DF7C006470A2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
