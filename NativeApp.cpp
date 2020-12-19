@@ -58,10 +58,22 @@
 
 #include "UI/OnScreenDisplay.h"
 
-#define ILOG(...)
-#define WLOG(...)
-#define ELOG(...)
-#define FLOG(...)
+#include <stdio.h>
+
+inline const char *removePath(const char *str) {
+	const char *slash = strrchr(str, '/');
+	return slash ? (slash + 1) : str;
+}
+
+#ifdef _DEBUG
+#define DLOG(...) {printf("D: %s:%i: ", removePath(__FILE__), __LINE__); printf("D: " __VA_ARGS__); printf("\n");}
+#else
+#define DLOG(...)
+#endif
+#define ILOG(...) {printf("I: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define WLOG(...) {printf("W: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define ELOG(...) {printf("E: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n");}
+#define FLOG(...) {printf("F: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n"); Crash();}
 
 KeyInput input_state;
 OnScreenMessages osm;
