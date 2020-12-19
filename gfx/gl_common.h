@@ -122,8 +122,8 @@ extern PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 #define glRenderbufferStorageEXT glRenderbufferStorage
 #define glDeleteRenderbuffersEXT glDeleteRenderbuffers
 
-static void (*glInvalidateFramebuffer)(GLenum target, GLsizei numAttachments, const GLenum* attachments) = 0;
-static void (*glCopyImageSubData)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
-static void (*glCopyImageSubDataNV)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
-static void  (*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags) = 0;
-static void (*glGetTextureSubImage)(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void *pixels) = 0;
+//static void (*glInvalidateFramebuffer)(GLenum target, GLsizei numAttachments, const GLenum* attachments) = 0;
+//static void (*glCopyImageSubData)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
+//static void (*glCopyImageSubDataNV)(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = 0;
+//static void  (*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags) = 0;
+//static void (*glGetTextureSubImage)(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void *pixels) = 0;

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Common/GraphicsContext.h"
-#include "thin3d/thin3d_create.h"
-#include "thin3d/GLRenderManager.h"
+#include "thin3d_create.h"
+#include "GLRenderManager.h"
 
 #include "Core/System.h"
 #include "GPU/GPUState.h"

@@ -5,7 +5,7 @@
 #include "Core/System.h"
 #include "Core/ConfigValues.h"
 #include "GPU/GPUInterface.h"
-#include "gfx_es2/gpu_features.h"
+//#include "gfx_es2/gpu_features.h"
 
 //Set functions in PPSSPP GLRenderManager
 static void context_SwapBuffer(){ ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->SwapBuffers(); }

@@ -26,12 +26,12 @@
 
 #include <atomic>
 #include <thread>
-#include "thread/threadutil.h"
+#include "Thread/ThreadUtil.h"
 
-#include "base/logging.h"
-#include "base/NativeApp.h"
+//#include "base/logging.h"
+//#include "base/NativeApp.h"
 
-#include "math/fast/fast_math.h"
+#include "Math/fast/fast_math.h"
 
 #include "Common/LogManager.h"
 
@@ -41,26 +41,33 @@
 #include "Core/System.h"
 #include "Core/HLE/__sceAudio.h"
 
-#include "file/vfs.h"
-#include "file/zip_read.h"
+#include "File/VFS/VFS.h"
+#include "File/VFS/AssetReader.h"
+//#include "file/zip_read.h"
 
 #include "gfx/OpenEmuGLContext.h"
 #include "gfx/gl_common.h"
-#include "thin3d/DataFormat.h"
+#include "DataFormat.h"
 
 #include "Common/GraphicsContext.h"
 #include "GPU/GPUState.h"
 
 #include "GPU/GPUState.h"
 #include "GPU/GPUInterface.h"
-#include "GPU/Common/FramebufferCommon.h"
-#include "GPU/Common/TextureScalerCommon.h"
+//#include "GPU/Common/FramebufferCommon.h"
+//#include "GPU/Common/TextureScalerCommon.h"
 
 #include "DataFormatGL.h"
 
-#include "input/input_state.h"
+#include "Common/Input/InputState.h"
+#include "Common/System/System.h"
 
 #include "UI/OnScreenDisplay.h"
+
+#define ILOG(...)
+#define WLOG(...)
+#define ELOG(...)
+#define FLOG(...)
 
 KeyInput input_state;
 OnScreenMessages osm;
