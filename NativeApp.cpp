@@ -28,9 +28,6 @@
 #include <thread>
 #include "Thread/ThreadUtil.h"
 
-//#include "base/logging.h"
-//#include "base/NativeApp.h"
-
 #include "Math/fast/fast_math.h"
 
 #include "Common/LogManager.h"
@@ -43,7 +40,6 @@
 
 #include "File/VFS/VFS.h"
 #include "File/VFS/AssetReader.h"
-//#include "file/zip_read.h"
 
 #include "Common/GPU/OpenGL/OpenEmuGLContext.h"
 #include "Common/GPU/OpenGL/GLCommon.h"
@@ -54,8 +50,6 @@
 
 #include "GPU/GPUState.h"
 #include "GPU/GPUInterface.h"
-//#include "GPU/Common/FramebufferCommon.h"
-//#include "GPU/Common/TextureScalerCommon.h"
 
 #include "DataFormatGL.h"
 

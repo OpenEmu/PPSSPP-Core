@@ -31,7 +31,6 @@
 #include "Common/GPU/OpenGL/OpenEmuGLContext.h"
 
 #include "System/NativeApp.h"
-//#include "base/timeutil.h"
 
 #define ExceptionInfo PPSSPPExceptionInfo
 #include "Core/Core.h"
