@@ -346,7 +346,6 @@
 		8CAFC17F1785C3AD00647A96 /* GPUCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBAD81785B3D200647A96 /* GPUCommon.cpp */; };
 		8CAFC1821785C3AD00647A96 /* GPUState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBADB1785B3D200647A96 /* GPUState.cpp */; };
 		8CAFC1841785C3AD00647A96 /* Math3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBADD1785B3D200647A96 /* Math3D.cpp */; };
-		8CAFC1871785C3BE00647A96 /* NullGpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBAE01785B3D200647A96 /* NullGpu.cpp */; };
 		8CAFC2041785C8C400647A96 /* snappy-c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9581785B3C200647A96 /* snappy-c.cpp */; };
 		8CAFC2091785C8C400647A96 /* snappy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA95E1785B3C200647A96 /* snappy.cpp */; };
 		8CAFC29C1785CD3C00647A96 /* Asm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA9221785B3C200647A96 /* Asm.cpp */; };
@@ -1583,8 +1582,6 @@
 		8CAFBADC1785B3D200647A96 /* GPUState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUState.h; sourceTree = "<group>"; };
 		8CAFBADD1785B3D200647A96 /* Math3D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Math3D.cpp; sourceTree = "<group>"; };
 		8CAFBADE1785B3D200647A96 /* Math3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math3D.h; sourceTree = "<group>"; };
-		8CAFBAE01785B3D200647A96 /* NullGpu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NullGpu.cpp; sourceTree = "<group>"; };
-		8CAFBAE11785B3D200647A96 /* NullGpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NullGpu.h; sourceTree = "<group>"; };
 		8CAFBB0C1785B3D200647A96 /* LICENSE.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.TXT; sourceTree = "<group>"; };
 		8CAFC10F1785B63900647A96 /* PPSSPP.oecoreplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPSSPP.oecoreplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1191785B63900647A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -4894,7 +4891,6 @@
 				8CAFBADC1785B3D200647A96 /* GPUState.h */,
 				8CAFBADD1785B3D200647A96 /* Math3D.cpp */,
 				8CAFBADE1785B3D200647A96 /* Math3D.h */,
-				8CAFBADF1785B3D200647A96 /* Null */,
 				8CA153E517C411BC0003002D /* Software */,
 			);
 			path = GPU;
@@ -4925,15 +4921,6 @@
 				3EAA4E3C1D9DD38C004F5179 /* GPU_GLES.h */,
 			);
 			path = GLES;
-			sourceTree = "<group>";
-		};
-		8CAFBADF1785B3D200647A96 /* Null */ = {
-			isa = PBXGroup;
-			children = (
-				8CAFBAE01785B3D200647A96 /* NullGpu.cpp */,
-				8CAFBAE11785B3D200647A96 /* NullGpu.h */,
-			);
-			path = Null;
 			sourceTree = "<group>";
 		};
 		8CAFC10A1785B60F00647A96 /* Classes */ = {
@@ -7543,7 +7530,6 @@
 				8CAFC1821785C3AD00647A96 /* GPUState.cpp in Sources */,
 				552C9A0A258D7C5B000C6942 /* GeConstants.cpp in Sources */,
 				8CAFC1841785C3AD00647A96 /* Math3D.cpp in Sources */,
-				8CAFC1871785C3BE00647A96 /* NullGpu.cpp in Sources */,
 				8C1B6E3B1993C7C100ABEB5D /* TransformCommon.cpp in Sources */,
 				8CA153F717C4125D0003002D /* Clipper.cpp in Sources */,
 				8C2D4EF11824011100E65166 /* TextureDecoder.cpp in Sources */,
