@@ -749,6 +749,7 @@
 		3EDB61F92012AFBD00CF55BE /* sceUsbCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sceUsbCam.h; sourceTree = "<group>"; };
 		3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobFileSystem.cpp; sourceTree = "<group>"; };
 		3EDB61FF2012B18700CF55BE /* BlobFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobFileSystem.h; sourceTree = "<group>"; };
+		5500257025E1F11B007C96C4 /* PPSSPP.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = PPSSPP.exp; sourceTree = "<group>"; };
 		552C957D258D64F2000C6942 /* DataFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataFormat.h; sourceTree = "<group>"; };
 		552C95C0258D674D000C6942 /* NativeApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeApp.h; sourceTree = "<group>"; };
 		552C9858258D7226000C6942 /* InputState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputState.h; sourceTree = "<group>"; };
@@ -1584,8 +1585,8 @@
 		8CAFBADE1785B3D200647A96 /* Math3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Math3D.h; sourceTree = "<group>"; };
 		8CAFBB0C1785B3D200647A96 /* LICENSE.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.TXT; sourceTree = "<group>"; };
 		8CAFC10F1785B63900647A96 /* PPSSPP.oecoreplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPSSPP.oecoreplugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CAFC1191785B63900647A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PPSSPP-Prefix.pch"; path = "../PPSSPP-Prefix.pch"; sourceTree = "<group>"; };
+		8CAFC1191785B63900647A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPSSPP-Prefix.pch"; sourceTree = "<group>"; };
 		8CAFC1221785B6C400647A96 /* OpenEmuBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEmuBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFC1241785B6F700647A96 /* PPSSPPGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSSPPGameCore.h; sourceTree = "<group>"; };
 		8CAFC1251785B6F700647A96 /* PPSSPPGameCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PPSSPPGameCore.mm; sourceTree = "<group>"; };
@@ -4940,9 +4941,9 @@
 			children = (
 				8CAFC1191785B63900647A96 /* Info.plist */,
 				8CAFC11D1785B63900647A96 /* PPSSPP-Prefix.pch */,
+				5500257025E1F11B007C96C4 /* PPSSPP.exp */,
 			);
 			name = "Supporting Files";
-			path = PPSSPP;
 			sourceTree = "<group>";
 		};
 		8CBB2C1D1790534900349818 /* assets */ = {
@@ -8320,6 +8321,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.10.3.2;
+				EXPORTED_SYMBOLS_FILE = PPSSPP.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)",
@@ -8368,6 +8370,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.10.3.2;
+				EXPORTED_SYMBOLS_FILE = PPSSPP.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(BUILT_PRODUCTS_DIR)",
