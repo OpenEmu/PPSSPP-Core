@@ -135,23 +135,15 @@
 		552C9FB7258DF7DE000C6942 /* connecthostport.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AA0258D7ED7000C6942 /* connecthostport.c */; };
 		552C9FB8258DF7DE000C6942 /* igd_desc_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AE8258D7ED8000C6942 /* igd_desc_parse.c */; };
 		552C9FB9258DF7DE000C6942 /* minissdpc.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9ADF258D7ED8000C6942 /* minissdpc.c */; };
-		552C9FBA258DF7DE000C6942 /* listdevices.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AB1258D7ED7000C6942 /* listdevices.c */; };
-		552C9FBB258DF7DE000C6942 /* minixmlvalid.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AD7258D7ED7000C6942 /* minixmlvalid.c */; };
 		552C9FBC258DF7DE000C6942 /* portlistingparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9A9D258D7ED7000C6942 /* portlistingparse.c */; };
 		552C9FBD258DF7DE000C6942 /* minixml.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9ADB258D7ED7000C6942 /* minixml.c */; };
 		552C9FBE258DF7DE000C6942 /* miniwget.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AB9258D7ED7000C6942 /* miniwget.c */; };
 		552C9FBF258DF7DE000C6942 /* upnpcommands.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AC8258D7ED7000C6942 /* upnpcommands.c */; };
 		552C9FC0258DF7DE000C6942 /* upnpc.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AD0258D7ED7000C6942 /* upnpc.c */; };
-		552C9FC1258DF7DE000C6942 /* minihttptestserver.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AD4258D7ED7000C6942 /* minihttptestserver.c */; };
 		552C9FC2258DF7DE000C6942 /* upnpreplyparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AB3258D7ED7000C6942 /* upnpreplyparse.c */; };
 		552C9FC3258DF7DE000C6942 /* miniupnpc.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AE0258D7ED8000C6942 /* miniupnpc.c */; };
 		552C9FC4258DF7DE000C6942 /* upnperrors.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AD8258D7ED7000C6942 /* upnperrors.c */; };
 		552C9FC5258DF7DE000C6942 /* receivedata.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AB7258D7ED7000C6942 /* receivedata.c */; };
-		552C9FC6258DF813000C6942 /* testigddescparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9AC9258D7ED7000C6942 /* testigddescparse.c */; };
-		552C9FC7258DF817000C6942 /* testminiwget.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9A9B258D7ED7000C6942 /* testminiwget.c */; };
-		552C9FC8258DF81B000C6942 /* testminixml.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9A9E258D7ED7000C6942 /* testminixml.c */; };
-		552C9FC9258DF81E000C6942 /* testportlistingparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9ADD258D7ED7000C6942 /* testportlistingparse.c */; };
-		552C9FCA258DF822000C6942 /* testupnpreplyparse.c in Sources */ = {isa = PBXBuildFile; fileRef = 552C9A8A258D7ED7000C6942 /* testupnpreplyparse.c */; };
 		552C9FCC258DF83F000C6942 /* libupnp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 552C9F9D258DF7AB000C6942 /* libupnp.a */; };
 		559EF9B42514A59300A249B4 /* VertexDecoderArm64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */; };
 		559EF9B52514A90E00A249B4 /* Arm64Emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DD071A82046200C46968 /* Arm64Emitter.cpp */; };
@@ -7263,22 +7255,14 @@
 				552C9FC2258DF7DE000C6942 /* upnpreplyparse.c in Sources */,
 				552C9FC0258DF7DE000C6942 /* upnpc.c in Sources */,
 				552C9FB9258DF7DE000C6942 /* minissdpc.c in Sources */,
-				552C9FC6258DF813000C6942 /* testigddescparse.c in Sources */,
 				552C9FB8258DF7DE000C6942 /* igd_desc_parse.c in Sources */,
 				552C9FB6258DF7DE000C6942 /* upnpdev.c in Sources */,
 				552C9FB4258DF7DE000C6942 /* minisoap.c in Sources */,
 				552C9FC5258DF7DE000C6942 /* receivedata.c in Sources */,
-				552C9FBB258DF7DE000C6942 /* minixmlvalid.c in Sources */,
 				552C9FBE258DF7DE000C6942 /* miniwget.c in Sources */,
 				552C9FBD258DF7DE000C6942 /* minixml.c in Sources */,
 				552C9FBF258DF7DE000C6942 /* upnpcommands.c in Sources */,
-				552C9FC8258DF81B000C6942 /* testminixml.c in Sources */,
-				552C9FC7258DF817000C6942 /* testminiwget.c in Sources */,
 				552C9FBC258DF7DE000C6942 /* portlistingparse.c in Sources */,
-				552C9FC1258DF7DE000C6942 /* minihttptestserver.c in Sources */,
-				552C9FBA258DF7DE000C6942 /* listdevices.c in Sources */,
-				552C9FCA258DF822000C6942 /* testupnpreplyparse.c in Sources */,
-				552C9FC9258DF81E000C6942 /* testportlistingparse.c in Sources */,
 				552C9FB7258DF7DE000C6942 /* connecthostport.c in Sources */,
 				552C9FC4258DF7DE000C6942 /* upnperrors.c in Sources */,
 				552C9FC3258DF7DE000C6942 /* miniupnpc.c in Sources */,
