@@ -1095,7 +1095,6 @@
 		552CEFFA27155473009D87A5 /* ColorConvNEON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorConvNEON.cpp; sourceTree = "<group>"; };
 		552CEFFD27155548009D87A5 /* MemBlockInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemBlockInfo.cpp; sourceTree = "<group>"; };
 		552CEFFE27155548009D87A5 /* MemBlockInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemBlockInfo.h; sourceTree = "<group>"; };
-		552CF00027155577009D87A5 /* Reporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reporting.h; sourceTree = "<group>"; };
 		552CF00127155577009D87A5 /* Reporting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reporting.cpp; sourceTree = "<group>"; };
 		552CF003271555EB009D87A5 /* NetBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetBuffer.cpp; sourceTree = "<group>"; };
 		552CF004271555EB009D87A5 /* NetBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBuffer.h; sourceTree = "<group>"; };
@@ -4717,7 +4716,6 @@
 				8C43DD201A82062E00C46968 /* Screenshot.cpp */,
 				8C43DD211A82062E00C46968 /* Screenshot.h */,
 				8CAFA9371785B3C200647A96 /* System.cpp */,
-				552CF00027155577009D87A5 /* Reporting.h */,
 				8CAFA9381785B3C200647A96 /* System.h */,
 				8CA153E417C4118B0003002D /* ThreadEventQueue.h */,
 				8CAFA9391785B3C200647A96 /* Util */,
