@@ -123,9 +123,9 @@ PPSSPPGameCore *_current = 0;
     }
 
     g_Config.bEnableLogging = true;
-    g_Config.iUnthrottleMode = (int)UnthrottleMode::CONTINUOUS;
+    g_Config.iFastForwardMode = (int)FastForwardMode::CONTINUOUS;
     g_Config.bMemStickInserted = true;
-    g_Config.iGlobalVolume = VOLUME_MAX - 1;
+    g_Config.iGlobalVolume = VOLUME_FULL - 1;
     g_Config.iAltSpeedVolume = -1;
     g_Config.bEnableSound = true;
     g_Config.iCwCheatRefreshRate = 60;
@@ -141,11 +141,11 @@ PPSSPPGameCore *_current = 0;
     // Force a trailing forward slash that PPSSPP requires
     NSString *directoryString      = [supportDirectoryURL.path stringByAppendingString:@"/"];
     //NSURL *directoryURL3            = [supportDirectoryURL URLByAppendingPathComponent:@"/" isDirectory:YES];
-    g_Config.currentDirectory      = directoryString.fileSystemRepresentation;
-    g_Config.externalDirectory     = directoryString.fileSystemRepresentation;
-    g_Config.memStickDirectory     = directoryString.fileSystemRepresentation;
-    g_Config.flash0Directory       = directoryString.fileSystemRepresentation;
-    g_Config.internalDataDirectory = directoryString.fileSystemRepresentation;
+    g_Config.currentDirectory      = Path(directoryString.fileSystemRepresentation);
+//    g_Config.externalDirectory     = directoryString.fileSystemRepresentation;
+    g_Config.memStickDirectory     = Path(directoryString.fileSystemRepresentation);
+    g_Config.flash0Directory       = Path(directoryString.fileSystemRepresentation);
+    g_Config.internalDataDirectory = Path(directoryString.fileSystemRepresentation);
     g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
     g_Config.bHideStateWarnings    = false;
     g_Config.iLanguage             = PSP_SYSTEMPARAM_LANGUAGE_ENGLISH;
@@ -153,8 +153,8 @@ PPSSPPGameCore *_current = 0;
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;
     _coreParam.enableSound  = true;
-    _coreParam.fileToStart  = romURL.fileSystemRepresentation;
-    _coreParam.mountIso     = "";
+    _coreParam.fileToStart  = Path(romURL.fileSystemRepresentation);
+    _coreParam.mountIso     = Path();
     _coreParam.startBreak  = false;
     _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
@@ -228,7 +228,7 @@ PPSSPPGameCore *_current = 0;
         
     } else {
         //If Fast forward rate is detected, unthrottle the rndering
-        PSP_CoreParameter().unthrottle = (self.rate > 1) ? true : false;
+        PSP_CoreParameter().fastForward = (self.rate > 1) ? true : false;
 
         //Let PPSSPP Core run a loop and return
         UpdateRunLoop();
@@ -326,12 +326,12 @@ static void _OELoadStateCallback(SaveState::Status status, std::string message, 
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     [self beginPausedExecution];
-    SaveState::Save(fileName.fileSystemRepresentation,0, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Save(Path(fileName.fileSystemRepresentation),0, _OESaveStateCallback, (__bridge_retained void *)[block copy]);
 }
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    SaveState::Load(fileName.fileSystemRepresentation, 0,_OELoadStateCallback, (__bridge_retained void *)[block copy]);
+    SaveState::Load(Path(fileName.fileSystemRepresentation), 0,_OELoadStateCallback, (__bridge_retained void *)[block copy]);
     if(_isInitialized){
         //We need to pause our EmuThread so we don't try to process the save state in the middle of a Frame Render
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::PAUSE_REQUESTED);
@@ -346,10 +346,10 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
 
 - (oneway void)didMovePSPJoystickDirection:(OEPSPButton)button withValue:(CGFloat)value forPlayer:(NSUInteger)player
 {
-    if(button == OEPSPAnalogUp || button == OEPSPAnalogDown)
-        __CtrlSetAnalogY(button == OEPSPAnalogUp ? value : -value);
-    else
-        __CtrlSetAnalogX(button == OEPSPAnalogRight ? value : -value);
+//    if(button == OEPSPAnalogUp || button == OEPSPAnalogDown)
+//        __CtrlSetAnalogY(button == OEPSPAnalogUp ? value : -value);
+//    else
+//        __CtrlSetAnalogX(button == OEPSPAnalogRight ? value : -value);
 }
 
 - (oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player

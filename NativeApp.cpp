@@ -115,7 +115,7 @@ namespace OpenEmuCoreThread {
     }
     
     static void EmuThreadFunc() {
-        setCurrentThreadName("Emu");
+		SetCurrentThreadName("Emu");
         
         while (true) {
             switch ((EmuThreadState)emuThreadState) {
@@ -258,14 +258,12 @@ int NativeMix(short *audio, int num_samples)
 
 void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *cache_directory)
 {
-    VFSRegister("", new DirectoryAssetReader("assets/"));
-    VFSRegister("", new DirectoryAssetReader(external_directory));
+    VFSRegister("", new DirectoryAssetReader(Path("assets/")));
+    VFSRegister("", new DirectoryAssetReader(Path(external_directory)));
     
     if (host == nullptr) {
         host = new NativeHost();
     }
-
-    g_Config.externalDirectory = external_directory;
     
     logger = new AndroidLogger();
 
