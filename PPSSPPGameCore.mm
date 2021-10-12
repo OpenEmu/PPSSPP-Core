@@ -83,6 +83,10 @@ void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState);
     CoreParameter _coreParam;
     bool _isInitialized;
     bool _shouldReset;
+	
+	//Hack for analog stick.
+	float x;
+	float y;
 
    OpenEmuGLContext *OEgraphicsContext;
 }
@@ -346,10 +350,11 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
 
 - (oneway void)didMovePSPJoystickDirection:(OEPSPButton)button withValue:(CGFloat)value forPlayer:(NSUInteger)player
 {
-//    if(button == OEPSPAnalogUp || button == OEPSPAnalogDown)
-//        __CtrlSetAnalogY(button == OEPSPAnalogUp ? value : -value);
-//    else
-//        __CtrlSetAnalogX(button == OEPSPAnalogRight ? value : -value);
+    if(button == OEPSPAnalogUp || button == OEPSPAnalogDown)
+        y = (button == OEPSPAnalogUp ? value : -value);
+    else
+        x = (button == OEPSPAnalogRight ? value : -value);
+	__CtrlSetAnalogXY(0, x, y);
 }
 
 - (oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player

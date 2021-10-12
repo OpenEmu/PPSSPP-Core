@@ -31,12 +31,14 @@
 #include "Math/fast/fast_math.h"
 
 #include "Common/LogManager.h"
+#include "Common/CPUDetect.h"
 
 #include "Core/Core.h"
 #include "Core/CoreTiming.h"
 #include "Core/Host.h"
 #include "Core/System.h"
 #include "Core/HLE/__sceAudio.h"
+#include "Core/ThreadPools.h"
 
 #include "File/VFS/VFS.h"
 #include "File/VFS/AssetReader.h"
@@ -261,6 +263,8 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     VFSRegister("", new DirectoryAssetReader(Path("assets/")));
     VFSRegister("", new DirectoryAssetReader(Path(external_directory)));
     
+	g_threadManager.Init(cpu_info.num_cores, cpu_info.logical_cpu_count);
+
     if (host == nullptr) {
         host = new NativeHost();
     }
