@@ -617,6 +617,20 @@
 			remoteGlobalIDString = 8CAFC1621785C33D00647A96;
 			remoteInfo = GPU;
 		};
+		550485232873A3F8000C570C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE081286218CAF4B007FD1AB;
+			remoteInfo = json;
+		};
+		550485252873A522000C570C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C844796186B83EB00BE03D5;
+			remoteInfo = gason;
+		};
 		552C9FCD258DF83F000C6942 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CAFA78F1785AA9900647A96 /* Project object */;
@@ -7392,7 +7406,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				550485262873A522000C570C /* PBXTargetDependency */,
 				552CEFF3271552C2009D87A5 /* PBXTargetDependency */,
+				550485242873A3F8000C570C /* PBXTargetDependency */,
 				EE7680B620CB8486006470A2 /* PBXTargetDependency */,
 				EE7680B820CB8486006470A2 /* PBXTargetDependency */,
 				3E3044A11F21672100B06252 /* PBXTargetDependency */,
@@ -8301,6 +8317,16 @@
 			isa = PBXTargetDependency;
 			target = 8CAFC1621785C33D00647A96 /* GPU */;
 			targetProxy = 3E3044A01F21672100B06252 /* PBXContainerItemProxy */;
+		};
+		550485242873A3F8000C570C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE081286218CAF4B007FD1AB /* json */;
+			targetProxy = 550485232873A3F8000C570C /* PBXContainerItemProxy */;
+		};
+		550485262873A522000C570C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C844796186B83EB00BE03D5 /* gason */;
+			targetProxy = 550485252873A522000C570C /* PBXContainerItemProxy */;
 		};
 		552C9FCE258DF83F000C6942 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
