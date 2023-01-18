@@ -506,7 +506,6 @@
 		5572E30F296433920071474C /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 5572E303296433910071474C /* themes */; };
 		5572E310296433920071474C /* ui_atlas.meta in Resources */ = {isa = PBXBuildFile; fileRef = 5572E304296433910071474C /* ui_atlas.meta */; };
 		5572E311296433920071474C /* asciifont_atlas.meta in Resources */ = {isa = PBXBuildFile; fileRef = 5572E305296433920071474C /* asciifont_atlas.meta */; };
-		5572E312296433930071474C /* ui_atlas.zim in Resources */ = {isa = PBXBuildFile; fileRef = 5572E306296433920071474C /* ui_atlas.zim */; };
 		5572E313296433930071474C /* compat.ini in Resources */ = {isa = PBXBuildFile; fileRef = 5572E307296433920071474C /* compat.ini */; };
 		559EF9B42514A59300A249B4 /* VertexDecoderArm64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */; };
 		559EF9B52514A90E00A249B4 /* Arm64Emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DD071A82046200C46968 /* Arm64Emitter.cpp */; };
@@ -814,7 +813,6 @@
 		EE5B9F1E236367EC00123ECF /* spirv_reflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE5B9F1B236367EC00123ECF /* spirv_reflect.cpp */; };
 		EE5FDACC24F340CA00DA2D43 /* ppge_atlas.meta in Resources */ = {isa = PBXBuildFile; fileRef = EE5FDAC824F340C900DA2D43 /* ppge_atlas.meta */; };
 		EE5FDACD24F340CA00DA2D43 /* ui_atlas.zim in Resources */ = {isa = PBXBuildFile; fileRef = EE5FDAC924F340C900DA2D43 /* ui_atlas.zim */; };
-		EE5FDACE24F340CA00DA2D43 /* ui_atlas.meta in Resources */ = {isa = PBXBuildFile; fileRef = EE5FDACA24F340C900DA2D43 /* ui_atlas.meta */; };
 		EE7679CA20C82E89006470A2 /* Replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7679C920C82E88006470A2 /* Replay.cpp */; };
 		EE76801920C82F9B006470A2 /* spirv_glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7677DA20C82D0D006470A2 /* spirv_glsl.cpp */; };
 		EE76802120C833B9006470A2 /* spirv_cross.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7677E920C82D0D006470A2 /* spirv_cross.cpp */; };
@@ -1718,7 +1716,6 @@
 		5572E303296433910071474C /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = themes; sourceTree = "<group>"; };
 		5572E304296433910071474C /* ui_atlas.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_atlas.meta; sourceTree = "<group>"; };
 		5572E305296433920071474C /* asciifont_atlas.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = asciifont_atlas.meta; sourceTree = "<group>"; };
-		5572E306296433920071474C /* ui_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_atlas.zim; sourceTree = "<group>"; };
 		5572E307296433920071474C /* compat.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = compat.ini; sourceTree = "<group>"; };
 		559EF9B32514A59300A249B4 /* VertexDecoderArm64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexDecoderArm64.cpp; sourceTree = "<group>"; };
 		559EF9BE2514ABEB00A249B4 /* Arm64CompVFPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64CompVFPU.cpp; sourceTree = "<group>"; };
@@ -2469,7 +2466,6 @@
 		EE5B9F1C236367EC00123ECF /* spirv_parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = spirv_parser.hpp; sourceTree = "<group>"; };
 		EE5FDAC824F340C900DA2D43 /* ppge_atlas.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppge_atlas.meta; sourceTree = "<group>"; };
 		EE5FDAC924F340C900DA2D43 /* ui_atlas.zim */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_atlas.zim; sourceTree = "<group>"; };
-		EE5FDACA24F340C900DA2D43 /* ui_atlas.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_atlas.meta; sourceTree = "<group>"; };
 		EE7677DA20C82D0D006470A2 /* spirv_glsl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = spirv_glsl.cpp; sourceTree = "<group>"; };
 		EE7677DE20C82D0D006470A2 /* barrier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = barrier.hpp; sourceTree = "<group>"; };
 		EE7677DF20C82D0D006470A2 /* thread_group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = thread_group.hpp; sourceTree = "<group>"; };
@@ -6395,8 +6391,6 @@
 				8CBB2C1E1790535600349818 /* ppge_atlas.zim */,
 				5572E303296433910071474C /* themes */,
 				5572E304296433910071474C /* ui_atlas.meta */,
-				EE5FDACA24F340C900DA2D43 /* ui_atlas.meta */,
-				EE5FDAC924F340C900DA2D43 /* ui_atlas.zim */,
 				EE5FDAC924F340C900DA2D43 /* ui_atlas.zim */,
 			);
 			path = assets;
@@ -8866,13 +8860,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5572E312296433930071474C /* ui_atlas.zim in Resources */,
 				5572E30D296433920071474C /* compatvr.ini in Resources */,
 				5572E30C296433920071474C /* asciifont_atlas.zim in Resources */,
 				5572E309296433920071474C /* lang in Resources */,
 				5572E313296433930071474C /* compat.ini in Resources */,
 				8706346C1C2516A1007FAA2F /* knownfuncs.ini in Resources */,
-				EE5FDACE24F340CA00DA2D43 /* ui_atlas.meta in Resources */,
 				EE5FDACC24F340CA00DA2D43 /* ppge_atlas.meta in Resources */,
 				87E4F4461C24A78B00110A77 /* compat.ini in Resources */,
 				3E3044D11F2194FF00B06252 /* flash0 in Resources */,
