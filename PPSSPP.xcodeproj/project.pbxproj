@@ -10421,7 +10421,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.14.3;
+				CURRENT_PROJECT_VERSION = 1.14.4;
 				EXPORTED_SYMBOLS_FILE = PPSSPP.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10444,6 +10444,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
+				MARKETING_VERSION = 1.14.4;
 				OTHER_LDFLAGS = (
 					"-lavformat",
 					"-lavcodec",
@@ -10471,7 +10472,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.14.3;
+				CURRENT_PROJECT_VERSION = 1.14.4;
 				EXPORTED_SYMBOLS_FILE = PPSSPP.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10494,6 +10495,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
+				MARKETING_VERSION = 1.14.4;
 				OTHER_LDFLAGS = (
 					"-lavformat",
 					"-lavcodec",
