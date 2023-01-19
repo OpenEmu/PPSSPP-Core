@@ -65,6 +65,7 @@
 		3EDB62002012B18700CF55BE /* BlobFileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */; };
 		3EDB62022012B76900CF55BE /* TextureCacheCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F4CD51A9B24A5002719B3 /* TextureCacheCommon.cpp */; };
 		3EDB62032012B76900CF55BE /* TextureCacheGLES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3044601F21463100B06252 /* TextureCacheGLES.cpp */; };
+		5528DD0F2978B9B7009E0F03 /* ManagedTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5528DD0D2978B9AF009E0F03 /* ManagedTexture.cpp */; };
 		552C9542258D6367000C6942 /* thin3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3C11C249AF300110A77 /* thin3d.cpp */; };
 		552C9568258D6416000C6942 /* thin3d_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F3C41C249AF400110A77 /* thin3d_gl.cpp */; };
 		552C95E5258D6810000C6942 /* buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87E4F2B91C249AF200110A77 /* buffer.cpp */; };
@@ -1119,6 +1120,8 @@
 		3EDB61FE2012B18700CF55BE /* BlobFileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobFileSystem.cpp; sourceTree = "<group>"; };
 		3EDB61FF2012B18700CF55BE /* BlobFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobFileSystem.h; sourceTree = "<group>"; };
 		5500257025E1F11B007C96C4 /* PPSSPP.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = PPSSPP.exp; sourceTree = "<group>"; };
+		5528DD0C2978B9AF009E0F03 /* ManagedTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedTexture.h; sourceTree = "<group>"; };
+		5528DD0D2978B9AF009E0F03 /* ManagedTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ManagedTexture.cpp; sourceTree = "<group>"; };
 		552C957D258D64F2000C6942 /* DataFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataFormat.h; sourceTree = "<group>"; };
 		552C95C0258D674D000C6942 /* NativeApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeApp.h; sourceTree = "<group>"; };
 		552C9858258D7226000C6942 /* InputState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputState.h; sourceTree = "<group>"; };
@@ -4314,11 +4317,13 @@
 		552C9731258D6D37000C6942 /* Render */ = {
 			isa = PBXGroup;
 			children = (
-				87E4F36B1C249AF300110A77 /* TextureAtlas.cpp */,
-				87E4F36C1C249AF300110A77 /* TextureAtlas.h */,
 				87E4F36F1C249AF300110A77 /* DrawBuffer.cpp */,
 				87E4F3701C249AF300110A77 /* DrawBuffer.h */,
+				5528DD0D2978B9AF009E0F03 /* ManagedTexture.cpp */,
+				5528DD0C2978B9AF009E0F03 /* ManagedTexture.h */,
 				552C9732258D6D4E000C6942 /* Text */,
+				87E4F36B1C249AF300110A77 /* TextureAtlas.cpp */,
+				87E4F36C1C249AF300110A77 /* TextureAtlas.h */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -9344,6 +9349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5528DD0F2978B9B7009E0F03 /* ManagedTexture.cpp in Sources */,
 				EE0812C6218CB6D2007FD1AB /* VulkanQueueRunner.cpp in Sources */,
 				87E4F4561C24B10900110A77 /* TextureAtlas.cpp in Sources */,
 				EE19A4C520B9E470005343B9 /* GLQueueRunner.cpp in Sources */,

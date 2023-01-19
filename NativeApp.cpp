@@ -28,8 +28,6 @@
 #include <thread>
 #include "Thread/ThreadUtil.h"
 
-//#include "Math/fast/fast_math.h"
-
 #include "Common/LogManager.h"
 #include "Common/CPUDetect.h"
 
