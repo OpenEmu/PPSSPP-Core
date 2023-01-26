@@ -47,7 +47,9 @@
 
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
+#include "Common/Data/Text/I18n.h"
 
+#include "GPU/GPUInterface.h"
 #include "thin3d_create.h"
 #include "GLRenderManager.h"
 #include "DataFormatGL.h"
@@ -227,6 +229,20 @@ PPSSPPGameCore *_current = 0;
         host->BootDone();
 		host->UpdateDisassembly();
         
+        if (PSP_CoreParameter().compat.flags().RequireBufferedRendering && g_Config.bSkipBufferEffects) {
+            g_Config.bSkipBufferEffects = false;
+        }
+
+        if (PSP_CoreParameter().compat.flags().RequireBlockTransfer && g_Config.bSkipGPUReadbacks) {
+            g_Config.bSkipGPUReadbacks = false;
+        }
+
+        if (PSP_CoreParameter().compat.flags().RequireDefaultCPUClock && g_Config.iLockedCPUSpeed != 0) {
+            g_Config.iLockedCPUSpeed = 0;
+        }
+        
+        gpu->NotifyConfigChanged();
+        
         //Start the Emulator Thread
         NativeSetThreadState(OpenEmuCoreThread::EmuThreadState::START_REQUESTED);
         
@@ -242,7 +258,7 @@ PPSSPPGameCore *_current = 0;
 
 - (OEGameCoreRendering)gameCoreRendering
 {
-    return OEGameCoreRenderingOpenGL2Video;
+    return OEGameCoreRenderingOpenGL3Video;
 }
 
 - (OEIntSize)bufferSize
