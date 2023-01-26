@@ -779,6 +779,15 @@
 		8CC8067518C27CC500AB1339 /* CompReplace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8067418C27CC500AB1339 /* CompReplace.cpp */; };
 		8CD63AFC178DCEC60039164C /* sceCcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63AFA178DCEC60039164C /* sceCcc.cpp */; };
 		8CD63B07178DD0710039164C /* HDRemaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD63B05178DD0700039164C /* HDRemaster.cpp */; };
+		DD836DDB2980785100912FB9 /* hlslParseables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DCB2980785100912FB9 /* hlslParseables.cpp */; };
+		DD836DDC2980785100912FB9 /* hlslTokenStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DCC2980785100912FB9 /* hlslTokenStream.cpp */; };
+		DD836DDD2980785100912FB9 /* hlslParseHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DCF2980785100912FB9 /* hlslParseHelper.cpp */; };
+		DD836DDE2980785100912FB9 /* hlslScanContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DD12980785100912FB9 /* hlslScanContext.cpp */; };
+		DD836DDF2980785100912FB9 /* hlslOpMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DD32980785100912FB9 /* hlslOpMap.cpp */; };
+		DD836DE02980785100912FB9 /* hlslAttributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DD62980785100912FB9 /* hlslAttributes.cpp */; };
+		DD836DE12980785100912FB9 /* hlslGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD836DD82980785100912FB9 /* hlslGrammar.cpp */; };
+		DDE9D273297F140F00DDAB21 /* Statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE9D271297F140F00DDAB21 /* Statistics.cpp */; };
+		DDE9D276297F150500DDAB21 /* ControlMapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE9D274297F150500DDAB21 /* ControlMapper.cpp */; };
 		EE08124B218CA633007FD1AB /* attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08124A218CA633007FD1AB /* attribute.cpp */; };
 		EE081278218CA90B007FD1AB /* Debugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE081277218CA90B007FD1AB /* Debugger.cpp */; };
 		EE08127C218CAC21007FD1AB /* sceUsbAcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE08127A218CAC20007FD1AB /* sceUsbAcc.cpp */; };
@@ -1870,7 +1879,6 @@
 		87E4F39E1C249AF300110A77 /* geom2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = geom2d.h; sourceTree = "<group>"; };
 		87E4F3A01C249AF300110A77 /* matrix4x4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix4x4.cpp; sourceTree = "<group>"; };
 		87E4F3A11C249AF300110A77 /* matrix4x4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = matrix4x4.h; sourceTree = "<group>"; };
-		87E4F3A21C249AF300110A77 /* matrix_neon.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = matrix_neon.s; sourceTree = "<group>"; };
 		87E4F3A81C249AF300110A77 /* vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vec3.cpp; sourceTree = "<group>"; };
 		87E4F3A91C249AF300110A77 /* vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
 		87E4F3AA1C249AF300110A77 /* math_util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = math_util.cpp; sourceTree = "<group>"; };
@@ -2400,6 +2408,26 @@
 		8CD63AFA178DCEC60039164C /* sceCcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceCcc.cpp; sourceTree = "<group>"; };
 		8CD63B05178DD0700039164C /* HDRemaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HDRemaster.cpp; sourceTree = "<group>"; };
 		8CD63B06178DD0700039164C /* HDRemaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRemaster.h; sourceTree = "<group>"; };
+		DD836DCB2980785100912FB9 /* hlslParseables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslParseables.cpp; sourceTree = "<group>"; };
+		DD836DCC2980785100912FB9 /* hlslTokenStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslTokenStream.cpp; sourceTree = "<group>"; };
+		DD836DCD2980785100912FB9 /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pch.h; sourceTree = "<group>"; };
+		DD836DCE2980785100912FB9 /* hlslParseables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslParseables.h; sourceTree = "<group>"; };
+		DD836DCF2980785100912FB9 /* hlslParseHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslParseHelper.cpp; sourceTree = "<group>"; };
+		DD836DD02980785100912FB9 /* hlslAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslAttributes.h; sourceTree = "<group>"; };
+		DD836DD12980785100912FB9 /* hlslScanContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslScanContext.cpp; sourceTree = "<group>"; };
+		DD836DD22980785100912FB9 /* hlslParseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslParseHelper.h; sourceTree = "<group>"; };
+		DD836DD32980785100912FB9 /* hlslOpMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslOpMap.cpp; sourceTree = "<group>"; };
+		DD836DD42980785100912FB9 /* hlslScanContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslScanContext.h; sourceTree = "<group>"; };
+		DD836DD52980785100912FB9 /* hlslTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslTokens.h; sourceTree = "<group>"; };
+		DD836DD62980785100912FB9 /* hlslAttributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslAttributes.cpp; sourceTree = "<group>"; };
+		DD836DD72980785100912FB9 /* hlslOpMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslOpMap.h; sourceTree = "<group>"; };
+		DD836DD82980785100912FB9 /* hlslGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hlslGrammar.cpp; sourceTree = "<group>"; };
+		DD836DD92980785100912FB9 /* hlslTokenStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslTokenStream.h; sourceTree = "<group>"; };
+		DD836DDA2980785100912FB9 /* hlslGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hlslGrammar.h; sourceTree = "<group>"; };
+		DDE9D271297F140F00DDAB21 /* Statistics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statistics.cpp; sourceTree = "<group>"; };
+		DDE9D272297F140F00DDAB21 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistics.h; sourceTree = "<group>"; };
+		DDE9D274297F150500DDAB21 /* ControlMapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlMapper.cpp; sourceTree = "<group>"; };
+		DDE9D275297F150500DDAB21 /* ControlMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMapper.h; sourceTree = "<group>"; };
 		EE081249218CA633007FD1AB /* attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attribute.h; sourceTree = "<group>"; };
 		EE08124A218CA633007FD1AB /* attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attribute.cpp; sourceTree = "<group>"; };
 		EE081276218CA90A007FD1AB /* Debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugger.h; sourceTree = "<group>"; };
@@ -5351,6 +5379,8 @@
 		87E4F3911C249AF300110A77 /* Math */ = {
 			isa = PBXGroup;
 			children = (
+				DDE9D271297F140F00DDAB21 /* Statistics.cpp */,
+				DDE9D272297F140F00DDAB21 /* Statistics.h */,
 				87E4F3931C249AF300110A77 /* curves.cpp */,
 				87E4F3941C249AF300110A77 /* curves.h */,
 				87E4F3951C249AF300110A77 /* expression_parser.cpp */,
@@ -5378,7 +5408,6 @@
 			children = (
 				87E4F3A01C249AF300110A77 /* matrix4x4.cpp */,
 				87E4F3A11C249AF300110A77 /* matrix4x4.h */,
-				87E4F3A21C249AF300110A77 /* matrix_neon.s */,
 				87E4F3A81C249AF300110A77 /* vec3.cpp */,
 				87E4F3A91C249AF300110A77 /* vec3.h */,
 			);
@@ -5736,6 +5765,8 @@
 		8CAFA83F1785B3C200647A96 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				DDE9D274297F150500DDAB21 /* ControlMapper.cpp */,
+				DDE9D275297F150500DDAB21 /* ControlMapper.h */,
 				3E3044431F2144FC00B06252 /* AVIDump.cpp */,
 				3E3044411F2144FC00B06252 /* AVIDump.h */,
 				87E4F4141C24A02800110A77 /* Compatibility.cpp */,
@@ -6399,6 +6430,29 @@
 				EE5FDAC924F340C900DA2D43 /* ui_atlas.zim */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		DD836DCA2980785100912FB9 /* HLSL */ = {
+			isa = PBXGroup;
+			children = (
+				DD836DCB2980785100912FB9 /* hlslParseables.cpp */,
+				DD836DCC2980785100912FB9 /* hlslTokenStream.cpp */,
+				DD836DCD2980785100912FB9 /* pch.h */,
+				DD836DCE2980785100912FB9 /* hlslParseables.h */,
+				DD836DCF2980785100912FB9 /* hlslParseHelper.cpp */,
+				DD836DD02980785100912FB9 /* hlslAttributes.h */,
+				DD836DD12980785100912FB9 /* hlslScanContext.cpp */,
+				DD836DD22980785100912FB9 /* hlslParseHelper.h */,
+				DD836DD32980785100912FB9 /* hlslOpMap.cpp */,
+				DD836DD42980785100912FB9 /* hlslScanContext.h */,
+				DD836DD52980785100912FB9 /* hlslTokens.h */,
+				DD836DD62980785100912FB9 /* hlslAttributes.cpp */,
+				DD836DD72980785100912FB9 /* hlslOpMap.h */,
+				DD836DD82980785100912FB9 /* hlslGrammar.cpp */,
+				DD836DD92980785100912FB9 /* hlslTokenStream.h */,
+				DD836DDA2980785100912FB9 /* hlslGrammar.h */,
+			);
+			path = HLSL;
 			sourceTree = "<group>";
 		};
 		EE081280218CAD91007FD1AB /* gason */ = {
@@ -8083,6 +8137,7 @@
 		EE767F9320C82F18006470A2 /* glslang */ = {
 			isa = PBXGroup;
 			children = (
+				DD836DCA2980785100912FB9 /* HLSL */,
 				EE767F9420C82F18006470A2 /* CMakeLists.txt */,
 				EE767F9520C82F18006470A2 /* OSDependent */,
 				EE767F9E20C82F18006470A2 /* Include */,
@@ -9319,6 +9374,7 @@
 				552CF00827155705009D87A5 /* LogReporting.cpp in Sources */,
 				552C99F6258D7C2C000C6942 /* Display.cpp in Sources */,
 				8CAFC0F61785B4D900647A96 /* LogManager.cpp in Sources */,
+				DDE9D273297F140F00DDAB21 /* Statistics.cpp in Sources */,
 				552C985D258D7226000C6942 /* InputState.cpp in Sources */,
 				552C95E5258D6810000C6942 /* buffer.cpp in Sources */,
 				552C9568258D6416000C6942 /* thin3d_gl.cpp in Sources */,
@@ -9591,6 +9647,7 @@
 				8C84473F186B762900BE03D5 /* DisassemblyManager.cpp in Sources */,
 				8C99589B1785DB7000EE4CA8 /* sceOpenPSID.cpp in Sources */,
 				8C99589D1785DB7000EE4CA8 /* sceP3da.cpp in Sources */,
+				DDE9D276297F150500DDAB21 /* ControlMapper.cpp in Sources */,
 				8C99589F1785DB7000EE4CA8 /* sceParseHttp.cpp in Sources */,
 				8C9958A11785DB7000EE4CA8 /* sceParseUri.cpp in Sources */,
 				8C9958A31785DB7D00EE4CA8 /* scePower.cpp in Sources */,
@@ -9715,6 +9772,8 @@
 			files = (
 				EE7680B920CB8521006470A2 /* InReadableOrder.cpp in Sources */,
 				EE7680BA20CB8521006470A2 /* GlslangToSpv.cpp in Sources */,
+				DD836DE12980785100912FB9 /* hlslGrammar.cpp in Sources */,
+				DD836DDD2980785100912FB9 /* hlslParseHelper.cpp in Sources */,
 				EE7680BB20CB8521006470A2 /* SPVRemapper.cpp in Sources */,
 				EE7680BC20CB8521006470A2 /* doc.cpp in Sources */,
 				EE7680BD20CB8521006470A2 /* disassemble.cpp in Sources */,
@@ -9722,11 +9781,13 @@
 				EE76809020CB8030006470A2 /* Link.cpp in Sources */,
 				EE7680A320CB805A006470A2 /* Constant.cpp in Sources */,
 				EE76809D20CB805A006470A2 /* InfoSink.cpp in Sources */,
+				DD836DDF2980785100912FB9 /* hlslOpMap.cpp in Sources */,
 				EE76809420CB805A006470A2 /* Initialize.cpp in Sources */,
 				EE76809820CB805A006470A2 /* IntermTraverse.cpp in Sources */,
 				EE7680A520CB805A006470A2 /* ParseContextBase.cpp in Sources */,
 				EE76809120CB805A006470A2 /* ParseHelper.cpp in Sources */,
 				EE76809B20CB805A006470A2 /* PoolAlloc.cpp in Sources */,
+				DD836DDE2980785100912FB9 /* hlslScanContext.cpp in Sources */,
 				EE7680A120CB805A006470A2 /* RemoveTree.cpp in Sources */,
 				EE76809320CB805A006470A2 /* Scan.cpp in Sources */,
 				EE76809C20CB805A006470A2 /* ShaderLang.cpp in Sources */,
@@ -9741,10 +9802,12 @@
 				872FC30022B814F800AF67DE /* SpvPostProcess.cpp in Sources */,
 				EE76809720CB805A006470A2 /* parseConst.cpp in Sources */,
 				EE7680B120CB8278006470A2 /* Pp.cpp in Sources */,
+				DD836DE02980785100912FB9 /* hlslAttributes.cpp in Sources */,
 				EE7680A620CB8073006470A2 /* PpAtom.cpp in Sources */,
 				EE7680A820CB8073006470A2 /* PpContext.cpp in Sources */,
 				EE7680A920CB8073006470A2 /* PpScanner.cpp in Sources */,
 				EE7680A720CB8073006470A2 /* PpTokens.cpp in Sources */,
+				DD836DDB2980785100912FB9 /* hlslParseables.cpp in Sources */,
 				EE76809220CB805A006470A2 /* propagateNoContraction.cpp in Sources */,
 				EE7680A020CB805A006470A2 /* reflection.cpp in Sources */,
 				EE7680A420CB805A006470A2 /* linkValidate.cpp in Sources */,
@@ -9752,6 +9815,7 @@
 				EE76808D20CB7FCC006470A2 /* InitializeDll.cpp in Sources */,
 				EE76808E20CB800A006470A2 /* ossource.cpp in Sources */,
 				EE76809E20CB805A006470A2 /* Intermediate.cpp in Sources */,
+				DD836DDC2980785100912FB9 /* hlslTokenStream.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
