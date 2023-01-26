@@ -13,7 +13,7 @@ class OpenEmuGLContext : public GraphicsContext {
 public:
     OpenEmuGLContext();
 
-    ~OpenEmuGLContext() override { Shutdown(); }
+    ~OpenEmuGLContext() override {Shutdown();};
     
     bool Init();
     bool Init(bool cache_context);
@@ -26,9 +26,9 @@ public:
     void LostBackbuffer();
     
     void Shutdown() override {
-        DestroyDrawContext();
+          DestroyDrawContext();
     }
-    void SwapInterval(int interval) override {}
+    void SwapInterval(int interval) override;
     void Resize() override {}
     void SwapBuffers() override {}
     
@@ -40,7 +40,7 @@ public:
         renderManager_->StopThread();
     }
     
-    void SetRenderTarget() {
+    void SetRenderTarget()  {
         extern GLuint g_defaultFBO;
         g_defaultFBO = RenderFBO;
     }
