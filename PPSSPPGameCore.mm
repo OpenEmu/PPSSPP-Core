@@ -148,13 +148,22 @@ PPSSPPGameCore *_current = 0;
     NSString *directoryString      = [supportDirectoryURL.path stringByAppendingString:@"/"];
     //NSURL *directoryURL3            = [supportDirectoryURL URLByAppendingPathComponent:@"/" isDirectory:YES];
     g_Config.currentDirectory      = Path(directoryString.fileSystemRepresentation);
-//    g_Config.externalDirectory     = directoryString.fileSystemRepresentation;
+    g_Config.defaultCurrentDirectory = Path(directoryString.fileSystemRepresentation);
     g_Config.memStickDirectory     = Path(directoryString.fileSystemRepresentation);
     g_Config.flash0Directory       = Path(directoryString.fileSystemRepresentation);
     g_Config.internalDataDirectory = Path(directoryString.fileSystemRepresentation);
+    g_Config.appCacheDirectory     = Path([directoryString stringByAppendingString:@"/cache/" ].fileSystemRepresentation);
     g_Config.iGPUBackend           = (int)GPUBackend::OPENGL;
     g_Config.bHideStateWarnings    = false;
     g_Config.iLanguage             = PSP_SYSTEMPARAM_LANGUAGE_ENGLISH;
+    
+    
+    if (!LogManager::GetInstance()) {
+        LogManager::Init(&g_Config.bEnableLogging);
+    }
+    
+    g_Config.SetSearchPath(GetSysDirectory(DIRECTORY_SYSTEM));
+    g_Config.Load();
     
     _coreParam.cpuCore      = CPUCore::JIT;
     _coreParam.gpuCore      = GPUCORE_GLES;

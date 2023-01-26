@@ -272,26 +272,10 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     VFSRegister("", new DirectoryAssetReader(Path(external_directory)));
 
     ShaderTranslationInit();
+    
+    g_threadManager.Init(cpu_info.num_cores, cpu_info.logical_cpu_count);
 
-	g_threadManager.Init(cpu_info.num_cores, cpu_info.logical_cpu_count);
-
-    g_Config.defaultCurrentDirectory = Path(external_directory);
-    g_Config.memStickDirectory = g_Config.defaultCurrentDirectory / "config/ppsspp";
-    g_Config.flash0Directory = Path(std::string(external_directory)) / "flash0";
-    
-    if (cache_directory && strlen(cache_directory)) {
-        g_Config.appCacheDirectory = Path(cache_directory);
-        DiskCachingFileLoaderCache::SetCacheDir(g_Config.appCacheDirectory);
-    }
-    
-    g_Config.bEnableLogging=true;
-    
-    if (!LogManager::GetInstance()) {
-        LogManager::Init(&g_Config.bEnableLogging);
-    }
-    
-    g_Config.SetSearchPath(GetSysDirectory(DIRECTORY_SYSTEM));
-    g_Config.Load();
+    DiskCachingFileLoaderCache::SetCacheDir(g_Config.appCacheDirectory);
     
     if (host == nullptr) {
         host = new NativeHost();
