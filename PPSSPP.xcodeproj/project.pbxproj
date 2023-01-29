@@ -10326,7 +10326,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/universal/lib\"";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-D_DEBUG",
@@ -10419,7 +10419,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/ppsspp/ffmpeg/macosx/universal/lib\"";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = (
 					"-D_NDEBUG",
 					"-fno-strict-aliasing",
