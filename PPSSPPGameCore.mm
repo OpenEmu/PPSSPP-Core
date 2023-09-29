@@ -40,7 +40,7 @@
 #include "Core/CoreTiming.h"
 #include "Core/HLE/sceCtrl.h"
 #include "Core/HLE/sceUtility.h"
-#include "Core/Host.h"
+#include "Core/RetroAchievements.h"
 #include "Core/SaveState.h"
 #include "Core/System.h"
 #undef ExceptionInfo
@@ -171,7 +171,6 @@ PPSSPPGameCore *_current = 0;
     _coreParam.fileToStart  = Path(romURL.fileSystemRepresentation);
     _coreParam.mountIso     = Path();
     _coreParam.startBreak  = false;
-    _coreParam.printfEmuLog = false;
     _coreParam.headLess     = false;
 
     _coreParam.renderWidth  = 480;
@@ -235,9 +234,6 @@ PPSSPPGameCore *_current = 0;
         if(!PSP_Init(_coreParam, &error_string))
             NSLog(@"[PPSSPP] ERROR: %s", error_string.c_str());
 
-        host->BootDone();
-		host->UpdateDisassembly();
-        
         if (PSP_CoreParameter().compat.flags().RequireBufferedRendering && g_Config.bSkipBufferEffects) {
             g_Config.bSkipBufferEffects = false;
         }
@@ -260,7 +256,7 @@ PPSSPPGameCore *_current = 0;
         PSP_CoreParameter().fastForward = (self.rate > 1) ? true : false;
 
         //Let PPSSPP Core run a loop and return
-        UpdateRunLoop();
+        UpdateRunLoop(OEgraphicsContext);
     }
 }
 # pragma mark - Video
@@ -304,7 +300,7 @@ PPSSPPGameCore *_current = 0;
 
 - (NSUInteger)read:(void *)buffer maxLength:(NSUInteger)len
 {
-    NativeMix((short *)buffer, (int)(len / (AUDIO_CHANNELS * sizeof(uint16_t))));
+    NativeMix((short *)buffer, (int)(len / (AUDIO_CHANNELS * sizeof(uint16_t))), 44100);
     return len;
 }
 
@@ -384,12 +380,21 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
 
 - (oneway void)didPushPSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
 {
-    __CtrlButtonDown(buttonMap[button]);
+	__CtrlUpdateButtons(buttonMap[button], 0);
 }
 
 - (oneway void)didReleasePSPButton:(OEPSPButton)button forPlayer:(NSUInteger)player
 {
-    __CtrlButtonUp(buttonMap[button]);
+	__CtrlUpdateButtons(0, buttonMap[button]);
 }
 
 @end
+
+#pragma mark - RetroAchievements stubs
+
+void Achievements::UnloadGame() {}
+void Achievements::FrameUpdate() {}
+bool Achievements::IsReadyToStart() {return true;}
+bool Achievements::ChallengeModeActive() {return false;}
+void Achievements::DoState(PointerWrap &p) {}
+void Achievements::SetGame(const Path &path, IdentifiedFileType fileType, FileLoader *fileLoader) {}

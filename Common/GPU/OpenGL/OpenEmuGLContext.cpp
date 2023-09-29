@@ -6,6 +6,7 @@
 #include "Core/System.h"
 #include "Core/ConfigValues.h"
 #include "GPU/GPUInterface.h"
+#include <cassert>
 
 //Set functions in PPSSPP GLRenderManager
 static void context_SwapBuffer(){ ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->SwapBuffers(); }
@@ -26,7 +27,7 @@ void OpenEmuGLContext::ContextReset() {
     GotBackbuffer();
     
     if (gpu) {
-        gpu->DeviceRestore();
+        gpu->DeviceRestore(draw_);
     }
 }
 
@@ -77,7 +78,7 @@ void OpenEmuGLContext::CreateDrawContext() {
 
     CheckGLExtensions();
     
-    draw_ = Draw::T3DCreateGLContext();
+    draw_ = Draw::T3DCreateGLContext(false);
     renderManager_ = (GLRenderManager *)draw_->GetNativeObject(Draw::NativeObject::RENDER_MANAGER);
     renderManager_->SetInflightFrames(g_Config.iInflightFrames);
     SetGPUBackend(GPUBackend::OPENGL);
@@ -86,10 +87,6 @@ void OpenEmuGLContext::CreateDrawContext() {
     assert(success);
     
     renderManager_->SetSwapFunction([&]() {context_SwapBuffer();});
-}
-
-void OpenEmuGLContext::SwapInterval(int interval) {
-    renderManager_->SwapInterval(interval);
 }
 
 void OpenEmuGLContext::DestroyDrawContext() {

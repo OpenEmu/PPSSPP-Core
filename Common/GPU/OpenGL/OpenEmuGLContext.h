@@ -28,15 +28,14 @@ public:
     void Shutdown() override {
           DestroyDrawContext();
     }
-    void SwapInterval(int interval) override;
     void Resize() override {}
-    void SwapBuffers() override {}
+    void SwapBuffers() {}
     
     void ThreadStart() override { renderManager_->ThreadStart(draw_); }
     bool ThreadFrame() override { return renderManager_->ThreadFrame(); }
     void ThreadEnd() override { renderManager_->ThreadEnd(); }
     void StopThread() override {
-        renderManager_->WaitUntilQueueIdle();
+//        renderManager_->WaitUntilQueueIdle();
         renderManager_->StopThread();
     }
     

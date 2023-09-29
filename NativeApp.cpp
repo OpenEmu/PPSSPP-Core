@@ -35,17 +35,18 @@
 #include "Core/Core.h"
 #include "Core/Config.h"
 #include "Core/CoreTiming.h"
-#include "Core/Host.h"
 #include "Core/System.h"
 #include "Core/HLE/__sceAudio.h"
+#include "UI/AudioCommon.h"
 #include "Core/ThreadPools.h"
 #include "Core/FileLoaders/DiskCachingFileLoader.h"
 
 #include "File/VFS/VFS.h"
-#include "File/VFS/AssetReader.h"
+#include "File/VFS/DirectoryReader.h"
 
 #include "Common/GPU/OpenGL/OpenEmuGLContext.h"
 #include "Common/GPU/OpenGL/GLCommon.h"
+#include "Common/GPU/thin3d.h"
 #include "DataFormat.h"
 
 #include "Common/GraphicsContext.h"
@@ -80,7 +81,6 @@ inline const char *removePath(const char *str) {
 #define FLOG(...) {printf("F: %s:%i: ", removePath(__FILE__), __LINE__); printf(__VA_ARGS__); printf("\n"); Crash();}
 
 KeyInput input_state;
-OnScreenMessages osm;
 
 static Draw::DrawContext *g_draw;
 static Draw::Pipeline *colorPipeline;
@@ -108,7 +108,7 @@ namespace OpenEmuCoreThread {
         ctx->SetRenderTarget();
 
         if (ctx->GetDrawContext()) {
-            ctx->GetDrawContext()->BeginFrame();
+            ctx->GetDrawContext()->BeginFrame(Draw::DebugFlags::NONE);
         }
 
         gpu->BeginHostFrame();
@@ -204,63 +204,13 @@ class AndroidLogger : public LogListener
 {
 public:
     void Log(const LogMessage &msg) override{};
-
-	void Log(LogTypes::LOG_LEVELS level, const char *msg)
-	{
-		switch (level)
-		{
-            case LogTypes::LVERBOSE:
-            case LogTypes::LDEBUG:
-            case LogTypes::LINFO:
-                ILOG("%s", msg);
-                break;
-            case LogTypes::LERROR:
-                ELOG("%s", msg);
-                break;
-            case LogTypes::LWARNING:
-                WLOG("%s", msg);
-                break;
-            case LogTypes::LNOTICE:
-            default:
-                ILOG("%s", msg);
-                break;
-		}
-	}
 };
 
 static AndroidLogger *logger = 0;
 
-class NativeHost : public Host {
-public:
-    NativeHost() {
-    }
-
-    void UpdateUI() override {}
-
-    void UpdateMemView() override {}
-    void UpdateDisassembly() override {}
-
-    void SetDebugMode(bool mode) override { }
-
-    bool InitGraphics(std::string *error_string, GraphicsContext **ctx)override { return true; }
-    void ShutdownGraphics() override {}
-
-    void InitSound() override {}
-    void UpdateSound() override {}
-    void ShutdownSound() override {}
-
-    // this is sent from EMU thread! Make sure that Host handles it properly!
-    void BootDone() override {}
-
-    bool IsDebuggingEnabled() override {return false;}
-    bool AttemptLoadSymbolMap() override {return false;}
-    void SetWindowTitle(const char *message) override {}
-};
-
-int NativeMix(short *audio, int num_samples)
+int NativeMix(short *audio, int num_samples, int sampleRateHz)
 {
-    int sample_rate = System_GetPropertyInt(SYSPROP_AUDIO_SAMPLE_RATE);
-    num_samples = __AudioMix(audio, num_samples, sample_rate > 0 ? sample_rate : 44100);
+    num_samples = __AudioMix(audio, num_samples, sampleRateHz);
 
 	return num_samples;
 }
@@ -268,8 +218,8 @@ bool CreateGlobalPipelines();
 
 void NativeInit(int argc, const char *argv[], const char *savegame_directory, const char *external_directory, const char *cache_directory)
 {
-    VFSRegister("", new DirectoryAssetReader(Path("assets/")));
-    VFSRegister("", new DirectoryAssetReader(Path(external_directory)));
+    g_VFS.Register("", new DirectoryReader(Path("assets/")));
+    g_VFS.Register("", new DirectoryReader(Path(external_directory)));
 
     ShaderTranslationInit();
     
@@ -277,17 +227,13 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 
     DiskCachingFileLoaderCache::SetCacheDir(g_Config.appCacheDirectory);
     
-    if (host == nullptr) {
-        host = new NativeHost();
-    }
-
 	LogManager *logman = LogManager::GetInstance();
 	ILOG("Logman: %p", logman);
 
-    LogTypes::LOG_LEVELS logLevel = LogTypes::LINFO;
-	for(int i = 0; i < LogTypes::NUMBER_OF_LOGS; i++)
+    LogLevel logLevel = LogLevel::LINFO;
+	for(int i = 0; i < (int)LogType::NUMBER_OF_LOGS; i++)
 	{
-		LogTypes::LOG_TYPE type = (LogTypes::LOG_TYPE)i;
+		LogType type = (LogType)i;
         logman->SetLogLevel(type, logLevel);
     }
 }
@@ -316,7 +262,7 @@ bool NativeInitGraphics(GraphicsContext *graphicsContext)
     CreateGlobalPipelines();
 
     if (gpu)
-        gpu->DeviceRestore();
+        gpu->DeviceRestore(g_draw);
 
     return true;
 }
@@ -366,15 +312,17 @@ void NativeShutdownGraphics()
 {
 }
 
+void NativeFrame(GraphicsContext *graphicsContext)
+{
+    //TODO: implement
+}
+
 void NativeShutdown()
 {
-    delete host;
-    host = 0;
-
     LogManager::Shutdown();
 }
 
-void OnScreenMessages::Show(const std::string &text, float duration_s, uint32_t color, int icon, bool checkUnique, const char *id) {}
+//void OnScreenMessages::Show(const std::string &text, float duration_s, uint32_t color, int icon, bool checkUnique, const char *id) {}
 
 std::string System_GetProperty(SystemProperty prop) {
 	switch (prop) {
@@ -400,6 +348,10 @@ std::string System_GetProperty(SystemProperty prop) {
         default:
             return "";
 	}
+}
+
+std::vector<std::string> System_GetPropertyStringVec(SystemProperty prop) {
+    return {};
 }
 
 int System_GetPropertyInt(SystemProperty prop) {
@@ -442,6 +394,22 @@ bool System_GetPropertyBool(SystemProperty prop) {
     }
 }
 
+void System_Notify(SystemNotification notification) {
+    
+}
+
+bool System_MakeRequest(SystemRequestType type, int requestId, const std::string &param1, const std::string &param2, int param3) {
+    return false;
+}
+
+std::vector<std::string> System_GetCameraDeviceList() {
+    return {};
+}
+
 void System_SendMessage(const char *command, const char *parameter) {
     return;
+}
+
+void System_PostUIMessage(const std::string &message, const std::string &param) {
+    
 }
