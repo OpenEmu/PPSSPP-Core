@@ -36,6 +36,9 @@
 #include "Core/Config.h"
 #include "Core/CoreTiming.h"
 #include "Core/System.h"
+#include "Core/FrameTiming.h"
+#include "Core/RetroAchievements.h"
+#include "Core/Util/GameManager.h"
 #include "Core/HLE/__sceAudio.h"
 #include "UI/AudioCommon.h"
 #include "Core/ThreadPools.h"
@@ -82,9 +85,11 @@ inline const char *removePath(const char *str) {
 
 KeyInput input_state;
 
+ScreenManager *g_screenManager;
 static Draw::DrawContext *g_draw;
 static Draw::Pipeline *colorPipeline;
 static Draw::Pipeline *texColorPipeline;
+static bool restarting = false;
 
 namespace OpenEmuCoreThread {
     OpenEmuGLContext *ctx;
@@ -221,6 +226,9 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
     g_VFS.Register("", new DirectoryReader(Path("assets/")));
     g_VFS.Register("", new DirectoryReader(Path(external_directory)));
 
+    g_screenManager = new ScreenManager();
+    SetGPUBackend(GPUBackend::OPENGL);
+    
     ShaderTranslationInit();
     
     g_threadManager.Init(cpu_info.num_cores, cpu_info.logical_cpu_count);
@@ -236,6 +244,12 @@ void NativeInit(int argc, const char *argv[], const char *savegame_directory, co
 		LogType type = (LogType)i;
         logman->SetLogLevel(type, logLevel);
     }
+    
+    // Initialize retro achievements runtime.
+    Achievements::Initialize();
+    
+    // Must be done restarting by now.
+    restarting = false;
 }
 
 void NativeSetThreadState(OpenEmuCoreThread::EmuThreadState threadState)  {
@@ -314,12 +328,58 @@ void NativeShutdownGraphics()
 
 void NativeFrame(GraphicsContext *graphicsContext)
 {
-    //TODO: implement
+    g_screenManager->update();
+
+    g_GameManager.Update();
+    
+    g_frameTiming.Reset(g_draw);
+
+    g_draw->BeginFrame(Draw::DebugFlags::NONE);
+    g_screenManager->render();
+    
+    g_draw->EndFrame();
+}
+
+void NativeSetRestarting() {
+    restarting = true;
+}
+
+bool NativeIsRestarting() {
+    return restarting;
 }
 
 void NativeShutdown()
 {
-    LogManager::Shutdown();
+    Achievements::Shutdown();
+
+    if (g_screenManager) {
+        g_screenManager->shutdown();
+        delete g_screenManager;
+        g_screenManager = nullptr;
+    }
+
+//    ShutdownWebServer();
+
+#if PPSSPP_PLATFORM(ANDROID) || PPSSPP_PLATFORM(IOS)
+    System_ExitApp();
+#endif
+
+//    g_PortManager.Shutdown();
+
+    net::Shutdown();
+
+    ShaderTranslationShutdown();
+
+    // Avoid shutting this down when restarting core.
+    if (!restarting)
+        LogManager::Shutdown();
+
+    if (logger) {
+        delete logger;
+        logger = nullptr;
+    }
+
+    g_threadManager.Teardown();
 }
 
 //void OnScreenMessages::Show(const std::string &text, float duration_s, uint32_t color, int icon, bool checkUnique, const char *id) {}

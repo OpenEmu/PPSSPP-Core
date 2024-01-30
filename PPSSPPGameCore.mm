@@ -392,6 +392,9 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
 
 #pragma mark - RetroAchievements stubs
 
+bool Achievements::Shutdown() {return true;}
+void Achievements::Initialize() {}
+void Achievements::UpdateSettings() {}
 void Achievements::UnloadGame() {}
 void Achievements::FrameUpdate() {}
 bool Achievements::IsReadyToStart() {return true;}
