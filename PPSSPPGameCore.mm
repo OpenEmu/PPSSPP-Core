@@ -47,6 +47,7 @@
 
 #include "Common/GraphicsContext.h"
 #include "Common/LogManager.h"
+#include "Common/System/System.h"
 #include "Common/Data/Text/I18n.h"
 
 #include "GPU/GPUInterface.h"
@@ -134,7 +135,7 @@ PPSSPPGameCore *_current = 0;
     g_Config.iGlobalVolume = VOLUME_FULL - 1;
     g_Config.iAltSpeedVolume = -1;
     g_Config.bEnableSound = true;
-    g_Config.iCwCheatRefreshRate = 60;
+    g_Config.iCwCheatRefreshIntervalMs = 16;
     g_Config.iMemStickSizeGB = 16;
 
     g_Config.iFirmwareVersion = PSP_DEFAULT_FIRMWARE;
@@ -238,8 +239,8 @@ PPSSPPGameCore *_current = 0;
             g_Config.bSkipBufferEffects = false;
         }
 
-        if (PSP_CoreParameter().compat.flags().RequireBlockTransfer && g_Config.bSkipGPUReadbacks) {
-            g_Config.bSkipGPUReadbacks = false;
+        if (PSP_CoreParameter().compat.flags().RequireBlockTransfer && g_Config.iSkipGPUReadbackMode != 0) {
+            g_Config.iSkipGPUReadbackMode = 0;
         }
 
         if (PSP_CoreParameter().compat.flags().RequireDefaultCPUClock && g_Config.iLockedCPUSpeed != 0) {
@@ -390,6 +391,12 @@ const int buttonMap[] = { CTRL_UP, CTRL_DOWN, CTRL_LEFT, CTRL_RIGHT, 0, 0, 0, 0,
 
 @end
 
+void System_PostUIMessage(UIMessage message, const std::string &param)
+{
+	
+}
+
+
 #pragma mark - RetroAchievements stubs
 
 bool Achievements::Shutdown() {return true;}
@@ -398,6 +405,6 @@ void Achievements::UpdateSettings() {}
 void Achievements::UnloadGame() {}
 void Achievements::FrameUpdate() {}
 bool Achievements::IsReadyToStart() {return true;}
-bool Achievements::ChallengeModeActive() {return false;}
+bool Achievements::HardcoreModeActive() {return false;}
 void Achievements::DoState(PointerWrap &p) {}
 void Achievements::SetGame(const Path &path, IdentifiedFileType fileType, FileLoader *fileLoader) {}
