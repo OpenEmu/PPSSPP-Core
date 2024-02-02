@@ -6,6 +6,7 @@
 #include "Core/System.h"
 #include "Core/ConfigValues.h"
 #include "GPU/GPUInterface.h"
+#include <cassert>
 
 //Set functions in PPSSPP GLRenderManager
 static void context_SwapBuffer(){ ((OpenEmuGLContext *)OpenEmuCoreThread::ctx)->SwapBuffers(); }
