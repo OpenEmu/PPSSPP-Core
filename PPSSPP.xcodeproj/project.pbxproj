@@ -4121,8 +4121,6 @@
 				8CB74E501786031300C652A7 /* libxbrz.a in Frameworks */,
 				8CA1540E17C4138E0003002D /* libxxhash.a in Frameworks */,
 				8CB2173717C6566B00CE82F3 /* CoreVideo.framework in Frameworks */,
-				8CB2173B17C6569400CE82F3 /* VideoDecodeAcceleration.framework in Frameworks */,
-				8CB2173917C6567B00CE82F3 /* AGL.framework in Frameworks */,
 				8C74454E1786DB1E0008BE6A /* OpenGL.framework in Frameworks */,
 				8CAFC1231785B6C400647A96 /* OpenEmuBase.framework in Frameworks */,
 			);
